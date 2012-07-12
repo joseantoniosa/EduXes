@@ -8,16 +8,13 @@ function onDeviceReady() {
 	
 	var db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 200000);
 
-	$("#etiqueta1").val("Alo France 2"); //results.rows.item(i).data);
+	$("#etiqueta1").val("Alo France 02"); //results.rows.item(i).data);
 	$("#dentro_inicio").html("Alo France 2"); //results.rows.item(i).data);
 	console.log("One "+ db +"\n");
 	
-//	db.transaction(populateDB, errorCB, successCB);
+	db.transaction(populateDB, errorCB, successCB);
+	db.transaction(queryDB, errorCB, successCB);
 	
-	
- //   db = window.openDatabase("CardsDB", "1.0", "Cards DataBase", 200000);
-//    db.transaction(populateDB, errorCB, successCB);
-
 	
 //    loadCards();
 }
