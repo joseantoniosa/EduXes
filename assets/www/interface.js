@@ -11,9 +11,9 @@ function onDeviceReady() {
 	
 	db.transaction(populateDB, errorCB, successCB);
 	
-	db.transaction(queryGroupsDB, errorCB, successCB);
-	loadGroups();
-	loadStudents();
+//	db.transaction(queryGroupsDB, errorCB, successCB);
+	loadGroups(db);
+	loadStudents(db);
 //    loadCards();
 }
 
