@@ -46,6 +46,10 @@ onload="init();"
                <!--  <ul data-role="listview" id="grupos_ul"  ></ul>  -->
                 <h2 data-role="listview" id="grupos_ul"  ></h2>
             </div>
+			<a onClick="requestNewGroup();" data-role="button" data-icon="check">Nuevo</a> 
+
+</div>
+<div data-role="page" id="lista_alumnos">
 
             <div data-role="header">
                 <h1>Lista de Alumnos</h1>
@@ -77,6 +81,60 @@ onload="init();"
 
         </div>
         
+
+
+<div data-role="page" id="edit_grupos">
+
+            <div data-role="header">
+                <h1>Edición de Grupos</h1>
+                 <label for="nombre_grupo">Nombre</label><input id="nombre_grupo" disabled="true" /> 
+                 <label for="nivel_grupo">Nivel</label><input id="nivel_grupo" disabled="true" /> 
+
+<!--                 <label for="tipo">Tipo de cita</label> -->
+<!--                 <select id="tipo" onChange="updateDays();"> -->
+<!--                     <option value="1" selected="selected">Consulta por Enfermidade</option> -->
+<!--                     <option value="2">Consulta para Receitas</option> -->
+<!--                 </select> -->
+
+<!--                 <label for="dia">Día</label><select id="dia"></select> -->
+
+<!--                 <label for="rango">Rango</label><input id="rango" disabled="true" /> -->
+<!--                 <label for="alerta">Alerta</label><input id="alerta" disabled="true" /> -->
+<!--                 <label for="hora">Hora</label><input id="hora" value="00" /> -->
+<!--                 <label for="minutos">Minutos</label><input id="minutos" value="00" /> -->
+                
+                
+            </div>
+
+
+<!--             <div data-role="content"> -->
+<!--             			Lista de alumnos por grupo: -->
+<!-- 					<ul data-role="listview" id="students_group_ul"></ul> -->
+<!--                 <label for="medico">Médico</label><input id="medico" disabled="true" /> -->
+<!--                 <label for="centro">Centro</label><input id="centro" disabled="true" /> -->
+
+<!--                 <label for="tipo">Tipo de cita</label> -->
+<!--                 <select id="tipo" onChange="updateDays();"> -->
+<!--                     <option value="1" selected="selected">Consulta por Enfermidade</option> -->
+<!--                     <option value="2">Consulta para Receitas</option> -->
+<!--                 </select> -->
+
+<!--                 <label for="dia">Día</label><select id="dia"></select> -->
+
+<!--                 <label for="rango">Rango</label><input id="rango" disabled="true" /> -->
+<!--                 <label for="alerta">Alerta</label><input id="alerta" disabled="true" /> -->
+<!--                 <label for="hora">Hora</label><input id="hora" value="00" /> -->
+<!--                 <label for="minutos">Minutos</label><input id="minutos" value="00" /> -->
+
+<!--                 <a onClick="requestAppointment();" data-role="button" data-icon="check">Solicitar</a> -->
+<!--             </div> -->
+
+        </div>
+
+
+
+
+
         
 
 

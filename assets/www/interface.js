@@ -22,3 +22,12 @@ function init(){
 //	$("#inicio").html("<b>Capa inicial</b>"); // works!	
 	document.addEventListener("deviceready", onDeviceReady, false);
 }
+
+
+function requestNewGroup() {
+	
+    $.mobile.showPageLoadingMsg();
+    $('#nombre_grupo').disabled="false";
+    $.mobile.changePage("#edit_grupos");
+	
+}
