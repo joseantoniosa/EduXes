@@ -43,12 +43,28 @@ onload="init();"
 
             <div data-role="header">
                 <h1>Lista de Grupos</h1>
-               <!--  <ul data-role="listview" id="grupos_ul"  ></ul>  -->
-                <h2 data-role="listview" id="grupos_ul"  ></h2>
+			</div>
+			   <div data-role="content">                                
+                <h3 data-role="listview" id="grupos_ul"  ></h3>
             </div>
-			<a onClick="requestNewGroup();" data-role="button" data-icon="check">Nuevo</a> 
+			<a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a> 
 
 </div>
+
+<div data-role="page" id="list_activities">
+
+
+            <div data-role="header">
+                <h1>Lista de Actividades</h1>
+               <!--  <ul data-role="listview" id="grupos_ul"  ></ul>  -->
+                <h2 data-role="listview" id="activities_ul"  ></h2>
+            </div>
+			<a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a> 
+
+</div>
+
+
+
 <div data-role="page" id="lista_alumnos">
 
             <div data-role="header">
@@ -81,14 +97,37 @@ onload="init();"
 
         </div>
         
+<!-- TODO: 
+ -->
+<div data-role="page" id="edit_students">
 
+            <div data-role="header">
+                <h1>Edición de Alumnos </h1>
+                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_student" enabled="true" /> 
+                 <label for="nivel_grupo">Nivel</label><input id="in_nivel_student" enabled="true" />
+                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
+                 </div> 
+</div>
+
+<div data-role="page" id="edit_activities">
+
+            <div data-role="header">
+                <h1>Edición de Actividades </h1>
+                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_activitie" enabled="true" /> 
+                 <label for="nivel_grupo">Nivel</label><input id="in_nivel_activitie" enabled="true" />
+                 <a onClick="addNewActivity();" data-role="button" data-icon="check">Añadir</a>
+                 </div> 
+</div>
+
+<!-- -------------------------  -->
 
 <div data-role="page" id="edit_grupos">
 
             <div data-role="header">
                 <h1>Edición de Grupos</h1>
-                 <label for="nombre_grupo">Nombre</label><input id="nombre_grupo" disabled="true" /> 
-                 <label for="nivel_grupo">Nivel</label><input id="nivel_grupo" disabled="true" /> 
+                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" /> 
+                 <label for="nivel_grupo">Nivel</label><input id="in_nivel_grupo" enabled="true" />
+                 <a onClick="addNewGroup();" data-role="button" data-icon="check">Añadir</a> 
 
 <!--                 <label for="tipo">Tipo de cita</label> -->
 <!--                 <select id="tipo" onChange="updateDays();"> -->
