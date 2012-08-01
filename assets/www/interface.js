@@ -28,7 +28,7 @@ function init(){
 }
 
 
-
+//inside list:
 function requestNewActivity (){
 	$.mobile.showPageLoadingMsg();
 	
@@ -38,19 +38,33 @@ function requestNewGroup() {
 	
     $.mobile.showPageLoadingMsg();
     $('#in_nombre_grupo').disabled="false";
-    $.mobile.changePage("#edit_grupos");
+    $.mobile.changePage("#edit_groups");
 	
 }
 
+// inside edit
 function addNewGroup() {
 	$.mobile.showPageLoadingMsg();
 	
 	name = $("#in_nombre_grupo").val();
 	other_data = $("#in_nivel_grupo").val();
 	insertNewGroup(db, name, other_data);
-	   
-    $('#grupos_ul').listview('refresh');	   
+// 	debería re-leerlo de la BD
+	loadGroups(db);
+    // $('#groups_ul').listview('refresh');	   
 
 	$.mobile.changePage("#lista_grupos");
+}
+
+function addNewActivity() { // TODO
+	$.mobile.showPageLoadingMsg();
+	
+	name = $("#in_nombre_activity").val();
+	other_data = $("#in_nivel_activity").val();
+	insertNewActivity(db, name, other_data);
+	   
+    $('#activities_ul').listview('refresh');	   
+
+	$.mobile.changePage("#lista_activities");
 }
 

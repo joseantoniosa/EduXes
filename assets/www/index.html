@@ -37,19 +37,29 @@ onload="init();"
 <!-- 		<ul data-role="listview" id="students_ul"></ul> -->
 <!-- 	</div> -->
 
-<!--  TODO __ vv ___  -->
+
 <div data-role="page" id="lista_grupos">
-
-
             <div data-role="header">
                 <h1>Lista de Grupos</h1>
 			</div>
 			   <div data-role="content">                                
-                <h3 data-role="listview" id="grupos_ul"  ></h3>
+                <h3 data-role="listview" id="groups_ul"  ></h3>
             </div>
 			<a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a> 
 
 </div>
+<div data-role="page" id="edit_groups">
+            <div data-role="header">
+                <h1>Edición de Grupos</h1>
+            </div>
+            <div data-role="content">
+                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" /> 
+                 <label for="nivel_grupo">Nivel</label><input id="in_nivel_grupo" enabled="true" />
+			<a onClick="addNewGroup();" data-role="button" data-icon="check">Añadir</a> 
+		</div>
+</div>		
+
+<!--  TODO __ vv ___  -->
 
 <div data-role="page" id="list_activities">
 
@@ -121,13 +131,15 @@ onload="init();"
 
 <!-- -------------------------  -->
 
-<div data-role="page" id="edit_grupos">
+<!-- <div data-role="page" id="edit_groups"> -->
 
-            <div data-role="header">
-                <h1>Edición de Grupos</h1>
-                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" /> 
-                 <label for="nivel_grupo">Nivel</label><input id="in_nivel_grupo" enabled="true" />
-                 <a onClick="addNewGroup();" data-role="button" data-icon="check">Añadir</a> 
+<!--             <div data-role="header"> -->
+<!--                 <h1>Edición de Grupos</h1> -->
+<!--                 </div> -->
+<!--                 <div data-role="content"> -->
+<!--                  <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" />  -->
+<!--                  <label for="nivel_grupo">Nivel</label><input id="in_nivel_grupo" enabled="true" /> -->
+<!--                  <a onClick="addNewGroup();" data-role="button" data-icon="check">Añadir</a>  -->
 
 <!--                 <label for="tipo">Tipo de cita</label> -->
 <!--                 <select id="tipo" onChange="updateDays();"> -->
@@ -143,7 +155,7 @@ onload="init();"
 <!--                 <label for="minutos">Minutos</label><input id="minutos" value="00" /> -->
                 
                 
-            </div>
+<!--             </div> -->
 
 
 <!--             <div data-role="content"> -->
@@ -168,7 +180,7 @@ onload="init();"
 <!--                 <a onClick="requestAppointment();" data-role="button" data-icon="check">Solicitar</a> -->
 <!--             </div> -->
 
-        </div>
+<!--         </div> -->
 
 
 

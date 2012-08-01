@@ -13,12 +13,12 @@
 
     function populateDB(tx) {
     	
-//    	tx.executeSql('DROP TABLE IF EXISTS GROUPS');
-//        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
-//        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "First group  1")');
-//        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Second group 2")');
-//        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Third group  3" )');
-//        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Fourth group 4")');
+    	tx.executeSql('DROP TABLE IF EXISTS GROUPS');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
+        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "First group  1")');
+        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Second group 2")');
+        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Third group  3" )');
+        tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Fourth group 4")');
 // Students        
     	tx.executeSql('DROP TABLE IF EXISTS STUDENTS');
     	var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
@@ -85,11 +85,12 @@
 	   console.log("Last inserted row ID = " + results.insertId);
 	   console.log("Number of rows inserted: " +  len)
 // How to populate a List ?
+  	   $('#groups_ul').empty();
+
 	   for (var i=0;i<len;i++) {
-		   $('#grupos_ul').append("<h3 onClick='"+"' >"+results.rows.item(i).data +"</h3>");
-		   
+		   $('#groups_ul').append("<h3 onClick='"+"' >"+results.rows.item(i).data +"</h3>");		   
 	   }
-	   $('#grupos_ul').listview('refresh');	   
+	   $('#groups_ul').listview('refresh');	   
    }
    
    
@@ -114,6 +115,7 @@
 	   console.log("Number of activity - rows inserted: " +  len)
 
 	   var id=0;
+//	   $('#activities_ul') // poner a vacío
 	   for (var i=0;i<len;i++) {
 		   id = results.rows.item(i).id;
 		   $('#activities_ul').append("<li   onClick='"+"' >"+id +" "+results.rows.item(i).data +"</li>");		  
