@@ -42,8 +42,11 @@ onload="init();"
             <div data-role="header">
                 <h1>Lista de Grupos</h1>
 			</div>
-			   <div data-role="content">                                
-                <h3 data-role="listview" id="groups_ul"  ></h3>
+			   <div data-role="content">   
+			    
+			    <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete"> 
+
+<!--                 <h3 data-role="listview" id="groups_ul"  ></h3> -->
             </div>
 			<a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a> 
 

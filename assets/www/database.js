@@ -1,5 +1,11 @@
-// Cordova is ready
+// Referencia á base de datos
 //
+var db;
+var id_global;
+var table_global;
+//
+//
+
 
     function errorCB(err) {
  	   console.log("Error processing SQL: "+err.code);
@@ -60,8 +66,8 @@
 	}
    
    function queryGroupsDB(tx) {
-	   console.log("Query Groups \n");
-	    tx.executeSql('SELECT * FROM GROUPS', [], queryGroupsSuccess, errorCB);
+	   	console.log("Query Groups \n");
+    	tx.executeSql('SELECT * FROM GROUPS', [], queryGroupsSuccess, errorCB);
 	}   
    function queryStudentsDB(tx) {
 	   console.log("Query Students \n");
@@ -86,9 +92,16 @@
 	   console.log("Number of rows inserted: " +  len)
 // How to populate a List ?
   	   $('#groups_ul').empty();
-
+//  <ul data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+// 	    data-rel="dialog" data-transition="slideup"
+//	   <a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
+//		</a>
+	   var html;
 	   for (var i=0;i<len;i++) {
-		   $('#groups_ul').append("<h3 onClick='"+"' >"+results.rows.item(i).data +"</h3>");		   
+		   html = "<li><h3 >"+results.rows.item(i).data +"</h3>"; 
+		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\"; ' href='remove_group.html' data-rel='dialog' data-transition='slideup'>";
+		   html += results.rows.item(i).id+"</a> </li>";
+		   $('#groups_ul').append(html);		   
 	   }
 	   $('#groups_ul').listview('refresh');	   
    }
@@ -125,8 +138,7 @@
 	   
    }
    
-   // Insert new
-   
+   // Insert new group   
    function insertNewGroup(db, name, other_data){
 	   var db2= db;
 	   var name2= name;
@@ -136,25 +148,26 @@
 		   var sql = 'INSERT INTO GROUPS (id, data, other_data) VALUES (NULL,';		   
 		   sql  +=  '\"'  + name2 + '\" ,  \"'+ other_data2 + '\"  )' ;
 		   tx.executeSql(sql, [], function (tx, results) {
-			   console.log("Exito insertando datos \n");
-			   alert("Exito insertando grupo " + data);	 
-
+			   console.log("Exito insertando datos \n");	   	 
 		   }, errorCB );
-	   });
-// refresh de la GUI?	   
+	   }); 	   
 	   $('#grupos_ul').listview('refresh');	   
-
-	   
-	   
-	   /*db.transaction(function (tx) {
-	   tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
-	    var len = results.rows.length, i;
-	    msg = "<p>Found rows: " + len + "</p>";
-	    document.querySelector('#status').innerHTML +=  msg;  
-	  }, null);
-	 });
-	 */
    }
+// delete 
+   function deleteRawRecord(db, table, id){
+	   var db2 = db;
+	   var id2 = id;
+	   var table2 = table;
+	   	   
+	   db2.transaction(function (tx) {
+		   var sql = 'DELETE FROM '+table2 +' WHERE id='+id2 ;		   
+		   
+		   tx.executeSql(sql, [], function (tx, results) {
+			   console.log("Exito borrando datos  " + table2 + " registro" + id);
+		   }, errorCB );
+	   });	   
+   }
+
    
    
 // load all   

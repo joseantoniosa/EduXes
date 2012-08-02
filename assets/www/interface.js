@@ -1,5 +1,5 @@
-// Referencia á base de datos
-var db;
+//
+
 
 function onDeviceReady() {	
 
@@ -68,3 +68,32 @@ function addNewActivity() { // TODO
 	$.mobile.changePage("#lista_activities");
 }
 
+function deleteRecord(db, table, id){
+	   var db2= db;
+	   var id2= id;
+	   var table2 = table;
+	   	   
+	   deleteRawRecord(db2, table2, id2);
+
+	   switch(table2) {
+	   case 'groups':
+		   loadGroups(db2);
+		   break;
+	   case 'students':
+		   loadStudents(db2);
+		   break;
+	   case 'activities':
+		   loadActivities(db2);		   
+		   break;
+	   case 'attendance':
+		   loadGroups(db2);
+		   break;
+
+	   default:
+		   break;
+	   }
+	
+}
+ 
+
+// 	
