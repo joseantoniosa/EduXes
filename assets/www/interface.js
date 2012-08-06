@@ -22,7 +22,7 @@ function onDeviceReady() {
 }
 
 function init(){
-	console.log("Hello World \n");
+//	console.log("Hello World \n");
 //	$("#inicio").html("<b>Capa inicial</b>"); // works!	
 	document.addEventListener("deviceready", onDeviceReady, false);
 }
@@ -56,6 +56,19 @@ function addNewGroup() {
 	$.mobile.changePage("#lista_grupos");
 }
 
+function addNewStudent() { // TODO
+	$.mobile.showPageLoadingMsg();
+	
+	name = $("#in_name_student").val();
+	surname = $("#in_surname_student").val();
+	group_id = 0;
+	insertNewStudent(db, name, surname, group_id); //
+    $('#students_ul').listview('refresh');	   
+
+	$.mobile.changePage("#list_students");
+}
+
+
 function addNewActivity() { // TODO
 	$.mobile.showPageLoadingMsg();
 	
@@ -65,8 +78,27 @@ function addNewActivity() { // TODO
 	   
     $('#activities_ul').listview('refresh');	   
 
-	$.mobile.changePage("#lista_activities");
+	$.mobile.changePage("#list_activities");
 }
+
+
+function listStudents(id_group) 
+{
+	$.mobile.showPageLoadingMsg();
+
+	id_global=id_group ;  //local variable goes global
+	table_global='STUDENTS';
+
+	loadStudentsByGroup(db);
+
+	$.mobile.changePage("#list_students");
+
+}
+
+
+
+// lista_alumnos, list_students 
+// Generic functions
 
 function deleteRecord(db, table, id){
 	   var db2= db;

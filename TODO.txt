@@ -1,0 +1,15 @@
+Steps:
+
+1. Create main tables (T) and GUI (G):
+	+ groups (T, G)
+	+ students (T)
+	+ activities (T)
+	+ timetable ?
+2. Create main interfaces (?)
+	+ login window
+	+ daily window (define)
+	+ marks by student and group window
+	
+	------------------------------
+	  7/8/2012:-> list_students by group. Fix 83 database.js and so on ..., 85 interface.js 
+

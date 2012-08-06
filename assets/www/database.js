@@ -25,21 +25,27 @@ var table_global;
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Second group 2")');
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Third group  3" )');
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Fourth group 4")');
-// Students        
+// Students         TODO
     	tx.executeSql('DROP TABLE IF EXISTS STUDENTS');
-    	var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
-    	create_students +="(id integer primary key, group_id integer not null, data text , FOREIGN KEY(group_id) REFERENCES groups(id))";
+//    	var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
+//    	create_students +="(id integer primary key, group_id integer not null, data text , FOREIGN KEY(group_id) REFERENCES groups(id))";
+    	
+    	var create_students="CREATE TABLE IF NOT EXISTS STUDENTS "; 
+    	create_students +=" id integer primary key, group_id integer not null, name text, surname text,";
+    	create_students +=" repeteated integer, n_date text , ";
+    	create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";  
+    	create_students +=" FOREIGN KEY(group_id) REFERENCES groups(id));";    	
     	console.log(create_students);
         tx.executeSql(create_students);        
-        tx.executeSql('INSERT INTO STUDENTS (id, group_id, data) VALUES (NULL,1, "First student")');
-        tx.executeSql('INSERT INTO STUDENTS (id, group_id, data) VALUES (NULL,1, "Second student")');
-        tx.executeSql('INSERT INTO STUDENTS (id, group_id, data) VALUES (NULL,1, "Third student")');
-        tx.executeSql('INSERT INTO STUDENTS (id, group_id, data) VALUES (NULL,2, "Fourth student")');
-        tx.executeSql('INSERT INTO STUDENTS (id, group_id, data) VALUES (NULL,2, "Fith student")');
-        tx.executeSql('INSERT INTO STUDENTS (id, group_id, data) VALUES (NULL,3, "Sixth student")');
-        tx.executeSql('INSERT INTO STUDENTS (id, group_id, data) VALUES (NULL,3, "Seventh student")');
+        tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,1, "First"," student")');
+        tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,1, "Second"," student")');
+        tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname ) VALUES (NULL,1, "Third "," student")');
+        tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname ) VALUES (NULL,2, "Fourth"," student")');
+        tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname ) VALUES (NULL,2, "Fith"," student")');
+        tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,3, "Sixth"," student")');
+        tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,3, "Seventh ","student")');
 //
-//	Activities        
+//	Activities        TODO 
     	tx.executeSql('DROP TABLE IF EXISTS ACTIVITIES');
     	var create_activities="CREATE TABLE IF NOT EXISTS ACTIVITIES ";
     	create_activities +="(id integer primary key, description text, date_init text, date_end text, weight real ";
@@ -73,6 +79,13 @@ var table_global;
 	   console.log("Query Students \n");
 	   tx.executeSql('SELECT * FROM STUDENTS', [], queryStudentsSuccess, errorCB);
 	}
+   function queryStudentsByGroupDB(tx) {
+	   // pass from and global id!!
+	   log = "Query Students from STUDENTS WHERE id_group="+id_global+ "\n";
+	   console.log(log);
+	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsSuccess, errorCB);
+	}
+   
    function queryActivitiesDB(tx) {
 	   console.log("Query Activities \n");
 	   tx.executeSql('SELECT * FROM ACTIVITIES', [], queryActivitiesSuccess, errorCB);
@@ -98,25 +111,28 @@ var table_global;
 //		</a>
 	   var html;
 	   for (var i=0;i<len;i++) {
-		   html = "<li><h3 >"+results.rows.item(i).data +"</h3>"; 
-		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\"; ' href='remove_group.html' data-rel='dialog' data-transition='slideup'>";
+		   html = "<li><h3> <a href='#' onClick='id_global="+ results.rows.item(i).id + " table_global=\"groups\"; listStudents(); '   >"+results.rows.item(i).data +"</a></h3>"; 
+		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\"; ' href='remove.html' data-rel='dialog' data-transition='slideup'>";
 		   html += results.rows.item(i).id+"</a> </li>";
 		   $('#groups_ul').append(html);		   
 	   }
 	   $('#groups_ul').listview('refresh');	   
    }
-   
-   
+      
    function queryStudentsSuccess(tx, results) {
-
 	   var len = results.rows.length;
 	   console.log("Last inserted student - row ID = " + results.insertId);
 	   console.log("Number of student - rows inserted: " +  len)
-
+	   var html;
 	   var id=0;
 	   for (var i=0;i<len;i++) {
 		   id = results.rows.item(i).id;
-		   $('#students_ul').append("<li   onClick='"+"' >"+id +" "+results.rows.item(i).data +"</li>");		  
+		   
+		   html = "<li><h3 >"+results.rows.item(i).data +"</h3>"; 
+		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+		   html += results.rows.item(i).id+"</a> </li>";
+		   $('#students_ul').append(html);		   
+		   		  
 	   }
 	   $('#students_ul').listview('refresh');
 	   
@@ -153,6 +169,44 @@ var table_global;
 	   }); 	   
 	   $('#grupos_ul').listview('refresh');	   
    }
+
+   function 	insertNewStudent(db, name, surname, group_id) { // TODO 
+	   var db2= db;
+	   var name2= name;
+	   var surname2 = surname;
+	   var group_id2 = group_id;
+	   	   
+	   db2.transaction(function (tx) {
+// tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,1, "First"," student")');		   
+		   var sql = 'INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,';
+		   sql += group_id2 +',';
+		   sql +=  '\"'  + name2 + '\" ,  \"'+ surname2 + '\"  )' ;
+		   tx.executeSql(sql, [], function (tx, results) {
+			   console.log("Exito insertando datos en STUDENTS " + sql + "\n" );	   	 
+		   }, errorCB );
+	   }); 	   
+	   $('#students_ul').listview('refresh');	
+}
+
+   function 	insertNewActivity(db, name, other_data) { // TODO 
+	   var db2= db;
+	   var name2= name;
+	   var other_data2 = other_data;
+	   	   
+	   db2.transaction(function (tx) {
+// tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,1, "First"," student")');		   
+		   var sql = 'INSERT INTO STUDENTS (id, data, other_data) VALUES (NULL,';		   
+		   sql  +=  '\"'  + name2 + '\" ,  \"'+ other_data2 + '\"  )' ;
+		   tx.executeSql(sql, [], function (tx, results) {
+			   console.log("Exito insertando datos en estudiantes \n" );	   	 
+		   }, errorCB );
+	   }); 	   
+	   $('#students_ul').listview('refresh');
+	
+	
+}
+
+   
 // delete 
    function deleteRawRecord(db, table, id){
 	   var db2 = db;
@@ -181,7 +235,12 @@ var table_global;
    {
 	   db.transaction(queryStudentsDB, errorCB, successCB);
    }
-
+   function loadStudentsByGroup(db)
+   {
+	   db.transaction(queryStudentsByGroupDB, errorCB, successCB);
+   }
+   
+   
    function loadActivities(db) {
 	   
 	   db.transaction(queryActivitiesDB, errorCB, successCB);	   	   
