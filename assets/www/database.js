@@ -40,16 +40,17 @@ var table_global;
     	console.log(create_students);
         tx.executeSql(create_students);
         var header="INSERT INTO STUDENTS (id, id_group, name, surname, photo) VALUES (";
-        tx.executeSql(header +'NULL,0, "0First"," student 0", "" )');
-        tx.executeSql(header +'NULL,0, "0Second"," student 0", "" )');
-        tx.executeSql(header +'NULL,0, "0Third "," student 0", "" )');
-        tx.executeSql(header +'NULL,1, "First",  " student",   "" )');
-        tx.executeSql(header +'NULL,1, "Second"," student", "" )');
-        tx.executeSql(header +'NULL,1, "Third "," student", "" )');
-        tx.executeSql(header +'NULL,2, "Fourth"," student", "" )');
-        tx.executeSql(header +'NULL,2, "Fith"," student", "" )');
-        tx.executeSql(header +'NULL,3, "Sixth"," student", "" )');
-        tx.executeSql(header +'NULL,3, "Seventh ","student", "" )');
+        tx.executeSql(header +'NULL,0, "0First"," student 0", "f001.png" )');
+        tx.executeSql(header +'NULL,0, "0Second"," student 0", "f002.png" )');
+        tx.executeSql(header +'NULL,0, "0Third "," student 0", "f003.png" )');
+        tx.executeSql(header +'NULL,1, "First",  " student",   "f004.png" )');
+        tx.executeSql(header +'NULL,1, "Second"," student", "f005.png" )');
+        tx.executeSql(header +'NULL,1, "Third "," student", "f006.png" )');
+        tx.executeSql(header +'NULL,2, "Fourth"," student", "f007.png" )');
+        tx.executeSql(header +'NULL,2, "Fith"," student", "f008.png" )');
+        tx.executeSql(header +'NULL,3, "Sixth"," student", "f009.png" )');
+        tx.executeSql(header +'NULL,3, "Seventh ","student", "f010.png" )');
+        tx.executeSql(header +'NULL,3, "Eighth ","student 11 ", "f011.png" )');
 //
 //	Activities        TODO
     	tx.executeSql('DROP TABLE IF EXISTS ACTIVITIES;');
@@ -88,7 +89,7 @@ var table_global;
    function queryStudentsByGroupDB(tx) {
 	   // pass from and global id!!
 	   log = "Query Students from STUDENTS WHERE id_group="+id_global+ "\n";
-	   alert("Log  queryStudentsByGroupDB "+ log);
+	   //alert("Log  queryStudentsByGroupDB "+ log);
 	   console.log(log);
 	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsSuccess, errorCB);
 	}
@@ -122,7 +123,13 @@ var table_global;
 		   html +="<a onClick='id_global="+ results.rows.item(i).id + "; table_global=\"groups\"; listStudents("+results.rows.item(i).id  +");' href='index.html#list_students' >";
 		   html +=results.rows.item(i).data +"</a></h3>";
 		   html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-		   html += results.rows.item(i).id+"</a> </li>";
+		   html += "</a></li>";
+// <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
+//		   html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+//		   html += "</a></li>";
+
+
+//		   html += results.rows.item(i).id+"</a> </li>";
 		   $('#groups_ul').append(html);
 	   }
 	   $('#groups_ul').listview('refresh');
@@ -139,11 +146,12 @@ var table_global;
 	   for (var i=0;i<len;i++) {
 		   id = results.rows.item(i).id;
 
-		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
+		   html = "<li>";
 // 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
 		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
 		   html += "</a>";
-		   html +=" <img src='photos/gf.png' alt='France' class='ui-li-icon ui-corner-none'>  ";
+		   html += "<img src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' class='ui-li-icon ui-corner-none'>  ";
+		   html += "<p>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</p>";
 		   html += "</li>";
 		  // html += results.rows.item(i).id+"</a> </li>";
 		   $('#students_ul').append(html);

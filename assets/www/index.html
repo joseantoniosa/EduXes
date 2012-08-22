@@ -38,8 +38,8 @@ onload="init();"
 <!-- 	</div> -->
 
 
-<div data-role="page" id="lista_grupos">
-            <div data-role="header">
+<div data-role="page" id="lista_grupos" data-add-back-btn="true">
+            <div data-role="header"  data-add-back-btn="true"  >
                 <h1>Lista de Grupos</h1>
 			</div>
 			   <div data-role="content">
@@ -49,10 +49,12 @@ onload="init();"
 <!--                 <h3 data-role="listview" id="groups_ul"  ></h3> -->
             </div>
 			<a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a>
+			<div data-role="footer"  data-rel="back" data-theme="d">
+            </div>
 
 </div>
-<div data-role="page" id="edit_groups">
-            <div data-role="header">
+<div data-role="page" id="edit_groups" data-add-back-btn="true">
+            <div data-role="header"  data-add-back-btn="true" >
                 <h1>Edición de Grupos</h1>
             </div>
             <div data-role="content">
@@ -67,7 +69,7 @@ onload="init();"
 <div data-role="page" id="list_activities">
 
 
-            <div data-role="header">
+            <div data-role="header"  data-add-back-btn="true" >
                 <h1>Lista de Actividades</h1>
                 </div>
                 <div data-role="content">
@@ -76,20 +78,25 @@ onload="init();"
                 </div>
 
 			<a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a>
+			<div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+            <p> Atrás</p>
+            </div>
 
 </div>
 
 
 
-<div data-role="page" id="list_students">
+<div data-role="page" id="list_students" data-add-back-btn="true">
 
-            <div data-role="header">
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
                 <h1>Lista de Alumnos</h1>
              </div>
                 <div data-role="content">
-                <ul data-role="listview" id="students_ul" data-filter="true" data-inset="true" onClick="" ></ul>
+                <ul data-role="listview" id="students_ul" data-filter="true" data-inset="true" onClick=""  data-theme="d"  ></ul>
                 </div>
-
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+            <p> Atrás</p>
+        </div>
 
 
 <!--             <div data-role="content"> -->
@@ -120,18 +127,22 @@ onload="init();"
  -->
 <div data-role="page" id="edit_students">
 
-            <div data-role="header">
+            <div data-role="header"  data-add-back-btn="true" >
                 <h1>Edición de Alumnos </h1>
                  <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
                  <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
 				 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
                  <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
                  </div>
+                 <div data-role="footer" class="footer-docs" data-theme="c">
+            <p>&copy; 2012 jQuery Foundation and other contributors</p>
+    </div>
+
 </div>
 
 <div data-role="page" id="edit_activities">
 
-            <div data-role="header">
+            <div data-role="header"  data-add-back-btn="true" >
                 <h1>Edición de Actividades </h1>
                  <label for="nombre_grupo">Nombre</label><input id="in_nombre_activitie" enabled="true" />
                  <label for="nivel_grupo">Nivel</label><input id="in_nivel_activitie" enabled="true" />
@@ -191,12 +202,6 @@ onload="init();"
 <!--             </div> -->
 
 <!--         </div> -->
-
-
-
-
-
-
 
 
 

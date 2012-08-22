@@ -84,7 +84,6 @@ function addNewActivity() { // TODO
 
 function listStudents(id_group)
 {
-	alert('List Students');
 	$.mobile.showPageLoadingMsg();
 
 	id_global=id_group ;  //local variable goes global
