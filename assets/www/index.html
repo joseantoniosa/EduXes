@@ -4,8 +4,8 @@
 <title>EduXes</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<!--  1.8.x = android 2.3.x-->	
-<script type="text/javascript" charset="utf-8" 	src="cordova-1.8.1.js"></script>  
+<!--  1.8.x = android 2.3.x-->
+<script type="text/javascript" charset="utf-8" 	src="cordova-1.8.1.js"></script>
 <script type="text/javascript" src="jquery/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="jquery/jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
 <script type="text/javascript" src="database.js"></script>
@@ -25,7 +25,7 @@ onload="init();"
 <!-- 	<h1 id="header">Hola Mundo</h1> -->
 <!-- 	<label id="etiqueta1">Etiqueta Inicial 0</label> -->
 <!-- 	<div id="dentro_inicio"></div> -->
-<!-- 	<ul id="actionList"></ul> -->	
+<!-- 	<ul id="actionList"></ul> -->
 <!-- 	</div> -->
 
 <!-- 	<div data-role="page" id="groups_page_div"> -->
@@ -42,13 +42,13 @@ onload="init();"
             <div data-role="header">
                 <h1>Lista de Grupos</h1>
 			</div>
-			   <div data-role="content">   
-			    
-			    <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete"> 
+			   <div data-role="content">
+
+			    <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
 
 <!--                 <h3 data-role="listview" id="groups_ul"  ></h3> -->
             </div>
-			<a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a> 
+			<a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a>
 
 </div>
 <div data-role="page" id="edit_groups">
@@ -56,11 +56,11 @@ onload="init();"
                 <h1>Edición de Grupos</h1>
             </div>
             <div data-role="content">
-                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" /> 
+                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" />
                  <label for="nivel_grupo">Nivel</label><input id="in_nivel_grupo" enabled="true" />
-			<a onClick="addNewGroup();" data-role="button" data-icon="check">Añadir</a> 
+			<a onClick="addNewGroup();" data-role="button" data-icon="check">Añadir</a>
 		</div>
-</div>		
+</div>
 
 <!--  TODO __ vv ___  -->
 
@@ -69,10 +69,13 @@ onload="init();"
 
             <div data-role="header">
                 <h1>Lista de Actividades</h1>
+                </div>
+                <div data-role="content">
                <!--  <ul data-role="listview" id="grupos_ul"  ></ul>  -->
                 <h2 data-role="listview" id="activities_ul"  ></h2>
-            </div>
-			<a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a> 
+                </div>
+
+			<a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a>
 
 </div>
 
@@ -82,8 +85,11 @@ onload="init();"
 
             <div data-role="header">
                 <h1>Lista de Alumnos</h1>
+             </div>
+                <div data-role="content">
                 <ul data-role="listview" id="students_ul" data-filter="true" data-inset="true" onClick="" ></ul>
-            </div>
+                </div>
+
 
 
 <!--             <div data-role="content"> -->
@@ -109,28 +115,28 @@ onload="init();"
 <!--             </div> -->
 
         </div>
-        
-<!-- TODO: 
+
+<!-- TODO:
  -->
 <div data-role="page" id="edit_students">
 
             <div data-role="header">
                 <h1>Edición de Alumnos </h1>
-                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" /> 
+                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
                  <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
-				 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />                 
+				 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
                  <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
-                 </div> 
+                 </div>
 </div>
 
 <div data-role="page" id="edit_activities">
 
             <div data-role="header">
                 <h1>Edición de Actividades </h1>
-                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_activitie" enabled="true" /> 
+                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_activitie" enabled="true" />
                  <label for="nivel_grupo">Nivel</label><input id="in_nivel_activitie" enabled="true" />
                  <a onClick="addNewActivity();" data-role="button" data-icon="check">Añadir</a>
-                 </div> 
+                 </div>
 </div>
 
 <!-- -------------------------  -->
@@ -157,8 +163,8 @@ onload="init();"
 <!--                 <label for="alerta">Alerta</label><input id="alerta" disabled="true" /> -->
 <!--                 <label for="hora">Hora</label><input id="hora" value="00" /> -->
 <!--                 <label for="minutos">Minutos</label><input id="minutos" value="00" /> -->
-                
-                
+
+
 <!--             </div> -->
 
 
@@ -190,7 +196,7 @@ onload="init();"
 
 
 
-        
+
 
 
 

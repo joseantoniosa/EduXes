@@ -34,22 +34,22 @@ var table_global;
 
     	var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
     	create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
-    	create_students +=" repeteated integer, n_date text , ";
+    	create_students +=" repeteated integer, n_date text , photo text, ";
     	create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
     	create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
     	console.log(create_students);
         tx.executeSql(create_students);
-        var header="INSERT INTO STUDENTS (id, id_group, name, surname) VALUES (";
-        tx.executeSql(header +'NULL,0, "0First"," student 0")');
-        tx.executeSql(header +'NULL,0, "0Second"," student 0")');
-        tx.executeSql(header +'NULL,0, "0Third "," student 0")');
-        tx.executeSql(header +'NULL,1, "First"," student")');
-        tx.executeSql(header +'NULL,1, "Second"," student")');
-        tx.executeSql(header +'NULL,1, "Third "," student")');
-        tx.executeSql(header +'NULL,2, "Fourth"," student")');
-        tx.executeSql(header +'NULL,2, "Fith"," student")');
-        tx.executeSql(header +'NULL,3, "Sixth"," student")');
-        tx.executeSql(header +'NULL,3, "Seventh ","student")');
+        var header="INSERT INTO STUDENTS (id, id_group, name, surname, photo) VALUES (";
+        tx.executeSql(header +'NULL,0, "0First"," student 0", "" )');
+        tx.executeSql(header +'NULL,0, "0Second"," student 0", "" )');
+        tx.executeSql(header +'NULL,0, "0Third "," student 0", "" )');
+        tx.executeSql(header +'NULL,1, "First",  " student",   "" )');
+        tx.executeSql(header +'NULL,1, "Second"," student", "" )');
+        tx.executeSql(header +'NULL,1, "Third "," student", "" )');
+        tx.executeSql(header +'NULL,2, "Fourth"," student", "" )');
+        tx.executeSql(header +'NULL,2, "Fith"," student", "" )');
+        tx.executeSql(header +'NULL,3, "Sixth"," student", "" )');
+        tx.executeSql(header +'NULL,3, "Seventh ","student", "" )');
 //
 //	Activities        TODO
     	tx.executeSql('DROP TABLE IF EXISTS ACTIVITIES;');
@@ -132,19 +132,23 @@ var table_global;
 	   var len = results.rows.length;
 	   console.log("Last inserted student - row ID = " + results.insertId);
 	   console.log("Number of student - rows inserted: " +  len);
-	   alert( "Query Students .... "+ len );
+
+  	   $('#students_ul').empty();
 	   var html;
 	   var id=0;
 	   for (var i=0;i<len;i++) {
 		   id = results.rows.item(i).id;
 
 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
-		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-		   html += results.rows.item(i).id+"</a> </li>";
+// 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
+		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+		   html += "</a>";
+		   html +=" <img src='photos/gf.png' alt='France' class='ui-li-icon ui-corner-none'>  ";
+		   html += "</li>";
+		  // html += results.rows.item(i).id+"</a> </li>";
 		   $('#students_ul').append(html);
 
 	   }
-	   alert("Students showed: "+results.rows.length );
 	   $('#students_ul').listview('refresh');
 
    }
@@ -154,6 +158,7 @@ var table_global;
 	   console.log("Last inserted activity - row ID = " + results.insertId);
 	   console.log("Number of activity - rows inserted: " +  len)
 
+	   $('#activities_ul').empty();
 	   var id=0;
 //	   $('#activities_ul') // poner a vacío
 	   for (var i=0;i<len;i++) {
