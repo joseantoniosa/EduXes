@@ -126,6 +126,35 @@ onload="init();"
 
 <!-- TODO:
  -->
+
+ <div data-role="page" id="daily_work">
+
+            <div data-role="header"  data-add-back-btn="true" >
+                <h1>Day </h1>
+                Here goes daily work. It will be organized into two panels
+                <ul>
+                <li>Left panel. Navigation bar. </li>
+                <li>Centre panel. With classes, e.g.: 1ºA, 2ªB, etc</li>
+                </ul>
+                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
+                 <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
+                 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
+                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
+                 </div>
+                <div data-role="content">
+                 <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+                    <option>Custom menu example</option>
+                    <option value="standard">Standard: 7 day</option>
+                    <option value="rush">Rush: 3 days</option>
+                    <option value="express">Express: next day</option>
+                    <option value="overnight">Overnight</option>
+                </select>
+                </div>
+            <div data-role="footer" class="footer-docs" data-theme="c">
+            <p>&copy; 2012 jQuery Foundation and other contributors</p>
+           </div>
+</div>
+
 <div data-role="page" id="edit_students_attendance">
 
             <div data-role="header"  data-add-back-btn="true" >

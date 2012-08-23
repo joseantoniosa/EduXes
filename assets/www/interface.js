@@ -19,6 +19,11 @@ function onDeviceReady() {
 	loadStudents(db);
 	loadActivities(db);
 
+	$.mobile.showPageLoadingMsg();
+	$.mobile.changePage("#daily_work");
+
+
+
 }
 
 function init(){
@@ -141,5 +146,5 @@ function deleteRecord(db, table, id){
 
 }
 
-
+// daily_work
 //

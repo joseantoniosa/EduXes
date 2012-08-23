@@ -14,14 +14,19 @@ Steps:
 	   list (done)
 	   edit (done)
 	+ students (T)
-	   list (partially done)
-	   edit
+	   list (done)
+	   edit (todo)
 	+ activities (T)
+	   list
+	   edit
 	+ timetable ?
 2. Create main interfaces (?)
 	+ login window
+	   (todo)
 	+ daily window (define)
+	   (in process)
 	+ marks by student and group window
+	   (todo)
 	+ ...
 	+
 	------------------------------
@@ -29,4 +34,13 @@ Steps:
 
     22/8/2012-> queryGroupsSuccess . database.js line 123:implement:
                  <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
+    23/8/2012->  <div data-role="page" id="daily_work">, index.html line 130.
+                Implement daily work window
+                [Options] [Classes]
+                            -> (Classes)- List Students by group:
+                                        -> Edit/Add Attendance
+
+
+
+
 
