@@ -4,20 +4,29 @@ Repository:
 Docs:
 	http://docs.phonegap.com/en/2.0.0/cordova_storage_storage.md.html#SQLTransaction
 	http://jquerymobile.com/demos/1.1.1/docs/forms/forms-sample.html
+Icons:
+    http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
 Steps:
 
 1. Create main tables (T) and GUI (G):
 	+ groups (T, G)
+	   list (done)
+	   edit (done)
 	+ students (T)
+	   list (partially done)
+	   edit
 	+ activities (T)
 	+ timetable ?
 2. Create main interfaces (?)
 	+ login window
 	+ daily window (define)
 	+ marks by student and group window
-	+ ... 
+	+ ...
 	+
 	------------------------------
-	  7/8/2012:-> list_students by group. Fix 83 database.js and so on ..., 85 interface.js 
+	7/8/2012:-> list_students by group. Fix 83 database.js and so on ..., 85 interface.js
+
+    22/8/2012-> queryGroupsSuccess . database.js line 123:implement:
+                 <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
 

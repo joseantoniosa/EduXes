@@ -20,7 +20,7 @@ onload="init();"
 // -->
 
 </head>
-<body  >
+<body onload="init(); >
 <!-- 	<div id="inicio"> -->
 <!-- 	<h1 id="header">Hola Mundo</h1> -->
 <!-- 	<label id="etiqueta1">Etiqueta Inicial 0</label> -->
@@ -92,7 +92,8 @@ onload="init();"
                 <h1>Lista de Alumnos</h1>
              </div>
                 <div data-role="content">
-                <ul data-role="listview" id="students_ul" data-filter="true" data-inset="true" onClick=""  data-theme="d"  ></ul>
+
+                <ul data-role="listview" id="students_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
                 </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
             <p> Atrás</p>
@@ -125,7 +126,7 @@ onload="init();"
 
 <!-- TODO:
  -->
-<div data-role="page" id="edit_students">
+<div data-role="page" id="edit_students_attendance">
 
             <div data-role="header"  data-add-back-btn="true" >
                 <h1>Edición de Alumnos </h1>
@@ -137,7 +138,20 @@ onload="init();"
                  <div data-role="footer" class="footer-docs" data-theme="c">
             <p>&copy; 2012 jQuery Foundation and other contributors</p>
     </div>
+</div>
 
+<div data-role="page" id="edit_students">
+
+            <div data-role="header"  data-add-back-btn="true" >
+                <h1>Edición de Alumnos </h1>
+                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
+                 <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
+                 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
+                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
+                 </div>
+                 <div data-role="footer" class="footer-docs" data-theme="c">
+            <p>&copy; 2012 jQuery Foundation and other contributors</p>
+    </div>
 </div>
 
 <div data-role="page" id="edit_activities">

@@ -94,7 +94,21 @@ function listStudents(id_group)
 	$.mobile.changePage("#list_students");
 
 }
+/*
+ * Students Attendance
+ */
+function Attendance(id_student){
 
+	$.mobile.showPageLoadingMsg();
+
+	id_global=id_student ;  //local variable goes global
+	table_global='STUDENTS';
+
+	loadStudentAttendance(db);
+
+	$.mobile.changePage("#edit_students_attendance");
+
+}
 
 
 // lista_alumnos, list_students

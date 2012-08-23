@@ -40,15 +40,15 @@ var table_global;
     	console.log(create_students);
         tx.executeSql(create_students);
         var header="INSERT INTO STUDENTS (id, id_group, name, surname, photo) VALUES (";
-        tx.executeSql(header +'NULL,0, "0First"," student 0", "f001.png" )');
-        tx.executeSql(header +'NULL,0, "0Second"," student 0", "f002.png" )');
-        tx.executeSql(header +'NULL,0, "0Third "," student 0", "f003.png" )');
-        tx.executeSql(header +'NULL,1, "First",  " student",   "f004.png" )');
-        tx.executeSql(header +'NULL,1, "Second"," student", "f005.png" )');
-        tx.executeSql(header +'NULL,1, "Third "," student", "f006.png" )');
-        tx.executeSql(header +'NULL,2, "Fourth"," student", "f007.png" )');
-        tx.executeSql(header +'NULL,2, "Fith"," student", "f008.png" )');
-        tx.executeSql(header +'NULL,3, "Sixth"," student", "f009.png" )');
+        tx.executeSql(header +'NULL,0, "0First"," Student 0", "f001.png" )');
+        tx.executeSql(header +'NULL,0, "0Second"," Student 0", "f002.png" )');
+        tx.executeSql(header +'NULL,0, "0Third "," Student 0", "f003.png" )');
+        tx.executeSql(header +'NULL,1, "First",  " Student",   "f004.png" )');
+        tx.executeSql(header +'NULL,1, "Second"," Student", "f005.png" )');
+        tx.executeSql(header +'NULL,1, "Third "," Student", "f006.png" )');
+        tx.executeSql(header +'NULL,2, "Fourth"," Student", "f007.png" )');
+        tx.executeSql(header +'NULL,2, "Fith"," Student", "f008.png" )');
+        tx.executeSql(header +'NULL,3, "Sixth"," Student", "f009.png" )');
         tx.executeSql(header +'NULL,3, "Seventh ","student", "f010.png" )');
         tx.executeSql(header +'NULL,3, "Eighth ","student 11 ", "f011.png" )');
 //
@@ -94,6 +94,16 @@ var table_global;
 	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsSuccess, errorCB);
 	}
 
+   function queryStudentsAttendanceDB(tx){
+
+	   var sql ="";
+	   var log = "Query Students from STUDENTS WHERE id="+id_global+ "\n";
+	   alert("Log  queryStudentAttendanceDB "+ log);
+	   console.log(log);
+	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsAttendanceSuccess, errorCB);
+
+   }
+
    function queryActivitiesDB(tx) {
 	   console.log("Query Activities \n");
 	   tx.executeSql('SELECT * FROM ACTIVITIES', [], queryActivitiesSuccess, errorCB);
@@ -124,6 +134,7 @@ var table_global;
 		   html +=results.rows.item(i).data +"</a></h3>";
 		   html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
 		   html += "</a></li>";
+
 // <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
 //		   html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
 //		   html += "</a></li>";
@@ -147,17 +158,30 @@ var table_global;
 		   id = results.rows.item(i).id;
 
 		   html = "<li>";
+//		   html += "<div data-role='fieldcontain'>";
 // 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
+// 		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
+
 		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+		   html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
 		   html += "</a>";
-		   html += "<img src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' class='ui-li-icon ui-corner-none'>  ";
-		   html += "<p>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</p>";
+		   html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
+		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+//		   html += "</div>";
 		   html += "</li>";
 		  // html += results.rows.item(i).id+"</a> </li>";
 		   $('#students_ul').append(html);
 
 	   }
 	   $('#students_ul').listview('refresh');
+
+   }
+
+/*
+ * Fill student attendance sheet
+ */
+   function queryStudentsAttendanceSuccess(tx, results) {
+
 
    }
 
@@ -263,7 +287,11 @@ var table_global;
    {
 	   db.transaction(queryStudentsByGroupDB, errorCB, successCB);
    }
+   function loadStudentAttendance(db) {
 
+	   db.transaction(queryStudentsAttendanceDB, errorCB, successCB);
+
+   }
 
    function loadActivities(db) {
 
