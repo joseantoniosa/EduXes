@@ -5,15 +5,14 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <!--  1.8.x = android 2.3.x-->
-<script type="text/javascript" charset="utf-8" 	src="cordova-1.8.1.js"></script>
-<script type="text/javascript" src="jquery/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="jquery/jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script type="text/javascript" src="js/cordova-1.8.1.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.mobile-1.1.1.js"></script>
 
+<script type="text/javascript" src="js/database.js"></script>
+<script type="text/javascript" src="js/interface.js"></script>
 
-<script type="text/javascript" src="database.js"></script>
-<script type="text/javascript" src="interface.js"></script>
-
-<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
+<link rel="stylesheet" type="text/css" href="js/jquery/jquery.mobile-1.1.1.css" />
 <script type="text/javascript" >
 	document.addEventListener("deviceready", onDeviceReady, false);
 </script>
@@ -22,7 +21,8 @@ onload="init();"
 // -->
 
 </head>
-<body onload="init(); >
+<body onload="init();" >
+
 <!-- 	<div id="inicio"> -->
 <!-- 	<h1 id="header">Hola Mundo</h1> -->
 <!-- 	<label id="etiqueta1">Etiqueta Inicial 0</label> -->
@@ -47,6 +47,7 @@ onload="init();"
 			   <div data-role="content">
 
 			    <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+			    </ul>
 
 <!--                 <h3 data-role="listview" id="groups_ul"  ></h3> -->
             </div>
@@ -149,14 +150,15 @@ onload="init();"
 		<div data-role="content" data-theme="c">
 			<div class="ui-grid-b">
 				<div class="ui-block-a">
-
-                <label for="date">Date:</label>
-                <input type="date" name="date" id="date" value="" />
-
-
-
+                    <div data-role="fieldcontain">
+                        <label for="date">Date:</label>
+                        <input type="date" name="date" id="daily_date" value="" />
+                     </div>
 				</div>
-				<div class="ui-block-b">Block B</div>
+				<div class="ui-block-b">
+
+
+				Block B</div>
 				<div class="ui-block-c">Block C</div>
 			</div>
 			<!-- /grid-b -->

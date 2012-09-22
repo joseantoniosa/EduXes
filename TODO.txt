@@ -39,6 +39,24 @@ Steps:
                 [Options] [Classes]
                             -> (Classes)- List Students by group:
                                         -> Edit/Add Attendance
+    15/9/2012 -> On css errors can't compile and run application.
+        Solution: Install Juno from webpage, install ADT + Aptana as plugin, disable CSS validation
+        Window-> Preferences ->Go to Window -> Preferences -> Aptana Studio -> Validation
+            Now on this tab, if CSS is not selected, select it.
+    22/09/2012 ->
+    http://jquerymobile.com/demos/1.1.1/docs/forms/textinputs/
+
+
+
+        Control Asistencia - Attendance
+
+
+
+
+
+
+
+
 
 
 
