@@ -55,11 +55,12 @@
 
         ** ("franja") / sessions
             id  integer
+            description text
             h_start text
             h_end   text
 
             DROP TABLE IF EXISTS sessions
-            CREATE TABLE IF NOT EXISTS sessions (id  integer primary key , h_start text , h_end text);
+            CREATE TABLE IF NOT EXISTS sessions (id  integer primary key, description text,  h_start text , h_end text);
 
         ** "horario_profesor"/teacher_schedule ""
        ---          id

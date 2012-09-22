@@ -23,6 +23,7 @@ var table_global;
 
     	tx.executeSql('DROP TABLE IF EXISTS GROUPS;');
         tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
+        // populate
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "First group  1")');
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Second group 2")');
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Third group  3" )');
@@ -39,6 +40,7 @@ var table_global;
     	create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
     	console.log(create_students);
         tx.executeSql(create_students);
+        // populate
         var header="INSERT INTO STUDENTS (id, id_group, name, surname, photo) VALUES (";
         tx.executeSql(header +'NULL,0, "0First"," Student 0", "f001.png" )');
         tx.executeSql(header +'NULL,0, "0Second"," Student 0", "f002.png" )');
@@ -51,6 +53,61 @@ var table_global;
         tx.executeSql(header +'NULL,3, "Sixth"," Student", "f009.png" )');
         tx.executeSql(header +'NULL,3, "Seventh ","student", "f010.png" )');
         tx.executeSql(header +'NULL,3, "Eighth ","student 11 ", "f011.png" )');
+
+
+//        -- Sessions ( franja horaria)
+        tx.executeSql('DROP TABLE IF EXISTS sessions;');
+        var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
+        create_session +="description text, h_start text, h_end text);";
+        tx.executeSql(create_session);
+        // populate
+        var header="INSERT INTO sessions (id, description, h_start, h_end) VALUES (NULL ";
+        tx.executeSql(header +',"First", "09:00", "09:50" )');
+        tx.executeSql(header +',"Second", "09:50", "10:40" )');
+        tx.executeSql(header +',"Third", "10:40", "11:30" )');
+        tx.executeSql(header +',"Recreation", "11:30", "12:00" )');
+        tx.executeSql(header +',"Fourth", "12:00", "12:50" )');
+        tx.executeSql(header +',"Fith", "12:50", "13:40" )');
+        tx.executeSql(header +',"Sixth", "13:40", "14:30" )');
+
+//		-- Teacher's schedule
+        tx.executeSql('DROP TABLE IF EXISTS teacher_schedule;');
+        var create_schedule="CREATE TABLE IF NOT EXISTS teacher_schedule (id  integer primary key,";
+        create_schedule +="id_teacher integer, id_session integer, day integer, id_group integer,";
+        create_schedule +="FOREIGN KEY(id_group) REFERENCES groups(id),";
+        create_schedule +="FOREIGN KEY(id_session) REFERENCES sessions(id));";
+//         create_schedule +="FOREIGN KEY(id_teacher) REFERENCES teachers(id));";
+        tx.executeSql(create_schedule);
+
+// TODO: Convertir los group_id a id_group
+        // populate:
+        var header="INSERT INTO teacher_schedule (id, id_session, day , id_group ) VALUES (NULL";
+        tx.executeSql(header +',0, 1, 0 )'); // 1st hour (0), Monday (1)  1st group (0)
+        tx.executeSql(header +',2, 1, 1 )'); // 3rd hour (2), Monday (1)  2nd group (1)
+
+        tx.executeSql(header +',0, 2, 0 )'); // 1st hour (0), Tuesday (2)  1st group (0)
+        tx.executeSql(header +',5, 2, 1 )'); // 6th hour (2), Tuesday (2)  2nd group (1)
+
+        tx.executeSql(header +',0, 3, 1 )'); // 1st hour (0), Wednesday (3)  2nd group (1)
+        tx.executeSql(header +',2, 3, 0 )'); // 3rd hour (2), Wednesday (3)  1st group (0)
+
+        tx.executeSql(header +',0, 4, 0 )'); // 1st hour (0), Thursday (4)  1st group (0)
+        tx.executeSql(header +',2, 4, 1 )'); // 3rd hour (2), Thursday (4)  2nd group (1)
+
+        tx.executeSql(header +',0, 5, 1 )'); // 1st hour (0), Friday (5)  2nd group (0)
+        tx.executeSql(header +',2, 5, 0 )'); // 3rd hour (2), Friday (5)  1st group (1)
+
+
+//
+//
+//-- Teacher's schedule
+//     DROP TABLE IF EXISTS teacher_schedule;
+//     CREATE TABLE IF NOT EXISTS teacher_schedule (id  integer primary key,
+//        id_session integer, day integer, id_group integer,
+//        FOREIGN KEY(id_group) REFERENCES groups(id),
+//        FOREIGN KEY(id_session) REFERENCES sessions(id));
+
+
 //
 //	Activities        TODO
     	tx.executeSql('DROP TABLE IF EXISTS ACTIVITIES;');

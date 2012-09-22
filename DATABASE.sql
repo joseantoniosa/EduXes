@@ -16,6 +16,21 @@
     		FOREIGN KEY(group_id) REFERENCES groups(id));
 	--	e_phone,  is emergency phone
 	--  repeteated, repeteated course 1= true, 0= false
+
+-- Sessions ( franja horaria)
+            DROP TABLE IF EXISTS sessions;
+            CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,
+                description text, h_start text, h_end text);
+
+
+-- Teacher's schedule
+	     DROP TABLE IF EXISTS teacher_schedule;
+         CREATE TABLE IF NOT EXISTS teacher_schedule (id  integer primary key,
+            id_session integer, day integer, id_group integer,
+            FOREIGN KEY(id_group) REFERENCES groups(id),
+            FOREIGN KEY(id_session) REFERENCES sessions(id));
+
+
 --  Data example
         INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,1, "First"," student")
         INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,1, "Second"," student")
