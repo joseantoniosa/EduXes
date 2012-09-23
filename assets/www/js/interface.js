@@ -35,7 +35,14 @@ function onDeviceReady() {
         if(a_date.getDay()==6 || a_date.getDay()==0) {
            alert("No class on Weekend!");
 
+		} else {
+		       // daily_schedule"
+            week_day_global = a_date.getDay();
+            loadSchedule(db, week_day_global);
+            $.mobile.changePage("daily_schedule");
+
 		}
+
 //		alert('Date: Year:'+a_date.toUTCString());
 
 

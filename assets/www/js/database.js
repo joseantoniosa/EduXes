@@ -3,6 +3,8 @@
 var db;
 var id_global;
 var table_global;
+var week_day_global=-1;
+
 //
 //
 
@@ -60,7 +62,7 @@ var table_global;
         var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
         create_session +="description text, h_start text, h_end text);";
         tx.executeSql(create_session);
-        // populate
+        // populate. Hardcoded
         var header="INSERT INTO sessions (id, description, h_start, h_end) VALUES (NULL ";
         tx.executeSql(header +',"First", "09:00", "09:50" )');
         tx.executeSql(header +',"Second", "09:50", "10:40" )');
@@ -69,6 +71,7 @@ var table_global;
         tx.executeSql(header +',"Fourth", "12:00", "12:50" )');
         tx.executeSql(header +',"Fith", "12:50", "13:40" )');
         tx.executeSql(header +',"Sixth", "13:40", "14:30" )');
+// SELECT id, description, h_start, h_end FROM sessions WHERE id=
 
 //		-- Teacher's schedule
         tx.executeSql('DROP TABLE IF EXISTS teacher_schedule;');
@@ -80,25 +83,19 @@ var table_global;
         tx.executeSql(create_schedule);
 
 // TODO: Convertir los group_id a id_group
-        // populate:
+        // populate: hardcoded!
         var header="INSERT INTO teacher_schedule (id, id_session, day , id_group ) VALUES (NULL";
         tx.executeSql(header +',0, 1, 0 )'); // 1st hour (0), Monday (1)  1st group (0)
         tx.executeSql(header +',2, 1, 1 )'); // 3rd hour (2), Monday (1)  2nd group (1)
-
         tx.executeSql(header +',0, 2, 0 )'); // 1st hour (0), Tuesday (2)  1st group (0)
         tx.executeSql(header +',5, 2, 1 )'); // 6th hour (2), Tuesday (2)  2nd group (1)
-
         tx.executeSql(header +',0, 3, 1 )'); // 1st hour (0), Wednesday (3)  2nd group (1)
         tx.executeSql(header +',2, 3, 0 )'); // 3rd hour (2), Wednesday (3)  1st group (0)
-
         tx.executeSql(header +',0, 4, 0 )'); // 1st hour (0), Thursday (4)  1st group (0)
         tx.executeSql(header +',2, 4, 1 )'); // 3rd hour (2), Thursday (4)  2nd group (1)
-
         tx.executeSql(header +',0, 5, 1 )'); // 1st hour (0), Friday (5)  2nd group (0)
         tx.executeSql(header +',2, 5, 0 )'); // 3rd hour (2), Friday (5)  1st group (1)
-
-
-//
+// SELECT id_session, day, id_group FROM teacher_schedule WHERE day=  ORDER BY id_session;
 //
 //-- Teacher's schedule
 //     DROP TABLE IF EXISTS teacher_schedule;
@@ -151,6 +148,20 @@ var table_global;
 	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsSuccess, errorCB);
 	}
 
+   /*
+    * Query groups per day
+    */
+   function querySchedulePerDayDB(tx){
+	   var query = "SELECT id_session, day, id_group FROM teacher_schedule WHERE day=" +week_day_global + " ORDER BY id_session;";
+	   var log = "Query Groups "+ query;
+
+	   alert(" queryStudentsByGroupDB: "+ log);
+	   console.log("querySchedulePerDayDB:" + log);
+
+	   tx.executeSql(query,  [], queryScheduleSuccess, errorCB);
+   }
+
+
    function queryStudentsAttendanceDB(tx){
 
 	   var sql ="";
@@ -165,7 +176,12 @@ var table_global;
 	   console.log("Query Activities \n");
 	   tx.executeSql('SELECT * FROM ACTIVITIES', [], queryActivitiesSuccess, errorCB);
 	}
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   /*
+    * ^^ Upper
+    *
+    * vv Below
+    */
 // console.log("Query Groups \n");
    function queryGroupsSuccess(tx, results) {
 	   console.log("Returned rows = " + results.rows.length);
@@ -233,6 +249,43 @@ var table_global;
 	   $('#students_ul').listview('refresh');
 
    }
+/*
+ *  Main Window
+ * 	List of groups per day
+ * TODO
+ */
+   function queryScheduleSuccess(tx, results) {
+	   // groups_day_ul
+	   var len = results.rows.length;
+	   console.log("Last inserted student - row ID = " + results.insertId);
+	   console.log("Number of student - rows inserted: " +  len);
+
+  	   $('#groups_day_ul').empty();
+	   var html;
+	   var id=0;
+	   for (var i=0;i<len;i++) {
+		   id = results.rows.item(i).id;
+
+		   html = "<li>";
+//		   html += "<div data-role='fieldcontain'>";
+// 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
+// 		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
+// TODO: fill with correct fields vvv
+		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+		   html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
+		   html += "</a>";
+		   html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
+		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+//		   html += "</div>";
+		   html += "</li>";
+		  // html += results.rows.item(i).id+"</a> </li>";
+		   $('#groups_day_ul').append(html);
+	   }
+	   $('#groups_day_ul').listview('refresh');
+
+   }
+
+
 
 /*
  * Fill student attendance sheet
@@ -327,7 +380,17 @@ var table_global;
 	   });
    }
 
+   //groups_day_ul
+   // loadSchedule
 
+   function loadSchedule(db, this_day) {
+
+	   db.transaction( querySchedulePerDayDB, errorCB, successCB);
+
+//	   queryScheduleSuccess
+//	   db.transaction(queryGroupsDB, errorCB, successCB);
+// groups_day_ul
+   }
 
 // load all
 
