@@ -154,8 +154,8 @@ var week_day_global=-1;
    function querySchedulePerDayDB(tx){
 	   var query = "SELECT id_session, day, id_group FROM teacher_schedule WHERE day=" +week_day_global + " ORDER BY id_session;";
 	   var log = "Query Groups "+ query;
-
-	   alert(" queryStudentsByGroupDB: "+ log);
+//	   var query2= "SELECT id_session, day, id_group FROM teacher_schedule WHERE day=" +week_day_global + " ORDER BY id_session;";
+//	   alert(" queryStudentsByGroupDB: "+ log);
 	   console.log("querySchedulePerDayDB:" + log);
 
 	   tx.executeSql(query,  [], queryScheduleSuccess, errorCB);
@@ -271,12 +271,20 @@ var week_day_global=-1;
 // 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
 // 		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 // TODO: fill with correct fields vvv
-		   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
-		   html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
-		   html += "</a>";
-		   html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
-		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+		//   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+		//   html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
+		//   html += "</a>";
+		//   html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
+		//   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
 //		   html += "</div>";
+// query = "SELECT id_session, day, id_group FROM teacher_schedule WHERE day=" +week_day_global + " ORDER BY id_session;";
+//
+//	        var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
+//	        create_session +="description text, h_start text, h_end text);";
+//	        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
+// query2= " ";
+		   html += results.rows.item(i).id_group;
+		   html += "";
 		   html += "</li>";
 		  // html += results.rows.item(i).id+"</a> </li>";
 		   $('#groups_day_ul').append(html);
@@ -328,7 +336,7 @@ var week_day_global=-1;
 	   $('#grupos_ul').listview('refresh');
    }
 
-   function 	insertNewStudent(db, name, surname, group_id) { // TODO
+   function 	insertNewStudent(db, name, surname, group_id) { // TODO : insert new Student
 	   var db2= db;
 	   var name2= name;
 	   var surname2 = surname;

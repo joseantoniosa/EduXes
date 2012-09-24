@@ -26,25 +26,20 @@ function onDeviceReady() {
 	//daily_date
 	$("#daily_date").change(function() {
 		var this_date = $("#daily_date").val();
-		var a_date=new Date(this_date);
+		var a_date = new Date(this_date);
 
-		// 	thisDay=today.getDay()
-		// 	$("#daily_date").
-		// getDay() <- empieza en domingo
-        alert('Date: Year:'+ a_date.getFullYear() + ' Month:  '+ a_date.getMonth()+ ' Day of Week: ' +a_date.getDay() );
+//        alert('Date: Year:'+ a_date.getFullYear() + ' Month:  '+ a_date.getMonth()+ ' Day of Week: ' +a_date.getDay() );
         if(a_date.getDay()==6 || a_date.getDay()==0) {
            alert("No class on Weekend!");
+        } else {
 
-		} else {
-		       // daily_schedule"
             week_day_global = a_date.getDay();
             loadSchedule(db, week_day_global);
-            $.mobile.changePage("daily_schedule");
+            $("#current_day").text(this_date);
 
-		}
+            $.mobile.changePage("#daily_schedule");
 
-//		alert('Date: Year:'+a_date.toUTCString());
-
+        }
 
 	});
 

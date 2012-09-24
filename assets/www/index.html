@@ -23,21 +23,70 @@ onload="init();"
 </head>
 <body onload="init();" >
 
-<!-- 	<div id="inicio"> -->
-<!-- 	<h1 id="header">Hola Mundo</h1> -->
-<!-- 	<label id="etiqueta1">Etiqueta Inicial 0</label> -->
-<!-- 	<div id="dentro_inicio"></div> -->
-<!-- 	<ul id="actionList"></ul> -->
-<!-- 	</div> -->
+<!-- Main Window    //-->
+<div data-role="page" id="daily_work">
 
-<!-- 	<div data-role="page" id="groups_page_div"> -->
-<!-- 		Lista de grupos: -->
-<!-- 		<ul data-role="listview" id="grupos_ul2"></ul> -->
-<!-- 	</div> -->
-<!-- 	<div data-role="page" id="students_div"> -->
-<!-- 		Lista de alumnos: -->
-<!-- 		<ul data-role="listview" id="students_ul"></ul> -->
-<!-- 	</div> -->
+        <div data-role="header" data-add-back-btn="true" data-theme="c">
+                <h1>Day</h1>
+   <!--
+                Here goes daily work. It will be organized into two panels
+                <ul>
+                <li>Left panel. Navigation bar. </li>
+                <li>Centre panel. With classes, e.g.: 1ºA, 2ªB, etc</li>
+                </ul>
+                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
+                 <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
+                 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
+                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
+                 </div>
+                 //-->
+        </div>
+        <div data-role="content" data-theme="c">
+                        <div class="ui-grid-b">
+                <div class="ui-block-a">
+                    <div data-role="fieldcontain">
+                        <label for="date">Date:</label>
+                        <input type="date" name="date" id="daily_date" value="" />
+                     </div>
+                </div>
+                <div class="ui-block-b">
+
+                Block B</div>
+                <div class="ui-block-c">Block C</div>
+            </div>
+
+            <select name="select-choice-a" id="select-choice-a"
+                data-native-menu="false">
+                <option>Custom menu example</option>
+                <option value="standard">Standard: 7 day</option>
+                <option value="rush">Rush: 3 days</option>
+                <option value="express">Express: next day</option>
+                <option value="overnight">Overnight</option>
+            </select>
+        </div>
+        <div data-role="footer" class="footer-docs" data-theme="c">
+            <p>&copy; 2012 jQuery Foundation and other contributors</p>
+        </div>
+</div>
+
+
+
+<!--  //-->
+    <div data-role="page" id="daily_schedule">
+
+        <div data-role="header" data-add-back-btn="true" data-theme="c">
+            <h1 id="current_day"> Current Day</h1>
+        </div>
+        <div data-role="content" data-theme="c">
+                    <ul id="groups_day_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+                </ul>
+            </div>
+
+        <div data-role="footer" class="footer-docs" data-theme="c">
+            <p>&copy; Some info here</p>
+        </div>
+    </div>
+<!--  //-->
 
 
 <div data-role="page" id="lista_grupos" data-add-back-btn="true">
@@ -86,23 +135,20 @@ onload="init();"
             </div>
 
 </div>
-
-
-
 <div data-role="page" id="list_students" data-add-back-btn="true">
 
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
                 <h1>Lista de Alumnos</h1>
-             </div>
-                <div data-role="content">
+            </div>
+            <div data-role="content">
 
                 <ul data-role="listview" id="students_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
-                </div>
+            </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-            <p> Atrás</p>
-        </div>
-
-
+                <p>
+                    Atrás
+                </p>
+             </div>
 <!--             <div data-role="content"> -->
 <!--             			Lista de alumnos por grupo: -->
 <!-- 					<ul data-role="listview" id="students_group_ul"></ul> -->
@@ -121,82 +167,12 @@ onload="init();"
 <!--                 <label for="alerta">Alerta</label><input id="alerta" disabled="true" /> -->
 <!--                 <label for="hora">Hora</label><input id="hora" value="00" /> -->
 <!--                 <label for="minutos">Minutos</label><input id="minutos" value="00" /> -->
-
 <!--                 <a onClick="requestAppointment();" data-role="button" data-icon="check">Solicitar</a> -->
 <!--             </div> -->
+</div>
 
-        </div>
-
-<!-- TODO: FIRST PAGE
+<!--
  -->
-
-	<div data-role="page" id="daily_work">
-
-		<div data-role="header" data-add-back-btn="true" data-theme="c">
-			<h1>Day</h1>
-			<!--
-                Here goes daily work. It will be organized into two panels
-                <ul>
-                <li>Left panel. Navigation bar. </li>
-                <li>Centre panel. With classes, e.g.: 1ºA, 2ªB, etc</li>
-                </ul>
-                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
-                 <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
-                 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
-                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
-                 </div>
-                 //-->
-		</div>
-		<div data-role="content" data-theme="c">
-			<div class="ui-grid-b">
-				<div class="ui-block-a">
-                    <div data-role="fieldcontain">
-                        <label for="date">Date:</label>
-                        <input type="date" name="date" id="daily_date" value="" />
-                     </div>
-				</div>
-				<div class="ui-block-b">
-
-
-				Block B</div>
-				<div class="ui-block-c">Block C</div>
-			</div>
-			<!-- /grid-b -->
-
-
-
-
-			<select name="select-choice-a" id="select-choice-a"
-				data-native-menu="false">
-				<option>Custom menu example</option>
-				<option value="standard">Standard: 7 day</option>
-				<option value="rush">Rush: 3 days</option>
-				<option value="express">Express: next day</option>
-				<option value="overnight">Overnight</option>
-			</select>
-		</div>
-		<div data-role="footer" class="footer-docs" data-theme="c">
-			<p>&copy; 2012 jQuery Foundation and other contributors</p>
-		</div>
-	</div>
-
-
-
-    <div data-role="page" id="daily_schedule">
-
-        <div data-role="header" data-add-back-btn="true" data-theme="c"> <!-- With back button //-->
-            <h1> Here the actual day</h1>
-        </div>
-        <div data-role="content" data-theme="c">
-
-                    <ul id="groups_day_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
-                </ul>
-            </div>
-
-        <div data-role="footer" class="footer-docs" data-theme="c">
-            <p>&copy; Some info here</p>
-        </div>
-    </div>
 
 
 
