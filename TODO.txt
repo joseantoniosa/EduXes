@@ -49,8 +49,6 @@ Steps:
             http://jquerymobile.com/demos/1.1.1/docs/forms/textinputs/
 
 
-
-
         Control Asistencia - Attendance
 
 

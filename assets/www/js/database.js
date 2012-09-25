@@ -149,18 +149,22 @@ var week_day_global=-1;
 	}
 
    /*
-    * Query groups per day
+    * Query groups per day - Main Window -
+    *
+    * SELECT * from teacher_schedule, groups where day= ... and groups.id= teacher_schedule.id_group
+    *        create_session +="description text, h_start text, h_end text);";
     */
    function querySchedulePerDayDB(tx){
-	   var query = "SELECT id_session, day, id_group FROM teacher_schedule WHERE day=" +week_day_global + " ORDER BY id_session;";
+	   var query = "SELECT teacher_schedule.id_session, teacher_schedule.day, teacher_schedule.id_group as t_id_group, teacher_schedule.id_session as t_id_session, ";
+	   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
+	   query += " WHERE day=" +week_day_global + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
 	   var log = "Query Groups "+ query;
-//	   var query2= "SELECT id_session, day, id_group FROM teacher_schedule WHERE day=" +week_day_global + " ORDER BY id_session;";
+//
 //	   alert(" queryStudentsByGroupDB: "+ log);
 	   console.log("querySchedulePerDayDB:" + log);
 
 	   tx.executeSql(query,  [], queryScheduleSuccess, errorCB);
    }
-
 
    function queryStudentsAttendanceDB(tx){
 
@@ -178,7 +182,7 @@ var week_day_global=-1;
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
    /*
-    * ^^ Upper
+    * ^^ Above
     *
     * vv Below
     */
@@ -263,10 +267,12 @@ var week_day_global=-1;
   	   $('#groups_day_ul').empty();
 	   var html;
 	   var id=0;
+	   var description="";
+	   var start = "";
 	   for (var i=0;i<len;i++) {
 		   id = results.rows.item(i).id;
 
-		   html = "<li>";
+
 //		   html += "<div data-role='fieldcontain'>";
 // 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
 // 		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
@@ -281,10 +287,19 @@ var week_day_global=-1;
 //
 //	        var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
 //	        create_session +="description text, h_start text, h_end text);";
-//	        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
-// query2= " ";
-		   html += results.rows.item(i).id_group;
+
+
+           html = "<li>";
+           html += "<div data-role='fieldcontain'>";
+           start = results.rows.item(i).s_h_start;  // s_h_end
+		   description = results.rows.item(i).description;  // description=group_description
+		   html += start;
+
+           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students' ";
+           html += " onClick=\"listStudents(" + results.rows.item(i).t_id_group + ");\">" + description + "</a>";
+
 		   html += "";
+             html += "</div>";
 		   html += "</li>";
 		  // html += results.rows.item(i).id+"</a> </li>";
 		   $('#groups_day_ul').append(html);
