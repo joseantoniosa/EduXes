@@ -71,7 +71,7 @@ onload="init();"
 
 
 
-<!--  //-->
+<!-- List of Groups of today  //-->
     <div data-role="page" id="daily_schedule">
 
         <div data-role="header" data-add-back-btn="true" data-theme="c">
@@ -87,8 +87,47 @@ onload="init();"
         </div>
     </div>
 <!--  //-->
+<!--List of students:  Attendance //-->
+<div data-role="page" id="list_students_attendance" data-add-back-btn="true">
+
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+                <h1 id="current_group" >Student List for Group</h1>
+            </div>
+            <div data-role="content">
+<!--- [Photo]-[Surname, Name ] [R/A/P]<combobox> //-->
+                <ul data-role="listview" id="students_attendance_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+                <p>
+                    Atrás
+                </p>
+             </div>
+</div>
+
+<!-- // -->
+<!--List of students:  Assessment //-->
+<div data-role="page" id="list_students_assessment" data-add-back-btn="true">
+
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+                <h1 id="current_group_assessment" >Student List for Group</h1>
+            </div>
+            <div data-role="content">
+
+<!--- [Photo]-[Surname, Name ] [0/1/2/3/4/5/6/7/8/9]<combobox>   [Behavior] <combobox>//-->
+                <ul data-role="listview" id="students_assessment_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+                <p>
+                    Atrás
+                </p>
+             </div>
+
+</div>
 
 
+<!--
+    ----------------------------------------------------------------------------------------------------------
+    //-->
 <div data-role="page" id="lista_grupos" data-add-back-btn="true">
             <div data-role="header"  data-add-back-btn="true"  >
                 <h1>Lista de Grupos</h1>
