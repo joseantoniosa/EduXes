@@ -16,9 +16,6 @@
 <script type="text/javascript" >
 	document.addEventListener("deviceready", onDeviceReady, false);
 </script>
-<!--
-onload="init();"
-// -->
 
 </head>
 <body onload="init();" >
@@ -42,30 +39,33 @@ onload="init();"
                  //-->
         </div>
         <div data-role="content" data-theme="c">
-                        <div class="ui-grid-b">
-                <div class="ui-block-a">
-                    <div data-role="fieldcontain">
-                        <label for="date">Date:</label>
-                        <input type="date" name="date" id="daily_date" value="" />
-                     </div>
-                </div>
+            <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <div data-role="fieldcontain">
+                            <label for="date">Date:</label>
+                            <input type="date" name="date" id="daily_date" value="" />
+                        </div>
+                    </div>
                 <div class="ui-block-b">
-
-                Block B</div>
-                <div class="ui-block-c">Block C</div>
+                    <p id="go_daily_date">Go</p>
+                    <a href="index.html" data-role="button" data-icon="arrow-r"
+                        data-iconpos="notext" data-theme="c" data-inline="true">Go</a>
+                </div>
+                <div class="ui-block-c">
+                    <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+                        <option>Main menu</option>
+                        <option value="mm_activities">Activities</option>
+                        <option value="mm_schedule">Schedule</option>
+                        <option value="mm_groups">Groups</option>
+                        <option value="mm_reports">Reports</option>
+                    </select>
+                </div>
             </div>
 
-            <select name="select-choice-a" id="select-choice-a"
-                data-native-menu="false">
-                <option>Custom menu example</option>
-                <option value="standard">Standard: 7 day</option>
-                <option value="rush">Rush: 3 days</option>
-                <option value="express">Express: next day</option>
-                <option value="overnight">Overnight</option>
-            </select>
+
         </div>
         <div data-role="footer" class="footer-docs" data-theme="c">
-            <p>&copy; 2012 jQuery Foundation and other contributors</p>
+            <p id="teachers_name"></p>
         </div>
 </div>
 
@@ -82,7 +82,7 @@ onload="init();"
                 </ul>
             </div>
 
-        <div data-role="footer" class="footer-docs" data-theme="c">
+        <div data-role="footer" class="footer-docs" data-add-back-btn="true" data-theme="c">
             <p>&copy; Some info here</p>
         </div>
     </div>

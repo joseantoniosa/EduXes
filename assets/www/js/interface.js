@@ -15,31 +15,21 @@ function onDeviceReady() {
 
 //	db.transaction(queryGroupsDB, errorCB, successCB);
 // Load Data into Interface:
-	loadGroups(db);
-	loadStudents(db);
-	loadActivities(db);
+    loadGroups(db);
+    loadStudents(db);
+    loadActivities(db);
+
+    // teacher's name'
+    $("#teachers_name").text("Name Surname");
+
 
 	$.mobile.showPageLoadingMsg();
 	$.mobile.changePage("#daily_work");
 
 	$("#daily_date").noWeekends ;
-	//daily_date
-	$("#daily_date").change(function() {
-		var this_date = $("#daily_date").val();
-		var a_date = new Date(this_date);
-
-//        alert('Date: Year:'+ a_date.getFullYear() + ' Month:  '+ a_date.getMonth()+ ' Day of Week: ' +a_date.getDay() );
-        if(a_date.getDay()==6 || a_date.getDay()==0) {
-           alert("No class on Weekend!");
-        } else {
-
-            week_day_global = a_date.getDay();
-            loadSchedule(db, week_day_global);
-            $("#current_day").text(this_date);
-
-            $.mobile.changePage("#daily_schedule");
-
-        }
+//daily_date
+    $("#daily_date").change(function() {
+        open_daily_page();
 
 	});
 
@@ -50,6 +40,26 @@ function init(){
 //	console.log("Hello World \n");
 //	$("#inicio").html("<b>Capa inicial</b>"); // works!
 	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+//
+// Open Daily work page: list of groups
+function open_daily_page() {
+
+        var this_date = $("#daily_date").val();
+        var a_date = new Date(this_date);
+
+        if(a_date.getDay()==6 || a_date.getDay()==0) {
+           alert("No class on Weekend!");
+        } else {
+            week_day_global = a_date.getDay();
+            loadSchedule(db, week_day_global);
+            $("#current_day").text(this_date);
+
+            $.mobile.changePage("#daily_schedule");
+        }
+
+
 }
 
 

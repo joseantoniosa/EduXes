@@ -52,6 +52,19 @@ Steps:
         Control Asistencia - Attendance
 
 
+    11/10/2012 -> Por hacer:
+        Pantalla principal:
+            Concretar la pantalla principal. ¿Botón de ir en la fecha?
+            Concretar el menú principal ¿Menú desplegable estilo combobox?
+        Pantalla de diario:
+            Quitar la apariencia de enlace <-> pulir la pantalla
+        Pantalla de grupo:
+            Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
+
+        Enlazar pantalla de edición de estudiantes.
+        Crear pantalla de edición de actividades
+
+
 
 
 
