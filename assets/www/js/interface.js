@@ -2,6 +2,7 @@
 
 
 function onDeviceReady() {
+// TODO: it isn't exist create one:
 
 	db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 200000); // global variable
 
@@ -10,24 +11,21 @@ function onDeviceReady() {
 //	console.log("One "+ db +"\n");
 
 // On first time it populate DB:
+    db.transaction(populateDB, errorCB, successCB);
 
-	db.transaction(populateDB, errorCB, successCB);
-
-//	db.transaction(queryGroupsDB, errorCB, successCB);
 // Load Data into Interface:
     loadGroups(db);
     loadStudents(db);
     loadActivities(db);
 
-    // teacher's name'
-    $("#teachers_name").text("Name Surname");
+    initialize_data() ;
 
+    $.mobile.showPageLoadingMsg();
+    $.mobile.changePage("#daily_work");
 
-	$.mobile.showPageLoadingMsg();
-	$.mobile.changePage("#daily_work");
+    $("#daily_date").noWeekends ;
 
-	$("#daily_date").noWeekends ;
-//daily_date
+// Callbacks:
     $("#daily_date").change(function() {
         open_daily_page();
 
@@ -38,27 +36,48 @@ function onDeviceReady() {
 
 function init(){
 //	console.log("Hello World \n");
-//	$("#inicio").html("<b>Capa inicial</b>"); // works!
-	document.addEventListener("deviceready", onDeviceReady, false);
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// Load default data
+function initialize_data() {
+    // set date to current date:  Month / Day /Year
+    var a_today = new Date(); // Today
+    var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
+    $("#daily_date").val(today);
+
+    $("#teachers_name").text("Geography");
 }
 
 //
 // Open Daily work page: list of groups
 function open_daily_page() {
-
-        var this_date = $("#daily_date").val();
+    var this_date = $("#daily_date").val();
+    if (this_date != "") {
         var a_date = new Date(this_date);
-
-        if(a_date.getDay()==6 || a_date.getDay()==0) {
-           alert("No class on Weekend!");
+        if (a_date.getDay() == 6 || a_date.getDay() == 0) {
+            alert("No class on Weekend!");
         } else {
             week_day_global = a_date.getDay();
             loadSchedule(db, week_day_global);
             $("#current_day").text(this_date);
-
             $.mobile.changePage("#daily_schedule");
         }
+    }
+}
 
+// Open Students Attendance page
+function listStudentsAttendance(id_group)
+{
+    $.mobile.showPageLoadingMsg();
+
+    id_global=id_group ;  //local variable goes global
+    table_global='STUDENTS';
+
+    loadStudentsByGroup(db);
+
+    $.mobile.changePage("#list_students_attendance", { transition: "slideup"} );
 
 }
 
@@ -126,7 +145,7 @@ function listStudents(id_group)
 
 	loadStudentsByGroup(db);
 
-	$.mobile.changePage("#list_students");
+	$.mobile.changePage("#list_students", { transition: "slideup"} );
 
 }
 /*

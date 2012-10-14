@@ -22,52 +22,47 @@
 
 <!-- Main Window    //-->
 <div data-role="page" id="daily_work">
-
-        <div data-role="header" data-add-back-btn="true" data-theme="c">
+            <div data-role="header" data-add-back-btn="true" data-theme="c">
                 <h1>Day</h1>
-   <!--
-                Here goes daily work. It will be organized into two panels
-                <ul>
-                <li>Left panel. Navigation bar. </li>
-                <li>Centre panel. With classes, e.g.: 1ºA, 2ªB, etc</li>
-                </ul>
-                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
-                 <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
-                 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
-                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
-                 </div>
-                 //-->
-        </div>
-        <div data-role="content" data-theme="c">
-            <div class="ui-grid-b">
+            </div>
+            <div data-role="content" data-theme="c">
+                <div class="ui-grid-b">
                     <div class="ui-block-a">
                         <div data-role="fieldcontain">
-                            <label for="date">Date:</label>
-                            <input type="date" name="date" id="daily_date" value="" />
+                            <label for="date"  >Date:</label>
                         </div>
                     </div>
-                <div class="ui-block-b">
-                    <p id="go_daily_date">Go</p>
+                    <div class="ui-block-b">
+                        <input type="date" name="date" id="daily_date" value=""  />
+<!--
+                    <p id="go_daily_date">
+                    Go
+                    </p>
                     <a href="index.html" data-role="button" data-icon="arrow-r"
-                        data-iconpos="notext" data-theme="c" data-inline="true">Go</a>
-                </div>
-                <div class="ui-block-c">
+                    data-iconpos="notext" data-theme="c" data-inline="true">Go</a>
+//-->
+                    </div>
+                    <div class="ui-block-c">
+                        <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"
+                        onclick="open_daily_page() " >Go</a>
+<!--
                     <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
-                        <option>Main menu</option>
-                        <option value="mm_activities">Activities</option>
-                        <option value="mm_schedule">Schedule</option>
-                        <option value="mm_groups">Groups</option>
-                        <option value="mm_reports">Reports</option>
+                    <option>Main menu</option>
+                    <option value="mm_activities">Activities</option>
+                    <option value="mm_schedule">Schedule</option>
+                    <option value="mm_groups">Groups</option>
+                    <option value="mm_reports">Reports</option>
                     </select>
+//-->
+                    </div>
+
                 </div>
+
             </div>
-
-
+            <div data-role="footer" class="footer-docs" data-theme="c">
+                <p style="alignment-adjust: central"  id="teachers_name"></p>
+            </div>
         </div>
-        <div data-role="footer" class="footer-docs" data-theme="c">
-            <p id="teachers_name"></p>
-        </div>
-</div>
 
 
 
@@ -86,6 +81,8 @@
             <p>&copy; Some info here</p>
         </div>
     </div>
+
+
 <!--  //-->
 <!--List of students:  Attendance //-->
 <div data-role="page" id="list_students_attendance" data-add-back-btn="true">

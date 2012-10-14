@@ -52,9 +52,15 @@ Steps:
         Control Asistencia - Attendance
 
 
-    11/10/2012 -> Por hacer:
+    11/10/2012 -> Por hacer....
+    14/10 : Limpiada pantalla principal:
+        - Falta info que indique el formato de la fecha M/D/Y
+        - Falta colocar las opciones de menú principal
+
+
+----------------------- TODO ------------------
         Pantalla principal:
-            Concretar la pantalla principal. ¿Botón de ir en la fecha?
+            Falta info que indique el formato de la fecha M/D/Y
             Concretar el menú principal ¿Menú desplegable estilo combobox?
         Pantalla de diario:
             Quitar la apariencia de enlace <-> pulir la pantalla

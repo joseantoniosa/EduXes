@@ -298,10 +298,9 @@ var week_day_global=-1;
            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students' ";
            html += " onClick=\"listStudents(" + results.rows.item(i).t_id_group + ");\">" + description + "</a>";
 
-		   html += "";
-             html += "</div>";
-		   html += "</li>";
-		  // html += results.rows.item(i).id+"</a> </li>";
+           html += "";
+           html += "</div>";
+           html += "</li>";
 		   $('#groups_day_ul').append(html);
 	   }
 	   $('#groups_day_ul').listview('refresh');
