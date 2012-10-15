@@ -57,6 +57,7 @@ Steps:
         - Falta info que indique el formato de la fecha M/D/Y
         - Falta colocar las opciones de menú principal
 
+    15/10/2012 : Tengo que reorganizar los ficheros para hacerlo mucho más legible.
 
 ----------------------- TODO ------------------
         Pantalla principal:

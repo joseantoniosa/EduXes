@@ -21,3 +21,10 @@ Classroom Management
  - #list_students
 
 queryStudentsSuccess
+
+function listStudentsAttendance
+ fills: #students_attendance_ul
+loadStudentAttendance
+    calls :-> queryStudentsAttendanceDB
+        calls :-> queryStudentsAttendanceSuccess
+

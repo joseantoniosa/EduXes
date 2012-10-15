@@ -9,12 +9,11 @@ var week_day_global=-1;
 //
 
 
-    function errorCB(err) {
-  	   console.log("Error processing SQL: "+err);
- 	   alert("Error processing SQL: "+err);
-// 	   console.log("Error processing SQL: "+err.code);
-// 	   alert("Error processing SQL: "+err.code);
-    }
+function errorCB(err) {
+    console.log("Error processing SQL: "+err);
+    alert("Error processing SQL: "+err);
+    console.log("Error processing SQL: "+err.code);
+}
 
     function successCB() {
 //        alert("success!");
@@ -140,6 +139,15 @@ var week_day_global=-1;
 	   console.log("Query Students \n");
 	   tx.executeSql('SELECT * FROM STUDENTS', [], queryStudentsSuccess, errorCB);
 	}
+   function queryStudentsAttendanceDB(tx) {
+       console.log("Query Students Attendance \n");
+       console.log(log);
+       tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsAttendanceSuccess, errorCB);
+    }
+
+
+
+
    function queryStudentsByGroupDB(tx) {
 	   // pass from and global id!!
 	   log = "Query Students from STUDENTS WHERE id_group="+id_global+ "\n";
@@ -148,12 +156,9 @@ var week_day_global=-1;
 	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsSuccess, errorCB);
 	}
 
-   /*
-    * Query groups per day - Main Window -
-    *
-    * SELECT * from teacher_schedule, groups where day= ... and groups.id= teacher_schedule.id_group
-    *        create_session +="description text, h_start text, h_end text);";
-    */
+/*
+* Query groups per day - Main Window -
+*/
    function querySchedulePerDayDB(tx){
 	   var query = "SELECT teacher_schedule.id_session, teacher_schedule.day, teacher_schedule.id_group as t_id_group, teacher_schedule.id_session as t_id_session, ";
 	   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
@@ -206,11 +211,11 @@ var week_day_global=-1;
 //		</a>
 	   var html;
 	   for (var i=0;i<len;i++) {
-		   html = "<li><h3> ";
-		   html +="<a onClick='id_global="+ results.rows.item(i).id + "; table_global=\"groups\"; listStudents("+results.rows.item(i).id  +");' href='index.html#list_students' >";
-		   html +=results.rows.item(i).data +"</a></h3>";
-		   html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-		   html += "</a></li>";
+           html = "<li><h3> ";
+           html +="<a onClick='id_global="+ results.rows.item(i).id + "; table_global=\"groups\"; listStudentsAttendance("+results.rows.item(i).id  +");' href='index.html#list_students' >";
+           html +=results.rows.item(i).data +"</a></h3>";
+           html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+           html += "</a></li>";
 
 // <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
 //		   html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
@@ -263,7 +268,7 @@ var week_day_global=-1;
 	   var len = results.rows.length;
 	   console.log("Last inserted student - row ID = " + results.insertId);
 	   console.log("Number of student - rows inserted: " +  len);
-
+        alert("Schedule Success");
   	   $('#groups_day_ul').empty();
 	   var html;
 	   var id=0;
@@ -296,7 +301,7 @@ var week_day_global=-1;
 		   html += start;
 
            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students' ";
-           html += " onClick=\"listStudents(" + results.rows.item(i).t_id_group + ");\">" + description + "</a>";
+           html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ");\">" + description + "</a>";
 
            html += "";
            html += "</div>";
@@ -313,6 +318,35 @@ var week_day_global=-1;
  * Fill student attendance sheet
  */
    function queryStudentsAttendanceSuccess(tx, results) {
+// <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('t_apellidos1');">Axuda</a>
+    var len = results.rows.length;
+    console.log("Last inserted student - row ID = " + results.insertId);
+    console.log("Number of student - rows inserted: " +  len);
+
+    $('#students_attendance_ul').empty();
+       var html;
+       var id=0;
+       for (var i=0;i<len;i++) {
+           id = results.rows.item(i).id;
+
+           html = "<li>";
+//         html += "<div data-role='fieldcontain'>";
+//         html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
+//         html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
+
+           html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+           html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
+           html += "</a>";
+           html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
+           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+//         html += "</div>";
+           html += "</li>";
+          // html += results.rows.item(i).id+"</a> </li>";
+           $('#students_attendance_ul').append(html);
+
+       }
+       $('#students_attendance_ul').listview('refresh');
+
 
 
    }

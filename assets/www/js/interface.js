@@ -74,8 +74,9 @@ function listStudentsAttendance(id_group)
 
     id_global=id_group ;  //local variable goes global
     table_global='STUDENTS';
-
-    loadStudentsByGroup(db);
+    alert("Attendance");
+    // loadStudentsByGroup(db);
+    loadStudentAttendance(db);
 
     $.mobile.changePage("#list_students_attendance", { transition: "slideup"} );
 
