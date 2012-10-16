@@ -45,6 +45,9 @@ Steps:
             Now on this tab, if CSS is not selected, select it.
     22/09/2012 ->
             Design main window (teacher_schedule)
+    22/09/2012 -> Para el Drop_menu:
+
+        http://jquerymobile.com/demos/1.1.1/docs/forms/selects/
 
             http://jquerymobile.com/demos/1.1.1/docs/forms/textinputs/
 

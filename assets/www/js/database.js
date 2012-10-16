@@ -305,6 +305,7 @@ function errorCB(err) {
 
 /*
  * Fill student attendance sheet
+ * TODO: añadir un combo.
  */
 function queryStudentsAttendanceSuccess(tx, results) {
     var len = results.rows.length;
@@ -335,6 +336,20 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html += "<label>"+ surname +" "+ name +"</label>";
 //           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
 //         html += "</div>";
+/*
+<div data-role="fieldcontain">
+   <label for="select-choice-1" class="select">Shipping method:</label>
+   <select name="select-choice-1" id="select-choice-1">
+      <option value="standard">Standard: 7 day</option>
+      <option value="rush">Rush: 3 days</option>
+      <option value="express">Express: next day</option>
+      <option value="overnight">Overnight</option>
+   </select>
+</div>
+*/
+
+
+
         html += "</li>";
         $('#students_attendance_ul').append(html);
 
