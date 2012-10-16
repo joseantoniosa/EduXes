@@ -334,9 +334,22 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html += "<img height='20px' src='photos/"+photo +"' alt='" + surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>"+ surname +" "+ name +"</label>";
+
 //           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
 //         html += "</div>";
-/*
+
+       html +="";
+       html +="<select name='select-choice-1' id='select-choice-1'>";
+       html +="<option value=''></option>";
+       html +="<option value='attendance'>Attendance</option>";
+       html +="<option value='punctual'>Punctual</option>";
+       html +="<option value='behavior' name='Behavior' >Behavior</option>";
+       html +="";
+       html +="</select>";
+
+
+
+ /*
 <div data-role="fieldcontain">
    <label for="select-choice-1" class="select">Shipping method:</label>
    <select name="select-choice-1" id="select-choice-1">

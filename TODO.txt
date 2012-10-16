@@ -1,3 +1,4 @@
+Look at the end of file
 
 Repository:
 	https://github.com/joseantoniosa/EduXes
@@ -51,7 +52,6 @@ Steps:
 
             http://jquerymobile.com/demos/1.1.1/docs/forms/textinputs/
 
-
         Control Asistencia - Attendance
 
 
@@ -61,16 +61,32 @@ Steps:
         - Falta colocar las opciones de menú principal
 
     15/10/2012 : Tengo que reorganizar los ficheros para hacerlo mucho más legible.
+            Falta info que indique el formato de la fecha M/D/Y. Hecho
     16/10/2012: database.js:línea 336 (lista de alumnos)
+    16/10/2012:
+    Para una primera versión utilizable falta colocar un combobox  en la
+        pantalla de lista de alumnos (LA), a la derecha de cada uno de ellos,
+        donde se pueda seleccionar Puntualidad/Retraso/otras, >> Hecho
 
------------------------ TODO ------------------
+
+
+----------------------- TODO ------ Pendiente ------------
         Pantalla principal:
-            Falta info que indique el formato de la fecha M/D/Y
+
             Concretar el menú principal ¿Menú desplegable estilo combobox?
         Pantalla de diario:
+
             Quitar la apariencia de enlace <-> pulir la pantalla
+
+
         Pantalla de grupo:
             Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
+         Falta grabar esos datos en la base de datos.
+
+        Además sería necesario una página de
+        visualización de las faltas. Me centraré en estos tres puntos.
+
+
 
         Enlazar pantalla de edición de estudiantes.
         Crear pantalla de edición de actividades
