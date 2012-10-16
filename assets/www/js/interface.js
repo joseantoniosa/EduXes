@@ -47,7 +47,7 @@ function initialize_data() {
     var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
     $("#daily_date").val(today);
 
-    $("#teachers_name").text("Geography");
+    $("#teachers_name").text(" New Geography");
 }
 
 //
@@ -57,7 +57,7 @@ function open_daily_page() {
     if (this_date != "") {
         var a_date = new Date(this_date);
         if (a_date.getDay() == 6 || a_date.getDay() == 0) {
-            alert("No class on Weekend!");
+            help("weekend");
         } else {
             week_day_global = a_date.getDay();
             loadSchedule(db, week_day_global);
@@ -74,8 +74,7 @@ function listStudentsAttendance(id_group)
 
     id_global=id_group ;  //local variable goes global
     table_global='STUDENTS';
-    alert("Attendance");
-    // loadStudentsByGroup(db);
+
     loadStudentAttendance(db);
 
     $.mobile.changePage("#list_students_attendance", { transition: "slideup"} );
@@ -139,6 +138,7 @@ function addNewActivity() { // TODO
 
 function listStudents(id_group)
 {
+
 	$.mobile.showPageLoadingMsg();
 
 	id_global=id_group ;  //local variable goes global
@@ -195,6 +195,43 @@ function deleteRecord(db, table, id){
 	   }
 
 }
+function help(field) {
+    var message;
+    var title;
+
+    switch (field) {
+        case "student_attendance":
+            title = "student_attendance";
+            message ="Student Attendance ...";
+            break;
+        case "date":
+            title = "Date format";
+            message =" MM/DD/YY";
+            break;
+        case "weekend":
+            title = "Classes";
+            message =" No class on Weekend! ";
+            break;
+
+        default:
+            break;
+        }
+        navigator.notification.alert(
+            message,
+            null,
+            "Ayuda: " + title,
+            "Cerrar"
+        );
+
+}
+
+function exitApp() {
+    device.exitApp();
+}
+
+
+
+
 
 // daily_work
 //

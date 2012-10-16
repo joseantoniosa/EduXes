@@ -58,6 +58,7 @@ Steps:
         - Falta colocar las opciones de menú principal
 
     15/10/2012 : Tengo que reorganizar los ficheros para hacerlo mucho más legible.
+    16/10/2012: database.js:línea 336 (lista de alumnos)
 
 ----------------------- TODO ------------------
         Pantalla principal:

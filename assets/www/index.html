@@ -35,16 +35,13 @@
                     <div class="ui-block-b">
                         <input type="date" name="date" id="daily_date" value=""  />
 <!--
-                    <p id="go_daily_date">
-                    Go
-                    </p>
                     <a href="index.html" data-role="button" data-icon="arrow-r"
                     data-iconpos="notext" data-theme="c" data-inline="true">Go</a>
 //-->
                     </div>
                     <div class="ui-block-c">
-                        <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"
-                        onclick="open_daily_page() " >Go</a>
+                        <a href="#" data-role='button' data-icon='info' data-iconpos='notext' style='float: right;' onClick="help('date');">Help</a>
+                        <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"  onclick="open_daily_page() " >Go</a>
 <!--
                     <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
                     <option>Main menu</option>
@@ -87,7 +84,7 @@
 <div data-role="page" id="list_students_attendance" data-add-back-btn="true">
 
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
-                <h1 id="current_group" >Student List for Group</h1>
+                <h1 id="current_group_attendance" >Student List for Group</h1>
             </div>
             <div data-role="content">
 <!--- [Photo]-[Surname, Name ] [R/A/P]<combobox> //-->
@@ -173,7 +170,7 @@
 <div data-role="page" id="list_students" data-add-back-btn="true">
 
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
-                <h1>Lista de Alumnos</h1>
+                <h1>Lista Completa de Alumnos</h1>
             </div>
             <div data-role="content">
 

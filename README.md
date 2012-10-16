@@ -26,5 +26,7 @@ function listStudentsAttendance
  fills: #students_attendance_ul
 loadStudentAttendance
     calls :-> queryStudentsAttendanceDB
-        calls :-> queryStudentsAttendanceSuccess
+        calls :-> queryStudentsAttendanceSuccess:
+            Genera el código html que se mostrará como lista de estudiantes.
+
 

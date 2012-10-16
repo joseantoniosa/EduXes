@@ -16,7 +16,6 @@ function errorCB(err) {
 }
 
     function successCB() {
-//        alert("success!");
     	console.log("Success ");
     }
 
@@ -81,7 +80,6 @@ function errorCB(err) {
 //         create_schedule +="FOREIGN KEY(id_teacher) REFERENCES teachers(id));";
         tx.executeSql(create_schedule);
 
-// TODO: Convertir los group_id a id_group
         // populate: hardcoded!
         var header="INSERT INTO teacher_schedule (id, id_session, day , id_group ) VALUES (NULL";
         tx.executeSql(header +',0, 1, 0 )'); // 1st hour (0), Monday (1)  1st group (0)
@@ -136,12 +134,13 @@ function errorCB(err) {
     	tx.executeSql('SELECT * FROM GROUPS', [], queryGroupsSuccess, errorCB);
 	}
    function queryStudentsDB(tx) {
-	   console.log("Query Students \n");
+	   console.log("Warning: Query Students \n");
 	   tx.executeSql('SELECT * FROM STUDENTS', [], queryStudentsSuccess, errorCB);
 	}
    function queryStudentsAttendanceDB(tx) {
        console.log("Query Students Attendance \n");
        console.log(log);
+
        tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsAttendanceSuccess, errorCB);
     }
 
@@ -150,8 +149,7 @@ function errorCB(err) {
 
    function queryStudentsByGroupDB(tx) {
 	   // pass from and global id!!
-	   log = "Query Students from STUDENTS WHERE id_group="+id_global+ "\n";
-	   //alert("Log  queryStudentsByGroupDB "+ log);
+	   log = "queryStudentsByGroupDB. Query Students from STUDENTS WHERE id_group="+id_global+ "\n";
 	   console.log(log);
 	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsSuccess, errorCB);
 	}
@@ -164,18 +162,15 @@ function errorCB(err) {
 	   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
 	   query += " WHERE day=" +week_day_global + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
 	   var log = "Query Groups "+ query;
-//
-//	   alert(" queryStudentsByGroupDB: "+ log);
 	   console.log("querySchedulePerDayDB:" + log);
-
 	   tx.executeSql(query,  [], queryScheduleSuccess, errorCB);
    }
 
    function queryStudentsAttendanceDB(tx){
 
 	   var sql ="";
-	   var log = "Query Students from STUDENTS WHERE id="+id_global+ "\n";
-	   alert("Log  queryStudentAttendanceDB "+ log);
+	   var log = "StudentsAttendance. Query Students from STUDENTS WHERE id="+id_global+ "\n";
+
 	   console.log(log);
 	   tx.executeSql('SELECT * FROM STUDENTS WHERE id_group='+id_global, [], queryStudentsAttendanceSuccess, errorCB);
 
@@ -200,34 +195,28 @@ function errorCB(err) {
 //		   console.log('No rows affected!');
 //		   return false;
 //	   }
-	   // for an insert statement, this property will return the ID of the last inserted row
+
 	   console.log("Last inserted row ID = " + results.insertId);
 	   console.log("Number of rows inserted: " +  len)
-// How to populate a List ?
   	   $('#groups_ul').empty();
 //  <ul data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
 // 	    data-rel="dialog" data-transition="slideup"
 //	   <a href="lists-split-purchase.html" data-rel="dialog" data-transition="slideup">Purchase album
 //		</a>
-	   var html;
+	   var html="";
+
 	   for (var i=0;i<len;i++) {
            html = "<li><h3> ";
-           html +="<a onClick='id_global="+ results.rows.item(i).id + "; table_global=\"groups\"; listStudentsAttendance("+results.rows.item(i).id  +");' href='index.html#list_students' >";
-           html +=results.rows.item(i).data +"</a></h3>";
-           html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+           html += "<a onClick='id_global="+ results.rows.item(i).id + "; table_global=\"groups\"; listStudentsAttendance("+results.rows.item(i).id  +");' href='index.html#list_students_attendance' data-transition='slideup'>";
+           html += results.rows.item(i).data +"</a></h3>";
+           html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
            html += "</a></li>";
-
-// <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
-//		   html +="<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-//		   html += "</a></li>";
-
-
-//		   html += results.rows.item(i).id+"</a> </li>";
 		   $('#groups_ul').append(html);
 	   }
 	   $('#groups_ul').listview('refresh');
    }
 
+// XXX: Esta función es llamada demasiadas veces ¿por qué?
    function queryStudentsSuccess(tx, results) {
 	   var len = results.rows.length;
 	   console.log("Last inserted student - row ID = " + results.insertId);
@@ -268,7 +257,7 @@ function errorCB(err) {
 	   var len = results.rows.length;
 	   console.log("Last inserted student - row ID = " + results.insertId);
 	   console.log("Number of student - rows inserted: " +  len);
-        alert("Schedule Success");
+
   	   $('#groups_day_ul').empty();
 	   var html;
 	   var id=0;
@@ -294,13 +283,13 @@ function errorCB(err) {
 //	        create_session +="description text, h_start text, h_end text);";
 
 
+           start = results.rows.item(i).s_h_start;  // s_h_end
+           description = results.rows.item(i).description;  // description=group_description
            html = "<li>";
            html += "<div data-role='fieldcontain'>";
-           start = results.rows.item(i).s_h_start;  // s_h_end
-		   description = results.rows.item(i).description;  // description=group_description
-		   html += start;
+           html += start;
 
-           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students' ";
+           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
            html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ");\">" + description + "</a>";
 
            html += "";
@@ -317,42 +306,46 @@ function errorCB(err) {
 /*
  * Fill student attendance sheet
  */
-   function queryStudentsAttendanceSuccess(tx, results) {
-// <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('t_apellidos1');">Axuda</a>
+function queryStudentsAttendanceSuccess(tx, results) {
     var len = results.rows.length;
-    console.log("Last inserted student - row ID = " + results.insertId);
-    console.log("Number of student - rows inserted: " +  len);
+
+    console.log("queryStudentsAttendanceSuccess.Number of student - rows inserted: " +  len);
 
     $('#students_attendance_ul').empty();
-       var html;
-       var id=0;
-       for (var i=0;i<len;i++) {
-           id = results.rows.item(i).id;
+    var html="";
+    var id=0;
+    var photo="";
+    var name="";
+    var surname="";
+    for (var i=0;i<len;i++) {
+        id = results.rows.item(i).id;
+        photo = results.rows.item(i).photo;
+        name = results.rows.item(i).name;
+        surname = results.rows.item(i).surname;
 
-           html = "<li>";
+        html = "<li>";
 //         html += "<div data-role='fieldcontain'>";
 //         html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
 //         html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 
-           html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
-           html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
-           html += "</a>";
-           html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
-           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+// TODO: Añadir un combobox con Asistencia/Puntualidad/Asistencia_justificada/Expulsión ....
+        html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+        html += "<img height='20px' src='photos/"+photo +"' alt='" + surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
+        html += "</a>";
+        html += "<label>"+ surname +" "+ name +"</label>";
+//           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
 //         html += "</div>";
-           html += "</li>";
-          // html += results.rows.item(i).id+"</a> </li>";
-           $('#students_attendance_ul').append(html);
+        html += "</li>";
+        $('#students_attendance_ul').append(html);
 
-       }
-       $('#students_attendance_ul').listview('refresh');
+    }
 
+    $('#students_attendance_ul').listview('refresh');
 
+}
 
-   }
-
-   function queryActivitiesSuccess(tx, results) {
-	   var len = results.rows.length;
+function queryActivitiesSuccess(tx, results) {
+    var len = results.rows.length;
 	   console.log("Last inserted activity - row ID = " + results.insertId);
 	   console.log("Number of activity - rows inserted: " +  len)
 
