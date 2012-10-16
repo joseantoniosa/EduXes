@@ -4,19 +4,21 @@
 function onDeviceReady() {
 // TODO: it isn't exist create one:
 
+
 	db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 200000); // global variable
+	global_db=db;
 
 //	$("#etiqueta1").val("Alo France 02"); //results.rows.item(i).data);
 //	$("#dentro_inicio").html("Alo France 2"); //results.rows.item(i).data);
 //	console.log("One "+ db +"\n");
 
 // On first time it populate DB:
-    db.transaction(populateDB, errorCB, successCB);
+    global_db.transaction(populateDB, errorCB, successCB);
 
 // Load Data into Interface:
-    loadGroups(db);
-    loadStudents(db);
-    loadActivities(db);
+    loadGroups(global_db);
+    loadStudents(global_db);
+    loadActivities(global_db);
 
     initialize_data() ;
 
@@ -60,7 +62,7 @@ function open_daily_page() {
             help("weekend");
         } else {
             week_day_global = a_date.getDay();
-            loadSchedule(db, week_day_global);
+            loadSchedule(global_db, week_day_global);
             $("#current_day").text(this_date);
             $.mobile.changePage("#daily_schedule");
         }
@@ -75,7 +77,7 @@ function listStudentsAttendance(id_group)
     id_global=id_group ;  //local variable goes global
     table_global='STUDENTS';
 
-    loadStudentAttendance(db);
+    loadStudentAttendance(global_db);
 
     $.mobile.changePage("#list_students_attendance", { transition: "slideup"} );
 
@@ -102,9 +104,9 @@ function addNewGroup() {
 
 	name = $("#in_nombre_grupo").val();
 	other_data = $("#in_nivel_grupo").val();
-	insertNewGroup(db, name, other_data);
+	insertNewGroup(global_db, name, other_data);
 // 	debería re-leerlo de la BD
-	loadGroups(db);
+	loadGroups(global_db);
     // $('#groups_ul').listview('refresh');
 
 	$.mobile.changePage("#lista_grupos");
@@ -116,7 +118,7 @@ function addNewStudent() { // TODO
 	name = $("#in_name_student").val();
 	surname = $("#in_surname_student").val();
 	group_id = 0;
-	insertNewStudent(db, name, surname, group_id); //
+	insertNewStudent(global_db, name, surname, group_id); //
     $('#students_ul').listview('refresh');
 
 	$.mobile.changePage("#list_students");
@@ -128,7 +130,7 @@ function addNewActivity() { // TODO
 
 	name = $("#in_nombre_activity").val();
 	other_data = $("#in_nivel_activity").val();
-	insertNewActivity(db, name, other_data);
+	insertNewActivity(global_db, name, other_data);
 
     $('#activities_ul').listview('refresh');
 
@@ -144,24 +146,57 @@ function listStudents(id_group)
 	id_global=id_group ;  //local variable goes global
 	table_global='STUDENTS';
 
-	loadStudentsByGroup(db);
+	loadStudentsByGroup(global_db);
 
 	$.mobile.changePage("#list_students", { transition: "slideup"} );
 
 }
+
+/*
+ * Attendance-Punctuality-Behavior
+ *
+ * called in: queryStudentsAttendanceSuccess
+ */
+function studentState(id_student) {
+
+    var state =$("#select-student_"+id_student+" option:selected").text()   ;
+    var real_state=STATE_NONE;
+    var actual_date= new Date();
+    switch(state) {
+        case 'Absence':
+            real_state=STATE_ABSENCE;
+            break;
+        case 'Unpunctuality':
+            real_state=STATE_UNPUNCTUAL;
+            break;
+        case 'Excused':
+            real_state=STATE_EXCUSED;
+            break;
+        case 'Behavior':
+            real_state=STATE_BEHAVIOR;
+            break;
+        default:
+            real_state=STATE_NONE;
+            break;
+    }
+
+    updateStudentState( global_db, id_student,real_state, actual_date); //  TODO: Should change actual_date to GUI date
+}
+
 /*
  * Students Attendance
  */
 function Attendance(id_student){
 
-	$.mobile.showPageLoadingMsg();
+    $.mobile.showPageLoadingMsg();
 
-	id_global=id_student ;  //local variable goes global
-	table_global='STUDENTS';
+    id_global = id_student;      //local variable goes global
 
-	loadStudentAttendance(db);
+    table_global = 'STUDENTS';
 
-	$.mobile.changePage("#edit_students_attendance");
+    loadStudentAttendance(global_db);
+
+    $.mobile.changePage("#edit_students_attendance");
 
 }
 

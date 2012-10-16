@@ -67,7 +67,9 @@ Steps:
     Para una primera versión utilizable falta colocar un combobox  en la
         pantalla de lista de alumnos (LA), a la derecha de cada uno de ellos,
         donde se pueda seleccionar Puntualidad/Retraso/otras, >> Hecho
-
+         ....( VER TODO - Pendiente)
+    17/10/2012: Pendiente de definir el SQL para introducir el estado en la base de datos:
+        database.js: function updateStudentState(id_student, state, actual_date){ ...  }
 
 
 ----------------------- TODO ------ Pendiente ------------
@@ -78,14 +80,12 @@ Steps:
 
             Quitar la apariencia de enlace <-> pulir la pantalla
 
-
         Pantalla de grupo:
             Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
-         Falta grabar esos datos en la base de datos.
-
-        Además sería necesario una página de
-        visualización de las faltas. Me centraré en estos tres puntos.
-
+Máxima prioridad:
+>>        Falta grabar esos datos en la base de datos.
+>>        Además sería necesario una página de
+>>        visualización de las faltas. Me centraré en estos tres puntos.
 
 
         Enlazar pantalla de edición de estudiantes.

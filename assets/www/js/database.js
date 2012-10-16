@@ -1,9 +1,16 @@
 // Referencia á base de datos
 //
-var db;
+// var db;
 var id_global;
 var table_global;
 var week_day_global=-1;
+var global_db;
+// ENUM
+var STATE_NONE = 0;
+var STATE_ABSENCE = 1;
+var STATE_UNPUNCTUAL = 2;
+var STATE_EXCUSED = 3;
+var STATE_BEHAVIOR = 4;
 
 //
 //
@@ -305,7 +312,7 @@ function errorCB(err) {
 
 /*
  * Fill student attendance sheet
- * TODO: añadir un combo.
+ * TODO: Revisar presentación ¿letras más pequeñas?)
  */
 function queryStudentsAttendanceSuccess(tx, results) {
     var len = results.rows.length;
@@ -329,39 +336,21 @@ function queryStudentsAttendanceSuccess(tx, results) {
 //         html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
 //         html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 
-// TODO: Añadir un combobox con Asistencia/Puntualidad/Asistencia_justificada/Expulsión ....
+
         html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/"+photo +"' alt='" + surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>"+ surname +" "+ name +"</label>";
-
-//           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
-//         html += "</div>";
-
-       html +="";
-       html +="<select name='select-choice-1' id='select-choice-1'>";
-       html +="<option value=''></option>";
-       html +="<option value='attendance'>Attendance</option>";
-       html +="<option value='punctual'>Punctual</option>";
-       html +="<option value='behavior' name='Behavior' >Behavior</option>";
-       html +="";
-       html +="</select>";
-
-
-
- /*
-<div data-role="fieldcontain">
-   <label for="select-choice-1" class="select">Shipping method:</label>
-   <select name="select-choice-1" id="select-choice-1">
-      <option value="standard">Standard: 7 day</option>
-      <option value="rush">Rush: 3 days</option>
-      <option value="express">Express: next day</option>
-      <option value="overnight">Overnight</option>
-   </select>
-</div>
-*/
-
-
+// Select combo :
+        html +="";
+        html +="<select name='select-student_"+id+"' id='select-student_"+id+"' onChange='studentState(\""+id + "\");'>";
+        html +="<option value=''></option>";
+        html +="<option value='Absence'>Absence</option>";
+        html +="<option value='Unpunctuality'>Unpunctuality</option>";
+        html +="<option value='Excused'>Excused</option>";
+        html +="<option value='Behavior' name='Behavior' >Behavior</option>";
+        html +="";
+        html +="</select>";
 
         html += "</li>";
         $('#students_attendance_ul').append(html);
@@ -422,7 +411,27 @@ function queryActivitiesSuccess(tx, results) {
 	   });
 	   $('#students_ul').listview('refresh');
 }
+//
+// Write Student state
+// TODO: Define SQL query
+function updateStudentState(db, id_student, state, actual_date){
 
+    var db2 = db;
+    alert('Should write into database ' + id_student + state + actual_date.toString())
+
+    db2.transaction(function(tx) {
+
+        var sql = 'INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,';
+        sql += group_id2 + ',';
+        sql += '\"' + name2 + '\" ,  \"' + surname2 + '\"  )';
+//        tx.executeSql(sql, [], function(tx, results) {
+//            console.log("Exito insertando datos en STUDENTS " + sql + "\n");
+//        }, errorCB);
+    });
+
+
+}
+//
    function 	insertNewActivity(db, name, other_data) { // TODO
 	   var db2= db;
 	   var name2= name;
@@ -430,7 +439,7 @@ function queryActivitiesSuccess(tx, results) {
 
 	   db2.transaction(function (tx) {
 // tx.executeSql('INSERT INTO STUDENTS (id, group_id, name, surname) VALUES (NULL,1, "First"," student")');
-		   var sql = 'INSERT INTO STUDENTS (id, data, other_data) VALUES (NULL,';
+           var sql = 'INSERT INTO STUDENTS (id, data, other_data) VALUES (NULL,';
 		   sql  +=  '\"'  + name2 + '\" ,  \"'+ other_data2 + '\"  )' ;
 		   tx.executeSql(sql, [], function (tx, results) {
 			   console.log("Exito insertando datos en estudiantes \n" );
