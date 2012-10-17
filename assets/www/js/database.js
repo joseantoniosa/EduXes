@@ -25,28 +25,58 @@ function errorCB(err) {
     function successCB() {
     	console.log("Success ");
     }
+function createDB(tx) {
 
+        var sql = "";
+        var create_attendance ="";
+
+
+        tx.executeSql('DROP TABLE IF EXISTS GROUPS;');  // To be removed on production
+        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
+
+        tx.executeSql('DROP TABLE IF EXISTS STUDENTS;');  // To be removed on production
+        var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
+        create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
+        create_students +=" repeteated integer, n_date text , photo text, ";
+        create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
+        create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
+        console.log( create_students);
+        tx.executeSql(create_students);
+
+//        -- Sessions ( franja horaria)
+        tx.executeSql('DROP TABLE IF EXISTS sessions;'); // To be removed on production
+        var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
+        create_session +="description text, h_start text, h_end text);";
+        tx.executeSql(create_session);
+
+//      -- Teacher's schedule
+        tx.executeSql('DROP TABLE IF EXISTS teacher_schedule;'); // To be removed on production
+        var create_schedule = "CREATE TABLE IF NOT EXISTS teacher_schedule (id  integer primary key,";
+        create_schedule +=" id_teacher integer, id_session integer, day integer, id_group integer,";
+        create_schedule +="FOREIGN KEY(id_group) REFERENCES groups(id),";
+        create_schedule +="FOREIGN KEY(id_session) REFERENCES sessions(id));";
+//         create_schedule +="FOREIGN KEY(id_teacher) REFERENCES teachers(id));";
+        tx.executeSql(create_schedule);
+
+
+        create_attendace = "DROP TABLE IF EXISTS attendance;"; // To be removed on production
+        create_attendace += " CREATE  TABLE IF NOT EXISTS attendance ( id  integer primary key , ";
+        create_attendace += " id_group integer, id_student integer, id_session integer, type integer, date text, ";
+        create_attendace +=" FOREIGN KEY(id_session) REFERENCES sessions(id));";
+
+        tx.executeSql(create_attendace);
+
+
+    }
     function populateDB(tx) {
 
-    	tx.executeSql('DROP TABLE IF EXISTS GROUPS;');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
+
         // populate
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "First group  1")');
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Second group 2")');
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Third group  3" )');
         tx.executeSql('INSERT INTO GROUPS (id, data) VALUES (NULL, "Fourth group 4")');
-// Students         TODO
-    	tx.executeSql('DROP TABLE IF EXISTS STUDENTS;');
-//    	var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
-//    	create_students +="(id integer primary key, group_id integer not null, data text , FOREIGN KEY(group_id) REFERENCES groups(id))";
-
-    	var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
-    	create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
-    	create_students +=" repeteated integer, n_date text , photo text, ";
-    	create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
-    	create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
-    	console.log(create_students);
-        tx.executeSql(create_students);
+// Students
         // populate
         var header="INSERT INTO STUDENTS (id, id_group, name, surname, photo) VALUES (";
         tx.executeSql(header +'NULL,0, "0First"," Student 0", "f001.png" )');
@@ -63,10 +93,6 @@ function errorCB(err) {
 
 
 //        -- Sessions ( franja horaria)
-        tx.executeSql('DROP TABLE IF EXISTS sessions;');
-        var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
-        create_session +="description text, h_start text, h_end text);";
-        tx.executeSql(create_session);
         // populate. Hardcoded
         var header="INSERT INTO sessions (id, description, h_start, h_end) VALUES (NULL ";
         tx.executeSql(header +',"First", "09:00", "09:50" )');
@@ -79,15 +105,7 @@ function errorCB(err) {
 // SELECT id, description, h_start, h_end FROM sessions WHERE id=
 
 //		-- Teacher's schedule
-        tx.executeSql('DROP TABLE IF EXISTS teacher_schedule;');
-        var create_schedule="CREATE TABLE IF NOT EXISTS teacher_schedule (id  integer primary key,";
-        create_schedule +="id_teacher integer, id_session integer, day integer, id_group integer,";
-        create_schedule +="FOREIGN KEY(id_group) REFERENCES groups(id),";
-        create_schedule +="FOREIGN KEY(id_session) REFERENCES sessions(id));";
-//         create_schedule +="FOREIGN KEY(id_teacher) REFERENCES teachers(id));";
-        tx.executeSql(create_schedule);
-
-        // populate: hardcoded!
+        // populate:
         var header="INSERT INTO teacher_schedule (id, id_session, day , id_group ) VALUES (NULL";
         tx.executeSql(header +',0, 1, 0 )'); // 1st hour (0), Monday (1)  1st group (0)
         tx.executeSql(header +',2, 1, 1 )'); // 3rd hour (2), Monday (1)  2nd group (1)
@@ -101,15 +119,7 @@ function errorCB(err) {
         tx.executeSql(header +',2, 5, 0 )'); // 3rd hour (2), Friday (5)  1st group (1)
 // SELECT id_session, day, id_group FROM teacher_schedule WHERE day=  ORDER BY id_session;
 //
-//-- Teacher's schedule
-//     DROP TABLE IF EXISTS teacher_schedule;
-//     CREATE TABLE IF NOT EXISTS teacher_schedule (id  integer primary key,
-//        id_session integer, day integer, id_group integer,
-//        FOREIGN KEY(id_group) REFERENCES groups(id),
-//        FOREIGN KEY(id_session) REFERENCES sessions(id));
 
-
-//
 //	Activities        TODO
     	tx.executeSql('DROP TABLE IF EXISTS ACTIVITIES;');
     	var create_activities="CREATE TABLE IF NOT EXISTS ACTIVITIES ";

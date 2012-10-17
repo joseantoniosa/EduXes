@@ -70,7 +70,18 @@ Steps:
          ....( VER TODO - Pendiente)
     17/10/2012: Pendiente de definir el SQL para introducir el estado en la base de datos:
         database.js: function updateStudentState(id_student, state, actual_date){ ...  }
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>  CREATE  TABLE IF NOT EXISTS `siestta`.`asistencia` (
+  `codigo` VARCHAR(6) NOT NULL ,
+  `agrupamiento` VARCHAR(10) NOT NULL ,
+  `fecha` DATE NOT NULL ,
+  `hini` VARCHAR(5) NOT NULL ,
+  `dato` CHAR(1) NOT NULL ,
+  PRIMARY KEY (`codigo`, `agrupamiento`, `fecha`, `hini`) )
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = latin1;
 
+>>>>>>>>>>>>>>
 
 ----------------------- TODO ------ Pendiente ------------
         Pantalla principal:

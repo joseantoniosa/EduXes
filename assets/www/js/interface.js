@@ -13,6 +13,9 @@ function onDeviceReady() {
 //	console.log("One "+ db +"\n");
 
 // On first time it populate DB:
+
+    global_db.transaction(createDB, errorCB, successCB);
+// On production this will be removed:
     global_db.transaction(populateDB, errorCB, successCB);
 
 // Load Data into Interface:
