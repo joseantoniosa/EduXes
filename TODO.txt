@@ -73,6 +73,8 @@ Steps:
     18/10/2012: Añadida conexión con la base de datos. Da gran cantidad de errores:
         tabla: attendance no existe
             Pero parece funcionar ¿?, parece existir un workaround para mostrar los errores ¿?
+    18/10/2012 b:  Eliminado código redundante, limpiado parte del código. grabados los datos en la base
+        de datos (?).
 >>>>>>>>>>>>>>
 
 
@@ -80,23 +82,35 @@ Steps:
         Pantalla principal:
 
             Concretar el menú principal ¿Menú desplegable estilo combobox?
+
         Pantalla de diario:
             Colocar un número de sesión en la pantalla de diario
             Quitar la apariencia de enlace <-> pulir la pantalla
+            Añadir botón de "back"
 
         Pantalla de grupo:
             Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
 Máxima prioridad:
->>        Falta grabar esos datos en la base de datos. (pendiente ?)
 >>        Además sería necesario una página de
 >>        visualización de las faltas. Me centraré en estos tres puntos.
+           Leer los datos de la base de datos (faltas, etc..)
+           Escribir los de la fecha correspondiente
+
         Comprobar que ha guardado los datos
 
 
         Enlazar pantalla de edición de estudiantes.
         Crear pantalla de edición de actividades
 
-
+--- SNIPPETS:
+[],
+            successCB,
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error create attendance: " + e.message);
+                return false;
+                }
+            );
 
 
 

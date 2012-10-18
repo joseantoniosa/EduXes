@@ -5,7 +5,9 @@ function onDeviceReady() {
 // TODO: it isn't exist create one:
 
 
-	db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 200000); // global variable
+    $.mobile.showPageLoadingMsg();
+
+	var db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 200000); // global variable
 	global_db=db;
 
 //	$("#etiqueta1").val("Alo France 02"); //results.rows.item(i).data);
@@ -14,18 +16,18 @@ function onDeviceReady() {
 
 // On first time it populate DB:
 
-    global_db.transaction(createDB, errorCB, successCB);
+    global_db.transaction(createDB); // , errorCB, successCB);
 // On production this will be removed:
-    global_db.transaction(populateDB, errorCB, successCB);
+    global_db.transaction(populateDB); //, errorCB, successCB);
 
 // Load Data into Interface:
-    loadGroups(global_db);
-    loadStudents(global_db);
-    loadActivities(global_db);
+  //  loadGroups(global_db);
+  //  loadStudents(global_db);
+  //  loadActivities(global_db);
 
     initialize_data() ;
 
-    $.mobile.showPageLoadingMsg();
+
     $.mobile.changePage("#daily_work");
 
     $("#daily_date").noWeekends ;
@@ -59,11 +61,14 @@ function initialize_data() {
 // Open Daily work page: list of groups
 function open_daily_page() {
     var this_date = $("#daily_date").val();
+
     if (this_date != "") {
         var a_date = new Date(this_date);
         if (a_date.getDay() == 6 || a_date.getDay() == 0) {
             help("weekend");
         } else {
+
+            $.mobile.showPageLoadingMsg();
             week_day_global = a_date.getDay();
             loadSchedule(global_db, week_day_global);
             $("#current_day").text(this_date);
