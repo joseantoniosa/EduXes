@@ -10,7 +10,7 @@
 -- Students
         DROP TABLE IF EXISTS STUDENTS;
         CREATE TABLE IF NOT EXISTS STUDENTS (
-            id integer primary key, group_id integer not null, name text, surname text,
+            id integer primary key, id_group integer not null, name text, surname text,
             repeteated integer, n_date text ,
             tutor TEXT, address TEXT, phone text, e_phone text, nation text,
             FOREIGN KEY(group_id) REFERENCES groups(id));

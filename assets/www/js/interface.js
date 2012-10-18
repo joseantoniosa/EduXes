@@ -73,12 +73,13 @@ function open_daily_page() {
 }
 
 // Open Students Attendance page
-function listStudentsAttendance(id_group)
+function listStudentsAttendance(id_group, id_session)
 {
     $.mobile.showPageLoadingMsg();
 
     id_global=id_group ;  //local variable goes global
     table_global='STUDENTS';
+    global_session = id_session;
 
     loadStudentAttendance(global_db);
 
@@ -160,11 +161,14 @@ function listStudents(id_group)
  *
  * called in: queryStudentsAttendanceSuccess
  */
-function studentState(id_student) {
+function studentState(id_student, id_group, id_session) {
 
     var state =$("#select-student_"+id_student+" option:selected").text()   ;
     var real_state=STATE_NONE;
+
+//  TODO: Should change actual_date to GUI date
     var actual_date= new Date();
+
     switch(state) {
         case 'Absence':
             real_state=STATE_ABSENCE;
@@ -182,8 +186,8 @@ function studentState(id_student) {
             real_state=STATE_NONE;
             break;
     }
+    updateStudentState( global_db, id_student, id_group, id_session,  real_state,  actual_date );
 
-    updateStudentState( global_db, id_student,real_state, actual_date); //  TODO: Should change actual_date to GUI date
 }
 
 /*
