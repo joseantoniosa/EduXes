@@ -70,33 +70,27 @@ Steps:
          ....( VER TODO - Pendiente)
     17/10/2012: Pendiente de definir el SQL para introducir el estado en la base de datos:
         database.js: function updateStudentState(id_student, state, actual_date){ ...  }
+    18/10/2012: Añadida conexión con la base de datos. Da gran cantidad de errores:
+        tabla: attendance no existe
+            Pero parece funcionar ¿?, parece existir un workaround para mostrar los errores ¿?
 >>>>>>>>>>>>>>
->>>>>>>>>>>>>>  CREATE  TABLE IF NOT EXISTS `siestta`.`asistencia` (
-  `codigo` VARCHAR(6) NOT NULL ,
-  `agrupamiento` VARCHAR(10) NOT NULL ,
-  `fecha` DATE NOT NULL ,
-  `hini` VARCHAR(5) NOT NULL ,
-  `dato` CHAR(1) NOT NULL ,
-  PRIMARY KEY (`codigo`, `agrupamiento`, `fecha`, `hini`) )
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
 
->>>>>>>>>>>>>>
 
 ----------------------- TODO ------ Pendiente ------------
         Pantalla principal:
 
             Concretar el menú principal ¿Menú desplegable estilo combobox?
         Pantalla de diario:
-
+            Colocar un número de sesión en la pantalla de diario
             Quitar la apariencia de enlace <-> pulir la pantalla
 
         Pantalla de grupo:
             Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
 Máxima prioridad:
->>        Falta grabar esos datos en la base de datos.
+>>        Falta grabar esos datos en la base de datos. (pendiente ?)
 >>        Además sería necesario una página de
 >>        visualización de las faltas. Me centraré en estos tres puntos.
+        Comprobar que ha guardado los datos
 
 
         Enlazar pantalla de edición de estudiantes.

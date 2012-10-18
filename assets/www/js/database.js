@@ -40,23 +40,23 @@ function createDB(tx) {
         var create_attendance ="";
 
 
-        tx.executeSql('DROP TABLE IF EXISTS GROUPS;');  // To be removed on production
-        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)');
+        tx.executeSql('DROP TABLE IF EXISTS GROUPS;',[],errorCB, successCB);  // To be removed on production
+        tx.executeSql('CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text)',successCB, errorCB);
 
-        tx.executeSql('DROP TABLE IF EXISTS STUDENTS;');  // To be removed on production
+        tx.executeSql('DROP TABLE IF EXISTS STUDENTS;',[],successCB, errorCB);  // To be removed on production
         var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
         create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
         create_students +=" repeteated integer, n_date text , photo text, ";
         create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
         create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
         console.log( create_students);
-        tx.executeSql(create_students);
+        tx.executeSql(create_students,[],successCB, errorCB);
 
 //        -- Sessions ( franja horaria)
         tx.executeSql('DROP TABLE IF EXISTS sessions;'); // To be removed on production
         var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
         create_session +="description text, h_start text, h_end text);";
-        tx.executeSql(create_session);
+        tx.executeSql(create_session,[],successCB, errorCB);
 
 //      -- Teacher's schedule
         tx.executeSql('DROP TABLE IF EXISTS teacher_schedule;'); // To be removed on production
@@ -65,7 +65,15 @@ function createDB(tx) {
         create_schedule +="FOREIGN KEY(id_group) REFERENCES groups(id),";
         create_schedule +="FOREIGN KEY(id_session) REFERENCES sessions(id));";
 //         create_schedule +="FOREIGN KEY(id_teacher) REFERENCES teachers(id));";
-        tx.executeSql(create_schedule, successCB, errorCB);
+        tx.executeSql(create_schedule,
+            [],
+            successCB,
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" 0 There has been an error: " + e.message);
+                return false;
+                }
+                );
 
 
         var create_attendance = "DROP TABLE IF EXISTS attendance;"; // To be removed on production
@@ -74,13 +82,14 @@ function createDB(tx) {
         create_attendance +=" FOREIGN KEY(id_session) REFERENCES sessions(id));";
 
     //tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
-        tx.executeSql(create_attendance, successCB,
+        tx.executeSql(create_attendance,
+            [],
+            successCB,
             dbErrorFunc = function(ttx, e) {
-
-            if (ttx.message) e = ttx;
-            alert(" 0 There has been an error: " + e.message);
-            return false;
-            }
+                if (ttx.message) e = ttx;
+                alert(" There has been an error create attendance: " + e.message);
+                return false;
+                }
             );
 
 
@@ -461,19 +470,19 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
 
     db2.transaction(function(tx) {
         var sql ="INSERT INTO attendance ( id_group , id_student, id_session, type, date) VALUES (";
-        // sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\" " + actual_date.toString()+"\" );";
-        sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\"2/2/2012\" );";
+        sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\" " + actual_date.toString()+"\" );";
+//        sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\"2/2/2012\" );";
         console.log("SQL =>[" + sql + "]\n");
         alert(sql);
 
-        tx.executeSql(sql, [], function(tx, results) {
-            console.log("Sucesss in attendance " + sql + "\n");
-        },
-        dbErrorFunc = function(ttx, e) {
-
-            if (ttx.message) e = ttx;
-            alert("There has been an error: " + e.message);
-            return false;
+        tx.executeSql(sql, [],
+            function(tx, results) {
+                console.log("Sucesss in attendance " + sql + "\n");
+            },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert("There has been an error in updateStudentState: " + e.message);
+                return false;
             }
         );
     });
