@@ -1,3 +1,22 @@
+/*
+ * EduXes
+ *
+ * Copyright (C) 2012  José Antonio Salgueiro Aquino <info@joseantonio.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 //
 
 
@@ -12,7 +31,7 @@ function onDeviceReady() {
 
 //	$("#etiqueta1").val("Alo France 02"); //results.rows.item(i).data);
 //	$("#dentro_inicio").html("Alo France 2"); //results.rows.item(i).data);
-//	console.log("One "+ db +"\n");
+//	log("One "+ db +"\n");
 
 // On first time it populate DB:
 
@@ -42,7 +61,7 @@ function onDeviceReady() {
 }
 
 function init(){
-//	console.log("Hello World \n");
+//	log("Hello World \n");
 
     document.addEventListener("deviceready", onDeviceReady, false);
 }
@@ -277,6 +296,12 @@ function exitApp() {
     device.exitApp();
 }
 
+
+function log(message) {
+    if (DEBUG) {
+        console.log(message);
+    }
+}
 
 
 

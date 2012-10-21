@@ -1,3 +1,25 @@
+/*
+ * EduXes
+ *
+ * Copyright (C) 2012  José Antonio Salgueiro Aquino <info@joseantonio.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// Modo de depuración
+var DEBUG = true;
+
 // Referencia á base de datos
 //
 // var db;
@@ -26,13 +48,13 @@ var STATE_BEHAVIOR = 4;
 //}
 
 function errorCB(err) {
-    console.log("Error processing SQL code : "+err.code);
+    log("Error processing SQL code : "+err.code);
     alert("STOP! Error processing SQL ");
-    console.log("Error processing SQL message: "+err.message);
+    log("Error processing SQL message: "+err.message);
 }
 
     function successCB() {
-    	console.log("Success ");
+    	log("Success ");
     }
 function createDB(tx) {
 
@@ -72,7 +94,7 @@ function createDB(tx) {
         create_students +=" repeteated integer, n_date text , photo text, ";
         create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
         create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
-        console.log( create_students);
+        log( create_students);
         tx.executeSql(create_students,[],
             dbSuccessFunc = function(tx,rs){ return true;  },
             dbErrorFunc = function(ttx, e) {
@@ -198,7 +220,7 @@ function createDB(tx) {
     	tx.executeSql('DROP TABLE IF EXISTS ACTIVITIES;');
     	var create_activities="CREATE TABLE IF NOT EXISTS ACTIVITIES ";
     	create_activities +="(id integer primary key, description text, date_init text, date_end text, weight real); ";
-    	console.log(create_activities);
+    	log(create_activities);
         tx.executeSql(create_activities);
 
     	var header = "INSERT INTO ACTIVITIES ( description,date_init, date_end ,weight) VALUES (";
@@ -222,24 +244,24 @@ function createDB(tx) {
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
                 alert("Error");
-                console.log(" There has been an error Select * from groups : " + e.message);
+                log(" There has been an error Select * from groups : " + e.message);
                 return false;
             });
 	}
 
    function queryGroupsDB(tx) {
-	   	console.log("Query Groups \n");
+	   	log("Query Groups \n");
     	tx.executeSql('SELECT * FROM GROUPS'); //, [], queryGroupsSuccess, errorCB);
 	}
    function queryStudentsDB(tx) {
-	   console.log("Query Students \n");
+	   log("Query Students \n");
 	   var sql = 'SELECT * FROM STUDENTS';
 	   tx.executeSql(sql, [],
         queryStudentsSuccess,
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
                 alert("Error");
-                console.log(" There has been an error queryStudentsDB: " + e.message);
+                log(" There has been an error queryStudentsDB: " + e.message);
                 return false;
             });
 	}
@@ -257,7 +279,7 @@ function createDB(tx) {
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
                 alert("Error");
-                console.log(" There has been an error queryStudentsByGroupDB: " + e.message);
+                log(" There has been an error queryStudentsByGroupDB: " + e.message);
                 return false;
             }
         );
@@ -271,7 +293,7 @@ function createDB(tx) {
 	   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
 	   query += " WHERE day=" +week_day_global + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
 
-       console.log("querySchedulePerDayDB:" + query);
+       log("querySchedulePerDayDB:" + query);
 	   tx.executeSql(query,[],
             dbSuccessFunc = function(tx,rs){
                 queryScheduleSuccess(tx, rs);
@@ -288,7 +310,7 @@ function createDB(tx) {
 
 	   var sql ='SELECT * FROM STUDENTS WHERE id_group='+id_global;
 
-	   console.log(" queryStudentsAttendanceDB " + sql);
+	   log(" queryStudentsAttendanceDB " + sql);
 	   tx.executeSql(sql,[], queryStudentsAttendanceSuccess,
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
@@ -300,7 +322,7 @@ function createDB(tx) {
    }
 
    function queryActivitiesDB(tx) {
-	   console.log("Query Activities \n");
+	   log("Query Activities \n");
 	   tx.executeSql('SELECT * FROM ACTIVITIES');
 	}
 
@@ -325,8 +347,8 @@ function createDB(tx) {
 // XXX: Esta función es llamada demasiadas veces ¿por qué?
    function queryStudentsSuccess(tx, results) {
 	   var len = results.rows.length;
-	   console.log("Last inserted student - row ID = " + results.insertId);
-	   console.log("Number of student - rows inserted: " +  len);
+	   log("Last inserted student - row ID = " + results.insertId);
+	   log("Number of student - rows inserted: " +  len);
 
   	   $('#students_ul').empty();
 	   var html;
@@ -515,7 +537,7 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
     db2.transaction(function(tx) {
         var sql ="INSERT INTO attendance ( id_group , id_student, id_session, type, date) VALUES (";
         sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\" " + actual_date.toString()+"\" );";
-        console.log("updateStudentState : " + sql + "\n");
+        log("updateStudentState : " + sql + "\n");
 
         tx.executeSql(sql );
     });
