@@ -54,7 +54,8 @@ function initialize_data() {
     var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
     $("#daily_date").val(today);
 
-    $("#teachers_name").text(" New Geography");
+    $("#teachers_name").text(" Geography");
+
 }
 
 //
