@@ -163,14 +163,26 @@ function addNewActivity() { // TODO
 
     $('#activities_ul').listview('refresh');
 
-	$.mobile.changePage("#list_activities");
+    $.mobile.changePage("#list_activities");
 }
 
+// XXX: To be developed
+//TODO: 1st. List groups and check one, 2nd. List Attendance by Group & date?
+function generalListAttendance() {
+
+    $.mobile.showPageLoadingMsg();
+// select group
+// select date - week
+// list attendance => general_listattendance
+    chooseGroup();
+    $.mobile.changePage("#list_groups"); // Primero lista los grupos, elige uno
+//    $.mobile.changePage("#general_list_attendance");
+}
 
 function listStudents(id_group)
 {
 
-	$.mobile.showPageLoadingMsg();
+    $.mobile.showPageLoadingMsg();
 
 	id_global=id_group ;  //local variable goes global
 	table_global='STUDENTS';

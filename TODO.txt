@@ -76,32 +76,55 @@ Steps:
     18/10/2012 b:  Eliminado código redundante, limpiado parte del código. grabados los datos en la base
         de datos (?).
 >>>>>>>>>>>>>>
+    25/10/2012: Attendance pre, preparando lista de asistencia. línea 170 de interface.fs
 
+    <div data-role="page" id="general_list_attendance" data-add-back-btn="true">
+    27/10/2012:
+       Queda: Línea 263-264 de  database.js, adaptar para que haga el listado de grupos, y que llame al listado
+        de asistencia por grupo
+        REORGANIZAR EL CÓDIGO PARA DARLE MÁS VISIBILIDAD
 
 ----------------------- TODO ------ Pendiente ------------
         Pantalla principal:
 
-            Concretar el menú principal ¿Menú desplegable estilo combobox?
+            * Concretar el menú principal ¿Menú desplegable estilo combobox?
 
         Pantalla de diario:
-            Colocar un número de sesión en la pantalla de diario
-            Quitar la apariencia de enlace <-> pulir la pantalla
-            Añadir botón de "back"
+            *Colocar un número de sesión en la pantalla de diario
+            *Quitar la apariencia de enlace <-> pulir la pantalla
+            *Añadir botón de "back"
 
         Pantalla de grupo:
-            Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
+            *Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
 Máxima prioridad:
->>        Además sería necesario una página de
->>        visualización de las faltas. Me centraré en estos tres puntos.
-           Leer los datos de la base de datos (faltas, etc..)
-           Escribir los de la fecha correspondiente
+>>        *Además sería necesario una página de visualización de las faltas. Me centraré en estos tres puntos. <<<
+          * Leer los datos de la base de datos (faltas, etc..)<<
+          * Escribir los de la fecha correspondiente
+(22:00:03) Manuel Rego: [U] sobre el UPDATE de los datos creo que ya hablamos el otro día
+(22:00:17) Manuel Rego: [U] lo normal es hacer un SELECT y luego INSERT o UPDATE según ya exista o no la información
+(22:00:46) Manuel Rego: [U] por ejemplo cuando llegas a la pantalla de estudiantes, y se cambia el valor de un estudiante (falta de puntualidad, mal comportamiento o lo que sea)
+(22:00:56) Manuel Rego: [U] ya cuando se cambia podrías guardar en BD
+(22:01:11) Manuel Rego: [U] si la entrada para ese estudiante en esa sesión no existe, usas INSERT y sino UPDATE
+(22:13:49) Manuel Rego: [U] las cosas de edición yo las metería en una ventana separada
+(22:13:52) Manuel Rego: [U] tipo settings
+(22:14:09) Manuel Rego: [U] en plan que con un iconillo en el header, puedas ir a settings/configuration o como que le quieras llamara
+(22:14:16) Manuel Rego: [U] y ahí tengas enlaces para la edición de las distintas coas
+(22:14:18) Manuel Rego: [U] cosas
+(22:14:29) Manuel Rego: [U] ya que normalmente eso se hará una vez y luego se usará
+(22:14:36) Manuel Rego: [U] no es una pantalla que necesite acceso directo
+(22:14:55) Manuel Rego: [U] luego desde la principal puedes tener acceso directo a lo de las clases para poner las faltas de asistencia y si quieres también a los informes
+http://jquerymobile.com/demos/1.2.0/docs/lists/lists-icons.html
+http://jquerymobile.com/demos/1.2.0/docs/lists/lists-thumbnails.html
 
-        Comprobar que ha guardado los datos
+
+        * Comprobar que han guardado los datos
 
 
-        Enlazar pantalla de edición de estudiantes.
-        Crear pantalla de edición de actividades
+        * Enlazar pantalla de edición de estudiantes.
+        * Crear pantalla de edición de actividades
+        * Revisar y actualizar este TODO a partir de la memoria.
 
+-----------------------------------------------------------------------------------
 --- SNIPPETS:
 [],
             successCB,

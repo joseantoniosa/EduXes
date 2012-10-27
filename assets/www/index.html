@@ -57,16 +57,23 @@
 
             </div>
             <div data-role="footer" class="footer-docs" data-theme="c">
+                <div data-role="navbar">
+        <ul>
+            <li><a href="#" onClick="generalListAttendance();" >Attendance</a></li>
+            <li><a href="#">Other</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div><!-- /navbar -->
                 <p   style="text-align:center;"  id="teachers_name"></p>
             </div>
         </div>
-
+<!-- End of Main Window //-->
 
 
 <!-- List of Groups of today  //-->
     <div data-role="page" id="daily_schedule">
 
-        <div data-role="header" data-add-back-btn="true" data-theme="c">
+        <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="c">
             <h1 id="current_day"> Current Day</h1>
         </div>
         <div data-role="content" data-theme="c">
@@ -92,7 +99,7 @@
             </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
                 <p>
-                    Atrás
+                    Students Attendance
                 </p>
              </div>
 </div>
@@ -118,24 +125,55 @@
 </div>
 
 
+<!--TODO: List of Attendance //-->
+<div data-role="page" id="general_list_attendance" data-add-back-btn="true">
+
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+                <h1 id="current_group_attendance" >Student List for Group</h1>
+            </div>
+            <div data-role="content">
+<!--- [Photo]-[Surname, Name ] [R/A/P]<combobox> //-->
+                <ul data-role="listview" id="list_attendance_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+                <p>
+                    List Students Attendance
+                </p>
+             </div>
+</div>
+
+
+
+<div data-role="page" id="list_groups" data-add-back-btn="true">
+            <div data-role="header"  data-add-back-btn="true"  >
+                <h1>Lista de Grupos</h1>
+            </div>
+           <div data-role="content">
+
+                <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+            </ul>
+            </div>
+			<div data-role="footer"  data-rel="back" data-theme="d">
+            </div>
+</div>
+
 <!--
     ----------------------------------------------------------------------------------------------------------
     //-->
-<div data-role="page" id="lista_grupos" data-add-back-btn="true">
+<div data-role="page" id="list_groups_to_edit" data-add-back-btn="true">
             <div data-role="header"  data-add-back-btn="true"  >
                 <h1>Lista de Grupos</h1>
-			</div>
-			   <div data-role="content">
+            </div>
+               <div data-role="content">
 
-                <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
-			    </ul>
+                <ul id="groups_to_edit_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+                </ul>
 
 <!--                 <h3 data-role="listview" id="groups_ul"  ></h3> -->
             </div>
-			<a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a>
-			<div data-role="footer"  data-rel="back" data-theme="d">
+            <a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a>
+            <div data-role="footer"  data-rel="back" data-theme="d">
             </div>
-
 </div>
 <div data-role="page" id="edit_groups" data-add-back-btn="true">
             <div data-role="header"  data-add-back-btn="true" >
@@ -204,8 +242,8 @@
 </div>
 
 <!--
+    View attendance
  -->
-
 
 
 <div data-role="page" id="edit_students">

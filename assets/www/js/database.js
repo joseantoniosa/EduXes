@@ -251,7 +251,37 @@ function createDB(tx) {
 
    function queryGroupsDB(tx) {
 	   	log("Query Groups \n");
-    	tx.executeSql('SELECT * FROM GROUPS'); //, [], queryGroupsSuccess, errorCB);
+    	tx.executeSql('SELECT * FROM GROUPS', [],
+            dbSuccessFunc = function(tx,rs){
+                 // TODO: fill #groups_ul"
+
+       $('#groups_ul').empty();
+       for (var i=0;i<len;i++) {
+           html = "<li><h3> ";
+// listStudentsAttendance (id_group, -1), -1=> any session
+           html += "<a onClick='id_global="+ results.rows.item(i).id + "; table_global=\"groups\"; ";
+           html += " listStudents("+results.rows.item(i).id  +",-1 );'  "; // TODO 
+           html += " href='index.html#list_students_attendance' data-transition='slideup'>"; // TODO 
+           html += results.rows.item(i).data +"</a></h3>";
+           html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+           html += "</a></li>";
+           $('#groups_ul').append(html);
+       }
+       $('#groups_ul').listview('refresh');
+
+
+
+
+
+
+                 },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert("Error");
+                log(" There has been an error Select * from groups : " + e.message);
+                return false;
+            }
+    	);
 	}
    function queryStudentsDB(tx) {
 	   log("Query Students \n");
@@ -329,7 +359,7 @@ function createDB(tx) {
    function queryGroupsSuccess(tx, results) {
 	   var html="";
 
-       $('#groups_ul').empty();
+       $('#groups_to_edit_ul').empty();
 	   for (var i=0;i<len;i++) {
            html = "<li><h3> ";
 // listStudentsAttendance (id_group, -1), -1=> any session
@@ -339,9 +369,9 @@ function createDB(tx) {
            html += results.rows.item(i).data +"</a></h3>";
            html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
            html += "</a></li>";
-           $('#groups_ul').append(html);
+           $('#groups_to_edit_ul').append(html);
 	   }
-	   $('#groups_ul').listview('refresh');
+	   $('#groups_to_edit_ul').listview('refresh');
    }
 
 // XXX: Esta función es llamada demasiadas veces ¿por qué?
