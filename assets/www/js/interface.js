@@ -170,13 +170,15 @@ function addNewActivity() { // TODO
 //TODO: 1st. List groups and check one, 2nd. List Attendance by Group & date?
 function generalListAttendance() {
 
+
     $.mobile.showPageLoadingMsg();
 // select group
 // select date - week
 // list attendance => general_listattendance
-    chooseGroup();
-    $.mobile.changePage("#list_groups"); // Primero lista los grupos, elige uno
-//    $.mobile.changePage("#general_list_attendance");
+    loadGroupsAttendance(global_db);
+
+//    $.mobile.changePage("#list_groups"); // Primero lista los grupos, elige uno
+    $.mobile.changePage("#list_groups_attendance");
 }
 
 function listStudents(id_group)
@@ -192,6 +194,22 @@ function listStudents(id_group)
 	$.mobile.changePage("#list_students", { transition: "slideup"} );
 
 }
+/*
+ * For list of Attendance: Students
+ */
+function listStudentsByGroupAttendance(id_group) {
+    $.mobile.showPageLoadingMsg();
+
+    id_global=id_group ;  //local variable goes global
+    table_global='STUDENTS';
+
+    loadStudentsAttendanceByGroup(global_db);
+
+    $.mobile.changePage("#list_students_attendance_by_group", { transition: "slideup"} );
+
+
+}
+
 
 /*
  * Attendance-Punctuality-Behavior
@@ -235,12 +253,11 @@ function Attendance(id_student){
     $.mobile.showPageLoadingMsg();
 
     id_global = id_student;      //local variable goes global
-
     table_global = 'STUDENTS';
 
     loadStudentAttendance(global_db);
 
-    $.mobile.changePage("#edit_students_attendance");
+    $.mobile.changePage("#edit_students_attendance", { transition: "slideup"});
 
 }
 

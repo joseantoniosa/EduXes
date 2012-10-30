@@ -104,6 +104,23 @@
              </div>
 </div>
 
+<!--List of students:  List of Attendance //-->
+<div data-role="page" id="list_students_attendance_by_group" data-add-back-btn="true">
+
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+                <h1 id="current_group_attendance" >Student List for Group</h1>
+            </div>
+            <div data-role="content">
+<!--- TODO: Fill Table  //-->
+                <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+                <p>
+                    Students Attendance
+                </p>
+             </div>
+</div>
+
 <!-- // -->
 <!--List of students:  Assessment //-->
 <div data-role="page" id="list_students_assessment" data-add-back-btn="true">
@@ -132,8 +149,7 @@
                 <h1 id="current_group_attendance" >Student List for Group</h1>
             </div>
             <div data-role="content">
-<!--- [Photo]-[Surname, Name ] [R/A/P]<combobox> //-->
-                <ul data-role="listview" id="list_attendance_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+                <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
             </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
                 <p>
@@ -141,6 +157,23 @@
                 </p>
              </div>
 </div>
+
+<!--
+    List Students Attendance
+//-->
+<div data-role="page" id="list_groups_attendance" data-add-back-btn="true">
+            <div data-role="header"  data-add-back-btn="true"  >
+                <h1>Lista de Asistencia - Grupos</h1>
+            </div>
+           <div data-role="content">
+
+                <ul id="groups_attendance_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+            </ul>
+            </div>
+            <div data-role="footer"  data-rel="back" data-theme="d">
+            </div>
+</div>
+
 
 
 
