@@ -564,7 +564,7 @@ function queryStudentsAttendanceSuccess(tx, results) {
  * Tabla con lista de alumnos y sus faltas de puntualidad, etc...
  * TODO: Falta la lista de alumnos, podría ir una ventana para gestionar las faltas de cada alumno...
  *  Como construyo una tabla?, anoto todos los días, o sólo los días en los que faltó el alumno en cuestión
- *  Se podría hacer una primera pasada para ver cuántas columnas tiene de máximo, 
+ *  Se podría hacer una primera pasada para ver cuántas columnas tiene de máximo,
  * XXX: Any idea about table layout?
  *
  */

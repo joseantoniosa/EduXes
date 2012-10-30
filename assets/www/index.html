@@ -59,15 +59,65 @@
             <div data-role="footer" class="footer-docs" data-theme="c">
                 <div data-role="navbar">
         <ul>
-            <li><a href="#" onClick="generalListAttendance();" >Attendance</a></li>
-            <li><a href="#">Other</a></li>
-            <li><a href="#">Settings</a></li>
+
+            <li><a href="#" onClick="  "  data-role="button" data-icon="star" > Other</a></li>
+            <li><a href="#" onClick="generalListReports();"  data-role="button" data-icon="grid" >Reports</a></li>
+            <li><a href="#" onClick="generalListSettings();" data-role="button" data-icon="gear" >Settings</a></li>
         </ul>
     </div><!-- /navbar -->
                 <p   style="text-align:center;"  id="teachers_name"></p>
             </div>
         </div>
 <!-- End of Main Window //-->
+
+
+<div data-role="page" id="list_reports" data-add-back-btn="true">
+
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+                <h1>Reports</h1>
+            </div>
+            <div data-role="content">
+
+                <ul data-role="listview" id="list_reports_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="d" >
+                <li><a href="#" onClick="generalListAttendance();" >Attendance</a></li>
+                <li><a href="#" onClick="" >Assessment</a></li>
+                <li><a href="#" onClick="" >Other</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+             </div>
+</div>
+
+
+<div data-role="page" id="list_settings" data-add-back-btn="true">
+
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+                <h1>Settings</h1>
+            </div>
+            <div data-role="content">
+
+                <ul data-role="listview" id="list_settings_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="d" >
+                    <li><a href="#" onClick=" " >Groups</a></li>
+                    <li><a href="#" onClick=" " >Students</a></li>
+                    <li><a href="#" onClick=" " >Activities</a></li>
+
+
+                </ul>
+
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+             </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- List of Groups of today  //-->

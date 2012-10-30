@@ -261,6 +261,16 @@ function Attendance(id_student){
 
 }
 
+function generalListReports(){
+    $.mobile.showPageLoadingMsg();
+    $.mobile.changePage("#list_reports", { transition: "slideup"});
+}
+
+
+function generalListSettings(){
+    $.mobile.showPageLoadingMsg();
+    $.mobile.changePage("#list_settings", { transition: "slideup"});
+}
 
 // lista_alumnos, list_students
 // Generic functions

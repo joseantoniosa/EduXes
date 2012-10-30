@@ -82,6 +82,9 @@ Steps:
     27/10/2012:
        Queda: Línea 263-264 de  database.js, adaptar para que haga el listado de grupos, y que llame al listado
         de asistencia por grupo
+    29/10/2012: Línea 565 y siguientes de database.js,
+        Construir el listado de asistencia por estudiante.
+
         REORGANIZAR EL CÓDIGO PARA DARLE MÁS VISIBILIDAD
 
 ----------------------- TODO ------ Pendiente ------------
@@ -115,9 +118,15 @@ Máxima prioridad:
 (22:14:55) Manuel Rego: [U] luego desde la principal puedes tener acceso directo a lo de las clases para poner las faltas de asistencia y si quieres también a los informes
 http://jquerymobile.com/demos/1.2.0/docs/lists/lists-icons.html
 http://jquerymobile.com/demos/1.2.0/docs/lists/lists-thumbnails.html
-
+        * Abstraer la "inserción-actualización".
+            - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
+            - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
+                que determinará si existen esos datos o no.
 
         * Comprobar que han guardado los datos
+        * Ventana Settings para edición de estudiantes, grupos, actividades.
+        * Ventana Reports para visualizar los informes de faltas, notas (en función de actividades)
+
 
 
         * Enlazar pantalla de edición de estudiantes.
