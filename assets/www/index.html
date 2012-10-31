@@ -12,7 +12,7 @@
 <script type="text/javascript" src="js/database.js"></script>
 <script type="text/javascript" src="js/interface.js"></script>
 
-<link rel="stylesheet" type="text/css" href="js/jquery/jquery.mobile-1.1.1.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.1.css" />
 <script type="text/javascript" >
 	document.addEventListener("deviceready", onDeviceReady, false);
 </script>
@@ -56,15 +56,15 @@
                 </div>
 
             </div>
-            <div data-role="footer" class="footer-docs" data-theme="c">
+
                 <div data-role="navbar">
         <ul>
-
             <li><a href="#" onClick="  "  data-role="button" data-icon="star" > Other</a></li>
             <li><a href="#" onClick="generalListReports();"  data-role="button" data-icon="grid" >Reports</a></li>
             <li><a href="#" onClick="generalListSettings();" data-role="button" data-icon="gear" >Settings</a></li>
         </ul>
     </div><!-- /navbar -->
+                <div data-role="footer" class="footer-docs" data-theme="c">
                 <p   style="text-align:center;"  id="teachers_name"></p>
             </div>
         </div>
@@ -114,14 +114,8 @@
 
 
 
-
-
-
-
-
-
 <!-- List of Groups of today  //-->
-    <div data-role="page" id="daily_schedule">
+    <div data-role="page" id="daily_schedule"   data-add-back-btn="true" >
 
         <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="c">
             <h1 id="current_day"> Current Day</h1>
@@ -154,22 +148,33 @@
              </div>
 </div>
 
+
+
 <!--List of students:  List of Attendance //-->
 <div data-role="page" id="list_students_attendance_by_group" data-add-back-btn="true">
-
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
-                <h1 id="current_group_attendance" >Student List for Group</h1>
-            </div>
-            <div data-role="content">
-<!--- TODO: Fill Table  //-->
-                <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
-            </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-                <p>
-                    Students Attendance
-                </p>
-             </div>
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+        <h1 id="current_group_attendance_by_group" >Student List for Group</h1>
+    </div>
+    <div data-role="content">
+<!--- XXX: Fill Table  //-->
+<!--- TODO: Fill Table  queryStudentsAttendanceByGroupSuccess  //-->
+    <div >
+        <div data-role="navbar" data-iconpos="notext" >
+            <ul>
+            <li><a href="#" onClick="studentsAttendanceListPrevious();" data-role="button" data-icon="arrow-l"  >Previous</a></li>
+            <li><label id="students_attendance_by_groups_li"></label></li>
+            <li><a href="#" onClick="studentsAttendanceListNext();" data-role="button"  data-icon="arrow-r" >Next</a></li>
+            </ul>
+        </div>  <!-- /navbar -->
+        <table data-role="table" id="students_attendance_by_groups_table" data-mode="reflow">
+        </table>
+    </div>
+    </div>
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+    <p>Students Attendance</p>
+    </div>
 </div>
+
 
 <!-- // -->
 <!--List of students:  Assessment //-->
@@ -271,7 +276,7 @@
 
 <!--  TODO __ vv ___  -->
 
-<div data-role="page" id="list_activities">
+<div data-role="page" id="list_activities"   data-add-back-btn="true" >
 
 
             <div data-role="header"  data-add-back-btn="true" >
@@ -329,7 +334,7 @@
  -->
 
 
-<div data-role="page" id="edit_students">
+<div data-role="page" id="edit_students"   data-add-back-btn="true" >
 
             <div data-role="header"  data-add-back-btn="true" >
                 <h1>Edición de Alumnos </h1>
@@ -343,7 +348,7 @@
     </div>
 </div>
 
-<div data-role="page" id="edit_activities">
+<div data-role="page" id="edit_activities"    data-add-back-btn="true" >
 
             <div data-role="header"  data-add-back-btn="true" >
                 <h1>Edición de Actividades </h1>

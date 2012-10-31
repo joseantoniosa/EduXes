@@ -353,10 +353,15 @@ function queryStudentsByGroupDB(tx) {
             });
    }
 
+// TODO: Rellenar con el query para averiguar asistencia, etc.. de los alumnos de tal grupo
+//          de entre una fecha dada. global_actual_date
+// XXX: Rellenar con datos reales
+
    function queryStudentsAttendanceByGroupDB(tx){
 
+// buscar el lunes de global_actual_date
+// SELECT * FROM STUDENTS, ATTENDANCE WHERE id_group= and... and fecha<fecha_primer and fecha>fecha_segunda
        var sql ='SELECT * FROM STUDENTS WHERE id_group='+id_global;
-       alert("queryStudentsAttendanceByGroupSuccess "+sql);
 
        log(" queryStudentsAttendancByGroupeDB " + sql);
        tx.executeSql(sql,[], queryStudentsAttendanceByGroupSuccess,
@@ -574,14 +579,25 @@ function queryStudentsAttendanceSuccess(tx, results) {
 function queryStudentsAttendanceByGroupSuccess(tx, results) {
     var len = results.rows.length;
     var html = "";
+
     var id = 0;
     var name = "";
     var surname ="";
     var id_group =0;
     var id_session = global_session; //
-    var ul_list =$('#students_attendance_by_groups_ul');
 
-    ul_list.empty();
+
+    var table_list =$('#students_attendance_by_groups_table');
+//    var table_list =$('#students_attendance_by_groups_table');
+
+    $('#current_group_attendance_by_group').text("Group");
+    $('#students_attendance_by_groups_li').text(global_actual_date);
+
+    table_list.empty();
+    html =' <thead><tr> <th><abbr title="Name">Name</abbr></th>';
+    html +=' <th>M</th> <th>T</th> <th>W</th>   <th>T</th>  <th>F</th>   </tr> </thead> <tbody>';
+    table_list.append(html);
+
 
     for (var i=0;i<len;i++) {
         id = results.rows.item(i).id;
@@ -589,25 +605,19 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) {
         surname = results.rows.item(i).surname;
         id_group = results.rows.item(i).id_group;
 
-        html = "<li>";
-//         html += "<div data-role='fieldcontain'>";
-//         html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
-//         html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
+        html ="<tr>";
+        html +="<td>"+surname + " "+ name+"</td>";
+        html +="<td> 1 </td>"; // Faltas de lunes
+        html +="<td> 1 </td>";// Faltas de martes
+        html +="<td> 1 </td>";// Faltas de miércoles
+        html +="<td> 0 </td>";// Faltas de jueves
+        html +="<td> 1 </td>";// Faltas de viernes
+        html +="</tr>";
 
-        html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-        html += "</a>";
-        html += "<label>"+ surname +" "+ name +"</label>";
-// Select combo :
-        html +="";
-
-        html +="Here goes a table ";
-
-        html += "</li>";
-        ul_list.append(html);
-
+        table_list.append(html);
     }
 
-    ul_list.listview('refresh');
+
 
 }
 

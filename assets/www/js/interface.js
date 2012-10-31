@@ -72,7 +72,7 @@ function initialize_data() {
     var a_today = new Date(); // Today
     var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
     $("#daily_date").val(today);
-
+    global_actual_date = today;
     $("#teachers_name").text(" Geography");
 
 }
@@ -81,7 +81,7 @@ function initialize_data() {
 // Open Daily work page: list of groups
 function open_daily_page() {
     var this_date = $("#daily_date").val();
-
+// global_actual_date
     if (this_date != "") {
         var a_date = new Date(this_date);
         if (a_date.getDay() == 6 || a_date.getDay() == 0) {
@@ -91,6 +91,9 @@ function open_daily_page() {
             $.mobile.showPageLoadingMsg();
             week_day_global = a_date.getDay();
             loadSchedule(global_db, week_day_global);
+
+            global_actual_date = this_date;
+
             $("#current_day").text(this_date);
             $.mobile.changePage("#daily_schedule");
         }
@@ -207,8 +210,30 @@ function listStudentsByGroupAttendance(id_group) {
 
     $.mobile.changePage("#list_students_attendance_by_group", { transition: "slideup"} );
 
+}
+
+// TODO: Implementar esta funcion para la paginación, va una semana atrás
+function studentsAttendanceListPrevious() {
+    //global_actual_date -=7 ; // es una fecha, buscar como se quita una semana
+    var actualDate = new Date(global_actual_date);
+    var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()-7);
+    global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
+
+    listStudentsByGroupAttendance(id_global);
+
+// recarga la página list_students_attendance_by_group, debe llamar a la función que llenó los datos
+}
+// TODO: Implementar esta funcion para la paginación, va una semana adelante
+function studentsAttendanceListNext() {
+    var actualDate = new Date(global_actual_date);
+    var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+7);
+    global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
+
+    listStudentsByGroupAttendance(id_global);
+    // recarga la página list_students_attendance_by_group, debe llamar a la función que llenó los datos
 
 }
+
 
 
 /*

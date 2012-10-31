@@ -84,6 +84,8 @@ Steps:
         de asistencia por grupo
     29/10/2012: Línea 565 y siguientes de database.js,
         Construir el listado de asistencia por estudiante.
+    30/10/2012: Línea 365  queryStudentsAttendanceByGroupDB queda buscar el SELECT adecuado
+            y queryStudentsAttendanceByGroupSuccess falta por escribir los datos
 
         REORGANIZAR EL CÓDIGO PARA DARLE MÁS VISIBILIDAD
 
