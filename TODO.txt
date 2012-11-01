@@ -86,6 +86,10 @@ Steps:
         Construir el listado de asistencia por estudiante.
     30/10/2012: Línea 365  queryStudentsAttendanceByGroupDB queda buscar el SELECT adecuado
             y queryStudentsAttendanceByGroupSuccess falta por escribir los datos
+        http://momentjs.com/docs/
+    31/10/2012:
+        Obtuve el lunes y el viernes de la semana en curso, hubo que copiar objetos.
+        Pendiente leer y  escribir los datos en la base de datos
 
         REORGANIZAR EL CÓDIGO PARA DARLE MÁS VISIBILIDAD
 

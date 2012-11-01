@@ -29,7 +29,7 @@ var week_day_global=-1;
 // new API:
 var global_db;
 var global_session; // selected session
-var global_actual_date ;
+var global_actual_date ; // Date
 
 // ENUM
 var STATE_NONE = 0;
@@ -68,7 +68,7 @@ function createDB(tx) {
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
                 alert("Error");
-                alert(" There has been an error 0: " + e.message);
+                alert(" There has been an error 0: " + e);
                 return false;
                 }
             );  // To be removed on production
@@ -85,11 +85,10 @@ function createDB(tx) {
             dbSuccessFunc = function(tx,rs){ return true;},
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                alert(" There has been an error 2: " + e.message);
+                alert(" There has been an error 2: " + e);
                 return false;
                 });  // To be removed on production
-        var create_students="CREATE TABLE IF NOT EXISTS STUDENTS ";
+        var create_students="CREATE TABLE IF NOT EXISTS students ";
         create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
         create_students +=" repeteated integer, n_date text , photo text, ";
         create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
@@ -99,8 +98,7 @@ function createDB(tx) {
             dbSuccessFunc = function(tx,rs){ return true;  },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                alert(" There has been an error 3: " + e.message);
+                alert(" There has been an error 3: " + e);
                 return false;
                 });
 
@@ -112,8 +110,7 @@ function createDB(tx) {
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                alert(" There has been an error 4: " + e.message);
+                alert(" There has been an error 4: " + e);
                 return false;
                 });
 
@@ -128,29 +125,32 @@ function createDB(tx) {
             dbSuccessFunc = function(tx,rs){ return true;  },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                alert(" There has been an error 5: " + e.message);
+                alert(" There has been an error 5: " + e);
                 return false;
                 });
 
-        var create_attendance = "DROP TABLE IF EXISTS attendance;"; // To be removed on production
-        create_attendance += " CREATE  TABLE IF NOT EXISTS attendance ( id  integer primary key , ";
-        create_attendance += " id_group integer, id_student integer, id_session integer, type integer, date text, ";
-        create_attendance +=" FOREIGN KEY(id_session) REFERENCES sessions(id));";
+        var create_attendance = "DROP TABLE IF EXISTS ATTENDANCE;"; // To be removed on production
+        create_attendance += " CREATE TABLE IF NOT EXISTS ATTENDANCE ( id  integer primary key , ";
+        create_attendance += " id_group integer, id_student integer, id_session integer, a_type integer, a_date text, ";
+        create_attendance += " FOREIGN KEY(id_student) REFERENCES students(id),";
+        create_attendance += " FOREIGN KEY(id_group) REFERENCES groups(id),";
+        create_attendance += " FOREIGN KEY(id_session) REFERENCES sessions(id));";
+
 
     //tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
         tx.executeSql(create_attendance,[],
-            dbSuccessFunc = function(tx,rs){ return true;  },
+            dbSuccessFunc = function(tx,rs){
+                alert(" Table Attendance created: " + create_attendance);
+                return true;  },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                alert(" There has been an error create_attendance: " + e.message);
+                alert(" There has been an error create_attendance: " + e);
                 return false;
                 });
 
 
     }
-    function populateDB(tx) {
+function populateDB(tx) {
 
 
 // Groups
@@ -162,6 +162,7 @@ function createDB(tx) {
         var header="INSERT INTO STUDENTS ( id_group, name, surname, photo) VALUES (";
         tx.executeSql(header +'0, "0First"," Student 0", "f001.png" )');
         tx.executeSql(header +'0, "0Second"," Student 0", "f002.png" )');
+        tx.executeSql(header +'0, "Bis "," Maxi ", "f008.png" )');
         tx.executeSql(header +'0, "0Third "," Student 0", "f003.png" )');
         tx.executeSql(header +'1, "First",  " Student",   "f004.png" )');
         tx.executeSql(header +'1, "Second"," Student", "f005.png" )');
@@ -187,10 +188,12 @@ function createDB(tx) {
         // populate:
         var header="INSERT INTO teacher_schedule ( id_session, day , id_group ) VALUES (";
         tx.executeSql(header +'0, 1, 0 )'); // 1st hour (0), Monday (1)  1st group (0)
+        tx.executeSql(header +'1, 1, 1 )'); // 2nd hour (1), Monday (1)  2nd group (1)
         tx.executeSql(header +'2, 1, 1 )'); // 3rd hour (2), Monday (1)  2nd group (1)
         tx.executeSql(header +'0, 2, 0 )'); // 1st hour (0), Tuesday (2)  1st group (0)
         tx.executeSql(header +'5, 2, 1 )'); // 6th hour (2), Tuesday (2)  2nd group (1)
         tx.executeSql(header +'0, 3, 1 )'); // 1st hour (0), Wednesday (3)  2nd group (1)
+        tx.executeSql(header +'1, 3, 2 )'); // 2nd hour (1), Wednesday (3)  3nd group (2)
         tx.executeSql(header +'2, 3, 0 )'); // 3rd hour (2), Wednesday (3)  1st group (0)
         tx.executeSql(header +'0, 4, 0 )'); // 1st hour (0), Thursday (4)  1st group (0)
         tx.executeSql(header +'2, 4, 1 )'); // 3rd hour (2), Thursday (4)  2nd group (1)
@@ -203,16 +206,35 @@ function createDB(tx) {
                 alert(" There has been an error 00: " + e.message);
                 return false;
                 }); // 3rd hour (2), Friday (5)  1st group (1)
-// SELECT id_session, day, id_group FROM teacher_schedule WHERE day=  ORDER BY id_session;
+;
 
 
+// Attendance:
+//  Careful with sessions, date, and id_group.  Should be enter by hand.
+        var header ="INSERT INTO ATTENDANCE ( id_group , id_student, id_session, type, a_date) VALUES (";
+        tx.executeSql(header +'0, 0, 0,1, date(\'now\')   );'); // 0,          0,          0,         1,   date('now')
+        tx.executeSql(header +'0, 0, 1,1, date(\'now\')   );',[],
+            dbSuccessFunc = function(tx,rs){ return true; },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert("Error inserting data ");
+                alert(" There has been an error 00: " + e);
+                return false;
+                }
+        );
 
+        tx.executeSql(header +'1, 0, 1,1, date(\'now\')   );',[],
+            dbSuccessFunc = function(tx,rs){ return true; },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert("Error inserting data ");
+                alert(" There has been an error 00: " + e);
+                return false;
+                }
+        );
 
-        var header ="INSERT INTO attendance (id, id_group , id_student, id_session, type, date) VALUES (";
-//        tx.executeSql(header+ "NULL,   ); ");
-//        tx.executeSql(header+ "NULL,   ); ");
-//        tx.executeSql(header+ "NULL,   ); ");
-
+        // 0,          0,          1,         1,   date('now')
+//
 
         //
 /*
@@ -361,14 +383,52 @@ function queryStudentsByGroupDB(tx) {
 
 // buscar el lunes de global_actual_date
 // SELECT * FROM STUDENTS, ATTENDANCE WHERE id_group= and... and fecha<fecha_primer and fecha>fecha_segunda
-       var sql ='SELECT * FROM STUDENTS WHERE id_group='+id_global;
+//       var sql ='SELECT * FROM STUDENTS WHERE id_group='+id_global;
 
+        var monday_date = clone(global_actual_date);
+        var friday_date = clone(global_actual_date);
+
+        monday_date= moment(monday_date).day(1).toDate(); // Monday
+        friday_date = moment(friday_date).day(5).toDate(); // Friday
+        /*
+    CREATE  TABLE IF NOT EXISTS ATTENDANCE ( id  integer primary key ,
+            id_group integer, id_student integer, id_session integer, type integer, date text,
+            FOREIGN KEY(id_session) REFERENCES sessions(id) );
+
+    CREATE TABLE IF NOT EXISTS STUDENTS (
+            id integer primary key, id_group integer not null, name text, surname text,
+            repeteated integer, n_date text ,
+            tutor TEXT, address TEXT, phone text, e_phone text, nation text,
+            FOREIGN KEY(group_id) REFERENCES groups(id));
+
+    CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text);
+
+      UPDATE t1 SET timeEnter = DATETIME('NOW')  WHERE rowid = new.rowid;
+
+*/
+        var sql = "SELECT GROUPS.id, STUDENTS.id_group, STUDENTS.id, STUDENTS.name, STUDENTS.surname, ";
+        sql += " ATTENDANCE.id_group, ATTENDANCE.id_student, ATTENDANCE.type, ATTENDANCE.a_date FROM ";
+        sql += " GROUPS, STUDENTS, ATTENDANCE ";
+        sql += " WHERE (groups.id=students.id_group AND groups.id = ATTENDANCE.id_group ) AND (groups.id = " + id_global;
+        sql += " AND students.id=ATTENDANCE.id_student )";
+        sql += " GROUP BY groups.id ORDER BY students.id ; ";
+
+
+        sql = "SELECT  STUDENTS.id_group, STUDENTS.id, STUDENTS.name, STUDENTS.surname, ";
+        sql += " ATTENDANCE.id_group, ATTENDANCE.id_student, ATTENDANCE.a_type, ATTENDANCE.a_date FROM ";
+        sql += " STUDENTS, ATTENDANCE ";
+        sql += " WHERE (students.id_group= ATTENDANCE.id_group ) AND ( ATTENDANCE.id_group = " + id_global;
+        sql += " AND students.id=ATTENDANCE.id_student )";
+        sql += " GROUP BY ATTENDANCE.id_group ORDER BY students.id ; ";
+
+
+
+        alert(sql);
        log(" queryStudentsAttendancByGroupeDB " + sql);
        tx.executeSql(sql,[], queryStudentsAttendanceByGroupSuccess,
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
-                alert("Error");
-                alert(" There has been an error queryStudentsAttendanceByGroupDB: " + e.message);
+                alert(" There has been an error queryStudentsAttendanceByGroupDB: " + e);
                 return false;
             });
 
@@ -588,10 +648,25 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) {
 
 
     var table_list =$('#students_attendance_by_groups_table');
-//    var table_list =$('#students_attendance_by_groups_table');
+
+
+
+//    tmp_date = moment(global_actual_date);
+//    var day_of_week = moment(tmp_date).day(); // Day of week 0-6
+//    // moment.weekdaysMin = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+//    var this_monday = tmp_date.substract('days', day_of_week );
+//    var this_friday = tmp_date.add('days',4- day_of_week ); // Friday = 4
+
+    var monday_date = clone(global_actual_date);
+    var friday_date = clone(global_actual_date);
 
     $('#current_group_attendance_by_group').text("Group");
-    $('#students_attendance_by_groups_li').text(global_actual_date);
+
+    monday_date= moment(monday_date).day(1); // Monday
+    friday_date = moment(friday_date).day(5); // Friday
+
+
+    $('#students_attendance_by_groups_li').text( textDateYear(monday_date.toDate()) + "- " + textDateYear(friday_date.toDate() ) );
 
     table_list.empty();
     html =' <thead><tr> <th><abbr title="Name">Name</abbr></th>';
@@ -669,7 +744,7 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
     var db2 = db;
 
     db2.transaction(function(tx) {
-        var sql ="INSERT INTO attendance ( id_group , id_student, id_session, type, date) VALUES (";
+        var sql ="INSERT INTO ATTENDANCE ( id_group , id_student, id_session, type, date) VALUES (";
         sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\" " + actual_date.toString()+"\" );";
         log("updateStudentState : " + sql + "\n");
 

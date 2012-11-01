@@ -21,12 +21,11 @@
 
 
 function onDeviceReady() {
-// TODO: it isn't exist create one:
 
 
-    $.mobile.showPageLoadingMsg();
+//    $.mobile.showPageLoadingMsg();// XXX: Doesn't Work'
 
-	var db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 200000); // global variable
+	var db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 5*1024*1024);
 	global_db=db;
 
 //	$("#etiqueta1").val("Alo France 02"); //results.rows.item(i).data);
@@ -49,7 +48,7 @@ function onDeviceReady() {
 
     $.mobile.changePage("#daily_work");
 
-    $("#daily_date").noWeekends ;
+
 
 // Callbacks:
     $("#daily_date").change(function() {
@@ -70,9 +69,13 @@ function init(){
 function initialize_data() {
     // set date to current date:  Month / Day /Year
     var a_today = new Date(); // Today
-    var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
+    var today = textDate(a_today);
+//    var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
     $("#daily_date").val(today);
-    global_actual_date = today;
+    global_actual_date = a_today;
+
+    $("#daily_date").noWeekends ;
+
     $("#teachers_name").text(" Geography");
 
 }
@@ -92,7 +95,7 @@ function open_daily_page() {
             week_day_global = a_date.getDay();
             loadSchedule(global_db, week_day_global);
 
-            global_actual_date = this_date;
+            global_actual_date = new Date(this_date);
 
             $("#current_day").text(this_date);
             $.mobile.changePage("#daily_schedule");
@@ -215,9 +218,9 @@ function listStudentsByGroupAttendance(id_group) {
 // TODO: Implementar esta funcion para la paginación, va una semana atrás
 function studentsAttendanceListPrevious() {
     //global_actual_date -=7 ; // es una fecha, buscar como se quita una semana
-    var actualDate = new Date(global_actual_date);
-    var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()-7);
-    global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
+    var actualDate = global_actual_date;
+    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()-7);
+    //global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
 
     listStudentsByGroupAttendance(id_global);
 
@@ -225,9 +228,9 @@ function studentsAttendanceListPrevious() {
 }
 // TODO: Implementar esta funcion para la paginación, va una semana adelante
 function studentsAttendanceListNext() {
-    var actualDate = new Date(global_actual_date);
-    var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+7);
-    global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
+    var actualDate = global_actual_date;
+    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+7);
+//    global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
 
     listStudentsByGroupAttendance(id_global);
     // recarga la página list_students_attendance_by_group, debe llamar a la función que llenó los datos
@@ -326,6 +329,9 @@ function deleteRecord(db, table, id){
 	   }
 
 }
+//
+// Utility functions:
+
 function help(field) {
     var message;
     var title;
@@ -367,6 +373,24 @@ function log(message) {
     }
 }
 
+function textDate(a_today){
+    var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
+    return today;
+}
+
+function textDateYear(a_today){
+    var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() ;
+    return today;
+}
+
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+}
 
 
 
