@@ -10,7 +10,10 @@ Classroom Management
 
 = Howto =
  Type date in "Month/Day/Year" format
+ Works Insert and View Attendance, Excused for student.
 
+
+ contact info : info@joseantonio.org
 
 = References =
     Siestta [http://siestta.sourceforge.net/index.html]
@@ -20,6 +23,8 @@ Classroom Management
  - #daily_schedule fills #groups_day_ul and calls to  listStudents() opens:
  - #list_students
 
+
+= Functions' Tree =
 queryStudentsSuccess
 
 function listStudentsAttendance

@@ -112,7 +112,7 @@ function listStudentsAttendance(id_group, id_session)
 
     loadStudentAttendance(global_db);
 
-    $.mobile.changePage("#list_students_attendance", { transition: "slideup"} );
+    $.mobile.changePage("#list_students_attendance" );
 
 }
 
