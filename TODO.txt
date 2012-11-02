@@ -90,6 +90,10 @@ Steps:
     31/10/2012:
         Obtuve el lunes y el viernes de la semana en curso, hubo que copiar objetos.
         Pendiente leer y  escribir los datos en la base de datos
+        database.js 132
+    2/11/2012:
+        Pendiente leer y  escribir los datos en la base de datos
+        database.js 132
 
         REORGANIZAR EL CÓDIGO PARA DARLE MÁS VISIBILIDAD
 

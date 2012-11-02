@@ -60,8 +60,6 @@ function onDeviceReady() {
 }
 
 function init(){
-//	log("Hello World \n");
-
     document.addEventListener("deviceready", onDeviceReady, false);
 }
 

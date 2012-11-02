@@ -128,28 +128,42 @@ function createDB(tx) {
                 alert(" There has been an error 5: " + e);
                 return false;
                 });
-
-        var create_attendance = "DROP TABLE IF EXISTS ATTENDANCE;"; // To be removed on production
-        create_attendance += " CREATE TABLE IF NOT EXISTS ATTENDANCE ( id  integer primary key , ";
-        create_attendance += " id_group integer, id_student integer, id_session integer, a_type integer, a_date text, ";
-        create_attendance += " FOREIGN KEY(id_student) REFERENCES students(id),";
-        create_attendance += " FOREIGN KEY(id_group) REFERENCES groups(id),";
-        create_attendance += " FOREIGN KEY(id_session) REFERENCES sessions(id));";
-
-
-    //tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
-        tx.executeSql(create_attendance,[],
+//
+        var sql1 = "DROP TABLE IF EXISTS ATTENDANCE; ";
+        tx.executeSql( sql1 ,[],
             dbSuccessFunc = function(tx,rs){
-                alert(" Table Attendance created: " + create_attendance);
                 return true;  },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert(" There has been an error create_attendance: " + e);
+                alert(" There has been an error sql1: " + e);
                 return false;
                 });
 
+        var sql2 = " DROP TABLE IF EXISTS attendance; ";
+        tx.executeSql( sql2 ,[],
+            dbSuccessFunc = function(tx,rs){
+                return true;  },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error sql2: " + e);
+                return false;
+                });
 
-    }
+        var create_attendance = "CREATE TABLE IF NOT EXISTS attendance (id integer primary key , ";
+        create_attendance += " id_group integer, id_student integer, id_session integer, a_type integer, a_date text, ";
+        create_attendance += " FOREIGN KEY (id_student) REFERENCES students (id), ";
+        create_attendance += " FOREIGN KEY (id_group) REFERENCES groups(id), ";
+        create_attendance += " FOREIGN KEY (id_session) REFERENCES sessions(id) );" ;
+        log(create_attendance);
+        tx.executeSql( create_attendance ,[],
+            dbSuccessFunc = function(tx,rs){
+                return true;  },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" Error:There has been an error create_attendance: " + e);
+                return false;
+                });
+}
 function populateDB(tx) {
 
 
@@ -211,24 +225,33 @@ function populateDB(tx) {
 
 // Attendance:
 //  Careful with sessions, date, and id_group.  Should be enter by hand.
-        var header ="INSERT INTO ATTENDANCE ( id_group , id_student, id_session, type, a_date) VALUES (";
-        tx.executeSql(header +'0, 0, 0,1, date(\'now\')   );'); // 0,          0,          0,         1,   date('now')
-        tx.executeSql(header +'0, 0, 1,1, date(\'now\')   );',[],
+        var header ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
+        sql = header +'0, 0, 0,1, date(\'now\').toDateString()   );'; // 0,          0,          0,         1,   date('now')
+        log(sql);
+        tx.executeSql(sql,[],
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error inserting data ");
-                alert(" There has been an error 00: " + e);
+                alert(" There has been an error inserting data attendance: " + e);
+                return false;
+                });
+        sql = header +'0, 0, 1,1, date(\'now\').toDateString()   );';
+        log(sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx,rs){ return true; },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error inserting data attendance: " + e);
                 return false;
                 }
         );
-
-        tx.executeSql(header +'1, 0, 1,1, date(\'now\')   );',[],
+        sql = header +'1, 0, 1,1, date(\'now\').toDateString()   );';
+        log(sql);
+        tx.executeSql(sql,[],
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error inserting data ");
-                alert(" There has been an error 00: " + e);
+                alert(" There has been an error attendance: " + e);
                 return false;
                 }
         );
@@ -414,12 +437,13 @@ function queryStudentsByGroupDB(tx) {
         sql += " GROUP BY groups.id ORDER BY students.id ; ";
 
 
-        sql = "SELECT  STUDENTS.id_group, STUDENTS.id, STUDENTS.name, STUDENTS.surname, ";
-        sql += " ATTENDANCE.id_group, ATTENDANCE.id_student, ATTENDANCE.a_type, ATTENDANCE.a_date FROM ";
+        sql = "SELECT  STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
+        sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
         sql += " STUDENTS, ATTENDANCE ";
-        sql += " WHERE (students.id_group= ATTENDANCE.id_group ) AND ( ATTENDANCE.id_group = " + id_global;
+        sql += " WHERE s_g_id=a_g_id AND ( ATTENDANCE.id_group = " + id_global;
         sql += " AND students.id=ATTENDANCE.id_student )";
-        sql += " GROUP BY ATTENDANCE.id_group ORDER BY students.id ; ";
+        sql += " ORDER BY s_id ; ";
+//        sql += " GROUP BY ATTENDANCE.id_group ORDER BY s_id ; ";
 
 
 
@@ -467,7 +491,8 @@ function queryGroupsSuccess(tx, results) {
         // listStudentsAttendance (id_group, -1), -1=> any session
         html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
         html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
-        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
+        html += " href='#' data-transition='slideup'>";
+//        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
         html += results.rows.item(i).data + "</a></h3>";
         html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
         html += "</a></li>";
@@ -496,11 +521,13 @@ function queryStudentsSuccess(tx, results) {
         // 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
         // 		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 
-        html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+        html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+// html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>" + results.rows.item(i).surname + " " + results.rows.item(i).name + "</label>";
-        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+//        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
         //		   html += "</div>";
         html += "</li>";
         // html += results.rows.item(i).id+"</a> </li>";
@@ -553,7 +580,8 @@ function queryStudentsSuccess(tx, results) {
            html += "<div data-role='fieldcontain'>";
            html += start;
 
-           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
+           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#' ";
+//           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
            html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ","+t_id_session + ");\">" + description + "</a>";
 
            html += "";
@@ -592,7 +620,8 @@ function queryStudentsAttendanceSuccess(tx, results) {
 
         html = "<li>";
 
-        html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+        html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+//         html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/"+photo +"' alt='" + surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>"+ surname +" "+ name +"</label>";
@@ -637,34 +666,24 @@ function queryStudentsAttendanceSuccess(tx, results) {
 
 
 function queryStudentsAttendanceByGroupSuccess(tx, results) {
+
     var len = results.rows.length;
     var html = "";
-
     var id = 0;
     var name = "";
     var surname ="";
     var id_group =0;
     var id_session = global_session; //
 
-
     var table_list =$('#students_attendance_by_groups_table');
 
-
-
-//    tmp_date = moment(global_actual_date);
-//    var day_of_week = moment(tmp_date).day(); // Day of week 0-6
-//    // moment.weekdaysMin = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-//    var this_monday = tmp_date.substract('days', day_of_week );
-//    var this_friday = tmp_date.add('days',4- day_of_week ); // Friday = 4
-
-    var monday_date = clone(global_actual_date);
+    var monday_date = clone(global_actual_date); // Javascript uses references, It has to be cloned.
     var friday_date = clone(global_actual_date);
 
     $('#current_group_attendance_by_group').text("Group");
 
     monday_date= moment(monday_date).day(1); // Monday
     friday_date = moment(friday_date).day(5); // Friday
-
 
     $('#students_attendance_by_groups_li').text( textDateYear(monday_date.toDate()) + "- " + textDateYear(friday_date.toDate() ) );
 
@@ -673,8 +692,11 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) {
     html +=' <th>M</th> <th>T</th> <th>W</th>   <th>T</th>  <th>F</th>   </tr> </thead> <tbody>';
     table_list.append(html);
 
+    alert("Cantidad de datos: "+ len);
+    var today = clone(monday_date); // empezamos en el lunes
 
     for (var i=0;i<len;i++) {
+
         id = results.rows.item(i).id;
         name = results.rows.item(i).name;
         surname = results.rows.item(i).surname;
@@ -682,16 +704,43 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) {
 
         html ="<tr>";
         html +="<td>"+surname + " "+ name+"</td>";
-        html +="<td> 1 </td>"; // Faltas de lunes
-        html +="<td> 1 </td>";// Faltas de martes
-        html +="<td> 1 </td>";// Faltas de miércoles
-        html +="<td> 0 </td>";// Faltas de jueves
-        html +="<td> 1 </td>";// Faltas de viernes
+        for(var j=1;j<6; j++) { // recorremos la semana, 0 es domingo
+            today = moment(today).day(i);
+            html +="<td>";
+            html +=  today.toDate() +" = "+ results.rows.item(i).a_date;
+//            html +=  (today.toDate()).toDateString() +" = "+ results.rows.item(i).a_date;
+            if (today.toDate().toDateString()==results.rows.item(i).a_date) {
+            // hoy es el día
+                html +=  results.rows.item(i).a_type; // Falta indicar la sessión
+            } else {
+                html +="N";
+            }
+
+            html +=  "</td>";
+        }
+/* // TODO: Verify
+        html +="<td>"+surname + " "+ name+"</td>";
+        html +="<td> "+ results.rows.item(i).a_type + "</td>"; // Faltas de lunes
+        html +="<td> "+ results.rows.item(i).a_date + " </td>";// Faltas de martes
+        html +="<td> M" +2 +" </td>";// Faltas de miércoles
+        html +="<td> "+results.rows.item(i).a_g_id +  " </td>";// Faltas de jueves
+        html +="<td> " +results.rows.item(i).s_id + "</td>";// Faltas de viernes
+
+*/
         html +="</tr>";
 
         table_list.append(html);
     }
-
+/*
+     var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
+ actual_date.toDateString()
+        sql = "SELECT  STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
+        sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
+        sql += " STUDENTS, ATTENDANCE ";
+        sql += " WHERE s_g_id=a_g_id AND ( ATTENDANCE.id_group = " + id_global;
+        sql += " AND students.id=ATTENDANCE.id_student )";
+        sql += " ORDER BY s_id ; ";
+*/
 
 
 }
@@ -710,52 +759,79 @@ function queryActivitiesSuccess(tx, results) {
 
    // Insert new group
    function insertNewGroup(db, name, other_data){
-	   var db2= db;
-	   var name2= name;
-	   var other_data2 = other_data;
 
-	   db2.transaction(function (tx) {
+	   db.transaction(function (tx) {
 		   var sql = 'INSERT INTO GROUPS ( data, other_data) VALUES (';
-		   sql  +=  '\"'  + name2 + '\" ,  \"'+ other_data2 + '\"  )' ;
+		   sql  +=  '\"'  + name + '\" ,  \"'+ other_data + '\"  )' ;
 		   tx.executeSql(sql);
 	   });
 	   $('#grupos_ul').listview('refresh');
    }
-// TODO : insert new Student
-   function 	insertNewStudent(db, name, surname, id_group) {
-	   var db2= db;
-	   var name2= name;
-	   var surname2 = surname;
-	   var group_id2 = id_group;
 
-	   db2.transaction(function (tx) {
-		   var sql = 'INSERT INTO STUDENTS ( id_group, name, surname) VALUES (';
-		   sql += group_id2 +',';
-		   sql +=  '\"'  + name2 + '\" ,  \"'+ surname2 + '\"  )' ;
-		   tx.executeSql(sql );
-	   });
-	   $('#students_ul').listview('refresh');
-}
-//
+    // Insert new Student
+    function insertNewStudent(db, name, surname, id_group) {
+
+        db.transaction(function(tx) {
+            var sql = 'INSERT INTO STUDENTS ( id_group, name, surname) VALUES (';
+            sql += group_id + ',';
+            sql += '\"' + name + '\" ,  \"' + surname + '\"  )';
+            tx.executeSql(sql);
+        });
+        $('#students_ul').listview('refresh');
+    }
+
+    //
+
 // Write Student's state
+// Insert data (Doesn't work)
 // TODO: Define SQL query
 function updateStudentState(db, id_student, id_group, id_session, state, actual_date ){
 
-    var db2 = db;
+    // check if it is new
+    // if new:
 
-    db2.transaction(function(tx) {
-        var sql ="INSERT INTO ATTENDANCE ( id_group , id_student, id_session, type, date) VALUES (";
+    db.transaction(function(tx) {
+        var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
+        sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\" " + actual_date.toDateString()+"\" );";
+
+        log("updateStudentState : " + sql + "\n");
+
+/*
+     var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
+ actual_date.toDateString()
+        sql = "SELECT  STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
+        sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
+        sql += " STUDENTS, ATTENDANCE ";
+        sql += " WHERE s_g_id=a_g_id AND ( ATTENDANCE.id_group = " + id_global;
+        sql += " AND students.id=ATTENDANCE.id_student )";
+        sql += " ORDER BY s_id ; ";
+*/
+
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx,rs){
+                return true;
+                },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                alert(" There has been an error updateStudentState: " + e);
+                return false;
+            } );
+    });
+    // if old:
+    /*db2.transaction(function(tx) {
+        var sql ="UPDATE attendance SET INSERT INTO ATTENDANCE ( id_group , id_student, id_session, type, date) VALUES (";
         sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\" " + actual_date.toString()+"\" );";
+        alert("Values inserted: " +sql );
         log("updateStudentState : " + sql + "\n");
 
         tx.executeSql(sql );
     });
-
+*/
 
 }
 //
-
-function insertNewActivity(db, name, other_data) {// TODO
+// POR_HACER
+function insertNewActivity(db, name, other_data) {
     var db2 = db;
     var name2 = name;
     var other_data2 = other_data;
@@ -789,11 +865,9 @@ function insertNewActivity(db, name, other_data) {// TODO
    }
 
 // load all
-
    function loadGroups(db) {
        db.transaction(queryGroupsDB);
    }
-
 
    function loadGroupsAttendance(db) {
 	   db.transaction(queryGroupsAttendanceDB);
@@ -823,10 +897,4 @@ function insertNewActivity(db, name, other_data) {// TODO
    function loadActivities(db) {
 	   db.transaction(queryActivitiesDB, errorCB, queryActivitiesSuccess);
    }
- /*
-  * loadTimeTable(db) {
-  * }
-  * + ...
-  *
-  * */
 
