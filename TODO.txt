@@ -92,27 +92,28 @@ Steps:
         Pendiente leer y  escribir los datos en la base de datos
         database.js 132
     2/11/2012:
-        Pendiente leer y  escribir los datos en la base de datos
+        Pendiente:
+             verificar la lectura y escritura de los datos en la base de datos de varias semanas.
         database.js 132
+
 
         REORGANIZAR EL CÓDIGO PARA DARLE MÁS VISIBILIDAD
 
 ----------------------- TODO ------ Pendiente ------------
         Pantalla principal:
 
-            * Concretar el menú principal ¿Menú desplegable estilo combobox?
+            * Elemento guardar en fichero.
 
         Pantalla de diario:
             *Colocar un número de sesión en la pantalla de diario
             *Quitar la apariencia de enlace <-> pulir la pantalla
-            *Añadir botón de "back"
 
         Pantalla de grupo:
             *Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
 Máxima prioridad:
 >>        *Además sería necesario una página de visualización de las faltas. Me centraré en estos tres puntos. <<<
-          * Leer los datos de la base de datos (faltas, etc..)<<
-          * Escribir los de la fecha correspondiente
+          * Leer los datos de la base de datos (faltas, etc..) (parcialmente hecho)<<
+          * Escribir los de la fecha correspondiente (parcialmente hecho, falta leerlos)
 (22:00:03) Manuel Rego: [U] sobre el UPDATE de los datos creo que ya hablamos el otro día
 (22:00:17) Manuel Rego: [U] lo normal es hacer un SELECT y luego INSERT o UPDATE según ya exista o no la información
 (22:00:46) Manuel Rego: [U] por ejemplo cuando llegas a la pantalla de estudiantes, y se cambia el valor de un estudiante (falta de puntualidad, mal comportamiento o lo que sea)
@@ -132,6 +133,9 @@ http://jquerymobile.com/demos/1.2.0/docs/lists/lists-thumbnails.html
             - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
             - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
                 que determinará si existen esos datos o no.
+
+function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indicar sessión - sesión(tipo de falta con letra) 1(2)
+
 
         * Comprobar que han guardado los datos
         * Ventana Settings para edición de estudiantes, grupos, actividades.

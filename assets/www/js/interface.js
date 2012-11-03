@@ -51,11 +51,12 @@ function onDeviceReady() {
 
 
 // Callbacks:
+/*
     $("#daily_date").change(function() {
         open_daily_page();
 
 	});
-
+//*/
 
 }
 
@@ -64,22 +65,24 @@ function init(){
 }
 
 // Load default data
+// TODO: Incorrect data retrieved from this $("#daily_date").
+
 function initialize_data() {
     // set date to current date:  Month / Day /Year
     var a_today = new Date(); // Today
-    var today = textDate(a_today);
-//    var today =  (a_today.getMonth() +1 )+ "/" + a_today.getDate() +"/"+  (1900+a_today.getYear());
-    $("#daily_date").val(today);
+
     global_actual_date = a_today;
 
     $("#daily_date").noWeekends ;
 
-    $("#teachers_name").text(" Geography");
+    $("#daily_date").val( textDate(a_today) );
+    $("#teachers_name").text("Geography");
 
 }
 
 //
 // Open Daily work page: list of groups
+// TODO: Error here
 function open_daily_page() {
     var this_date = $("#daily_date").val();
 // global_actual_date
@@ -90,8 +93,9 @@ function open_daily_page() {
         } else {
 
             $.mobile.showPageLoadingMsg();
-            week_day_global = a_date.getDay();
-            loadSchedule(global_db, week_day_global);
+            global_week_day = a_date.getDay();  // 1=> Monday
+            var week_day = clone(global_week_day);
+            loadSchedule(global_db, week_day);
 
             global_actual_date = new Date(this_date);
 
@@ -199,40 +203,48 @@ function listStudents(id_group)
 
 }
 /*
+ * => REPORT <=  Works(?)
  * For list of Attendance: Students
+ *
  */
-function listStudentsByGroupAttendance(id_group) {
+function listStudentsByGroupAttendance(id_group) { // report
     $.mobile.showPageLoadingMsg();
-
+    alert("Load Attendance ... date:"+ global_actual_date.toString());
     id_global=id_group ;  //local variable goes global
     table_global='STUDENTS';
 
-    loadStudentsAttendanceByGroup(global_db);
+    reportAttendanceDB(global_db);
 
     $.mobile.changePage("#list_students_attendance_by_group", { transition: "slideup"} );
 
 }
 
-// TODO: Implementar esta funcion para la paginación, va una semana atrás
+// TODO: Regression . Implementar esta funcion para la paginación, va una semana atrás
 function studentsAttendanceListPrevious() {
     //global_actual_date -=7 ; // es una fecha, buscar como se quita una semana
     var actualDate = global_actual_date;
-    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()-7);
-    //global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
+
+     global_actual_date= moment(actualDate).subtract('days', 7).toDate();
+//    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()-7);
+
 
     listStudentsByGroupAttendance(id_global);
-
-// recarga la página list_students_attendance_by_group, debe llamar a la función que llenó los datos
 }
+// recarga la página list_students_attendance_by_group,
+
+// Regression
 // TODO: Implementar esta funcion para la paginación, va una semana adelante
+// XXX: Where is the scope of global_actual_date;
+
 function studentsAttendanceListNext() {
     var actualDate = global_actual_date;
-    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+7);
-//    global_actual_date =  (newDate.getMonth() +1 )+ "/" + newDate.getDate() +"/"+  (1900+newDate.getYear());
 
+//    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+7);
+
+    global_actual_date= moment(global_actual_date).add('days', 7).toDate();
+    alert("Fecha siguiente "+ global_actual_date.toString());
     listStudentsByGroupAttendance(id_global);
-    // recarga la página list_students_attendance_by_group, debe llamar a la función que llenó los datos
-
+    // recarga la página list_students_attendance_by_group,
 }
 
 
@@ -347,7 +359,10 @@ function help(field) {
             title = "Classes";
             message =" No class on Weekend! ";
             break;
-
+        case "no_data":
+            title = "No Data";
+            message =" There is no data available ";
+            break;
         default:
             break;
         }
