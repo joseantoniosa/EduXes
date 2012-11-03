@@ -26,10 +26,12 @@ var DEBUG = true;
 var id_global;
 var table_global;
 // new API
+var global_id;
 var global_week_day=-1;
 var global_db;
 var global_session; // selected session
-var global_actual_date ; // Date
+var global_actual_date=null ; // Date
+var global_reports_date=null ; // Date for reports TODO: Date for reports
 
 // ENUM
 var STATE_NONE = 0;
@@ -67,7 +69,6 @@ function createDB(tx) {
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
                 alert(" There has been an error 0: " + e);
                 return false;
                 }
@@ -76,8 +77,7 @@ function createDB(tx) {
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                alert(" There has been an error 1: " + e.message);
+                alert(" There has been an error 1: " + e);
                 return false;
                 });
 
@@ -220,8 +220,8 @@ function populateDB(tx) {
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                alert(" There has been an error 00: " + e.message);
+
+                alert(" There has been an error 00: " + e);
                 return false;
                 }); // 3rd hour (2), Friday (5)  1st group (1)
 ;
@@ -286,14 +286,16 @@ function populateDB(tx) {
 **/
 
    }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
    function queryDB(tx) {
 	    tx.executeSql('SELECT * FROM GROUPS',[],
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
-                alert("Error");
-                log(" There has been an error Select * from groups : " + e.message);
+
+                log(" There has been an error Select * from groups : " + e);
                 return false;
             });
 	}
@@ -328,7 +330,7 @@ function queryGroupsDB(tx) {
  * For Students Attendance
  */
 function queryGroupsAttendanceDB(tx) {
-    log("Query Groups \n");
+    log("Query Groups Attendance \n");
     var ul_list = $('#groups_attendance_ul');
     tx.executeSql('SELECT * FROM GROUPS', [], dbSuccessFunc = function(tx, rs) {
         ul_list.empty();
@@ -347,8 +349,8 @@ function queryGroupsAttendanceDB(tx) {
     }, dbErrorFunc = function(ttx, e) {
         if (ttx.message)
             e = ttx;
-        alert("Error");
-        log(" There has been an error Select * from groups : " + e.message);
+
+        log(" There has been an error Select * from groups : " + e);
         return false;
     });
 }
@@ -362,8 +364,8 @@ function queryGroupsAttendanceDB(tx) {
         queryStudentsSuccess,
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
-                alert("Error");
-                log(" There has been an error queryStudentsDB: " + e.message);
+
+                log(" There has been an error queryStudentsDB: " + e);
                 return false;
             });
 	}
@@ -376,8 +378,8 @@ function queryStudentsByGroupDB(tx) {
     tx.executeSql(sql, [], queryStudentsSuccess, dbErrorFunc = function(tx, e) {
         if (tx.message)
             e = tx;
-        alert("Error");
-        log(" There has been an error queryStudentsByGroupDB: " + e.message);
+
+        log(" There has been an error queryStudentsByGroupDB: " + e);
         return false;
     });
 }
@@ -407,107 +409,90 @@ function queryStudentsByGroupDB(tx) {
 // => REPORT <= Works (?)
 // TODO: Rellenar con el query para averiguar asistencia, etc.. de los alumnos de tal grupo
 //          de entre una fecha dada. global_actual_date
-// XXX: Rellenar con datos reales
-
-
 // XXX: Falta añadir la sessión
-        /*var sql = "SELECT GROUPS.id, STUDENTS.id_group, STUDENTS.id, STUDENTS.name, STUDENTS.surname, ";
-        sql += " ATTENDANCE.id_group, ATTENDANCE.id_student, ATTENDANCE.type, ATTENDANCE.a_date FROM ";
-        sql += " GROUPS, STUDENTS, ATTENDANCE ";
-        sql += " WHERE (groups.id=students.id_group AND groups.id = ATTENDANCE.id_group ) AND (groups.id = " + id_global;
-        sql += " AND students.id=ATTENDANCE.id_student )";
-        sql += " GROUP BY groups.id ORDER BY students.id ; ";
-        //*/
 // ^^Not used, SESSIONS.id left
 
-    function queryReportAttendanceDB(tx) {// report->Attendance->Group
-
-        var sql = "SELECT GROUPS.id, GROUPS.data as g_description, STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
-        sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
-        sql += " STUDENTS, ATTENDANCE, GROUPS ";
-        sql += " WHERE (GROUPS.id=s_g_id";
-        sql += " AND s_g_id=a_g_id ) AND ( ATTENDANCE.id_group = " + id_global;
-        sql += " AND students.id=ATTENDANCE.id_student )";
-        sql += " ORDER BY s_id ; ";
-
-        log("report  queryStudentsAttendancByGroupDB (" + sql + ")");
-
-        tx.executeSql(sql, [], dbSuccessFunc = function(tx, results) {
-            var html = "";
-            var id = 0;
-            var name = "";
-            var surname = "";
-            var id_group = 0;
-            var len = results.rows.length;
-            if (len == 0) {
-                help("no_data");
-            }
-
-            var table_list = $('#students_attendance_by_groups_table');
-            // Javascript uses references, It has to be cloned.
-            var monday_date = clone(global_actual_date);
-            var friday_date = clone(global_actual_date);
-            var from_to = moment(monday_date).day(1).format("MM/DD") + "-" + moment(friday_date).day(5).format("MM/DD");
-
-            $('#students_attendance_by_groups_li').text(from_to);
-
-            if (len != 0)
-                $('#current_group_attendance_by_group').text(results.rows.item(0).g_description);
-
-            table_list.empty();
-            html = ' <thead><tr> <th><abbr title="Name">Name</abbr></th>';
-            html += ' <th>M</th> <th>T</th> <th>W</th>   <th>T</th>  <th>F</th>   </tr> </thead> <tbody>';
-            table_list.append(html);
-
-            for (var i = 0; i < len; i++) {
-                id = results.rows.item(i).id;
-                name = results.rows.item(i).name;
-                surname = results.rows.item(i).surname;
-                id_group = results.rows.item(i).id_group;
-
-                html = "<tr>";
-                html += "<td>" + surname + " " + name + "</td>";
-
-                for (var j = 1; j < 6; j++) {// recorremos la semana, 0 es domingo
-                    html += "<td>";
-                    //log(" queryStudentsAttendanceByGroupSuccess: [" + moment(monday_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
-                    if (moment(monday_date).day(j).toDate().toDateString() == results.rows.item(i).a_date) {
-                        html += results.rows.item(i).a_type;
-                        // Falta indicar la sessión
-                    } else {
-                        html += "-";
-                    }
-                    html += "</td>";
-                }
-                html += "</tr>";
-
-                table_list.append(html);
-            }
-
-        }, dbErrorFunc = function(tx, e) {
-            if (tx.message)
-                e = tx;
-            alert(" There has been an error queryReportAttendanceDB: " + e);
-            return false;
-        });
-
+function queryReportAttendanceSuccess(tx, results) {
+    var html = "";
+    var id = 0;
+    var name = "";
+    var surname = "";
+    var id_group = 0;
+    var len = results.rows.length;
+    if (len == 0) {
+        help("no_data");
     }
+    global_reports_date = clone(global_actual_date); // TODO: To be implemented, change global_actual_date y global_reports_date
+    var table_list = $('#students_attendance_by_groups_table');
+
+    var from_to = moment(global_actual_date).day(1).format("MM/DD") + "-" + moment(global_actual_date).day(5).format("MM/DD");
+
+    log("report queryReportAttendanceDB from_to (" + from_to + ")");
+
+    $('#students_attendance_by_groups_li').text(from_to);
+
+    if (len != 0)
+        $('#current_group_attendance_by_group').text(results.rows.item(0).g_description);
+
+    table_list.empty();
+    html = ' <thead><tr> <th><abbr title="Name">Name</abbr></th>';
+    html += ' <th>M</th> <th>T</th> <th>W</th>   <th>T</th>  <th>F</th>   </tr> </thead> <tbody>';
+    table_list.append(html);
+
+    log("report queryReportAttendanceDB nº datos (" + len + ")");
+
+    for (var i = 0; i < len; i++) {
+        id = results.rows.item(i).id;
+        name = results.rows.item(i).name;
+        surname = results.rows.item(i).surname;
+        id_group = results.rows.item(i).id_group;
+        log("report queryReportAttendanceDB name surname (" + name + " " + surname + ")");
+        html = "<tr>";
+        html += "<td>" + surname + " " + name + "</td>";
+        for (var j = 1; j < 6; j++) {// recorremos la semana, 0 es domingo
+            html += "<td>";
+            log(" queryStudentsAttendanceByGroupSuccess: [" + moment(global_actual_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
+            if (moment(global_actual_date).day(j).toDate().toDateString() == results.rows.item(i).a_date) {
+                html += results.rows.item(i).a_type;
+                // Falta indicar la sessión
+            } else {
+                html += "-";
+            }
+            html += "</td>";
+        }
+        html += "</tr>";
+        table_list.append(html);
+    }
+}
+
+function queryReportAttendanceDB(tx) {// report->Attendance->Group
+
+    var sql = "SELECT GROUPS.id, GROUPS.data as g_description, STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
+    sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
+    sql += " STUDENTS, ATTENDANCE, GROUPS ";
+    sql += " WHERE (GROUPS.id=s_g_id";
+    sql += " AND s_g_id=a_g_id ) AND ( ATTENDANCE.id_group = " + id_global;
+    sql += " AND students.id=ATTENDANCE.id_student )";
+    sql += " ORDER BY s_id ; ";
+
+    var actual_date = global_actual_date;
+
+    log("report queryReportAttendanceDB (" + sql + ")");
+
+    tx.executeSql(sql, [],
+        queryReportAttendanceSuccess,
+       dbErrorFunc = function(tx, e) {
+        if (tx.message)
+            e = tx;
+        alert(" There has been an error queryReportAttendanceDB: " + e);
+        return false;
+    });
+
+}
 
 
 
-   function queryStudentsAttendanceDB(tx){
 
-	   var sql ='SELECT * FROM STUDENTS WHERE id_group='+id_global;
-
-	   log(" queryStudentsAttendanceDB " + sql);
-	   tx.executeSql(sql,[], queryStudentsAttendanceSuccess,
-            dbErrorFunc = function(tx, e) {
-                if (tx.message) e = tx;
-                alert(" There has been an error queryStudentsAttendanceDB: " + e);
-                return false;
-            });
-
-   }
 
    function queryActivitiesDB(tx) {
 	   log("Query Activities \n");
@@ -587,7 +572,7 @@ function queryStudentsSuccess(tx, results) {
 	   var description="";
 	   var start = "";
 	   var t_id_session=-1;
-	   alert("Número de sesiones "+ len);
+	   log("queryScheduleSuccess number of sessions: "+len );
 	   for (var i=0;i<len;i++) {
 		   id = results.rows.item(i).id;
            t_id_session = results.rows.item(i).t_id_session;
@@ -642,13 +627,17 @@ function queryStudentsAttendanceSuccess(tx, results) {
     var id_session=0;
 
     $('#students_attendance_ul').empty();
+    if(len>0) {
+        $('#current_group_attendance').text(results.rows.item(0).data);
 
+    }
+    var selected="";
     for (var i=0;i<len;i++) {
-        id = results.rows.item(i).id;
+        id = results.rows.item(i).id_student;
         photo = results.rows.item(i).photo;
         name = results.rows.item(i).name;
         surname = results.rows.item(i).surname;
-        id_group = results.rows.item(i).id_group;
+        id_group = results.rows.item(i).g_id;
 
         id_session = global_session; //
 
@@ -661,101 +650,42 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html += "<label>"+ surname +" "+ name +"</label>";
 // Select combo :
         html +="";
-
         html +="<select name='select-student_"+id+"' id='select-student_"+id+"' ";
         html += " onChange='studentState("+id + "," +id_group + ","+id_session+ ");'>";
-// function studentState(id_student, id_group, id_session) {
-
+        selected=""; // TODO: selected="selected" para el adecuado (hacer una query)??
         html +="<option value=''></option>";
-        html +="<option value='Absence'>Absence</option>";
-        html +="<option value='Unpunctuality'>Unpunctuality</option>";
-        html +="<option value='Excused'>Excused</option>";
-        html +="<option value='Behavior' name='Behavior' >Behavior</option>";
+        html +="<option value='Absence' "+selected+">Absence</option>";
+        html +="<option value='Unpunctuality'"+selected+">Unpunctuality</option>";
+        html +="<option value='Excused'"+selected+">Excused</option>";
+        html +="<option value='Behavior' name='Behavior' "+selected+" >Behavior</option>";
         html +="";
         html +="</select>";
 
         html += "</li>";
         $('#students_attendance_ul').append(html);
-
     }
-
     $('#students_attendance_ul').listview('refresh');
+}
+
+function queryStudentsAttendanceDB(tx) {
+    var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo,";
+    sql += " GROUPS.id as g_id, GROUPS.data as data ";
+    sql += " FROM STUDENTS, GROUPS WHERE g_id=STUDENTS.id_group AND g_id=" + id_global;
+
+    log(" queryStudentsAttendanceDB " + sql);
+    tx.executeSql(sql, [], queryStudentsAttendanceSuccess, dbErrorFunc = function(tx, e) {
+        if (tx.message)
+            e = tx;
+        alert(" There has been an error queryStudentsAttendanceDB: " + e);
+        return false;
+    });
 
 }
 
+////////////////////
 
 
 
-/*
- *  => REPORT <= Works(?)
- * TODO: Regression in results.rows.item(0)
- * Tabla con lista de alumnos y sus faltas de puntualidad, etc...
- *
- * XXX: Falta indicar sessión - sesión(tipo de falta con letra) 1(2)
- */
-function queryStudentsAttendanceByGroupSuccess(tx, results) { // report - Something - Success
-
-    var html = "";
-    var id = 0;
-    var name = "";
-    var surname ="";
-    var id_group =0;
-    var len = results.rows.length;
-
-    var table_list =$('#students_attendance_by_groups_table');
-    var monday_date = clone(global_actual_date); // Javascript uses references, It has to be cloned.
-    var friday_date = clone(global_actual_date);
-
-    var from_to = moment(monday_date).day(1).format("MM/DD") + "-" + moment(friday_date).day(5).format("MM/DD");
-
-    $('#students_attendance_by_groups_li').text(from_to);
-
-    alert("Report -> group ("+results.rows.item(0).g_description+")");
-    $('#current_group_attendance_by_group').text( results.rows.item(0).g_description);// results.rows.item(0) ERROR no existe
-
-    table_list.empty();
-    html =' <thead><tr> <th><abbr title="Name">Name</abbr></th>';
-    html +=' <th>M</th> <th>T</th> <th>W</th>   <th>T</th>  <th>F</th>   </tr> </thead> <tbody>';
-    table_list.append(html);
-
-    for (var i=0;i<len;i++) {
-
-        id = results.rows.item(i).id;
-        name = results.rows.item(i).name;
-        surname = results.rows.item(i).surname;
-        id_group = results.rows.item(i).id_group;
-
-        html ="<tr>";
-        html +="<td>"+surname + " "+ name+"</td>";
-
-        for(var j=1;j<6; j++) { // recorremos la semana, 0 es domingo
-            today = moment(monday_date).day(j);
-            html +="<td>";
-            log(" queryStudentsAttendanceByGroupSuccess: [" +today.toDate().toDateString() +"] = ["+ results.rows.item(i).a_date+"]");
-            if (today.toDate().toDateString()==results.rows.item(i).a_date) {
-                html +=  results.rows.item(i).a_type; // Falta indicar la sessión
-            } else {
-                html +="-";
-            }
-            html +=  "</td>";
-        }
-        html +="</tr>";
-
-        table_list.append(html);
-    }
-/*
-     var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
- actual_date.toDateString()
-        sql = "SELECT  STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
-        sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
-        sql += " STUDENTS, ATTENDANCE ";
-        sql += " WHERE s_g_id=a_g_id AND ( ATTENDANCE.id_group = " + id_global;
-        sql += " AND students.id=ATTENDANCE.id_student )";
-        sql += " ORDER BY s_id ; ";
-*/
-
-
-}
 
 function queryActivitiesSuccess(tx, results) {
     var len = results.rows.length;

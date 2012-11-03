@@ -209,11 +209,10 @@ function listStudents(id_group)
  */
 function listStudentsByGroupAttendance(id_group) { // report
     $.mobile.showPageLoadingMsg();
-    alert("Load Attendance ... date:"+ global_actual_date.toString());
     id_global=id_group ;  //local variable goes global
     table_global='STUDENTS';
 
-    reportAttendanceDB(global_db);
+    reportAttendanceDB(global_db); // TODO: pero no cambia la fecha
 
     $.mobile.changePage("#list_students_attendance_by_group", { transition: "slideup"} );
 
@@ -221,13 +220,8 @@ function listStudentsByGroupAttendance(id_group) { // report
 
 // TODO: Regression . Implementar esta funcion para la paginación, va una semana atrás
 function studentsAttendanceListPrevious() {
-    //global_actual_date -=7 ; // es una fecha, buscar como se quita una semana
     var actualDate = global_actual_date;
-
-     global_actual_date= moment(actualDate).subtract('days', 7).toDate();
-//    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()-7);
-
-
+    global_actual_date = moment(global_actual_date).subtract('days',7).toDate();
     listStudentsByGroupAttendance(id_global);
 }
 // recarga la página list_students_attendance_by_group,
@@ -238,13 +232,9 @@ function studentsAttendanceListPrevious() {
 
 function studentsAttendanceListNext() {
     var actualDate = global_actual_date;
-
-//    global_actual_date = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+7);
-
-    global_actual_date= moment(global_actual_date).add('days', 7).toDate();
-    alert("Fecha siguiente "+ global_actual_date.toString());
+    global_actual_date= moment(actualDate).add('days',7).toDate();
     listStudentsByGroupAttendance(id_global);
-    // recarga la página list_students_attendance_by_group,
+
 }
 
 
@@ -259,8 +249,6 @@ function studentState(id_student, id_group, id_session) {
     var state =$("#select-student_"+id_student+" option:selected").text()   ;
     var real_state=STATE_NONE;
 
-//  TODO: Should change actual_date to GUI date
-    var actual_date= new Date();
 
     switch(state) {
         case 'Absence':
@@ -278,6 +266,14 @@ function studentState(id_student, id_group, id_session) {
         default:
             real_state=STATE_NONE;
             break;
+    }
+    // Consider Today as default date.
+    if(global_actual_date!=null) {
+        var actual_date = global_actual_date;
+    } else  if($('#daily_date').val() != null ) {
+        var actual_date = $('#daily_date').val();
+    } else {
+        var actual_date = new Date();
     }
     updateStudentState( global_db, id_student, id_group, id_session,  real_state,  actual_date );
 

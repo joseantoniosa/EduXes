@@ -134,10 +134,8 @@
     </div>
 
 <!--  //-->
-<!--List of students:
-    BUG:  Se recarga dos veces.
-    TODO: Se recarga dos veces esta página, twice
-     Attendance //-->
+<!--List of students: VIP
+  Attendance //-->
 <div data-role="page" id="list_students_attendance" data-add-back-btn="true">
 
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
@@ -147,7 +145,7 @@
                 <ul data-role="listview" id="students_attendance_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
             </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-                <p style="alignment-adjust: central">Students List</p>
+                <p style="alignment-adjust: central;">Students Editor</p>
              </div>
 </div>
 
@@ -165,6 +163,7 @@
         <div data-role="navbar" data-iconpos="notext" >
             <ul>
             <li><a href="#" onClick="studentsAttendanceListPrevious();" data-role="button" data-icon="arrow-l"  >Previous</a></li>
+           <!-- <li><label id="students_attendance_by_groups_li"></label></li> //-->
             <li><label id="students_attendance_by_groups_li"></label></li>
             <li><a href="#" onClick="studentsAttendanceListNext();" data-role="button"  data-icon="arrow-r" >Next</a></li>
             </ul>
@@ -204,14 +203,14 @@
 <div data-role="page" id="general_list_attendance" data-add-back-btn="true">
 
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
-                <h1 id="current_group_attendance" >Student List for Group</h1>
+                <h1 id="current_group_attendance2" >2 Student List for Group</h1>
             </div>
             <div data-role="content">
                 <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
             </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
                 <p>
-                    List Students Attendance
+                    List Students Attendance 2
                 </p>
              </div>
 </div>
