@@ -407,8 +407,9 @@ function queryStudentsByGroupDB(tx) {
    }
 
 // => REPORT <= Works (?)
-// TODO: Rellenar con el query para averiguar asistencia, etc.. de los alumnos de tal grupo
-//          de entre una fecha dada. global_actual_date
+// TODO: change  global_actual_date to
+//         add      global_reports_date
+
 // XXX: Falta añadir la sessión
 // ^^Not used, SESSIONS.id left
 
@@ -614,6 +615,7 @@ function queryStudentsSuccess(tx, results) {
 
 
 /*
+ *  VIP: This function is working (poorly)
  * Fill student attendance sheet
  */
 function queryStudentsAttendanceSuccess(tx, results) {

@@ -170,7 +170,8 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
                 return false;
                 }
             );
-
+            File access: (to save data)
+    http://docs.phonegap.com/en/1.8.1/cordova_file_file.md.html#File
 
 
 

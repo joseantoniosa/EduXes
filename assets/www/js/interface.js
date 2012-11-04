@@ -295,6 +295,12 @@ function Attendance(id_student){
 
 }
 
+function generalFile(){
+    $.mobile.showPageLoadingMsg();
+    $.mobile.changePage("#file", { transition: "slideup"});
+
+}
+
 function generalListReports(){
     $.mobile.showPageLoadingMsg();
     $.mobile.changePage("#list_reports", { transition: "slideup"});

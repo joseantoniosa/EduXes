@@ -25,57 +25,48 @@
 
 <!-- Main Window    //-->
 <div data-role="page" id="daily_work">
-            <div data-role="header" data-add-back-btn="true" data-theme="c">
+    <div data-role="header" data-add-back-btn="true" data-theme="c">
                 <h1>Day</h1>
-            </div>
-            <div data-role="content" data-theme="c">
-                <div class="ui-grid-b">
-                    <div class="ui-block-a">
-                        <div data-role="fieldcontain">
-                            <label for="date"  >Date:</label>
-                        </div>
-                    </div>
-                    <div class="ui-block-b">
-                        <input type="date" name="date" id="daily_date" value=""  />
-<!--
-                    <a href="index.html" data-role="button" data-icon="arrow-r"
-                    data-iconpos="notext" data-theme="c" data-inline="true">Go</a>
-//-->
-                    </div>
-                    <div class="ui-block-c">
-                        <a href="#" data-role='button' data-icon='info' data-iconpos='notext' style='float: right;' onClick="help('date');">Help</a>
-                        <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"  onclick="open_daily_page() " >Go</a>
-<!--
-                    <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
-                    <option>Main menu</option>
-                    <option value="mm_activities">Activities</option>
-                    <option value="mm_schedule">Schedule</option>
-                    <option value="mm_groups">Groups</option>
-                    <option value="mm_reports">Reports</option>
-                    </select>
-//-->
-                    </div>
-
+    </div>
+    <div data-role="content" data-theme="c">
+        <div class="ui-grid-b">
+            <div class="ui-block-a">
+                <div data-role="fieldcontain">
+                    <label for="date"  >Date:</label>
                 </div>
-
             </div>
-
-                <div data-role="navbar">
-        <ul>
-            <li><a href="#" onClick="  "  data-role="button" data-icon="star" > Other</a></li>
-            <li><a href="#" onClick="generalListReports();"  data-role="button" data-icon="grid" >Reports</a></li>
-            <li><a href="#" onClick="generalListSettings();" data-role="button" data-icon="gear" >Settings</a></li>
-        </ul>
-    </div><!-- /navbar -->
-                <div data-role="footer" class="footer-docs" data-theme="c">
-                <p   style="text-align:center;"  id="teachers_name"></p>
+            <div class="ui-block-b">
+                <input type="date" name="date" id="daily_date" value=""  />
+            </div>
+            <div class="ui-block-c">
+                <a href="#" data-role='button' data-icon='info' data-iconpos='notext' style='float: right;' onClick="help('date');">Help</a>
+                <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"  onclick="open_daily_page() " >Go</a>
             </div>
         </div>
+    </div>
+    <div data-role="navbar">
+        <ul>
+            <li>
+                <a href="#" onClick="generalFile()  "  data-role="button" data-icon="star" > File</a>
+            </li>
+            <li>
+                <a href="#" onClick="generalListReports();"  data-role="button" data-icon="grid" >Reports</a>
+            </li>
+            <li>
+                <a href="#" onClick="generalListSettings();" data-role="button" data-icon="gear" >Settings</a>
+            </li>
+        </ul>
+    </div><!-- /navbar -->
+    <div data-role="footer" class="footer-docs" data-theme="c">
+        <p   style="text-align:center;"  id="teachers_name"></p>
+    </div>
+</div>
 <!-- End of Main Window //-->
-
-
+<!--
+    **********************************
+     //-->
+<!--Second Window : Reports//-->
 <div data-role="page" id="list_reports" data-add-back-btn="true">
-
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
                 <h1>Reports</h1>
             </div>
@@ -91,9 +82,8 @@
              </div>
 </div>
 
-
+<!--Second Window : Settings //-->
 <div data-role="page" id="list_settings" data-add-back-btn="true">
-
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
                 <h1>Settings</h1>
             </div>
@@ -103,8 +93,6 @@
                     <li><a href="#" onClick=" " >Groups</a></li>
                     <li><a href="#" onClick=" " >Students</a></li>
                     <li><a href="#" onClick=" " >Activities</a></li>
-
-
                 </ul>
 
             </div>
@@ -112,29 +100,43 @@
              </div>
 </div>
 
-
-
-
-
-
-<!-- List of Groups of today  //-->
-    <div data-role="page" id="daily_schedule"   data-add-back-btn="true" >
-
-        <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="c">
-            <h1 id="current_day"> Current Day</h1>
-        </div>
-        <div data-role="content" data-theme="c">
-                    <ul id="groups_day_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+<!--Second Window : File //-->
+<div data-role="page" id="file" data-add-back-btn="true">
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+                <h1>File</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" id="file_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="d" >
+                    <li><a href="#" onClick=" " >Open-Restore</a></li>
+                    <li><a href="#" onClick=" " >Save</a></li>
+                    <li><a href="#" onClick=" " >Quit</a></li>
                 </ul>
             </div>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+             </div>
+</div>
+<!--
+    **********************************
+     //-->
 
-        <div data-role="footer" class="footer-docs" data-add-back-btn="true" data-theme="c">
-            <p style="alignment-adjust: central"> List of Classes</p>
-        </div>
+
+
+<!-- Second Window: List of Classes.
+     List of Groups of today  //-->
+<div data-role="page" id="daily_schedule"   data-add-back-btn="true" >
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="c">
+        <h1 id="current_day"> Current Day</h1>
     </div>
+    <div data-role="content" data-theme="c">
+        <ul id="groups_day_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+        </ul>
+    </div>
+    <div data-role="footer" class="footer-docs" data-add-back-btn="true" data-theme="c">
+        <p style="alignment-adjust: central"> List of Classes</p>
+    </div>
+</div>
 
-<!--  //-->
-<!--List of students: VIP
+<!-- Third Window: List of Students.
   Attendance //-->
 <div data-role="page" id="list_students_attendance" data-add-back-btn="true">
 
