@@ -738,10 +738,11 @@ function stateCheck(db, id_student, id_group, id_session, state, actual_date){
     var exist = false;
 
     db.transaction(function(tx) {
-        alert(sql_check);
+        alert("SQL check "+sql_check);
         tx.executeSql(sql_check,[],
                 dbSuccessFunc = function(tx,results){
-                    alert("Exito!"+results.rows.length)
+                    alert("Exito!"+results.rows.length);
+
                     if (results.rows.length>0) exist=true;
                     return true;
                     },
@@ -758,9 +759,12 @@ function stateCheck(db, id_student, id_group, id_session, state, actual_date){
 // TODO: Define SQL query
 function updateStudentState(db, id_student, id_group, id_session, state, actual_date ){
     var exist =false;
+// Is state is different (return false) => update
+//  else do nothing
+    alert("0  Exist? "+exist);
 
     exist = stateCheck(db, id_student, id_group, id_session, state, actual_date);
-    alert(" Exist? "+exist);
+    alert("1 Exist? "+exist);
 
     db.transaction(function(tx) {
         var today = moment(actual_date);
@@ -771,17 +775,6 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
         sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\"" + today_str+"\" );";
 
         log("updateStudentState : " + sql + "\n");
-
-/*
-     var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
- actual_date.toDateString()
-        sql = "SELECT  STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
-        sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
-        sql += " STUDENTS, ATTENDANCE ";
-        sql += " WHERE s_g_id=a_g_id AND ( ATTENDANCE.id_group = " + id_global;
-        sql += " AND students.id=ATTENDANCE.id_student )";
-        sql += " ORDER BY s_id ; ";
-*/
 
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx,rs){
