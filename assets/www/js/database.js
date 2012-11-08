@@ -724,15 +724,43 @@ function queryActivitiesSuccess(tx, results) {
         $('#students_ul').listview('refresh');
     }
 
-    //
-
-// Write Student's state
-// Insert data (Doesn't work)
-// TODO: Define SQL query
-function updateStudentState(db, id_student, id_group, id_session, state, actual_date ){
-
+// Check whether student state changes
+// returns 0 false
+// return 1: true
+// @id_student student id
+function stateCheck(db, id_student, id_group, id_session, state, actual_date){
     // check if it is new
     // if new:
+    var sql_check= "SELECT id_student, id_session, a_type, a_date FROM attendance ";
+    sql_check += " WHERE a_type="+state;
+    sql_check += " AND id_session="+id_session+" AND a_date ='"+actual_date +"' ";
+    sql_check +=  " AND id_student="+ id_student +" ;";
+    var exist = false;
+
+    db.transaction(function(tx) {
+        alert(sql_check);
+        tx.executeSql(sql_check,[],
+                dbSuccessFunc = function(tx,results){
+                    alert("Exito!"+results.rows.length)
+                    if (results.rows.length>0) exist=true;
+                    return true;
+                    },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    alert(" There has been an error stateCheck: " + e);
+                    return false;
+                } );
+    });
+    return (exist);
+}
+
+// Write Student state
+// TODO: Define SQL query
+function updateStudentState(db, id_student, id_group, id_session, state, actual_date ){
+    var exist =false;
+
+    exist = stateCheck(db, id_student, id_group, id_session, state, actual_date);
+    alert(" Exist? "+exist);
 
     db.transaction(function(tx) {
         var today = moment(actual_date);

@@ -1,4 +1,4 @@
-package com.example.eduxes;
+package com.github.eduxes;
 
 import android.os.Bundle;
 

@@ -100,6 +100,12 @@ Steps:
         * Ventana Reports para visualizar los informes de faltas,(hecho)
     2/11/2012 b:
         Reorganizadas algunas funciones.
+    8/11/2012 : Work in progress
+        stateCheck
+        * Abstraer la "inserción-actualización".
+            - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
+            - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
+                que determinará si existen esos datos o no.
 
 
 

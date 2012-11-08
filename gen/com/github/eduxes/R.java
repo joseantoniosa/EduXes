@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.eduxes;
+package com.github.eduxes;
 
 public final class R {
     public static final class attr {
