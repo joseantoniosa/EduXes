@@ -108,6 +108,9 @@ Steps:
                 que determinará si existen esos datos o no.
     11/11/2012: Hecho Leer y escribir, insert y update. Pendiente escribir los datos iniciales en el select.
 
+    11/11/2012b: Principio de relleno con datos iniciales. ¿Qué query realizar?
+            ¿Hacer pruebas con base de datos MySQL/SQLite real? ¿Dónde está el query para construir la BBDD.?
+            // TODO: Change SELECT to obtain session (?)
 
 
 
@@ -133,7 +136,7 @@ Máxima prioridad:
 (22:00:03) Manuel Rego: [U] sobre el UPDATE de los datos creo que ya hablamos el otro día
 (22:00:17) Manuel Rego: [U] lo normal es hacer un SELECT y luego INSERT o UPDATE según ya exista o no la información
 (22:00:46) Manuel Rego: [U] por ejemplo cuando llegas a la pantalla de estudiantes, y se cambia el valor de un estudiante (falta de puntualidad, mal comportamiento o lo que sea)
-(22:00:56) Manuel Rego: [U] ya cuando se cambia podrías guardar en BD
+(22:00:56) Manuel Rego: [U] ya cuando se cambia podrías guardar en BD (hecho)
 (22:01:11) Manuel Rego: [U] si la entrada para ese estudiante en esa sesión no existe, usas INSERT y sino UPDATE
 (22:13:49) Manuel Rego: [U] las cosas de edición yo las metería en una ventana separada
 (22:13:52) Manuel Rego: [U] tipo settings

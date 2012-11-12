@@ -617,8 +617,7 @@ function queryStudentsSuccess(tx, results) {
 
 
 /*
- *  VIP: This function is working (poorly)
- * Fill student attendance sheet
+ * TODO: Fill student attendance sheet
  */
 function queryStudentsAttendanceSuccess(tx, results) {
     var len = results.rows.length;
@@ -642,6 +641,9 @@ function queryStudentsAttendanceSuccess(tx, results) {
         name = results.rows.item(i).name;
         surname = results.rows.item(i).surname;
         id_group = results.rows.item(i).g_id;
+//     sql += " ATTENDANCE.id_group as a_id_group, ATTENDANCE.id_student as a_id_student,
+// ATTENDANCE.id_session as a_id_session, ATTENDANCE.a_type as a_type, ATTENDANCE.a_date as a_date ";
+        state = results.rows.item(i).a_type;
 
         id_session = global_session; //
 
@@ -654,14 +656,20 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html += "<label>"+ surname +" "+ name +"</label>";
 // Select combo :
 // TODO: Fill combo with data from database
+
         html +="";
         html +="<select name='select-student_"+id+"' id='select-student_"+id+"' ";
         html += " onChange='studentState("+id + "," +id_group + ","+id_session+ ");'>";
         selected=""; // TODO: selected="selected" para el adecuado (hacer una query)??
+
         html +="<option value=''></option>";
+        if(state==1) selected =" selected ";
         html +="<option value='Absence' "+selected+">Absence</option>";
+        if(state==2) selected =" selected ";
         html +="<option value='Unpunctuality'"+selected+">Unpunctuality</option>";
+        if(state==3) selected =" selected ";
         html +="<option value='Excused'"+selected+">Excused</option>";
+        if(state==4) selected =" selected ";
         html +="<option value='Behavior' name='Behavior' "+selected+" >Behavior</option>";
         html +="";
         html +="</select>";
@@ -672,17 +680,24 @@ function queryStudentsAttendanceSuccess(tx, results) {
     $('#students_attendance_ul').listview('refresh');
 }
 
+// TODO: Change SELECT to obtain session (?)
 function queryStudentsAttendanceDB(tx) {
     var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo,";
-    sql += " GROUPS.id as g_id, GROUPS.data as data ";
-//    sql += " GROUPS.id as g_id, GROUPS.data as data ";
-    sql += " FROM STUDENTS, GROUPS WHERE g_id=STUDENTS.id_group AND g_id=" + id_global;
+    sql += " GROUPS.id as g_id, GROUPS.data as data ,";
+    sql += " ATTENDANCE.id_group as a_id_group, ATTENDANCE.id_student as a_id_student, ATTENDANCE.id_session as a_id_session, ATTENDANCE.a_type as a_type, ATTENDANCE.a_date as a_date ";
+//    sql += " FROM STUDENTS, GROUPS WHERE g_id=STUDENTS.id_group AND g_id=" + id_global;
 
-    log(" queryStudentsAttendanceDB " + sql);
-    tx.executeSql(sql, [], queryStudentsAttendanceSuccess, dbErrorFunc = function(tx, e) {
-        if (tx.message)
-            e = tx;
-        alert(" There has been an error queryStudentsAttendanceDB: " + e);
+    sql += " FROM STUDENTS, GROUPS, ATTENDANCE WHERE  (a_id_group=g_id AND g_id=STUDENTS.id_group) AND a_id_student=id_student ";
+    sql += " AND g_id=" + id_global + " ORDER BY id_student";
+
+
+    log(">> queryStudentsAttendanceDB " + sql);
+
+    tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
+        dbErrorFunc = function(tx, e) {
+            if (tx.message) e = tx;
+            log(" queryStudentsAttendanceDB " + sql);
+            alert(" There has been an error queryStudentsAttendanceDB: " + e);
         return false;
     });
 
