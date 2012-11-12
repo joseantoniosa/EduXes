@@ -109,8 +109,14 @@ Steps:
     11/11/2012: Hecho Leer y escribir, insert y update. Pendiente escribir los datos iniciales en el select.
 
     11/11/2012b: Principio de relleno con datos iniciales. ¿Qué query realizar?
-            ¿Hacer pruebas con base de datos MySQL/SQLite real? ¿Dónde está el query para construir la BBDD.?
-            // TODO: Change SELECT to obtain session (?)
+    12/11/2012: Sigo intentando rellenar datos:
+            función: fillSelectStudent
+        cannot call methods on selectmenu prior to initialization; attempted to call method 'refresh' at undefined:0
+            Parece que llama demasiado rápido a la base de datos y no le da tiempo a representar los "select"
+            El problema es como sincronizarlo todo.
+             ¿Sería posible hacer una llamada a todos y después, cuando termine, escribir el final?< no, es asíncrono (¿?)
+
+
 
 
 
@@ -171,6 +177,11 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
         * Enlazar pantalla de edición de estudiantes.
         * Crear pantalla de edición de actividades
         * Revisar y actualizar este TODO a partir de la memoria.
+
+        * ¿Hacer pruebas con base de datos MySQL/SQLite real? ¿Dónde está el query para construir la BBDD.?
+        *    // TODO: Change SELECT to obtain session (?)
+        * Obtener imágenes de la galería del móvil:
+        http://docs.phonegap.com/en/2.2.0/cordova_camera_camera.md.html#camera.getPicture
 
 -----------------------------------------------------------------------------------
 --- SNIPPETS:

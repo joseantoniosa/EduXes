@@ -246,7 +246,7 @@ function studentsAttendanceListNext() {
  */
 function studentState(id_student, id_group, id_session) {
 
-    var state =$("#select-student_"+id_student+" option:selected").text()   ;
+    var state =$("#select_student_"+id_student+" option:selected").text()   ;
     var real_state=STATE_NONE;
 
 

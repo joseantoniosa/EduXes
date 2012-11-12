@@ -615,9 +615,56 @@ function queryStudentsSuccess(tx, results) {
 
    }
 
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
+
+
+//  Fill select option
+//
+function  fillSelectStudent(db, select_student_id, id_session, id) { /// #id to be filled, id_session, id_student
+
+    var today = moment(global_actual_date);
+    var today_str = today.toDate().toDateString();
+
+    sql = "SELECT id, id_student, id_session, a_type, a_date  FROM ATTENDANCE WHERE id_student = ? AND ";
+    sql+= "id_session=? AND a_date=? ;"
+
+    db.transaction(function(tx) {
+        tx.executeSql(sql,[id, id_session,today_str],
+                dbSuccessFunc = function(tx,results){
+                    var text_select = $('#' + select_student_id);
+                    selected = "";
+                    html = "<option value=''></option>";
+                    html += "<option value='Absence' " + selected + ">Absence</option>";
+                    html += "<option value='Unpunctuality'" + selected + ">Unpunctuality</option>";
+                    html += "<option value='Excused'" + selected + ">Excused</option>";
+                    html += "<option value='Behavior' name='Behavior' " + selected + " >Behavior</option>";
+                    text_select.empty().append(html);
+
+                    if (results.rows.length>0) {
+                        var state = results.rows.item(0).a_type;
+                        log(" State => " + state);
+                        text_select[0].selectedIndex = state;
+                        return true;
+                    } else {
+                        // log("No data");
+                        return false;
+                    }
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("SQL  "+sql);
+                    alert(" There has been an error SELECT  stateCheck: " + e.message);
+                    return false;
+                } );
+    });
+
+}
 
 /*
- * TODO: Fill student attendance sheet
+
  */
 function queryStudentsAttendanceSuccess(tx, results) {
     var len = results.rows.length;
@@ -641,9 +688,6 @@ function queryStudentsAttendanceSuccess(tx, results) {
         name = results.rows.item(i).name;
         surname = results.rows.item(i).surname;
         id_group = results.rows.item(i).g_id;
-//     sql += " ATTENDANCE.id_group as a_id_group, ATTENDANCE.id_student as a_id_student,
-// ATTENDANCE.id_session as a_id_session, ATTENDANCE.a_type as a_type, ATTENDANCE.a_date as a_date ";
-        state = results.rows.item(i).a_type;
 
         id_session = global_session; //
 
@@ -654,58 +698,39 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html += "<img height='20px' src='photos/"+photo +"' alt='" + surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>"+ surname +" "+ name +"</label>";
-// Select combo :
-// TODO: Fill combo with data from database
 
         html +="";
-        html +="<select name='select-student_"+id+"' id='select-student_"+id+"' ";
+        html +="<select name='select_student_"+id+"' id='select_student_"+id+"' ";
         html += " onChange='studentState("+id + "," +id_group + ","+id_session+ ");'>";
-        selected=""; // TODO: selected="selected" para el adecuado (hacer una query)??
 
-        html +="<option value=''></option>";
-        if(state==1) selected =" selected ";
-        html +="<option value='Absence' "+selected+">Absence</option>";
-        if(state==2) selected =" selected ";
-        html +="<option value='Unpunctuality'"+selected+">Unpunctuality</option>";
-        if(state==3) selected =" selected ";
-        html +="<option value='Excused'"+selected+">Excused</option>";
-        if(state==4) selected =" selected ";
-        html +="<option value='Behavior' name='Behavior' "+selected+" >Behavior</option>";
-        html +="";
         html +="</select>";
 
         html += "</li>";
         $('#students_attendance_ul').append(html);
+
+        fillSelectStudent(global_db, "select_student_"+id, id_session, id); // #id to be filled, id_session, id_student // Asyncrhonous
     }
     $('#students_attendance_ul').listview('refresh');
 }
 
-// TODO: Change SELECT to obtain session (?)
+
 function queryStudentsAttendanceDB(tx) {
     var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo,";
-    sql += " GROUPS.id as g_id, GROUPS.data as data ,";
-    sql += " ATTENDANCE.id_group as a_id_group, ATTENDANCE.id_student as a_id_student, ATTENDANCE.id_session as a_id_session, ATTENDANCE.a_type as a_type, ATTENDANCE.a_date as a_date ";
-//    sql += " FROM STUDENTS, GROUPS WHERE g_id=STUDENTS.id_group AND g_id=" + id_global;
-
-    sql += " FROM STUDENTS, GROUPS, ATTENDANCE WHERE  (a_id_group=g_id AND g_id=STUDENTS.id_group) AND a_id_student=id_student ";
-    sql += " AND g_id=" + id_global + " ORDER BY id_student";
-
-
-    log(">> queryStudentsAttendanceDB " + sql);
+    sql += " GROUPS.id as g_id, GROUPS.data as data ";
+    sql += " FROM STUDENTS, GROUPS WHERE  ( g_id=STUDENTS.id_group  ";
+    sql += " AND g_id=" + id_global + " ) ORDER BY id_student";
 
     tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
         dbErrorFunc = function(tx, e) {
             if (tx.message) e = tx;
             log(" queryStudentsAttendanceDB " + sql);
-            alert(" There has been an error queryStudentsAttendanceDB: " + e);
+            alert(" There has been an error queryStudentsAttendanceDB: " + e.message);
         return false;
     });
 
 }
 
 ////////////////////
-
-
 
 
 function queryActivitiesSuccess(tx, results) {
@@ -721,15 +746,15 @@ function queryActivitiesSuccess(tx, results) {
 }
 
    // Insert new group
-   function insertNewGroup(db, name, other_data){
+function insertNewGroup(db, name, other_data){
 
-	   db.transaction(function (tx) {
-		   var sql = 'INSERT INTO GROUPS ( data, other_data) VALUES (';
-		   sql  +=  '\"'  + name + '\" ,  \"'+ other_data + '\"  )' ;
-		   tx.executeSql(sql);
+      db.transaction(function (tx) {
+           var sql = 'INSERT INTO GROUPS ( data, other_data) VALUES (';
+            sql  +=  '\"'  + name + '\" ,  \"'+ other_data + '\"  )' ;
+            tx.executeSql(sql);
 	   });
 	   $('#grupos_ul').listview('refresh');
-   }
+}
 
     // Insert new Student
     function insertNewStudent(db, name, surname, id_group) {
@@ -742,7 +767,6 @@ function queryActivitiesSuccess(tx, results) {
         });
         $('#students_ul').listview('refresh');
     }
-/////////////////////
 
 // Low level insert
 function insertStudentStateL(db, id_student, id_group, id_session, state, actual_date ){
@@ -783,7 +807,6 @@ function updateStudentStateL(db, id_student, id_group, id_session, state, actual
         });
 }
 
-
 // Check whether student state changes
 // @id_student student id
 function stateCheck(db, id_student, id_group, id_session, state, actual_date){
@@ -797,7 +820,6 @@ function stateCheck(db, id_student, id_group, id_session, state, actual_date){
     sql_check += " id_session="+id_session+" AND a_date ='"+today_str +"' ";
     sql_check +=  " AND id_student="+ id_student +" ;";
     var exist = false;
-
     db.transaction(function(tx) {
 
         tx.executeSql(sql_check,[],

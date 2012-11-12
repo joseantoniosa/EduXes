@@ -37,7 +37,7 @@
 
         DROP TABLE IF EXISTS attendance;
         CREATE  TABLE IF NOT EXISTS attendance ( id  integer primary key ,
-            id_group integer, id_student integer, id_session integer, type integer, date text,
+            id_group integer, id_student integer, id_session integer, a_type integer, a_date text,
             FOREIGN KEY(id_session) REFERENCES sessions(id) );
 
 
