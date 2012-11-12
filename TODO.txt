@@ -106,6 +106,9 @@ Steps:
             - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
             - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
                 que determinará si existen esos datos o no.
+    11/11/2012: Hecho Leer y escribir, insert y update. Pendiente escribir los datos iniciales en el select.
+
+
 
 
 
@@ -179,7 +182,7 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
             File access: (to save data)
     http://docs.phonegap.com/en/1.8.1/cordova_file_file.md.html#File
 
-
+http://stackoverflow.com/questions/11175489/ios-phonegap-media-object-how-do-i-access-a-resource-in-the-www-folder
 
 
 

@@ -32,6 +32,8 @@ var global_db;
 var global_session; // selected session
 var global_actual_date=null ; // Date
 var global_reports_date=null ; // Date for reports TODO: Date for reports
+//
+var global_exist = false; // if exist current record
 
 // ENUM
 var STATE_NONE = 0;
@@ -651,6 +653,7 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html += "</a>";
         html += "<label>"+ surname +" "+ name +"</label>";
 // Select combo :
+// TODO: Fill combo with data from database
         html +="";
         html +="<select name='select-student_"+id+"' id='select-student_"+id+"' ";
         html += " onChange='studentState("+id + "," +id_group + ","+id_session+ ");'>";
@@ -672,6 +675,7 @@ function queryStudentsAttendanceSuccess(tx, results) {
 function queryStudentsAttendanceDB(tx) {
     var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo,";
     sql += " GROUPS.id as g_id, GROUPS.data as data ";
+//    sql += " GROUPS.id as g_id, GROUPS.data as data ";
     sql += " FROM STUDENTS, GROUPS WHERE g_id=STUDENTS.id_group AND g_id=" + id_global;
 
     log(" queryStudentsAttendanceDB " + sql);
@@ -723,79 +727,91 @@ function queryActivitiesSuccess(tx, results) {
         });
         $('#students_ul').listview('refresh');
     }
+/////////////////////
 
-// Check whether student state changes
-// returns 0 false
-// return 1: true
-// @id_student student id
-function stateCheck(db, id_student, id_group, id_session, state, actual_date){
-    // check if it is new
-    // if new:
-    var sql_check= "SELECT id_student, id_session, a_type, a_date FROM attendance ";
-    sql_check += " WHERE a_type="+state;
-    sql_check += " AND id_session="+id_session+" AND a_date ='"+actual_date +"' ";
-    sql_check +=  " AND id_student="+ id_student +" ;";
-    var exist = false;
+// Low level insert
+function insertStudentStateL(db, id_student, id_group, id_session, state, actual_date ){
+    var today = moment(actual_date);
+    var today_str = today.toDate().toDateString();
+    var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
+    sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\"" + today_str+"\" );";
 
     db.transaction(function(tx) {
-        alert("SQL check "+sql_check);
-        tx.executeSql(sql_check,[],
-                dbSuccessFunc = function(tx,results){
-                    alert("Exito!"+results.rows.length);
-
-                    if (results.rows.length>0) exist=true;
-                    return true;
-                    },
-                dbErrorFunc = function(tx, e) {
-                    if (tx.message) e = tx;
-                    alert(" There has been an error stateCheck: " + e);
-                    return false;
-                } );
-    });
-    return (exist);
-}
-
-// Write Student state
-// TODO: Define SQL query
-function updateStudentState(db, id_student, id_group, id_session, state, actual_date ){
-    var exist =false;
-// Is state is different (return false) => update
-//  else do nothing
-    alert("0  Exist? "+exist);
-
-    exist = stateCheck(db, id_student, id_group, id_session, state, actual_date);
-    alert("1 Exist? "+exist);
-
-    db.transaction(function(tx) {
-        var today = moment(actual_date);
-        var today_str = today.toDate().toDateString();
-
-        // today.toDate().toDateString() today = moment();
-        var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
-        sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\"" + today_str+"\" );";
-
-        log("updateStudentState : " + sql + "\n");
-
         tx.executeSql(sql,[],
-            dbSuccessFunc = function(tx,rs){
-                return true;
-                },
+            dbSuccessFunc = function(tx,rs){  return true;     },
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
+                log("insertStudentState2 : " + sql + "\n");
                 alert(" There has been an error updateStudentState: " + e);
                 return false;
             } );
     });
-    // if old:
-    /*db2.transaction(function(tx) {
-        var sql ="UPDATE attendance SET INSERT INTO ATTENDANCE ( id_group , id_student, id_session, type, date) VALUES (";
-        sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\" " + actual_date.toString()+"\" );";
-        alert("Values inserted: " +sql );
-        log("updateStudentState : " + sql + "\n");
+}
 
-        tx.executeSql(sql );
+// Low level update
+function updateStudentStateL(db, id_student, id_group, id_session, state, actual_date ) {
+        var today = moment(actual_date);
+        var today_str = today.toDate().toDateString();
+
+        var sql ="UPDATE attendance  SET a_type=?";
+        sql += " WHERE id_student=? AND id_session=? AND a_date=? ;";
+
+        db.transaction(function(tx) {
+            tx.executeSql(sql, [state,id_student,id_session,today_str],
+                dbSuccessFunc = function(tx,rs){  return true;  },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("updateStudentState : " + sql + "\n");
+                    alert(" There has been an error updateStudentState2: " + e);
+                    return false;
+                } );
+        });
+}
+
+
+// Check whether student state changes
+// @id_student student id
+function stateCheck(db, id_student, id_group, id_session, state, actual_date){
+    // check if it is new
+    // if new:
+    var today = moment(actual_date);
+    var today_str = today.toDate().toDateString();
+
+    var sql_check= "SELECT id_student, id_session, a_type, a_date FROM attendance ";
+    sql_check += " WHERE "; //a_type="+state+ " AND ";
+    sql_check += " id_session="+id_session+" AND a_date ='"+today_str +"' ";
+    sql_check +=  " AND id_student="+ id_student +" ;";
+    var exist = false;
+
+    db.transaction(function(tx) {
+
+        tx.executeSql(sql_check,[],
+                dbSuccessFunc = function(tx,results){
+                    if (results.rows.length>0) {
+                       exist=true;
+                        updateStudentStateL(db, id_student, id_group, id_session, state, actual_date );
+                        return true;
+                    } else {
+                        exist = false;
+                        insertStudentStateL(db, id_student, id_group, id_session, state, actual_date );
+                        return false;
+                    }
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("SQL check "+sql_check);
+                    alert(" There has been an error SELECT  stateCheck: " + e);
+                    return false;
+                } );
     });
-*/
+
+    return exist;
+}
+
+// Write Student state
+function updateStudentState(db, id_student, id_group, id_session, state, actual_date ){
+    var exist =false;
+    exist = stateCheck(db, id_student, id_group, id_session, state, actual_date); // Is asynchronous
 
 }
 //
