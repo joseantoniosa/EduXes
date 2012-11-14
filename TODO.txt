@@ -115,8 +115,22 @@ Steps:
             Parece que llama demasiado rápido a la base de datos y no le da tiempo a representar los "select"
             El problema es como sincronizarlo todo.
              ¿Sería posible hacer una llamada a todos y después, cuando termine, escribir el final?< no, es asíncrono (¿?)
+  13/11/2012:
+            No código. Siguiente plan de actuación:
+                - Asegurar el código hecho
+                    - Duplicidad de datos (resuelto, usaba la función init() para cargarla con el onLoad)
+                    - fecha_actual y fecha_report_actual deben ser diferentes (resuelto)
 
 
+    14/11/2012:
+        Realizado: duplicidad y datos, y fecha de informes independiente.
+        Pendiente:
+                - Instalarlo (?? Domingo lo consigue instalar)
+                - Instalar datos "reales"
+                    - Estudiar la posibilidad de introducir datos:
+                        - Cómo imágenes (ver URL de Manuel)
+                        - Cómo horario (¿?¿?)
+                - Crear presentación con efectos-transiciones
 
 
 

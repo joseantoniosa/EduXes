@@ -36,6 +36,7 @@ function onDeviceReady() {
 
     global_db.transaction(createDB); // , errorCB, successCB);
 // On production this will be removed:
+    log("onDeviceReady PopulateDB ");
     global_db.transaction(populateDB); //, errorCB, successCB);
 
 // Load Data into Interface:
@@ -56,6 +57,7 @@ function onDeviceReady() {
         open_daily_page();
 
 	});
+	onload="init();"
 //*/
 
 }
@@ -72,6 +74,7 @@ function initialize_data() {
     var a_today = new Date(); // Today
 
     global_actual_date = a_today;
+    global_reports_date = global_actual_date ;
 
     $("#daily_date").noWeekends ;
 
@@ -98,7 +101,8 @@ function open_daily_page() {
             loadSchedule(global_db, week_day);
 
             global_actual_date = new Date(this_date);
-
+            // Reports date is, in origin, the same as actual_date
+            global_reports_date = global_actual_date ;
             $("#current_day").text(this_date);
             $.mobile.changePage("#daily_schedule");
         }
@@ -220,9 +224,17 @@ function listStudentsByGroupAttendance(id_group) { // report
 
 // TODO: Regression . Implementar esta funcion para la paginación, va una semana atrás
 function studentsAttendanceListPrevious() {
-    var actualDate = global_actual_date;
-    global_actual_date = moment(global_actual_date).subtract('days',7).toDate();
+// global_reports_date
+//    var actualDate = global_actual_date;
+//    global_actual_date = moment(global_actual_date).subtract('days',7).toDate();
+//    listStudentsByGroupAttendance(id_global);
+
+    alert(global_reports_date.toString())
+
+    var actualDate = global_reports_date ;
+    global_reports_date = moment(global_reports_date).subtract('days',7).toDate();
     listStudentsByGroupAttendance(id_global);
+
 }
 // recarga la página list_students_attendance_by_group,
 
@@ -231,8 +243,14 @@ function studentsAttendanceListPrevious() {
 // XXX: Where is the scope of global_actual_date;
 
 function studentsAttendanceListNext() {
-    var actualDate = global_actual_date;
-    global_actual_date= moment(actualDate).add('days',7).toDate();
+
+    // global_reports_date/
+//    var actualDate = global_actual_date;
+//    global_actual_date= moment(actualDate).add('days',7).toDate();
+    alert(global_reports_date.toString())
+
+    var actualDate = global_reports_date;
+    global_reports_date = moment(actualDate).add('days',7).toDate();
     listStudentsByGroupAttendance(id_global);
 
 }

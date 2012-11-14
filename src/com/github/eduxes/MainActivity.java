@@ -11,7 +11,6 @@ import android.webkit.*;
 import android.support.v4.app.NavUtils;
 
 import org.apache.cordova.*;
-
 public class MainActivity extends DroidGap {
 
     @Override

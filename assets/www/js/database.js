@@ -168,8 +168,10 @@ function createDB(tx) {
 }
 function populateDB(tx) {
 
+    log("populateDB. Populate DB");
 
 // Groups
+
         tx.executeSql('INSERT INTO GROUPS ( data) VALUES ( "First group  1")');
         tx.executeSql('INSERT INTO GROUPS ( data) VALUES ( "Second group 2")');
         tx.executeSql('INSERT INTO GROUPS ( data) VALUES ( "Third group  3" )');
@@ -425,10 +427,11 @@ function queryReportAttendanceSuccess(tx, results) {
     if (len == 0) {
         help("no_data");
     }
-    global_reports_date = clone(global_actual_date); // TODO: To be implemented, change global_actual_date y global_reports_date
+   // global_reports_date = clone(global_actual_date); // TODO: To be implemented, change global_actual_date y global_reports_date
     var table_list = $('#students_attendance_by_groups_table');
 
-    var from_to = moment(global_actual_date).day(1).format("MM/DD") + "-" + moment(global_actual_date).day(5).format("MM/DD");
+//    var from_to = moment(global_actual_date).day(1).format("MM/DD") + "-" + moment(global_actual_date).day(5).format("MM/DD");
+    var from_to = moment(global_reports_date).day(1).format("MM/DD") + "-" + moment(global_reports_date).day(5).format("MM/DD");
 
     log("report queryReportAttendanceDB from_to (" + from_to + ")");
 
@@ -454,8 +457,12 @@ function queryReportAttendanceSuccess(tx, results) {
         html += "<td>" + surname + " " + name + "</td>";
         for (var j = 1; j < 6; j++) {// recorremos la semana, 0 es domingo
             html += "<td>";
-            log(" queryStudentsAttendanceByGroupSuccess: [" + moment(global_actual_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
-            if (moment(global_actual_date).day(j).toDate().toDateString() == results.rows.item(i).a_date) {
+/// global_reports_date
+///            log(" queryStudentsAttendanceByGroupSuccess: [" + moment(global_actual_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
+///            if (moment(global_actual_date).day(j).toDate().toDateString() == results.rows.item(i).a_date) {
+
+            log(" queryStudentsAttendanceByGroupSuccess: [" + moment(global_reports_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
+            if (moment(global_reports_date).day(j).toDate().toDateString() == results.rows.item(i).a_date) {
                 html += results.rows.item(i).a_type;
                 // Falta indicar la sessión
             } else {
@@ -477,8 +484,10 @@ function queryReportAttendanceDB(tx) {// report->Attendance->Group
     sql += " AND s_g_id=a_g_id ) AND ( ATTENDANCE.id_group = " + id_global;
     sql += " AND students.id=ATTENDANCE.id_student )";
     sql += " ORDER BY s_id ; ";
+// global_reports_date
+///    var actual_date = global_actual_date;
 
-    var actual_date = global_actual_date;
+    var actual_date = global_reports_date;
 
     log("report queryReportAttendanceDB (" + sql + ")");
 
