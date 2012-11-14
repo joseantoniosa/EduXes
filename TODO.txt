@@ -127,11 +127,11 @@ Steps:
         Pendiente:
                 - Instalarlo (?? Domingo lo consigue instalar)
                 - Instalar datos "reales"
+                        (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Estudiar la posibilidad de introducir datos:
                         - Cómo imágenes (ver URL de Manuel)
                         - Cómo horario (¿?¿?)
                 - Crear presentación con efectos-transiciones
-
 
 
 

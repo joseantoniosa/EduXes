@@ -172,15 +172,15 @@ function populateDB(tx) {
 
 // Groups
 
-        tx.executeSql('INSERT INTO GROUPS ( data) VALUES ( "First group  1")');
-        tx.executeSql('INSERT INTO GROUPS ( data) VALUES ( "Second group 2")');
-        tx.executeSql('INSERT INTO GROUPS ( data) VALUES ( "Third group  3" )');
-        tx.executeSql('INSERT INTO GROUPS ( data) VALUES ( "Fourth group 4")');
+        tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 0, "Second A")');
+        tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 1, "Second B")');
+        tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 2, "Third A" )');
+        tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 3, "Third B")');
 // Students
         var header="INSERT INTO STUDENTS ( id_group, name, surname, photo) VALUES (";
-        tx.executeSql(header +'0, "0First"," Student 0", "f001.png" )');
-        tx.executeSql(header +'0, "0Second"," Student 0", "f002.png" )');
-        tx.executeSql(header +'0, "Bis "," Maxi ", "f008.png" )');
+        tx.executeSql(header +'0, "John",   "Doe",        "f001.png" )' );
+        tx.executeSql(header +'0, "Daniel", "Mallice",    "f002.png" )' );
+        tx.executeSql(header +'0, "Betty",   "Boo", "f008.png" )');
         tx.executeSql(header +'0, "0Third "," Student 0", "f003.png" )');
         tx.executeSql(header +'1, "First",  " Student",   "f004.png" )');
         tx.executeSql(header +'1, "Second"," Student", "f005.png" )');

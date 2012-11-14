@@ -224,14 +224,7 @@ function listStudentsByGroupAttendance(id_group) { // report
 
 // TODO: Regression . Implementar esta funcion para la paginación, va una semana atrás
 function studentsAttendanceListPrevious() {
-// global_reports_date
-//    var actualDate = global_actual_date;
-//    global_actual_date = moment(global_actual_date).subtract('days',7).toDate();
-//    listStudentsByGroupAttendance(id_global);
 
-    alert(global_reports_date.toString())
-
-    var actualDate = global_reports_date ;
     global_reports_date = moment(global_reports_date).subtract('days',7).toDate();
     listStudentsByGroupAttendance(id_global);
 
@@ -244,13 +237,7 @@ function studentsAttendanceListPrevious() {
 
 function studentsAttendanceListNext() {
 
-    // global_reports_date/
-//    var actualDate = global_actual_date;
-//    global_actual_date= moment(actualDate).add('days',7).toDate();
-    alert(global_reports_date.toString())
-
-    var actualDate = global_reports_date;
-    global_reports_date = moment(actualDate).add('days',7).toDate();
+    global_reports_date = moment(global_reports_date).add('days',7).toDate();
     listStudentsByGroupAttendance(id_global);
 
 }
