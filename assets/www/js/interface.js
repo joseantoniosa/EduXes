@@ -109,12 +109,28 @@ function open_daily_page() {
     }
 }
 
+
+
+function EditStudent(id_student){
+
+    $.mobile.showPageLoadingMsg();
+
+    global_id = id_student;      //local variable goes global
+    global_id = id_student; // new API
+    table_global = 'STUDENTS';
+
+    loadStudent(global_db);
+
+    $.mobile.changePage("#edit_student", { transition: "slideup"});
+
+}
+
 // Open Students Attendance page
 function listStudentsAttendance(id_group, id_session)
 {
     $.mobile.showPageLoadingMsg();
 
-    id_global=id_group ;  //local variable goes global
+    global_id=id_group ;  //local variable goes global
     table_global='STUDENTS';
     global_session = id_session;
 
@@ -198,7 +214,7 @@ function listStudents(id_group)
 
     $.mobile.showPageLoadingMsg();
 
-	id_global=id_group ;  //local variable goes global
+	global_id=id_group ;  //local variable goes global
 	table_global='STUDENTS';
 
 	loadStudentsByGroup(global_db);
@@ -213,32 +229,53 @@ function listStudents(id_group)
  */
 function listStudentsByGroupAttendance(id_group) { // report
     $.mobile.showPageLoadingMsg();
-    id_global=id_group ;  //local variable goes global
+    global_id=id_group ;  //local variable goes global
     table_global='STUDENTS';
 
-    reportAttendanceDB(global_db); // TODO: pero no cambia la fecha
+    reportAttendanceDB(global_db); //
 
     $.mobile.changePage("#list_students_attendance_by_group", { transition: "slideup"} );
 
 }
 
-// TODO: Regression . Implementar esta funcion para la paginación, va una semana atrás
-function studentsAttendanceListPrevious() {
+// List Students by Group
+function listStudentsByGroup(id_group) { // report
+    $.mobile.showPageLoadingMsg();
+    global_id=id_group ;  //local variable goes global
+    table_global='STUDENTS';
 
-    global_reports_date = moment(global_reports_date).subtract('days',7).toDate();
-    listStudentsByGroupAttendance(id_global);
+    loadStudentsByGroup(global_db); // TODO: List all students by Group
+    // id_list_students_by_group
+    // list_students_ul
+
+    $.mobile.changePage("#list_students_by_group", { transition: "slideup"} );
 
 }
-// recarga la página list_students_attendance_by_group,
+// List All Groups
+function listAllGroups(){
+    $.mobile.showPageLoadingMsg();
+    table_global='GROUPS';
+    loadAllGroups(global_db); // #groups_ul
+    $.mobile.changePage("#list_groups", { transition: "slideup"} );
+}
+// List All Students
+function listAllStudents(){
+    $.mobile.showPageLoadingMsg();
+    table_global='STUDENTS';
+    loadAllStudents(global_db);
+    $.mobile.changePage("#list_students", { transition: "slideup"} );
+}
 
-// Regression
-// TODO: Implementar esta funcion para la paginación, va una semana adelante
-// XXX: Where is the scope of global_actual_date;
+//
+function studentsAttendanceListPrevious() {
+    global_reports_date = moment(global_reports_date).subtract('days',7).toDate();
+    listStudentsByGroupAttendance(global_id);
 
+}
 function studentsAttendanceListNext() {
 
     global_reports_date = moment(global_reports_date).add('days',7).toDate();
-    listStudentsByGroupAttendance(id_global);
+    listStudentsByGroupAttendance(global_id);
 
 }
 
@@ -291,7 +328,7 @@ function Attendance(id_student){
 
     $.mobile.showPageLoadingMsg();
 
-    id_global = id_student;      //local variable goes global
+    global_id = id_student;      //local variable goes global
     table_global = 'STUDENTS';
 
     loadStudentAttendance(global_db);

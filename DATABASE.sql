@@ -7,13 +7,19 @@
         INSERT INTO GROUPS (id, data) VALUES (NULL, "Third group  3" );
         INSERT INTO GROUPS (id, data) VALUES (NULL, "Fourth group 4");
 
--- Students
+-- Students Line 93. TODO
+   var create_students="CREATE TABLE IF NOT EXISTS students ";
+        create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
+        create_students +=" repeteated integer, n_date text , photo text, ";
+        create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
+        create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
+
         DROP TABLE IF EXISTS STUDENTS;
         CREATE TABLE IF NOT EXISTS STUDENTS (
             id integer primary key, id_group integer not null, name text, surname text,
-            repeteated integer, n_date text ,
+            repeteated integer, n_date text , photo text,
             tutor TEXT, address TEXT, phone text, e_phone text, nation text,
-            FOREIGN KEY(group_id) REFERENCES groups(id));
+            FOREIGN KEY(id_group) REFERENCES groups(id));
 	--	e_phone,  is emergency phone
 	--  repeteated, repeteated course 1= true, 0= false
 

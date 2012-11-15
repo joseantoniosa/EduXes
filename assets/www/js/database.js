@@ -313,11 +313,11 @@ function queryGroupsDB(tx) {
             ul_list.empty();
             for (var i = 0; i < rs.rows.length; i++) {
                 html = "<li><h3> ";
-                html += "<a onClick='id_global=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
+                html += "<a onClick='global_id=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
                 html += " listStudentsByGroupAttendance(" + rs.rows.item(i).id + " );'  ";
                 html += " href='#' >";
                 html += rs.rows.item(i).data;
-  //  html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+  //  html += "<a onClick='global_id="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
                 html += "</a></h3></li>";
                 ul_list.append(html);
             }
@@ -341,7 +341,7 @@ function queryGroupsAttendanceDB(tx) {
         table_global="groups";
         for (var i = 0; i < rs.rows.length; i++) {
             html = "<li><h3> ";
-            html += "<a onClick='id_global=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
+            html += "<a onClick='global_id=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
             html += " listStudentsByGroupAttendance(" + rs.rows.item(i).id + " );'  ";
             html += " href='#' >";
             html += rs.rows.item(i).data  ;
@@ -361,6 +361,62 @@ function queryGroupsAttendanceDB(tx) {
 
 
 
+function queryAllGroupsDB(tx) {
+    log("Query All Groups \n");
+    var ul_list =$('#groups_ul');
+    tx.executeSql('SELECT * FROM GROUPS', [],
+        dbSuccessFunc = function(tx, rs) {
+            ul_list.empty();
+            var html ="";
+            for (var i = 0; i < rs.rows.length; i++) {
+                html = "<li><h3> ";
+                html += "<a onClick='global_id=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
+                html += " listStudentsByGroup(" + rs.rows.item(i).id + " );'  ";
+                html += " href='#' >";
+                html += rs.rows.item(i).data;
+                html += "</a></h3></li>";
+                ul_list.append(html);
+            }
+            ul_list.listview('refresh'); },
+        dbErrorFunc = function(ttx, e) {
+            if (ttx.message)
+                e = ttx;
+            log(" There has been an error Select * from groups : " + e.message);
+        return false;
+    });
+}
+
+///
+/// queryAll Students
+   function queryAllStudentsDB(tx) {
+        log("Query All Students \n");
+       var sql = 'SELECT * FROM STUDENTS';
+       tx.executeSql(sql, [],
+        queryAllStudentsSuccess,
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+
+                log(" There has been an error queryAllStudentsDB: " + e);
+                return false;
+            });
+    }
+
+   function queryStudentDB(tx) {
+       log("Query Student \n");
+       var sql = 'SELECT * FROM STUDENTS WHERE id ='+global_id;
+       tx.executeSql(sql, [],
+        queryStudentSuccess,
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                log(" There has been an error queryStudentDB: " + e.message);
+                alert(" There has been an error queryStudentDB: " + e.message);
+                return false;
+            });
+    }
+
+
+
+
    function queryStudentsDB(tx) {
 	   log("Query Students \n");
 	   var sql = 'SELECT * FROM STUDENTS';
@@ -374,16 +430,28 @@ function queryGroupsAttendanceDB(tx) {
             });
 	}
 
+/*
+ *   id integer primary key, id_group integer not null, name text, surname text,
+            repeteated integer, n_date text ,
+            tutor TEXT, address TEXT, phone text, e_phone text, nation text,
+ */
 
 
 function queryStudentsByGroupDB(tx) {
-    // pass from and global id!!
-    var sql = 'SELECT * FROM STUDENTS WHERE id_group=' + id_global;
-    tx.executeSql(sql, [], queryStudentsSuccess, dbErrorFunc = function(tx, e) {
+
+    var sql = 'SELECT STUDENTS.id as id,  STUDENTS.id_group as id_group, STUDENTS.name as name, ';
+    sql += ' STUDENTS.surname as surname, STUDENTS.n_date as n_date, STUDENTS.photo as photo, ';
+    sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeteated as repeteated, STUDENTS.tutor as tutor ,';
+    sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
+    sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
+    sql += ' FROM STUDENTS, GROUPS WHERE ';
+    sql += ' STUDENTS.id_group = g_id AND id_group=' + global_id;
+    tx.executeSql(sql, [], queryStudentsByGroupSuccess, dbErrorFunc = function(tx, e) {
         if (tx.message)
             e = tx;
-
-        log(" There has been an error queryStudentsByGroupDB: " + e);
+        log(sql);
+        log(" There has been an error queryStudentsByGroupDB: " + e.message);
+        alert("There has been an error queryStudentsByGroupDB: " + e.message);
         return false;
     });
 }
@@ -410,8 +478,7 @@ function queryStudentsByGroupDB(tx) {
             });
    }
 
-// => REPORT <= Works (?)
-// TODO: change  global_actual_date to
+// => REPORT <==
 //         add      global_reports_date
 
 // XXX: Falta añadir la sessión
@@ -481,7 +548,7 @@ function queryReportAttendanceDB(tx) {// report->Attendance->Group
     sql += " ATTENDANCE.id_group AS a_g_id, ATTENDANCE.id_student, ATTENDANCE.a_type as a_type , ATTENDANCE.a_date as a_date FROM ";
     sql += " STUDENTS, ATTENDANCE, GROUPS ";
     sql += " WHERE (GROUPS.id=s_g_id";
-    sql += " AND s_g_id=a_g_id ) AND ( ATTENDANCE.id_group = " + id_global;
+    sql += " AND s_g_id=a_g_id ) AND ( ATTENDANCE.id_group = " + global_id;
     sql += " AND students.id=ATTENDANCE.id_student )";
     sql += " ORDER BY s_id ; ";
 // global_reports_date
@@ -496,13 +563,12 @@ function queryReportAttendanceDB(tx) {// report->Attendance->Group
        dbErrorFunc = function(tx, e) {
         if (tx.message)
             e = tx;
-        alert(" There has been an error queryReportAttendanceDB: " + e);
+            log(" There has been an error queryReportAttendanceDB: " + e.message);
+        alert(" There has been an error queryReportAttendanceDB: " + e.message);
         return false;
     });
 
 }
-
-
 
 
 
@@ -520,18 +586,85 @@ function queryGroupsSuccess(tx, results) {
     for (var i = 0; i < len; i++) {
         html = "<li><h3> ";
         // listStudentsAttendance (id_group, -1), -1=> any session
-        html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
         html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
         html += " href='#' data-transition='slideup'>";
 //        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
         html += results.rows.item(i).data + "</a></h3>";
-        html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
         html += "</a></li>";
         ul_list.append(html);
     }
     ul_list.listview('refresh');
 }
 
+
+// Complete list of students
+function queryAllStudentsSuccess(tx, results) {
+    var len = results.rows.length;
+    var ul_list = $('#full_students_ul');
+    log("Number of students - rows inserted: " + len);
+
+    ul_list.empty();
+    var html;
+    var id = 0;
+    for (var i = 0; i < len; i++) {
+        id = results.rows.item(i).id;
+        html = "<li>";
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
+        html += "</a>";
+        html += "<label>" + results.rows.item(i).surname + " " + results.rows.item(i).name + "</label>";
+        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#'  onClick=\"EditStudent(" + results.rows.item(i).id + ");\">Edit</a>";
+        html += "</li>";
+        ul_list.append(html);
+    }
+    ul_list.listview('refresh');
+
+}
+//
+// TODO: Edit Student
+//      Also Save into database
+function queryStudentSuccess(tx, results) {
+    var len = results.rows.length;
+    var ul_list = $('#full_students_ul');
+    log("queryStudentSuccess. Number of students - rows inserted: " + len);
+    if(len>0) {
+        $('#in_name_student').val(results.rows.item(0).name);
+        $('#in_surname_student').val(results.rows.item(0).surname);
+        $('#in_id_group_student').val('To be implemented'); // TODO To be implemented
+        $('#in_id_group_student').val('To be implemented');
+        $('#in_birth_date_student').val(results.rows.item(0).n_date);
+    }
+// if change:  -> update
+// if new -> insert
+}
+
+
+
+
+// Settings->Group->Students
+function queryStudentsByGroupSuccess(tx, results) {
+    var len = results.rows.length;
+    log("queryStudentsByGroupSuccess. Number of students - rows inserted: " + len);
+    var ul_list = $('#list_students_by_group_ul');
+    $('#id_list_students_by_group').text( results.rows.item(0).data );
+    var html;
+    ul_list.empty();
+    var id = 0;
+    for (var i = 0; i < len; i++) {
+        id = results.rows.item(i).id;
+        html = "<li>";
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
+        html += "</a>";
+        html += "<label>" + results.rows.item(i).surname + " " + results.rows.item(i).name + "</label>";
+        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#'  onClick=\"EditStudent(" + results.rows.item(i).id + ");\">Edit</a>";
+        html += "</li>";
+        ul_list.append(html);
+    }
+    ul_list.listview('refresh');
+}
 
 
 
@@ -552,8 +685,8 @@ function queryStudentsSuccess(tx, results) {
         // 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
         // 		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 
-        html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-// html += "<a onClick='id_global=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+// html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>" + results.rows.item(i).surname + " " + results.rows.item(i).name + "</label>";
@@ -569,9 +702,11 @@ function queryStudentsSuccess(tx, results) {
 
 }
 
+
+
+
 /*
  *  Main Window
- * TODO     List of groups per day
  */
    function queryScheduleSuccess(tx, results) {
 
@@ -593,7 +728,7 @@ function queryStudentsSuccess(tx, results) {
 // 		   html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
 // 		   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 // TODO: fill with correct fields vvv
-		//   html += "<a onClick='id_global="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+		//   html += "<a onClick='global_id="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
 		//   html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
 		//   html += "</a>";
 		//   html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
@@ -702,8 +837,8 @@ function queryStudentsAttendanceSuccess(tx, results) {
 
         html = "<li>";
 
-        html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-//         html += "<a onClick='id_global="+ id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+        html += "<a onClick='global_id="+ id +"; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+//         html += "<a onClick='global_id="+ id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/"+photo +"' alt='" + surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>"+ surname +" "+ name +"</label>";
@@ -727,7 +862,7 @@ function queryStudentsAttendanceDB(tx) {
     var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo,";
     sql += " GROUPS.id as g_id, GROUPS.data as data ";
     sql += " FROM STUDENTS, GROUPS WHERE  ( g_id=STUDENTS.id_group  ";
-    sql += " AND g_id=" + id_global + " ) ORDER BY id_student";
+    sql += " AND g_id=" + global_id + " ) ORDER BY id_student";
 
     tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
         dbErrorFunc = function(tx, e) {
@@ -896,16 +1031,35 @@ function insertNewActivity(db, name, other_data) {
    }
 
 // load all
-   function loadGroups(db) {
-       db.transaction(queryGroupsDB);
-   }
+
 
    function loadGroupsAttendance(db) {
 	   db.transaction(queryGroupsAttendanceDB);
    }
+//
+
+//
+//
+  function loadAllGroups(db) {
+       db.transaction(queryGroupsDB);
+   }
 
    function loadStudents(db) {
 	   db.transaction(queryStudentsDB);
+   }
+   // Load only one student!
+   function loadStudent(db){
+       db.transaction(queryStudentDB);
+   }
+//
+//
+  function loadAllGroups(db) {
+       db.transaction(queryAllGroupsDB);
+   }
+
+
+   function loadAllStudents(db) {
+          db.transaction(queryAllStudentsDB);
    }
 
    function loadStudentsByGroup(db) {
@@ -917,13 +1071,10 @@ function insertNewActivity(db, name, other_data) {
  */
     function reportAttendanceDB(db) { // reportAttendance
        db.transaction(queryReportAttendanceDB);
-
    }
-
 
    function loadStudentAttendance(db) {
 	   db.transaction(queryStudentsAttendanceDB);
-
    }
 
    function loadActivities(db) {

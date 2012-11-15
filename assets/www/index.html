@@ -90,8 +90,8 @@
             <div data-role="content">
 
                 <ul data-role="listview" id="list_settings_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="d" >
-                    <li><a href="#" onClick=" " >Groups</a></li>
-                    <li><a href="#" onClick=" " >Students</a></li>
+                    <li><a href="#" onClick="listAllGroups()" >Groups</a></li> <!--  TODO: List Groups  //-->
+                    <li><a href="#" onClick="listAllStudents() " >Students</a></li>
                     <li><a href="#" onClick=" " >Activities</a></li>
                 </ul>
 
@@ -238,14 +238,17 @@
 
 <div data-role="page" id="list_groups" data-add-back-btn="true">
             <div data-role="header"  data-add-back-btn="true"  >
-                <h1>Lista de Grupos</h1>
+                <h1>Groups List</h1>
             </div>
            <div data-role="content">
 
                 <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
             </ul>
             </div>
-			<div data-role="footer"  data-rel="back" data-theme="d">
+        <div data-role="footer"  data-rel="back" data-theme="d">
+        <p style="text-align: center">
+            List of Groups
+        </p>
             </div>
 </div>
 
@@ -297,58 +300,51 @@
             </div>
 
 </div>
-<div data-role="page" id="list_students" data-add-back-btn="true">
 
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
-                <h1>Lista Completa de Alumnos</h1>
-            </div>
-            <div data-role="content">
+<!--   -->
 
-                <ul data-role="listview" id="students_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
-            </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-                <p>
-                    Atrás
-                </p>
-             </div>
-<!--             <div data-role="content"> -->
-<!--             			Lista de alumnos por grupo: -->
-<!-- 					<ul data-role="listview" id="students_group_ul"></ul> -->
-<!--                 <label for="medico">Médico</label><input id="medico" disabled="true" /> -->
-<!--                 <label for="centro">Centro</label><input id="centro" disabled="true" /> -->
-
-<!--                 <label for="tipo">Tipo de cita</label> -->
-<!--                 <select id="tipo" onChange="updateDays();"> -->
-<!--                     <option value="1" selected="selected">Consulta por Enfermidade</option> -->
-<!--                     <option value="2">Consulta para Receitas</option> -->
-<!--                 </select> -->
-
-<!--                 <label for="dia">Día</label><select id="dia"></select> -->
-
-<!--                 <label for="rango">Rango</label><input id="rango" disabled="true" /> -->
-<!--                 <label for="alerta">Alerta</label><input id="alerta" disabled="true" /> -->
-<!--                 <label for="hora">Hora</label><input id="hora" value="00" /> -->
-<!--                 <label for="minutos">Minutos</label><input id="minutos" value="00" /> -->
-<!--                 <a onClick="requestAppointment();" data-role="button" data-icon="check">Solicitar</a> -->
-<!--             </div> -->
+<div data-role="page" id="list_students_by_group" data-add-back-btn="true">
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+        <h1 id="id_list_students_by_group"> Students List</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="list_students_by_group_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+    </div>
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+        <p style="text-align: center">
+            List of Students
+        </p>
+    </div>
 </div>
 
-<!--
-    View attendance
- -->
+<div data-role="page" id="list_students" data-add-back-btn="true">
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+        <h1>Full Students List</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="full_students_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+    </div>
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+        <p style="text-align: center">
+            List of Students
+        </p>
+    </div>
+</div>
 
 
-<div data-role="page" id="edit_students"   data-add-back-btn="true" >
+<div data-role="page" id="edit_student"   data-add-back-btn="true" >
+            <div data-role="header" data-back-btn-text="previous"  data-add-back-btn="true" >
+                <h1>Students Management </h1>
+                 <label for="name_student">Name</label><input id="in_name_student" enabled="true" />
+                 <label for="surname_student">Surname</label><input id="in_surname_student" enabled="true" />
+                 <label for="photo_student">Photo</label><input id="in_photo_student" enabled="false" />
+                 <label for="birth_date_student">Birth Date</label><input id="in_birth_date_student" enabled="true" />
 
-            <div data-role="header"  data-add-back-btn="true" >
-                <h1>Edición de Alumnos </h1>
-                 <label for="name_student">Nombre</label><input id="in_name_student" enabled="true" />
-                 <label for="surname_student">Apellidos</label><input id="in_surname_student" enabled="true" />
-                 <label for="group_student">Grupo</label><input id="in_id_group_student" enabled="true" />
+                 <label for="group_student">Group</label><input id="in_id_group_student" enabled="false" />
                  <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
                  </div>
                  <div data-role="footer" class="footer-docs" data-theme="c">
-            <p>&copy; 2012 jQuery Foundation and other contributors</p>
+            <p style="text-align: center" >Student information</p>
     </div>
 </div>
 

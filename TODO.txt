@@ -126,13 +126,22 @@ Steps:
         Realizado: duplicidad y datos, y fecha de informes independiente.
         Pendiente:
                 - Instalarlo (?? Domingo lo consigue instalar)
+
+    15/11/2012:
+        Realizado:
+            Xosé Manuel lo instaló con éxito, la parte operativa (control asistencia) parece funcionar.
+            Añadidos listado de grupos y estudiantes
+
+        Pendiente:
+            - Añadir botón de "back" en la pantalla de edición de estudiante
+            - Desdoblar database.js (>1k loc)
+            - Insertar nuevos alumnos en la base de datos (¿no lo había hecho antes?)
                 - Instalar datos "reales"
                         (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Estudiar la posibilidad de introducir datos:
                         - Cómo imágenes (ver URL de Manuel)
                         - Cómo horario (¿?¿?)
                 - Crear presentación con efectos-transiciones
-
 
 
 
@@ -168,7 +177,7 @@ Máxima prioridad:
 (22:14:55) Manuel Rego: [U] luego desde la principal puedes tener acceso directo a lo de las clases para poner las faltas de asistencia y si quieres también a los informes
 http://jquerymobile.com/demos/1.2.0/docs/lists/lists-icons.html
 http://jquerymobile.com/demos/1.2.0/docs/lists/lists-thumbnails.html
-        * Abstraer la "inserción-actualización".
+        * Abstraer la "inserción-actualización". (hecho con ATTENDANCE)
             - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
             - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
                 que determinará si existen esos datos o no.
@@ -177,19 +186,17 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
 
 
         * Comprobar que han guardado los datos (hecho)
-        * Ventana Settings para edición de estudiantes, grupos, actividades.
+        * Ventana Settings para edición de estudiantes, grupos, actividades. (hecho, falta completarlas)
 
         * Ventana Reports para visualizar los informes de notas (en función de actividades)
-        * Falta indicar la sesión en las faltas
+        * Falta indicar la sesión en las faltas.
         * No se puede tener dos horas en el mismo día con el mismo grupo
-        * Fecha para informes, así es posible diferenciar la fecha a la que se guardan los datos de la fecha de los informes (que se va desplazando)
-        * Pendiente diferenciar fechas de informes global_reports_date de la fecha actual, global_actual_date.
-        * Pendiente leer los datos y "escribirlos" en los SELECT         selected=""; // TODO: selected="selected" para el adecuado (hacer una query)??
-            655 de database.js
+        * Fecha para informes, así es posible diferenciar la fecha a la que se
+            guardan los datos de la fecha de los informes (que se va desplazando) (hecho)
+        * Pendiente diferenciar fechas de informes global_reports_date de la fecha actual, global_actual_date. (hecho)
 
-
-        * Enlazar pantalla de edición de estudiantes.
-        * Crear pantalla de edición de actividades
+        * Enlazar pantalla de edición de estudiantes. (hecho)
+        * Crear pantalla de edición de actividades.
         * Revisar y actualizar este TODO a partir de la memoria.
 
         * ¿Hacer pruebas con base de datos MySQL/SQLite real? ¿Dónde está el query para construir la BBDD.?
