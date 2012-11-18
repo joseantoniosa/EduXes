@@ -132,8 +132,16 @@ Steps:
             Xosé Manuel lo instaló con éxito, la parte operativa (control asistencia) parece funcionar.
             Añadidos listado de grupos y estudiantes
 
+
+    16/11/2012:
+            Realizado:
+            - Añadir botón de "back" en la pantalla de edición de estudiante (el número de campos es limitado, al añadir más quita el botón de "back")
+    18/11/2012:
+        Realizado:
+            Reorganizada la edición de estudiantes, REGRESSION: el "gears" desapareció
         Pendiente:
-            - Añadir botón de "back" en la pantalla de edición de estudiante
+            - REGRESSION: el "gears" desapareció
+            - Crear pantalla de presentación inicial.
             - Desdoblar database.js (>1k loc)
             - Insertar nuevos alumnos en la base de datos (¿no lo había hecho antes?)
                 - Instalar datos "reales"

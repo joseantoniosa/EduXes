@@ -139,23 +139,22 @@
 <!-- Third Window: List of Students.
   Attendance //-->
 <div data-role="page" id="list_students_attendance" data-add-back-btn="true">
-
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
-                <h1 id="current_group_attendance" >Student List for Group</h1>
-            </div>
-            <div data-role="content">
-                <ul data-role="listview" id="students_attendance_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
-            </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-                <p style="alignment-adjust: central;">Students Editor</p>
-             </div>
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true"  data-theme="c" >
+        <h1 id="current_group_attendance" >Student List for Group</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="students_attendance_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+    </div>
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+        <p style="alignment-adjust: central;">Students Editor</p>
+    </div>
 </div>
 
 
 
 <!--List of students:  List of Attendance //-->
 <div data-role="page" id="list_students_attendance_by_group" data-add-back-btn="true">
-    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true"  data-theme="c" >
         <h1 style="alignment-adjust: central" id="current_group_attendance_by_group" >Student List for Group</h1>
     </div>
     <div data-role="content">
@@ -174,7 +173,7 @@
         </table>
     </div>
     </div>
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
         <p style="alignment-adjust: central">Students Attendance</p>
     </div>
 </div>
@@ -182,7 +181,7 @@
 
 <!-- // -->
 <!--List of students:  Assessment //-->
-<div data-role="page" id="list_students_assessment" data-add-back-btn="true">
+<div data-role="page" id="list_students_assessment" data-add-back-btn="true"  data-theme="c">
 
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
                 <h1 id="current_group_assessment" >Student List for Group</h1>
@@ -192,36 +191,31 @@
 <!--- [Photo]-[Surname, Name ] [0/1/2/3/4/5/6/7/8/9]<combobox>   [Behavior] <combobox>//-->
                 <ul data-role="listview" id="students_assessment_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
             </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-                <p>
-                    Atrás
-                </p>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
+                <p style="alignment-adjust: central" >  Atrás  </p>
              </div>
 
 </div>
 
 
 <!--TODO: List of Attendance //-->
-<div data-role="page" id="general_list_attendance" data-add-back-btn="true">
-
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+<div data-role="page" id="general_list_attendance" data-add-back-btn="true"  data-theme="c" >
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true"   data-theme="c" >
                 <h1 id="current_group_attendance2" >2 Student List for Group</h1>
-            </div>
-            <div data-role="content">
-                <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
-            </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-                <p>
-                    List Students Attendance 2
-                </p>
-             </div>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+    </div>
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
+        <p style="alignment-adjust: central" >  List Students Attendance 2  </p>
+     </div>
 </div>
 
 <!--
     List Students Attendance
 //-->
-<div data-role="page" id="list_groups_attendance" data-add-back-btn="true">
-            <div data-role="header"  data-add-back-btn="true"  >
+<div data-role="page" id="list_groups_attendance" data-add-back-btn="true"  data-theme="c" >
+            <div data-role="header"  data-add-back-btn="true"   data-theme="c" >
                 <h1>Lista de Asistencia - Grupos</h1>
             </div>
            <div data-role="content">
@@ -229,7 +223,7 @@
                 <ul id="groups_attendance_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
             </ul>
             </div>
-            <div data-role="footer"  data-rel="back" data-theme="d">
+            <div data-role="footer"  data-rel="back" data-theme="c">
             </div>
 </div>
 
@@ -308,9 +302,10 @@
         <h1 id="id_list_students_by_group"> Students List</h1>
     </div>
     <div data-role="content">
-        <ul data-role="listview" id="list_students_by_group_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+        <ul id="list_students_by_group_ul" data-role="listview" data-theme="c" data-split-theme="c" data-split-icon="gear" data-filter="true" data-inset="true"  >
+        </ul>
     </div>
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
         <p style="text-align: center">
             List of Students
         </p>
@@ -322,7 +317,8 @@
         <h1>Full Students List</h1>
     </div>
     <div data-role="content">
-        <ul data-role="listview" id="full_students_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+        <ul  id="full_students_ul" data-role="listview"  data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
+
     </div>
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
         <p style="text-align: center">
@@ -332,25 +328,59 @@
 </div>
 
 
-<div data-role="page" id="edit_student"   data-add-back-btn="true" >
-            <div data-role="header" data-back-btn-text="previous"  data-add-back-btn="true" >
+<div data-role="page" id="edit_student"   data-add-back-btn="true"  >
+            <div data-role="header" data-back-btn-text="previous"  data-add-back-btn="true"  data-theme="c" >
                 <h1>Students Management </h1>
-                 <label for="name_student">Name</label><input id="in_name_student" enabled="true" />
-                 <label for="surname_student">Surname</label><input id="in_surname_student" enabled="true" />
-                 <label for="photo_student">Photo</label><input id="in_photo_student" enabled="false" />
-                 <label for="birth_date_student">Birth Date</label><input id="in_birth_date_student" enabled="true" />
+                <ul data-role="listview" >
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label for="name_student">Name</label></div>
+                        <div class="ui-block-b">
+                            <input id="in_name_student" enabled="true" />
+                        </div>
+                     </fieldset>
+                 </li>
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="surname_student">Surname</label></div>
+                        <div class="ui-block-b"><input id="in_surname_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="photo_student">Photo</label></div>
+                        <div class="ui-block-b"><input id="in_photo_student" enabled="false" />
+                            </div>
+                     </fieldset></li>
 
-                 <label for="group_student">Group</label><input id="in_id_group_student" enabled="false" />
-                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Añadir</a>
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="birth_date_student">Birth Date</label></div>
+                        <div class="ui-block-b"><input id="in_birth_date_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="group_student">Group</label></div>
+                        <div class="ui-block-b"><input id="in_id_group_student" enabled="false" />
+                        </div>
+                     </fieldset></li>
+<!--                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Add</a> //-->
+                </ul>
                  </div>
                  <div data-role="footer" class="footer-docs" data-theme="c">
             <p style="text-align: center" >Student information</p>
     </div>
 </div>
 
-<div data-role="page" id="edit_activities"    data-add-back-btn="true" >
+<div data-role="page" id="edit_activities"    data-add-back-btn="true"  data-theme="c" >
 
-            <div data-role="header"  data-add-back-btn="true" >
+            <div data-role="header"  data-add-back-btn="true"   data-theme="c" >
                 <h1>Edición de Actividades </h1>
                  <label for="nombre_grupo">Nombre</label><input id="in_nombre_activitie" enabled="true" />
                  <label for="nivel_grupo">Nivel</label><input id="in_nivel_activitie" enabled="true" />
