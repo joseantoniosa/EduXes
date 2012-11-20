@@ -124,6 +124,8 @@ Steps:
 
     14/11/2012:
         Realizado: duplicidad y datos, y fecha de informes independiente.
+                * Fecha para informes, así es posible diferenciar la fecha a la que se
+            guardan los datos de la fecha de los informes (que se va desplazando) (hecho)
         Pendiente:
                 - Instalarlo (?? Domingo lo consigue instalar)
 
@@ -139,9 +141,16 @@ Steps:
     18/11/2012:
         Realizado:
             Reorganizada la edición de estudiantes, REGRESSION: el "gears" desapareció
+    19/11/2012:
+        Realizado:
+            - Crear pantalla de presentación inicial.
+            - Instalado en SonyEricsson  Xperia V
+            - Limitados los permisos
+
+
         Pendiente:
             - REGRESSION: el "gears" desapareció
-            - Crear pantalla de presentación inicial.
+
             - Desdoblar database.js (>1k loc)
             - Insertar nuevos alumnos en la base de datos (¿no lo había hecho antes?)
                 - Instalar datos "reales"
@@ -199,8 +208,7 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
         * Ventana Reports para visualizar los informes de notas (en función de actividades)
         * Falta indicar la sesión en las faltas.
         * No se puede tener dos horas en el mismo día con el mismo grupo
-        * Fecha para informes, así es posible diferenciar la fecha a la que se
-            guardan los datos de la fecha de los informes (que se va desplazando) (hecho)
+
         * Pendiente diferenciar fechas de informes global_reports_date de la fecha actual, global_actual_date. (hecho)
 
         * Enlazar pantalla de edición de estudiantes. (hecho)
@@ -211,6 +219,11 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
         *    // TODO: Change SELECT to obtain session (?)
         * Obtener imágenes de la galería del móvil:
         http://docs.phonegap.com/en/2.2.0/cordova_camera_camera.md.html#camera.getPicture
+        * Actualización automática
+        * Nombre de la aplicación, debe ser EduXes y no MainActivity
+        * ¿Cómo hacer que reutilice los datos presentes y no lo sobreescriba?
+
+
 
 -----------------------------------------------------------------------------------
 --- SNIPPETS:
@@ -226,6 +239,10 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
     http://docs.phonegap.com/en/1.8.1/cordova_file_file.md.html#File
 
 http://stackoverflow.com/questions/11175489/ios-phonegap-media-object-how-do-i-access-a-resource-in-the-www-folder
+
+Howto upload an image file from camera.
+http://zacvineyard.com/blog/2011/03/upload-a-file-to-a-remote-server-with-phonegap
+http://docs.phonegap.com/en/1.0.0/phonegap_file_file.md.html#FileTransfer
 
 
 

@@ -47,7 +47,7 @@ function onDeviceReady() {
     initialize_data() ;
 
 
-    $.mobile.changePage("#daily_work");
+    $.mobile.changePage("#intro");
 
 
 
