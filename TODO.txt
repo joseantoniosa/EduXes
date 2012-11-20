@@ -146,10 +146,12 @@ Steps:
             - Crear pantalla de presentación inicial.
             - Instalado en SonyEricsson  Xperia V
             - Limitados los permisos
-
+    20/11/2012:
+        Integrados parches de M Rego. (    - REGRESSION: el "gears" desapareció)
+        ¿Cómo guardar datos?
 
         Pendiente:
-            - REGRESSION: el "gears" desapareció
+
 
             - Desdoblar database.js (>1k loc)
             - Insertar nuevos alumnos en la base de datos (¿no lo había hecho antes?)
@@ -158,7 +160,7 @@ Steps:
                     - Estudiar la posibilidad de introducir datos:
                         - Cómo imágenes (ver URL de Manuel)
                         - Cómo horario (¿?¿?)
-                - Crear presentación con efectos-transiciones
+                - Crear presentación con efectos-transiciones espectaculares.
 
 
 

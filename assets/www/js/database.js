@@ -610,19 +610,12 @@ function queryAllStudentsSuccess(tx, results) {
     var id = 0;
     for (var i = 0; i < len; i++) {
         id = results.rows.item(i).id;
-        html = "<li data-role='fieldcontain'>";
-//        html += "<fieldset class='ui-grid-b'>";
-//        html += "<div class='ui-block-a' style='text-align: left; width:10%' >";
+        html = "<li>";
         html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float:left;' class='ui-li-icon ui-corner-none'>";
+        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
         html += "</a>";
-//        html += "</div><div class='ui-block-b' style='text-align: left; float:left' align='left' >";
-        html += "<label>" + results.rows.item(i).surname + "," + results.rows.item(i).name + "</label>";
-//        html += "</div><div class='ui-block-c'  style='text-align:right;' >";
         html += "<a data-role='button'  data-position-to='window'  data-iconpos='notext' style='float:right;' href='#' data-rel='dialog' data-transition='slideup' onClick=\"EditStudent(" + id + ");\">Edit</a>";
-//        html += "<a data-role='button' data-iconpos='notext' style='float:right;' href='#'  data-rel='dialog' data-transition='slideup' onClick=\"EditStudent(" + id + ");\">Edit</a>";
-//        html +="</div>";
-//        html +="</fieldset>";
         html += "</li>";
         ul_list.append(html);
     }
@@ -656,9 +649,6 @@ function queryStudentSuccess(tx, results) {
 // if new -> insert
 }
 
-
-
-
 // Settings->Group->Students
 function queryStudentsByGroupSuccess(tx, results) {
     var len = results.rows.length;
@@ -670,18 +660,12 @@ function queryStudentsByGroupSuccess(tx, results) {
     var id = 0;
     for (var i = 0; i < len; i++) {
         id = results.rows.item(i).id;
-        html = "<li data-role='fieldcontain'>";
-        html += "<fieldset class='ui-grid-b'>";
-        html += "<div class='ui-block-a'>";
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>";
+        html = "<li >";
+        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float:left;' class='ui-li-icon ui-corner-none'>";
+        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
         html += "</a>";
-        html += "</div><div class='ui-block-b'>";
-        html += "<label>" + results.rows.item(i).surname + "," + results.rows.item(i).name + "</label>";
-        html += "</div><div class='ui-block-c'>";
-        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#'  onClick=\"EditStudent(" + results.rows.item(i).id + ");\">Edit</a>";
-        html +="</div>";
-        html +="</fieldset>";
+        html += "<a data-role='button'  data-position-to='window'  data-iconpos='notext' style='float:right;' href='#' data-rel='dialog' data-transition='slideup' onClick=\"EditStudent(" + id + ");\">Edit</a>";
         html += "</li>";
         ul_list.append(html);
     }
@@ -723,9 +707,6 @@ function queryStudentsSuccess(tx, results) {
     ul_list.listview('refresh');
 
 }
-
-
-
 
 /*
  *  Main Window
