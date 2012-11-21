@@ -25,7 +25,7 @@
         DROP TABLE IF EXISTS ATTENDANCE;
         CREATE TABLE IF NOT EXISTS ATTENDANCE (id integer primary key , 
          id_group integer, id_student integer, id_session integer, a_type integer, a_date text,
-        FOREIGN KEY (id_student) REFERENCES STUDENTS (id), 
+        FOREIGN KEY (id_student) REFERENCES students (id), 
         FOREIGN KEY (id_group) REFERENCES GROUPS(id), 
         FOREIGN KEY (id_session) REFERENCES SESSIONS(id) );
 

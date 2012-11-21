@@ -60,7 +60,6 @@ function errorCB(err) {
     function successCB() {
     	log("Success ");
     }
-// Create database and remove wether if exist.
 function createDB(tx) {
 
         var sql = "";
@@ -814,7 +813,9 @@ function queryStudentsAttendanceSuccess(tx, results) {
     $('#students_attendance_ul').empty();
     if(len>0) {
         $('#current_group_attendance').text(results.rows.item(0).data);
+
     }
+    var selected="";
     for (var i=0;i<len;i++) {
         id = results.rows.item(i).id_student;
         photo = results.rows.item(i).photo;
@@ -824,17 +825,24 @@ function queryStudentsAttendanceSuccess(tx, results) {
 
         id_session = global_session; //
 
-        html = "<li data-role='fieldcontain'> ";
-        html += "<label for='select_student_"+id+"' class='select'> ";
-        html += "<img height='20px' src='photos/"+photo +"' alt='" + id+surname + "' >";
-        html += surname + "," + name + "</label> " ;
+        html = "<li>";
+
+        html += "<a onClick='global_id="+ id +"; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+//         html += "<a onClick='global_id="+ id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
+        html += "<img height='20px' src='photos/"+photo +"' alt='" + surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
+        html += "</a>";
+        html += "<label>"+ surname +" "+ name +"</label>";
+
+        html +="";
         html +="<select name='select_student_"+id+"' id='select_student_"+id+"' ";
         html += " onChange='studentState("+id + "," +id_group + ","+id_session+ ");'>";
+
         html +="</select>";
+
         html += "</li>";
         $('#students_attendance_ul').append(html);
-// #id to be filled, id_session, id_student // Asyncrhonous
-        fillSelectStudent(global_db, "select_student_"+id, id_session, id);
+
+        fillSelectStudent(global_db, "select_student_"+id, id_session, id); // #id to be filled, id_session, id_student // Asyncrhonous
     }
     $('#students_attendance_ul').listview('refresh');
 }

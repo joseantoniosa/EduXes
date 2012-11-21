@@ -1,23 +1,255 @@
+Look at the end of file
 
 Repository:
 	https://github.com/joseantoniosa/EduXes
 Docs:
 	http://docs.phonegap.com/en/2.0.0/cordova_storage_storage.md.html#SQLTransaction
 	http://jquerymobile.com/demos/1.1.1/docs/forms/forms-sample.html
+Icons:
+    http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
 Steps:
 
 1. Create main tables (T) and GUI (G):
 	+ groups (T, G)
+	   list (done)
+	   edit (done)
 	+ students (T)
+	   list (done)
+	   edit (todo)
 	+ activities (T)
+	   list
+	   edit
 	+ timetable ?
 2. Create main interfaces (?)
 	+ login window
+	   (todo)
 	+ daily window (define)
+	   (in process)
 	+ marks by student and group window
-	+ ... 
-	
+	   (todo)
+	+ ...
+	+
 	------------------------------
-	  7/8/2012:-> list_students by group. Fix 83 database.js and so on ..., 85 interface.js 
+	7/8/2012:-> list_students by group. Fix 83 database.js and so on ..., 85 interface.js
+
+    22/8/2012-> queryGroupsSuccess . database.js line 123:implement:
+                 <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
+    23/8/2012->  <div data-role="page" id="daily_work">, index.html line 130.
+                Implement daily work window
+                [Options] [Classes]
+                            -> (Classes)- List Students by group:
+                                        -> Edit/Add Attendance
+    15/9/2012 -> On css errors can't compile and run application.
+        Solution: Install Juno from webpage, install ADT + Aptana as plugin, disable CSS validation
+        Window-> Preferences ->Go to Window -> Preferences -> Aptana Studio -> Validation
+            Now on this tab, if CSS is not selected, select it.
+    22/09/2012 ->
+            Design main window (teacher_schedule)
+    22/09/2012 -> Para el Drop_menu:
+
+        http://jquerymobile.com/demos/1.1.1/docs/forms/selects/
+
+            http://jquerymobile.com/demos/1.1.1/docs/forms/textinputs/
+
+        Control Asistencia - Attendance
+
+
+    11/10/2012 -> Por hacer....
+    14/10 : Limpiada pantalla principal:
+        - Falta info que indique el formato de la fecha M/D/Y
+        - Falta colocar las opciones de menú principal
+
+    15/10/2012 : Tengo que reorganizar los ficheros para hacerlo mucho más legible.
+            Falta info que indique el formato de la fecha M/D/Y. Hecho
+    16/10/2012: database.js:línea 336 (lista de alumnos)
+    16/10/2012:
+    Para una primera versión utilizable falta colocar un combobox  en la
+        pantalla de lista de alumnos (LA), a la derecha de cada uno de ellos,
+        donde se pueda seleccionar Puntualidad/Retraso/otras, >> Hecho
+         ....( VER TODO - Pendiente)
+    17/10/2012: Pendiente de definir el SQL para introducir el estado en la base de datos:
+        database.js: function updateStudentState(id_student, state, actual_date){ ...  }
+    18/10/2012: Añadida conexión con la base de datos. Da gran cantidad de errores:
+        tabla: attendance no existe
+            Pero parece funcionar ¿?, parece existir un workaround para mostrar los errores ¿?
+    18/10/2012 b:  Eliminado código redundante, limpiado parte del código. grabados los datos en la base
+        de datos (?).
+>>>>>>>>>>>>>>
+    25/10/2012: Attendance pre, preparando lista de asistencia. línea 170 de interface.fs
+
+    <div data-role="page" id="general_list_attendance" data-add-back-btn="true">
+    27/10/2012:
+       Queda: Línea 263-264 de  database.js, adaptar para que haga el listado de grupos, y que llame al listado
+        de asistencia por grupo
+    29/10/2012: Línea 565 y siguientes de database.js,
+        Construir el listado de asistencia por estudiante.
+    30/10/2012: Línea 365  queryStudentsAttendanceByGroupDB queda buscar el SELECT adecuado
+            y queryStudentsAttendanceByGroupSuccess falta por escribir los datos
+        http://momentjs.com/docs/
+    31/10/2012:
+        Obtuve el lunes y el viernes de la semana en curso, hubo que copiar objetos.
+        Pendiente leer y  escribir los datos en la base de datos
+        database.js 132
+    2/11/2012:
+        Pendiente:
+             verificar la lectura y escritura de los datos en la base de datos de varias semanas. (hecho)
+        database.js 132
+        #students_attendance_by_groups_li no cambia (corregido, no se debe clonar)
+        Se escriben los datos en la fecha indicada en la ventana principal o la fecha global.
+        * Ventana Reports para visualizar los informes de faltas,(hecho)
+    2/11/2012 b:
+        Reorganizadas algunas funciones.
+    8/11/2012 : Work in progress
+        stateCheck
+        * Abstraer la "inserción-actualización".
+            - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
+            - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
+                que determinará si existen esos datos o no.
+    11/11/2012: Hecho Leer y escribir, insert y update. Pendiente escribir los datos iniciales en el select.
+
+    11/11/2012b: Principio de relleno con datos iniciales. ¿Qué query realizar?
+    12/11/2012: Sigo intentando rellenar datos:
+            función: fillSelectStudent
+        cannot call methods on selectmenu prior to initialization; attempted to call method 'refresh' at undefined:0
+            Parece que llama demasiado rápido a la base de datos y no le da tiempo a representar los "select"
+            El problema es como sincronizarlo todo.
+             ¿Sería posible hacer una llamada a todos y después, cuando termine, escribir el final?< no, es asíncrono (¿?)
+  13/11/2012:
+            No código. Siguiente plan de actuación:
+                - Asegurar el código hecho
+                    - Duplicidad de datos (resuelto, usaba la función init() para cargarla con el onLoad)
+                    - fecha_actual y fecha_report_actual deben ser diferentes (resuelto)
+
+
+    14/11/2012:
+        Realizado: duplicidad y datos, y fecha de informes independiente.
+                * Fecha para informes, así es posible diferenciar la fecha a la que se
+            guardan los datos de la fecha de los informes (que se va desplazando) (hecho)
+        Pendiente:
+                - Instalarlo (?? Domingo lo consigue instalar)
+
+    15/11/2012:
+        Realizado:
+            Xosé Manuel lo instaló con éxito, la parte operativa (control asistencia) parece funcionar.
+            Añadidos listado de grupos y estudiantes
+
+
+    16/11/2012:
+            Realizado:
+            - Añadir botón de "back" en la pantalla de edición de estudiante (el número de campos es limitado, al añadir más quita el botón de "back")
+    18/11/2012:
+        Realizado:
+            Reorganizada la edición de estudiantes, REGRESSION: el "gears" desapareció
+    19/11/2012:
+        Realizado:
+            - Crear pantalla de presentación inicial.
+            - Instalado en SonyEricsson  Xperia V
+            - Limitados los permisos
+    20/11/2012:
+        Integrados parches de M Rego. (    - REGRESSION: el "gears" desapareció)
+        ¿Cómo guardar datos?
+
+        Pendiente:
+
+
+            - Desdoblar database.js (>1k loc)
+            - Insertar nuevos alumnos en la base de datos (¿no lo había hecho antes?)
+                - Instalar datos "reales"
+                        (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
+                    - Estudiar la posibilidad de introducir datos:
+                        - Cómo imágenes (ver URL de Manuel)
+                        - Cómo horario (¿?¿?)
+                - Crear presentación con efectos-transiciones espectaculares.
+
+
+
+        REORGANIZAR EL CÓDIGO PARA DARLE MÁS VISIBILIDAD
+
+----------------------- TODO ------ Pendiente ------------
+        Pantalla principal:
+
+            * Elemento guardar en fichero.
+
+        Pantalla de diario:
+            *Colocar un número de sesión en la pantalla de diario
+            *Quitar la apariencia de enlace <-> pulir la pantalla
+
+        Pantalla de grupo:
+            *Añadir opciones (mirar siestta) Asistencia / Calificaciones / Observaciones
+Máxima prioridad:
+>>        *Además sería necesario una página de visualización de las faltas. Me centraré en estos tres puntos. <<<
+          * Leer los datos de la base de datos (faltas, etc..) (parcialmente hecho)<<
+          * Escribir los de la fecha correspondiente (parcialmente hecho, falta leerlos)
+(22:00:03) Manuel Rego: [U] sobre el UPDATE de los datos creo que ya hablamos el otro día
+(22:00:17) Manuel Rego: [U] lo normal es hacer un SELECT y luego INSERT o UPDATE según ya exista o no la información
+(22:00:46) Manuel Rego: [U] por ejemplo cuando llegas a la pantalla de estudiantes, y se cambia el valor de un estudiante (falta de puntualidad, mal comportamiento o lo que sea)
+(22:00:56) Manuel Rego: [U] ya cuando se cambia podrías guardar en BD (hecho)
+(22:01:11) Manuel Rego: [U] si la entrada para ese estudiante en esa sesión no existe, usas INSERT y sino UPDATE
+(22:13:49) Manuel Rego: [U] las cosas de edición yo las metería en una ventana separada
+(22:13:52) Manuel Rego: [U] tipo settings
+(22:14:09) Manuel Rego: [U] en plan que con un iconillo en el header, puedas ir a settings/configuration o como que le quieras llamara
+(22:14:16) Manuel Rego: [U] y ahí tengas enlaces para la edición de las distintas coas
+(22:14:18) Manuel Rego: [U] cosas
+(22:14:29) Manuel Rego: [U] ya que normalmente eso se hará una vez y luego se usará
+(22:14:36) Manuel Rego: [U] no es una pantalla que necesite acceso directo
+(22:14:55) Manuel Rego: [U] luego desde la principal puedes tener acceso directo a lo de las clases para poner las faltas de asistencia y si quieres también a los informes
+http://jquerymobile.com/demos/1.2.0/docs/lists/lists-icons.html
+http://jquerymobile.com/demos/1.2.0/docs/lists/lists-thumbnails.html
+        * Abstraer la "inserción-actualización". (hecho con ATTENDANCE)
+            - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
+            - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
+                que determinará si existen esos datos o no.
+
+function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indicar sessión - sesión(tipo de falta con letra) 1(2)
+
+
+        * Comprobar que han guardado los datos (hecho)
+        * Ventana Settings para edición de estudiantes, grupos, actividades. (hecho, falta completarlas)
+
+        * Ventana Reports para visualizar los informes de notas (en función de actividades)
+        * Falta indicar la sesión en las faltas.
+        * No se puede tener dos horas en el mismo día con el mismo grupo
+
+        * Pendiente diferenciar fechas de informes global_reports_date de la fecha actual, global_actual_date. (hecho)
+
+        * Enlazar pantalla de edición de estudiantes. (hecho)
+        * Crear pantalla de edición de actividades.
+        * Revisar y actualizar este TODO a partir de la memoria.
+
+        * ¿Hacer pruebas con base de datos MySQL/SQLite real? ¿Dónde está el query para construir la BBDD.?
+        *    // TODO: Change SELECT to obtain session (?)
+        * Obtener imágenes de la galería del móvil:
+        http://docs.phonegap.com/en/2.2.0/cordova_camera_camera.md.html#camera.getPicture
+        * Actualización automática
+        * Nombre de la aplicación, debe ser EduXes y no MainActivity
+        * ¿Cómo hacer que reutilice los datos presentes y no lo sobreescriba?
+
+
+
+-----------------------------------------------------------------------------------
+--- SNIPPETS:
+[],
+            successCB,
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error create attendance: " + e.message);
+                return false;
+                }
+            );
+            File access: (to save data)
+    http://docs.phonegap.com/en/1.8.1/cordova_file_file.md.html#File
+
+http://stackoverflow.com/questions/11175489/ios-phonegap-media-object-how-do-i-access-a-resource-in-the-www-folder
+
+Howto upload an image file from camera.
+http://zacvineyard.com/blog/2011/03/upload-a-file-to-a-remote-server-with-phonegap
+http://docs.phonegap.com/en/1.0.0/phonegap_file_file.md.html#FileTransfer
+
+
+
+
+
+
+
 
