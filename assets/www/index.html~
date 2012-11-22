@@ -124,7 +124,7 @@
                 <ul data-role="listview" id="file_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="d" >
                     <li><a href="#" onClick=" " >Open-Restore</a></li>
                     <li><a href="#" onClick=" " >Save</a></li>
-                    <li><a href="#" onClick="exitApp()" >Quit</a></li>
+                    <li><a href="#" onClick=" " >Quit</a></li>
                 </ul>
             </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
