@@ -1,3 +1,5 @@
+#-------------------------------------------------------------------------------
+# Copyright (c) 2012 jantonio.
 
 Repository:
 	https://github.com/joseantoniosa/EduXes
@@ -24,9 +26,14 @@ Icons:
                         - Cómo imágenes (ver URL de Manuel)
                         - Cómo introducir horario (¿?¿?)
                 - Crear presentación con efectos-transiciones espectaculares.
+            - Rehacer presentación, rehacer memoria
+            - Edición de estudiantes: Añadir un select, tal como se hizo con attendance.
+            - Documentar las funciones, realizar esquemas explicativos.
 
 Look at the end of file
 
+jsdoc  -d=docs/  assets/www/
+http://en.wikipedia.org/wiki/JSDoc
 
 Steps:
 

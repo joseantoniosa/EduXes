@@ -1,3 +1,4 @@
+
 /*
  * EduXes
  *
@@ -41,7 +42,12 @@ var STATE_ABSENCE = 1;
 var STATE_UNPUNCTUAL = 2;
 var STATE_EXCUSED = 3;
 var STATE_BEHAVIOR = 4;
+/*
+ Error callback function
+    @function errorCB
+    @param {errcode} err - Error Struct
 
+*/
 function errorCB(err) {
     log("Error processing SQL code : "+err.code);
     alert("STOP! Error processing SQL ");

@@ -1,3 +1,4 @@
+
 /*
  * EduXes
  *
@@ -19,7 +20,6 @@
 //
     function onDeviceReady() {
 
-//    $.mobile.showPageLoadingMsg();// XXX: Doesn't Work'
         var db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 5*1024*1024);
         global_db=db;
 // On first time it populate DB:
@@ -106,7 +106,9 @@ function addNewStudent() { // TODO
     $.mobile.showPageLoadingMsg();
     name = $("#in_name_student").val();
     surname = $("#in_surname_student").val();
-    group_id = 0;
+
+
+    group_id = 0; // Choose group from a list
     insertNewStudent(global_db, name, surname, group_id); //
     $('#students_ul').listview('refresh');
     $.mobile.changePage("#list_students");
@@ -135,7 +137,7 @@ function listStudents(id_group)
     $.mobile.changePage("#list_students", { transition: "slideup"} );
 }
 /*
- * => REPORT <= 
+ * => REPORT <=
  * For list of Attendance: Students
  *
  */
@@ -151,7 +153,7 @@ function listStudentsByGroup(id_group) { // report
     $.mobile.showPageLoadingMsg();
     global_id=id_group ;  //local variable goes global
     table_global='STUDENTS';
-    loadStudentsByGroup(global_db); 
+    loadStudentsByGroup(global_db);
     $.mobile.changePage("#list_students_by_group", { transition: "slideup"} );
 }
 // List All Groups
