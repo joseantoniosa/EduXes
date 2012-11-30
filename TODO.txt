@@ -9,13 +9,12 @@ Docs:
 Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
+30/11/12:
+    Realizado:
+        Añadida lista de grupos
+    Pendiente:
+        Seleccionar el grupo al que pertenece el usuario.
 
-21/11/2012:
-    Corregido:
-        * Dentro de AttendanceSuccess:
-        Coloca la foto, nombre, apellidos, y el "select" en la misma línea, siempre que haya sitio.
-        * Limpiado DATABASE.sql
-        Pendiente:
             - Ver lo pendiente al final del presente fichero.
                ¿Cómo guardar datos?
             - Desdoblar database.js (>1k loc)
@@ -27,13 +26,26 @@ Icons:
                         - Cómo introducir horario (¿?¿?)
                 - Crear presentación con efectos-transiciones espectaculares.
             - Rehacer presentación, rehacer memoria
-            - Edición de estudiantes: Añadir un select, tal como se hizo con attendance.
+            - Edición de estudiantes: Añadir un select, tal como se hizo con attendance. (en proceso).
+            - Añadir notas de una actividad:
+                * Añadir actividad
+                * Seleccionar actividad
+                * Relacionar actividad con alumno
             - Documentar las funciones, realizar esquemas explicativos.
 
 Look at the end of file
 
 jsdoc  -d=docs/  assets/www/
 http://en.wikipedia.org/wiki/JSDoc
+
+
+29/11/2012:
+
+21/11/2012:
+    Corregido:
+        * Dentro de AttendanceSuccess:
+        Coloca la foto, nombre, apellidos, y el "select" en la misma línea, siempre que haya sitio.
+        * Limpiado DATABASE.sql
 
 Steps:
 

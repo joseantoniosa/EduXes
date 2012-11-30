@@ -602,12 +602,41 @@ function queryAllStudentsSuccess(tx, results) {
  */
 
 }
-//
+// To -> Edit Student
+// TODO: Rehacer para adaptarlo
+// Dummy
+function queryGroupForStudentSuccess(tx, results) {
+
+
+
+
+    var len = results.rows.length;
+    var html = "";
+    var ul_list = $('#group_list_ul');
+
+    ul_list.empty();
+    for (var i = 0; i < len; i++) {
+        html = "<li><h3> ";
+        // listStudentsAttendance (id_group, -1), -1=> any session
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
+        html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
+        html += " href='#' data-transition='slideup'>";
+//        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
+        html += results.rows.item(i).data + "</a></h3>";
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+        html += "</a></li>";
+        ul_list.append(html);
+    }
+    ul_list.listview('refresh');
+}
+
+
+
 // TODO: Edit Student
 //      Also Save into database
 function queryStudentSuccess(tx, results) {
     var len = results.rows.length;
-    var ul_list = $('#full_students_ul');
+
     log("queryStudentSuccess. Number of students - rows inserted: " + len);
     if(len>0) {
         $('#in_name_student').val(results.rows.item(0).name);
@@ -615,6 +644,38 @@ function queryStudentSuccess(tx, results) {
         $('#in_id_group_student').val('To be implemented'); // TODO To be implemented
         $('#in_id_group_student').val('To be implemented');
         $('#in_birth_date_student').val(results.rows.item(0).n_date);
+        // query groups
+        //sql = "SELECT STUDENTS.id, STUDENTS.id_group, GROUPS.id, GROUPS.data, GROUPS.data_other_data FROM GROUPS, STUDENTS  ";
+        //sql+= " WHERE STUDENTS.id_group = GROUPS.id AND  GROUPS.id= ;"
+        sql = "SELECT id, data, other_data FROM GROUPS  ";
+
+        global_db.transaction(function(ttx) {
+            ttx.executeSql(sql,[],
+                dbSuccessFunc = function(ttx,rs){
+                    var length = rs.rows.length;
+                    var ul_list = $('#student_edit_group_list_ul');
+
+                    var html ="";
+                    var sel="";
+                    for(var i=0;i<length; i++) {
+                        if(rs.rows.item(i).id==results.rows.item(0).id_group) {
+                            sel="selected='true'";
+                            alert(sel);
+                        }
+                        html += "<option value='"+rs.rows.item(i).id + "' "+sel+" >" + rs.rows.item(i).data+"</option>";
+                    }
+                    // el.val('some value').attr('selected', true).siblings('option').removeAttr('selected');
+                    alert(html);
+                    ul_list.empty().append(html);
+                },
+                dbErrorFunc = function(ttx, e) {
+                    if (ttx.message) e = ttx;
+                    log("Error. SQL  "+sql);
+                    alert(" There has been an error SELECT  stateCheck: " + e.message);
+                    return false;
+                } );
+        });
+        // $('#group_list_ul');
     }
 // if change:  -> update
 // if new -> insert

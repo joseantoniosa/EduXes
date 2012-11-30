@@ -107,7 +107,7 @@
             </div>
             <div data-role="content">
                 <ul data-role="listview" id="list_settings_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="d" >
-                    <li><a href="#" onClick="listAllGroups()" >Groups</a></li> 
+                    <li><a href="#" onClick="listAllGroups()" >Groups</a></li>
                     <li><a href="#" onClick="listAllStudents() " >Students</a></li>
                     <li><a href="#" onClick=" " >Activities</a></li>
                 </ul>
@@ -383,7 +383,11 @@
                      <fieldset class="ui-grid-a">
                         <div class="ui-block-a">
                      <label for="group_student">Group</label></div>
-                        <div class="ui-block-b"><input id="in_id_group_student" enabled="false" />
+<!-- TODO : Should include a list of groups . Fill #student_edit_group_list_ul
+    -->
+                        <div class="ui-block-b">
+                            <select id="student_edit_group_list_ul"></select>
+                            <!-- <input id="in_id_group_student" enabled="false" /> //-->
                         </div>
                      </fieldset></li>
 <!--                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Add</a> //-->
