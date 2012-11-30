@@ -652,21 +652,15 @@ function queryStudentSuccess(tx, results) {
         global_db.transaction(function(ttx) {
             ttx.executeSql(sql,[],
                 dbSuccessFunc = function(ttx,rs){
-                    var length = rs.rows.length;
-                    var ul_list = $('#student_edit_group_list_ul');
-
+                    var ul_select = $('#student_edit_group_list_ul');
                     var html ="";
-                    var sel="";
-                    for(var i=0;i<length; i++) {
-                        if(rs.rows.item(i).id==results.rows.item(0).id_group) {
-                            sel="selected='true'";
-                            alert(sel);
-                        }
-                        html += "<option value='"+rs.rows.item(i).id + "' "+sel+" >" + rs.rows.item(i).data+"</option>";
+
+                    for(var i=0;i<rs.rows.length; i++) {
+                        html += "<option value='"+rs.rows.item(i).id + "' name='"+rs.rows.item(i).data +"'  >" + rs.rows.item(i).data+"</option>";
                     }
-                    // el.val('some value').attr('selected', true).siblings('option').removeAttr('selected');
-                    alert(html);
-                    ul_list.empty().append(html);
+                    alert(html + " <-> " + results.rows.item(0).id_group);
+                    ul_select.empty().append(html);
+                    ul_select[0].selectedIndex = results.rows.item(0).id_group; // Set id_group
                 },
                 dbErrorFunc = function(ttx, e) {
                     if (ttx.message) e = ttx;
@@ -675,7 +669,7 @@ function queryStudentSuccess(tx, results) {
                     return false;
                 } );
         });
-        // $('#group_list_ul');
+
     }
 // if change:  -> update
 // if new -> insert
@@ -709,8 +703,8 @@ function queryStudentsByGroupSuccess(tx, results) {
 function queryStudentsSuccess(tx, results) {
     var len = results.rows.length;
     var ul_list = $('#students_ul');
-    log("Last inserted student - row ID = " + results.insertId);
-    log("Number of student - rows inserted: " + len);
+//    log("Last inserted student - row ID = " + results.insertId);
+//    log("Number of student - rows inserted: " + len);
 
     ul_list.empty();
     var html;
@@ -808,20 +802,18 @@ function  fillSelectStudent(db, select_student_id, id_session, id) { /// #id to 
     var today_str = today.toDate().toDateString();
 
     sql = "SELECT id, id_student, id_session, a_type, a_date  FROM ATTENDANCE WHERE id_student = ? AND ";
-    sql+= "id_session=? AND a_date=? ;"
+    sql+= " id_session=? AND a_date=? ;"
 
     db.transaction(function(tx) {
         tx.executeSql(sql,[id, id_session,today_str],
                 dbSuccessFunc = function(tx,results){
                     var text_select = $('#' + select_student_id);
-                    selected = "";
                     html = "<option value=''></option>";
-                    html += "<option value='Absence' " + selected + ">Absence</option>";
-                    html += "<option value='Unpunctuality'" + selected + ">Unpunctuality</option>";
-                    html += "<option value='Excused'" + selected + ">Excused</option>";
-                    html += "<option value='Behavior' name='Behavior' " + selected + " >Behavior</option>";
+                    html += "<option value='Absence' >Absence</option>";
+                    html += "<option value='Unpunctuality' >Unpunctuality</option>";
+                    html += "<option value='Excused'  >Excused</option>";
+                    html += "<option value='Behavior' name='Behavior' >Behavior</option>";
                     text_select.empty().append(html);
-
                     if (results.rows.length>0) {
                         var state = results.rows.item(0).a_type;
                         log(" State => " + state);
@@ -877,7 +869,7 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html +="</select>";
         html += "</li>";
         $('#students_attendance_ul').append(html);
-// #id to be filled, id_session, id_student // Asyncrhonous
+// #id to be filled, id_session, id_student // Asynchronous
         fillSelectStudent(global_db, "select_student_"+id, id_session, id);
     }
     $('#students_attendance_ul').listview('refresh');
