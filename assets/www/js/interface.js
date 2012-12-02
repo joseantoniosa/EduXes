@@ -72,6 +72,16 @@ function EditStudent(id_student){
     loadStudent(global_db);
     $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
+
+function onSaveStudent(){
+    $.mobile.showPageLoadingMsg();
+    // global_id = id_student;      //local variable goes global
+    table_global = 'STUDENTS';
+    saveStudent(global_db);
+    alert("Ahora ya puede cerrar la página. Ir a la anterior");
+  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
+}
+
 // Open Students Attendance page
 function listStudentsAttendance(id_group, id_session)
 {

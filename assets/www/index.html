@@ -162,7 +162,6 @@
         <ul data-role="listview" id="students_attendance_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="d" ></ul>
     </div>
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-        Save button
         <p style="text-align:center;"  >Students Attendance</p>
     </div>
 </div>
@@ -384,8 +383,6 @@
                      <fieldset class="ui-grid-a">
                         <div class="ui-block-a"> <label for="student_edit_group_list_ul">Group</label>
                      </div>
-<!-- TODO : Should include a list of groups . Fill #student_edit_group_list_ul
-    -->
                         <div class="ui-block-b">
                             <select id="student_edit_group_list_ul" name="student_edit_group_list_ul" ></select>
                             <!-- <input id="in_id_group_student" enabled="false" /> //-->
@@ -396,6 +393,8 @@
                  </div>
                  <div data-role="footer" class="footer-docs" data-theme="c">
                      <span class="ui-icon ui-icon-arrow-1-sw"></span>
+                    <button type="submit" name="submit" value="submit" onclick="onSaveStudent();" data-theme="c">Save</button> <!--TODO: Save button //-->
+
             <p style="text-align: center" >Student information</p>
     </div>
 </div>

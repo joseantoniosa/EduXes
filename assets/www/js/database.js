@@ -23,8 +23,6 @@ var DEBUG = true;
 
 // Referencia á base de datos
 //
-// var db;
-var id_global;
 var table_global;
 // new API
 var global_id;
@@ -87,7 +85,7 @@ function createDB(tx) {
                 });  // To be removed on production
         var create_students="CREATE TABLE IF NOT EXISTS students ";
         create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
-        create_students +=" repeteated integer, n_date text , photo text, ";
+        create_students +=" repeated integer, n_date text , photo text, ";
         create_students +=" tutor TEXT, address TEXT, phone text, e_phone text, nation text, ";
         create_students +=" FOREIGN KEY(id_group) REFERENCES groups(id));";
         log( create_students);
@@ -421,7 +419,7 @@ function queryStudentsByGroupDB(tx) {
 
     var sql = 'SELECT STUDENTS.id as id,  STUDENTS.id_group as id_group, STUDENTS.name as name, ';
     sql += ' STUDENTS.surname as surname, STUDENTS.n_date as n_date, STUDENTS.photo as photo, ';
-    sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeteated as repeteated, STUDENTS.tutor as tutor ,';
+    sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeated as repeated, STUDENTS.tutor as tutor ,';
     sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
     sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
     sql += ' FROM STUDENTS, GROUPS WHERE ';
@@ -609,7 +607,7 @@ function queryGroupForStudentSuccess(tx, results) {
 
 
 
-
+/*
     var len = results.rows.length;
     var html = "";
     var ul_list = $('#group_list_ul');
@@ -628,6 +626,7 @@ function queryGroupForStudentSuccess(tx, results) {
         ul_list.append(html);
     }
     ul_list.listview('refresh');
+    */
 }
 
 
@@ -648,6 +647,8 @@ function queryStudentSuccess(tx, results) {
         //sql = "SELECT STUDENTS.id, STUDENTS.id_group, GROUPS.id, GROUPS.data, GROUPS.data_other_data FROM GROUPS, STUDENTS  ";
         //sql+= " WHERE STUDENTS.id_group = GROUPS.id AND  GROUPS.id= ;"
         sql = "SELECT id, data, other_data FROM GROUPS  ";
+        global_id = results.rows.item(0).id; //
+        alert(global_id);
 
         global_db.transaction(function(ttx) {
             ttx.executeSql(sql,[],
@@ -659,7 +660,7 @@ function queryStudentSuccess(tx, results) {
                         html += "  >"+ rs.rows.item(i).data+"</option>";
                     }
                     ul_select.empty().append(html);
-                    ul_select[0].selectedIndex = results.rows.item(0).id_group; // Set id_group
+                    ul_select[0].selectedIndex = results.rows.item(0).id_group; // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
                     ul_select.selectmenu('refresh', true);
                 },
                 dbErrorFunc = function(ttx, e) {
@@ -713,12 +714,8 @@ function queryStudentsSuccess(tx, results) {
         id = results.rows.item(i).id;
 
         html = "<li>";
-        //           html += "<div data-role='fieldcontain'>";
-        //            html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
-        //            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 
         html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-// html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>" + results.rows.item(i).surname + " " + results.rows.item(i).name + "</label>";
@@ -903,7 +900,7 @@ function queryActivitiesSuccess(tx, results) {
     for (var i=0;i<len;i++) {
        id = results.rows.item(i).id;
        $('#activities_ul').append("<li onClick='"+"' >"+id +" "+results.rows.item(i).data +"</li>");
-   }
+   }0 ;
    $('#activities_ul').listview('refresh');
 }
 
@@ -929,6 +926,49 @@ function insertNewGroup(db, name, other_data){
         });
         $('#students_ul').listview('refresh');
     }
+// Update Student // TODO. Update Student, read info from Student Edit page
+function querySaveStudentDB (tx){
+
+    var sql = "UPDATE STUDENTS ";
+    sql += " SET id_group=?, name=? , surname=?, ";
+    sql += " repeated=?, n_date=?, photo=?, ";
+    sql += " tutor=?, address=?, phone=?, e_phone=?, nation=? ";
+    sql += " WHERE id="+global_id;
+
+//
+/// TODO: Por hacer el grabado de los datos. To fulfill, para completar
+
+
+    log("querySaveStudentDB  (" + sql + ")");
+
+    id_group=$('#student_edit_group_list_ul')[0].selectedIndex ;
+/* TODO: Save all students' data.
+*/
+    name=  $('#in_name_student').val();
+    surname= $('#in_surname_student').val();
+    repeated=0 ;
+    n_date=$('#in_birth_date_student').val();
+    photo="";
+    tutor="";
+    address="";
+    phone="";
+    e_phone="";
+    nation="";
+
+    tx.executeSql(sql, [id_group, name, surname,repeated,n_date,photo,tutor,address,phone,e_phone,nation],
+        dbSuccessFunc = function(tx, rs) {
+            log("Ok, saved");
+        return false;
+    },
+       dbErrorFunc = function(tx, e) {
+        if (tx.message)
+            e = tx;
+            log(" There has been an error querySaveStudentDB: " + e.message);
+        alert(" There has been an error querySaveStudentDB: " + e.message);
+        return false;
+    });
+
+ }
 
 // Low level insert
 function insertStudentStateL(db, id_student, id_group, id_session, state, actual_date ){
@@ -1057,6 +1097,11 @@ function insertNewActivity(db, name, other_data) {
 //
 
 //
+// Save Student info
+   function saveStudent(db){
+       db.transaction(querySaveStudentDB);
+   }
+
 //
   function loadAllGroups(db) {
        db.transaction(queryGroupsDB);
@@ -1098,4 +1143,8 @@ function insertNewActivity(db, name, other_data) {
    function loadActivities(db) {
        db.transaction(queryActivitiesDB, errorCB, queryActivitiesSuccess);
    }
+
+        //           html += "<div data-role='fieldcontain'>";
+        //            html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
+        //            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 

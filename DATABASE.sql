@@ -5,7 +5,7 @@
         DROP TABLE IF EXISTS STUDENTS;
         CREATE TABLE IF NOT EXISTS STUDENTS (
             id integer primary key, id_group integer not null, name text, surname text,
-            repeteated integer, n_date text , photo text,
+            repeated integer, n_date text , photo text,
             tutor TEXT, address TEXT, phone text, e_phone text, nation text,
             FOREIGN KEY(id_group) REFERENCES GROUPS(id));
 
@@ -23,10 +23,10 @@
 
 -- Students Attendance
         DROP TABLE IF EXISTS ATTENDANCE;
-        CREATE TABLE IF NOT EXISTS ATTENDANCE (id integer primary key , 
+        CREATE TABLE IF NOT EXISTS ATTENDANCE (id integer primary key ,
          id_group integer, id_student integer, id_session integer, a_type integer, a_date text,
-        FOREIGN KEY (id_student) REFERENCES STUDENTS (id), 
-        FOREIGN KEY (id_group) REFERENCES GROUPS(id), 
+        FOREIGN KEY (id_student) REFERENCES STUDENTS (id),
+        FOREIGN KEY (id_group) REFERENCES GROUPS(id),
         FOREIGN KEY (id_session) REFERENCES SESSIONS(id) );
 
 -- Activities        TODO

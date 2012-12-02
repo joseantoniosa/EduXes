@@ -9,15 +9,22 @@ Docs:
 Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
-1/12/12:
+1/12/12 b:
     Realizado:
-        Actualizado edición de estudiante, lista de grupos.
-                            ul_select.selectmenu('refresh', true);
+        Guarda algunos datos de los estudiantes. en la base de datos
     Pendiente:
+        -Guardar foto, dirección, fecha de nacimiento...
+             photo="";             - Cómo imágenes (ver URL de Manuel) ???
+        tutor="";
+        address="";
+        phone="";
+        e_phone="";
+        nation="";
+
             - Ver lo pendiente al final del presente fichero.
                ¿Cómo guardar datos?
             - Desdoblar database.js (>1k loc)
-            - Insertar nuevos alumnos en la base de datos (¿no lo había hecho antes?)
+            - Insertar nuevos alumnos en la base de datos
                 - Instalar datos "reales"
                         (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Estudiar la posibilidad de introducir datos:
@@ -32,6 +39,12 @@ Icons:
             - Documentar las funciones, realizar esquemas explicativos.
 
 Look at the end of file
+
+1/12/12:
+    Realizado:
+        Actualizado edición de estudiante, lista de grupos.
+                            ul_select.selectmenu('refresh', true);
+
 
 jsdoc  -d=docs/  assets/www/
 http://en.wikipedia.org/wiki/JSDoc
