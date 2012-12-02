@@ -637,7 +637,7 @@ function queryGroupForStudentSuccess(tx, results) {
 function queryStudentSuccess(tx, results) {
     var len = results.rows.length;
 
-    log("queryStudentSuccess. Number of students - rows inserted: " + len);
+    // log("queryStudentSuccess. Number of students - rows inserted: " + len);
     if(len>0) {
         $('#in_name_student').val(results.rows.item(0).name);
         $('#in_surname_student').val(results.rows.item(0).surname);
@@ -654,13 +654,13 @@ function queryStudentSuccess(tx, results) {
                 dbSuccessFunc = function(ttx,rs){
                     var ul_select = $('#student_edit_group_list_ul');
                     var html ="";
-
                     for(var i=0;i<rs.rows.length; i++) {
-                        html += "<option value='"+rs.rows.item(i).id + "' name='"+rs.rows.item(i).data +"'  >" + rs.rows.item(i).data+"</option>";
+                        html += "<option value='"+rs.rows.item(i).id + "' name='"+rs.rows.item(i).data +"' " ;
+                        html += "  >"+ rs.rows.item(i).data+"</option>";
                     }
-                    alert(html + " <-> " + results.rows.item(0).id_group);
                     ul_select.empty().append(html);
                     ul_select[0].selectedIndex = results.rows.item(0).id_group; // Set id_group
+                    ul_select.selectmenu('refresh', true);
                 },
                 dbErrorFunc = function(ttx, e) {
                     if (ttx.message) e = ttx;

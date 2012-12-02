@@ -9,12 +9,11 @@ Docs:
 Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
-30/11/12:
+1/12/12:
     Realizado:
-        Añadida lista de grupos
+        Actualizado edición de estudiante, lista de grupos.
+                            ul_select.selectmenu('refresh', true);
     Pendiente:
-        Seleccionar el grupo al que pertenece el usuario.
-
             - Ver lo pendiente al final del presente fichero.
                ¿Cómo guardar datos?
             - Desdoblar database.js (>1k loc)
@@ -26,7 +25,6 @@ Icons:
                         - Cómo introducir horario (¿?¿?)
                 - Crear presentación con efectos-transiciones espectaculares.
             - Rehacer presentación, rehacer memoria
-            - Edición de estudiantes: Añadir un select, tal como se hizo con attendance. (en proceso).
             - Añadir notas de una actividad:
                 * Añadir actividad
                 * Seleccionar actividad
@@ -37,6 +35,12 @@ Look at the end of file
 
 jsdoc  -d=docs/  assets/www/
 http://en.wikipedia.org/wiki/JSDoc
+
+
+
+30/11/12:
+    Realizado:
+        Añadida lista de grupos
 
 
 29/11/2012:
