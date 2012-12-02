@@ -444,7 +444,7 @@ function queryStudentsByGroupDB(tx) {
        query += " FROM teacher_schedule, groups, sessions ";
        query += " WHERE week_day=" +global_week_day + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
 
-       log("querySchedulePerDayDB:" + query);
+    //   log("querySchedulePerDayDB:" + query);
        tx.executeSql(query,[],
             dbSuccessFunc = function(tx,rs){
                 queryScheduleSuccess(tx, rs);
@@ -485,7 +485,7 @@ function queryReportAttendanceSuccess(tx, results) {
     html += ' <th>M</th> <th>T</th> <th>W</th>   <th>T</th>  <th>F</th>   </tr> </thead> <tbody>';
     table_list.append(html);
 
-//    log("report queryReportAttendanceDB nº datos (" + len + ")");
+//    log("report queryReportAttendanceSuccess nº datos (" + len + ")");
 
     for (var i = 0; i < len; i++) {
         id = results.rows.item(i).id;
@@ -497,7 +497,7 @@ function queryReportAttendanceSuccess(tx, results) {
         html += "<td>" + surname + " " + name + "</td>";
         for (var j = 1; j < 6; j++) {// recorremos la semana, 0 es domingo
             html += "<td>";
-            log(" queryStudentsAttendanceByGroupSuccess: [" + moment(global_reports_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
+            log(" queryReportAttendanceSuccess: [" + moment(global_reports_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
             if (moment(global_reports_date).day(j).toDate().toDateString() == results.rows.item(i).a_date) {
                 html += results.rows.item(i).a_type;
                 // Falta indicar la sessión
@@ -640,15 +640,19 @@ function queryStudentSuccess(tx, results) {
     if(len>0) {
         $('#in_name_student').val(results.rows.item(0).name);
         $('#in_surname_student').val(results.rows.item(0).surname);
-        $('#in_id_group_student').val('To be implemented'); // TODO To be implemented
-        $('#in_id_group_student').val('To be implemented');
         $('#in_birth_date_student').val(results.rows.item(0).n_date);
+        $('#in_tutor_student').val(results.rows.item(0).tutor);
+        $('#in_address_student').val(results.rows.item(0).address); // TODO: To be filled!
+        $('#in_phone_student').val(results.rows.item(0).phone); // TODO: To be filled!
+        $('#in_e_phone_student').val(results.rows.item(0).e_phone); // TODO: To be filled!
+
+//         $('#in_id_group_student').val('To be implemented');
+
         // query groups
         //sql = "SELECT STUDENTS.id, STUDENTS.id_group, GROUPS.id, GROUPS.data, GROUPS.data_other_data FROM GROUPS, STUDENTS  ";
         //sql+= " WHERE STUDENTS.id_group = GROUPS.id AND  GROUPS.id= ;"
         sql = "SELECT id, data, other_data FROM GROUPS  ";
         global_id = results.rows.item(0).id; //
-        alert(global_id);
 
         global_db.transaction(function(ttx) {
             ttx.executeSql(sql,[],
@@ -949,10 +953,10 @@ function querySaveStudentDB (tx){
     repeated=0 ;
     n_date=$('#in_birth_date_student').val();
     photo="";
-    tutor="";
-    address="";
-    phone="";
-    e_phone="";
+    tutor=$('#in_tutor_student').val();
+    address=$('#in_address_student').val();
+    phone=$('#in_phone_student').val();
+    e_phone=$('#in_e_phone_student').val();
     nation="";
 
     tx.executeSql(sql, [id_group, name, surname,repeated,n_date,photo,tutor,address,phone,e_phone,nation],
