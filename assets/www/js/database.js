@@ -631,7 +631,7 @@ function queryGroupForStudentSuccess(tx, results) {
 
 
 
-// TODO: Edit Student
+// TODO: Edit Student, Insert New Student
 //      Also Save into database
 function queryStudentSuccess(tx, results) {
     var len = results.rows.length;

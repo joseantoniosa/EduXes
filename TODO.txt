@@ -16,8 +16,11 @@ Icons:
         -Guardar foto, dirección, fecha de nacimiento...
              photo="";             - Cómo imágenes (ver URL de Manuel) ???
         nation="";
+        - Hacer que el botón "Save" vuelva a la página anterior.
         -¿Cómo subir imágenes?
         - Refrescar datos de la lista cuando se cambia un dato en un estudiante. Regenerar la página.
+        - Insertar nuevo grupo
+        - Insertar nuevo estudiante
 
             - Ver lo pendiente al final del presente fichero.
                ¿Cómo guardar datos?
@@ -35,6 +38,18 @@ Icons:
                 * Seleccionar actividad
                 * Relacionar actividad con alumno
             - Documentar las funciones, realizar esquemas explicativos.
+
+= Functions' Tree =
+queryStudentsSuccess
+
+function listStudentsAttendance
+ fills: #students_attendance_ul
+loadStudentAttendance
+    calls :-> queryStudentsAttendanceDB
+        calls :-> queryStudentsAttendanceSuccess:
+            Genera el código html que se mostrará como lista de estudiantes.
+
+
 
 Look at the end of file
 

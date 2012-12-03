@@ -112,6 +112,7 @@ function addNewGroup() {
     // $('#groups_ul').listview('refresh');
     $.mobile.changePage("#lista_grupos");
 }
+// TODO: Lista de Estudiantes
 function addNewStudent() { // TODO
     $.mobile.showPageLoadingMsg();
     name = $("#in_name_student").val();
