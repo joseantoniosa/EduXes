@@ -75,12 +75,34 @@ function EditStudent(id_student){
 
 function onSaveStudent(){
     $.mobile.showPageLoadingMsg();
-    // global_id = id_student;      //local variable goes global
     table_global = 'STUDENTS';
     saveStudent(global_db);
-    alert("Ahora ya puede cerrar la página. Ir a la anterior");
+    history.back();
+    //alert("Ir a la anterior"); // TODO: Go to previous page
+
   //  $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
+
+function onDeleteStudent(){
+    $.mobile.showPageLoadingMsg();
+    // global_id = id_student;      //local variable goes global
+    table_global = 'STUDENTS';
+    deleteStudent(global_db);
+    history.back();
+    //alert("Ir a la anterior"); // TODO: Go to previous page
+  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
+}
+function onDeleteGroup(){
+    $.mobile.showPageLoadingMsg();
+    // global_id = id_student;      //local variable goes global
+    table_global = 'GROUPS';
+    deleteGroup(global_db);
+    history.back();
+
+    history.back();   // TODO: Go to previous page and refresh data
+  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
+}
+
 
 // Open Students Attendance page
 function listStudentsAttendance(id_group, id_session)
@@ -102,13 +124,13 @@ function requestNewGroup() {
     $('#in_nombre_grupo').disabled="false";
     $.mobile.changePage("#edit_groups");
 }
-// inside edit
+// inside edit TODO: Add new group
 function addNewGroup() {
     $.mobile.showPageLoadingMsg();
     name = $("#in_nombre_grupo").val();
     other_data = $("#in_nivel_grupo").val();
     insertNewGroup(global_db, name, other_data);
-    loadGroups(global_db);
+//    loadGroups(global_db);
     // $('#groups_ul').listview('refresh');
     $.mobile.changePage("#lista_grupos");
 }

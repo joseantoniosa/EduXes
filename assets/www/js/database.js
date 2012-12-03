@@ -933,31 +933,36 @@ function insertNewGroup(db, name, other_data){
 // Update Student // TODO. Update Student, read info from Student Edit page
 function querySaveStudentDB (tx){
 
-    var sql = "UPDATE STUDENTS ";
-    sql += " SET id_group=?, name=? , surname=?, ";
-    sql += " repeated=?, n_date=?, photo=?, ";
-    sql += " tutor=?, address=?, phone=?, e_phone=?, nation=? ";
-    sql += " WHERE id="+global_id;
-
-//
-/// TODO: Por hacer el grabado de los datos. To fulfill, para completar
-
-
-    log("querySaveStudentDB  (" + sql + ")");
-
     id_group=$('#student_edit_group_list_ul')[0].selectedIndex ;
 /* TODO: Save all students' data.
 */
+    id_group=$('#student_edit_group_list_ul')[0].selectedIndex ;
     name=  $('#in_name_student').val();
     surname= $('#in_surname_student').val();
     repeated=0 ;
     n_date=$('#in_birth_date_student').val();
-    photo="";
+    photo="";// TODO: How to implement this?
     tutor=$('#in_tutor_student').val();
     address=$('#in_address_student').val();
     phone=$('#in_phone_student').val();
     e_phone=$('#in_e_phone_student').val();
-    nation="";
+    nation=$('#in_nation_student').val();
+
+    var sql = "UPDATE STUDENTS ";
+    sql += " SET id_group=?";
+    if( name!=null) {sql += " , name=?  "; }
+    if( surname!=null ) {sql += ", surname=? "; }
+    if( repeated!=null ) {sql += ", repeated=?"; }
+    if( n_date!=null ) {sql += ", n_date=? "; }
+    if( photo!=null ) {sql += ", photo=? "; }
+    if( tutor!=null ) {sql += ", tutor=? "; }
+    if( address!=null ) {sql += ", address=? ";  }
+    if( phone!=null ) {sql += ", phone=? ";  }
+    if( surname!=null ) {sql += ", e_phone=? ";    }
+    if( nation!=null ) { sql += ", nation=? "; }
+    sql += " WHERE id="+global_id;
+
+    log("querySaveStudentDB  (" + sql + ")");
 
     tx.executeSql(sql, [id_group, name, surname,repeated,n_date,photo,tutor,address,phone,e_phone,nation],
         dbSuccessFunc = function(tx, rs) {
@@ -973,6 +978,49 @@ function querySaveStudentDB (tx){
     });
 
  }
+
+
+function deleteStudent(db) {
+    db.transaction( queryDeleteStudent = function(tx) {
+        if (confirm('Do you really want to remove this student?')) {
+            var sql = "DELETE FROM  STUDENTS WHERE";
+            sql += " id=" + global_id;
+            log("deleteStuden  (" + sql + ")");
+            tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+                log("Ok, removed");
+                return true;
+            }, dbErrorFunc = function(tx, e) {
+                if (tx.message)
+                    e = tx;
+                log(" There has been an error deleteStudent: " + e.message);
+                alert(" There has been an error deleteStudent: " + e.message);
+                return false;
+            });
+        }
+    });
+
+}
+
+function deleteGroup(db) {
+    db.transaction( queryDeleteGroup = function(tx) {
+        if (confirm('Do you really want to remove this group?')) {
+            var sql = "DELETE FROM  GROUPS WHERE";
+            sql += " id=" + global_id;
+            log("queryDeleteGRoup  (" + sql + ")");
+            tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+                log("Ok, removed");
+                return true;
+            }, dbErrorFunc = function(tx, e) {
+                if (tx.message)
+                    e = tx;
+                log(" There has been an error deleteGroup: " + e.message);
+                alert(" There has been an error deleteGroup: " + e.message);
+                return false;
+            });
+        }
+    });
+
+}
 
 // Low level insert
 function insertStudentStateL(db, id_student, id_group, id_session, state, actual_date ){

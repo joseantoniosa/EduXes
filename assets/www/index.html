@@ -254,6 +254,8 @@
 
                 <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
             </ul>
+            <hr />
+            <a  style="text-align: center" onClick="addNewGroup();" data-role="button" data-icon="add">Add New Group</a>
             </div>
         <div data-role="footer"  data-rel="back" data-theme="d">
         <p style="text-align: center">
@@ -287,7 +289,7 @@
             <div data-role="content">
                  <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" />
                  <label for="nivel_grupo">Nivel</label><input id="in_nivel_grupo" enabled="true" />
-			<a onClick="addNewGroup();" data-role="button" data-icon="check">Añadir</a>
+            <a onClick="addNewGroup();" data-role="button" data-icon="check">Add</a>
 		</div>
 </div>
 
@@ -414,6 +416,13 @@
                             </div>
                      </fieldset></li>
 
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="nation_student">Nation</label></div>
+                        <div class="ui-block-b"><input name="nation_student" id="in_nation_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
 
 
                  <li  data-role="fieldcontain" >
@@ -428,11 +437,13 @@
 <!--                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Add</a> //-->
                 </ul>
                  </div>
-                 <div data-role="footer" class="footer-docs" data-theme="c">
-                     <span class="ui-icon ui-icon-arrow-1-sw"></span>
-                    <button type="submit" name="submit" value="submit" onclick="onSaveStudent();" data-theme="c">Save</button> <!--TODO: Save button //-->
 
-            <p style="text-align: center" >Student information</p>
+
+                 <div data-role="footer" class="footer-docs" data-theme="c">
+                   <!-- TODO: Rellenar   <span class="ui-icon ui-icon-arrow-1-sw"></span> //-->
+                    <a href="#"  onclick="onSaveStudent();" data-icon="check" data-theme="c">Save</a>
+                    <span  style="text-align:center;" >Student info</span>
+                    <a href="#"  onclick="onDeleteStudent();" data-icon="delete" data-theme="c">Delete</a>
     </div>
 </div>
 
