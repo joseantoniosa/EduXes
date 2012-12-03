@@ -28,6 +28,7 @@
     log("onDeviceReady PopulateDB ");
     global_db.transaction(populateDB); //, errorCB, successCB);
     initialize_data() ;
+    $.mobile.page.prototype.options.backBtnTheme = "a";
     $.mobile.changePage("#intro");
 }
 function init(){

@@ -9,21 +9,23 @@ Docs:
 Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
-1/12/12 b:
+3/12/12
     Realizado:
-        Guarda algunos datos de los estudiantes. en la base de datos
-    Pendiente:
         -Guardar foto, dirección, fecha de nacimiento...
-             photo="";             - Cómo imágenes (ver URL de Manuel) ???
-        nation="";
-        - Hacer que el botón "Save" vuelva a la página anterior.
-        -¿Cómo subir imágenes?
+        -Eliminar estudiante
+        -Vuelve a la página anterior .
+        - Cambiar tema a "a"
+    Pendiente:
+
+        - Hacer que el botón "Save" refresque los datos
+
         - Refrescar datos de la lista cuando se cambia un dato en un estudiante. Regenerar la página.
         - Insertar nuevo grupo
         - Insertar nuevo estudiante
+        -¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
 
             - Ver lo pendiente al final del presente fichero.
-               ¿Cómo guardar datos?
+               ¿Cómo guardar-importar los datos?
             - Desdoblar database.js (>1k loc)
             - Insertar nuevos alumnos en la base de datos
                 - Instalar datos "reales"
@@ -31,8 +33,9 @@ Icons:
                     - Estudiar la posibilidad de introducir datos:
                         - Cómo imágenes (ver URL de Manuel)
                         - Cómo introducir horario (¿?¿?)
-                - Crear presentación con efectos-transiciones espectaculares.
+
             - Rehacer presentación, rehacer memoria
+                - Crear presentación con efectos-transiciones espectaculares.
             - Añadir notas de una actividad:
                 * Añadir actividad
                 * Seleccionar actividad
@@ -52,6 +55,11 @@ loadStudentAttendance
 
 
 Look at the end of file
+
+
+1/12/12 b:
+    Realizado:
+        Guarda algunos datos de los estudiantes. en la base de datos
 
 1/12/12:
     Realizado:
