@@ -313,38 +313,6 @@ function queryGroupsAttendanceDB(tx) {
 }
 
 
-
-function queryAllGroupsDB(tx) {
-    log("Query All Groups \n");
-    var ul_list =$('#groups_ul');
-    tx.executeSql('SELECT * FROM GROUPS', [],
-        dbSuccessFunc = function(tx, rs) {
-            ul_list.empty();
-            var html ="";
-            for (var i = 0; i < rs.rows.length; i++) {
-                id = rs.rows.item(i).id ;
-                html = "<li>";
-                html += "<a onClick='global_id=" + id + "; table_global=\"groups\"; ";
-                html += " listStudentsByGroup(" + id + " );'  ";
-                html += " href='#' >";
-                html += rs.rows.item(i).data; // TODO: Add Settings button
-                html += "</a>"; //  Add settings button
-                html += "<a data-role='button'  data-position-to='window' ";
-                html += " data-iconpos='notext' style='float:right;' href='#' ";
-                html += " data-rel='dialog' data-theme='a' data-transition='slideup' onClick=\"EditGroup(" + id + ");\">Edit2</a>";
-                html +="</li>";
-                ul_list.append(html);
-
-            }
-            ul_list.listview('refresh'); },
-        dbErrorFunc = function(ttx, e) {
-            if (ttx.message)
-                e = ttx;
-            log(" There has been an error Select * from groups : " + e.message);
-        return false;
-    });
-}
-
 ///
 /// queryAll Students
    function queryAllStudentsDB(tx) {
@@ -551,38 +519,6 @@ function queryGroupsSuccess(tx, results) {
 }
 
 
-// Complete list of students
-function queryAllStudentsSuccess(tx, results) {
-    var len = results.rows.length;
-    var ul_list = $('#full_students_ul');
-    log("Number of students: " + len);
-
-    ul_list.empty();
-    var html;
-    var id = 0;
-    for (var i = 0; i < len; i++) {
-        id = results.rows.item(i).id;
-        html = "<li>";
-        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float:left;' class='ui-li-icon ui-corner-none'>";
-        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
-        html += "</a>";
-        html += "<a data-role='button'  data-position-to='window'  data-iconpos='notext' style='float:right;' href='#' data-rel='dialog' data-transition='slideup' onClick=\"EditStudent(" + id + ");\">Edit</a>";
-        html += "</li>";
-        ul_list.append(html);
-    }
-    ul_list.listview('refresh');
-/*
- * <ul data-role="listview" data-split-icon="gear" data-split-theme="d">
- * <li><a href="index.html">
-                <img src="images/album-ws.jpg" />
-                <h3>Elephant</h3>
-                <p>The White Stripes</p>
-                </a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
-            </li>
- */
-
-}
 // To -> Edit Student
 // TODO: Rehacer para adaptarlo
 // Dummy
@@ -614,8 +550,6 @@ function queryGroupForStudentSuccess(tx, results) {
 
 
 
-// TODO: Edit Student, Insert New Student
-//      Also Save into database
 function queryStudentSuccess(tx, results) {
     var len = results.rows.length;
 
@@ -923,6 +857,28 @@ function updateGroup(db, name, other_data){
    $('#grupos_ul').listview('refresh');
 }
 
+function deleteGroup(db) {
+    db.transaction( queryDeleteGroup = function(tx) {
+        if (confirm('Do you really want to remove this group?')) {
+            var sql = "DELETE FROM  GROUPS WHERE";
+            sql += " id=" + global_id;
+            log("queryDeleteGRoup  (" + sql + ")");
+            tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+                log("Ok, removed");
+                return true;
+            }, dbErrorFunc = function(tx, e) {
+                if (tx.message)
+                    e = tx;
+                log(" There has been an error deleteGroup: " + e.message);
+                alert(" There has been an error deleteGroup: " + e.message);
+                return false;
+            });
+        }
+    });
+
+}
+
+
   // Load only one group!
    function loadGroup(db, id_group){
         db.transaction(function (tx) {
@@ -942,10 +898,41 @@ function updateGroup(db, name, other_data){
         });
 
    }
-//
-  function loadAllGroups(db) {
-       db.transaction(queryAllGroupsDB);
-   }
+
+function queryAllGroupsDB(tx) {
+    log("Query All Groups \n");
+    var ul_list =$('#groups_ul');
+    tx.executeSql('SELECT * FROM GROUPS', [],
+        dbSuccessFunc = function(tx, rs) {
+            ul_list.empty();
+            var html ="";
+            for (var i = 0; i < rs.rows.length; i++) {
+                id = rs.rows.item(i).id ;
+                html = "<li>";
+                html += "<a onClick='global_id=" + id + "; table_global=\"groups\"; ";
+                html += " listStudentsByGroup(" + id + " );'  ";
+                html += " href='#' >";
+                html += rs.rows.item(i).data; // TODO: Add Settings button
+                html += "</a>"; //  Add settings button
+                html += "<a data-role='button'  data-position-to='window' ";
+                html += " data-iconpos='notext' style='float:right;' href='#' ";
+                html += " data-rel='dialog' data-theme='a' data-transition='slideup' ";
+                html += " onClick=\"EditGroup(" + id + "); global_id=" + id + "; \">Edit</a>";
+                html +="</li>";
+                ul_list.append(html);
+
+            }
+            ul_list.listview('refresh'); },
+        dbErrorFunc = function(ttx, e) {
+            if (ttx.message)
+                e = ttx;
+            log(" There has been an error Select * from groups : " + e.message);
+        return false;
+    });
+}
+function loadAllGroups(db) {
+    db.transaction(queryAllGroupsDB);
+}
 
 
 // ---------------------------------------------------------------------------------------------------------
@@ -1035,26 +1022,40 @@ function deleteStudent(db) {
 
 }
 
-function deleteGroup(db) {
-    db.transaction( queryDeleteGroup = function(tx) {
-        if (confirm('Do you really want to remove this group?')) {
-            var sql = "DELETE FROM  GROUPS WHERE";
-            sql += " id=" + global_id;
-            log("queryDeleteGRoup  (" + sql + ")");
-            tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
-                log("Ok, removed");
-                return true;
-            }, dbErrorFunc = function(tx, e) {
-                if (tx.message)
-                    e = tx;
-                log(" There has been an error deleteGroup: " + e.message);
-                alert(" There has been an error deleteGroup: " + e.message);
-                return false;
-            });
-        }
-    });
+// Complete list of students
+function queryAllStudentsSuccess(tx, results) {
+    var len = results.rows.length;
+    var ul_list = $('#full_students_ul');
+    log("Number of students: " + len);
+
+    ul_list.empty();
+    var html;
+    var id = 0;
+    for (var i = 0; i < len; i++) {
+        id = results.rows.item(i).id;
+        html = "<li>";
+        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float:left;' class='ui-li-icon ui-corner-none'>";
+        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
+        html += "</a>";
+        html += "<a data-role='button'  data-position-to='window'  data-iconpos='notext' style='float:right;' href='#' data-rel='dialog' data-transition='slideup' onClick=\"EditStudent(" + id + ");\">Edit</a>";
+        html += "</li>";
+        ul_list.append(html);
+    }
+    ul_list.listview('refresh');
+/*
+ * <ul data-role="listview" data-split-icon="gear" data-split-theme="d">
+ * <li><a href="index.html">
+                <img src="images/album-ws.jpg" />
+                <h3>Elephant</h3>
+                <p>The White Stripes</p>
+                </a><a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+            </li>
+ */
 
 }
+
+
 
 // Low level insert
 function insertStudentStateL(db, id_student, id_group, id_session, state, actual_date ){
