@@ -243,30 +243,12 @@
             </div>
 </div>
 
-
-
-
-<div data-role="page" id="list_groups" data-add-back-btn="true">
-            <div data-role="header"  data-add-back-btn="true"  >
-                <h1>Groups List</h1>
-            </div>
-           <div data-role="content">
-
-                <ul id="groups_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
-            </ul>
-            <hr />
-            <a  style="text-align: center" onClick="addNewGroup();" data-role="button" data-icon="add">Add New Group</a>
-            </div>
-        <div data-role="footer"  data-rel="back" data-theme="d">
-        <p style="text-align: center">
-            List of Groups
-        </p>
-            </div>
-</div>
-
 <!--
     ----------------------------------------------------------------------------------------------------------
-    //-->
+    Groups:
+    ----------------------------------------------------------------------------------------------------------
+//-->
+
 <div data-role="page" id="list_groups_to_edit" data-add-back-btn="true">
             <div data-role="header"  data-add-back-btn="true"  >
                 <h1>Lista de Grupos</h1>
@@ -275,46 +257,58 @@
 
                 <ul id="groups_to_edit_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
                 </ul>
-
-<!--                 <h3 data-role="listview" id="groups_ul"  ></h3> -->
             </div>
             <a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a>
             <div data-role="footer"  data-rel="back" data-theme="d">
             </div>
 </div>
-<div data-role="page" id="edit_groups" data-add-back-btn="true">
+
+<div data-role="page" id="edit_new_group" data-add-back-btn="true">
             <div data-role="header"  data-add-back-btn="true" >
-                <h1>Edición de Grupos</h1>
+                <h1>Group Addition</h1>
             </div>
             <div data-role="content">
-                 <label for="nombre_grupo">Nombre</label><input id="in_nombre_grupo" enabled="true" />
-                 <label for="nivel_grupo">Nivel</label><input id="in_nivel_grupo" enabled="true" />
-            <a onClick="addNewGroup();" data-role="button" data-icon="check">Add</a>
+                 <label for="nombre_grupo">Name</label><input id="in_new_nombre_grupo" enabled="true" />
+                 <label for="nivel_grupo">Level</label><input id="in_new_nivel_grupo" enabled="true" />
+            <a onClick="onSaveNewGroup();" data-role="button" data-icon="check">Add</a>
+        </div>
+</div>
+
+<div data-role="page" id="edit_groups" data-add-back-btn="true">
+            <div data-role="header"  data-add-back-btn="true" >
+                <h1>Group Edition</h1>
+            </div>
+            <div data-role="content">
+                 <label for="nombre_grupo">Name</label><input id="in_nombre_grupo" enabled="true" />
+                 <label for="nivel_grupo">Level</label><input id="in_nivel_grupo" enabled="true" />
+            <a onClick="onUpdateGroup();" data-role="button" data-icon="check">Save</a>
 		</div>
 </div>
 
-<!--  TODO __ vv ___  -->
-
-<div data-role="page" id="list_activities"   data-add-back-btn="true" >
-
-
-            <div data-role="header"  data-add-back-btn="true" >
-                <h1>Lista de Actividades</h1>
-                </div>
-                <div data-role="content">
-               <!--  <ul data-role="listview" id="grupos_ul"  ></ul>  -->
-                <h2 data-role="listview" id="activities_ul"  ></h2>
-                </div>
-
-			<a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a>
-			<div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
-            <p> Atrás</p>
+<div data-role="page" id="list_groups" data-add-back-btn="true">
+            <div data-role="header"  data-add-back-btn="true"  >
+                <h1>Groups List</h1>
             </div>
+           <div data-role="content">
 
+                <ul id="groups_ul" data-role="listview" data-inset="true"  data-split-icon="gear" data-split-theme="a" >
+            </ul>
+            <hr />
+            <a  style="text-align: center" onClick="onAddNewGroup();" data-role="button" data-icon="add">Add New Group</a>
+            </div>
+        <div data-role="footer"  data-rel="back" data-theme="a">
+        <p style="text-align: center">
+            List of Groups
+        </p>
+            </div>
 </div>
 
-<!--   -->
 
+<!--
+    ----------------------------------------------------------------------------------------------------------
+    Students:
+    ----------------------------------------------------------------------------------------------------------
+//-->
 <div data-role="page" id="list_students_by_group" data-add-back-btn="true">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
         <h1 id="id_list_students_by_group"> Students List</h1>
@@ -335,16 +329,15 @@
         <h1>Full Students List</h1>
     </div>
     <div data-role="content">
-        <ul  id="full_students_ul" data-role="listview"  data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="a" ></ul>
+        <ul  id="full_students_ul" data-role="listview"  data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
 
     </div>
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="text-align: center">
             List of Students
         </p>
     </div>
 </div>
-
 
 <div data-role="page" id="edit_student"   data-add-back-btn="true"  >
             <div data-role="header" data-back-btn-text="previous"  data-add-back-btn="true"  data-theme="a" >
@@ -406,8 +399,6 @@
                             </div>
                      </fieldset></li>
 
-
-
                  <li  data-role="fieldcontain" >
                      <fieldset class="ui-grid-a">
                         <div class="ui-block-a">
@@ -447,6 +438,13 @@
     </div>
 </div>
 
+
+<!--
+    ----------------------------------------------------------------------------------------------------------
+    Activities:
+    ----------------------------------------------------------------------------------------------------------
+//-->
+
 <div data-role="page" id="edit_activities"    data-add-back-btn="true"  data-theme="a" >
 
             <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
@@ -455,6 +453,25 @@
                  <label for="nivel_grupo">Nivel</label><input id="in_nivel_activitie" enabled="true" />
                  <a onClick="addNewActivity();" data-role="button" data-icon="check">Añadir</a>
                  </div>
+</div>
+
+
+<div data-role="page" id="list_activities"   data-add-back-btn="true" >
+
+
+            <div data-role="header"  data-add-back-btn="true" >
+                <h1>Lista de Actividades</h1>
+                </div>
+                <div data-role="content">
+               <!--  <ul data-role="listview" id="grupos_ul"  ></ul>  -->
+                <h2 data-role="listview" id="activities_ul"  ></h2>
+                </div>
+
+            <a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a>
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+            <p> Atrás</p>
+            </div>
+
 </div>
 
 <!-- -------------------------  -->

@@ -74,11 +74,12 @@ function EditStudent(id_student){
     $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
 
+
 function onSaveStudent(){
     $.mobile.showPageLoadingMsg();
     table_global = 'STUDENTS';
     saveStudent(global_db);
-    history.back();
+    history.back(); // XXX: Cambiarlo por algo más sólido
     //alert("Ir a la anterior"); // TODO: Go to previous page
 
   //  $.mobile.changePage("#edit_student", { transition: "slideup"});
@@ -89,16 +90,26 @@ function onDeleteStudent(){
     // global_id = id_student;      //local variable goes global
     table_global = 'STUDENTS';
     deleteStudent(global_db);
-    history.back();
+    history.back(); // XXX: Cambiarlo por algo más sólido
     //alert("Ir a la anterior"); // TODO: Go to previous page
   //  $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
+
+function EditGroup(id_group){
+    $.mobile.showPageLoadingMsg();
+    global_id = id_group;      //local variable goes global
+    table_global = 'GROUPS';
+    loadGroup(global_db,id_group); // TODO: To be implemented
+    $.mobile.changePage("#edit_groups", { transition: "slideup"});
+}
+
+
 function onDeleteGroup(){
     $.mobile.showPageLoadingMsg();
     // global_id = id_student;      //local variable goes global
     table_global = 'GROUPS';
     deleteGroup(global_db);
-    history.back();
+    history.back(); // XXX: Cambiarlo por algo más sólido
 
     history.back();   // TODO: Go to previous page and refresh data
   //  $.mobile.changePage("#edit_student", { transition: "slideup"});
@@ -126,15 +137,30 @@ function requestNewGroup() {
     $.mobile.changePage("#edit_groups");
 }
 // inside edit TODO: Add new group
-function addNewGroup() {
+function onAddNewGroup(){
     $.mobile.showPageLoadingMsg();
+
+    $.mobile.changePage("#edit_new_group");
+
+}
+
+function onUpdateGroup() {
     name = $("#in_nombre_grupo").val();
     other_data = $("#in_nivel_grupo").val();
-    insertNewGroup(global_db, name, other_data);
-//    loadGroups(global_db);
-    // $('#groups_ul').listview('refresh');
-    $.mobile.changePage("#lista_grupos");
+    updateGroup(global_db, name, other_data);
+    listAllGroups();
 }
+
+function onSaveNewGroup() {
+    name = $("#in_new_nombre_grupo").val();
+    other_data = $("#in_new_nivel_grupo").val();
+    insertNewGroup(global_db, name, other_data);
+    listAllGroups();
+
+}
+/////////////////////
+// GROUPS
+////////////////////
 // TODO: Lista de Estudiantes
 function addNewStudent() { // TODO
     $.mobile.showPageLoadingMsg();

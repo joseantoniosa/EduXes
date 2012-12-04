@@ -283,31 +283,6 @@ function populateDB(tx) {
     }
 
 
-function queryGroupsDB(tx) {
-    log("Query Groups \n");
-    var ul_list =$('#groups_ul');
-    tx.executeSql('SELECT * FROM GROUPS', [],
-        dbSuccessFunc = function(tx, rs) {
-            ul_list.empty();
-            for (var i = 0; i < rs.rows.length; i++) {
-                html = "<li><h3> ";
-                html += "<a onClick='global_id=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
-                html += " listStudentsByGroupAttendance(" + rs.rows.item(i).id + " );'  ";
-                html += " href='#' >";
-                html += rs.rows.item(i).data;
-  //  html += "<a onClick='global_id="+ results.rows.item(i).id +"; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-                html += "</a></h3></li>";
-                ul_list.append(html);
-            }
-            ul_list.listview('refresh'); },
-        dbErrorFunc = function(ttx, e) {
-            if (ttx.message)
-                e = ttx;
-            log(" There has been an error Select * from groups : " + e.message);
-        return false;
-    });
-}
-
 /*
  * For Students Attendance
  */
@@ -347,13 +322,19 @@ function queryAllGroupsDB(tx) {
             ul_list.empty();
             var html ="";
             for (var i = 0; i < rs.rows.length; i++) {
-                html = "<li><h3> ";
-                html += "<a onClick='global_id=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
-                html += " listStudentsByGroup(" + rs.rows.item(i).id + " );'  ";
+                id = rs.rows.item(i).id ;
+                html = "<li>";
+                html += "<a onClick='global_id=" + id + "; table_global=\"groups\"; ";
+                html += " listStudentsByGroup(" + id + " );'  ";
                 html += " href='#' >";
-                html += rs.rows.item(i).data;
-                html += "</a></h3></li>";
+                html += rs.rows.item(i).data; // TODO: Add Settings button
+                html += "</a>"; //  Add settings button
+                html += "<a data-role='button'  data-position-to='window' ";
+                html += " data-iconpos='notext' style='float:right;' href='#' ";
+                html += " data-rel='dialog' data-theme='a' data-transition='slideup' onClick=\"EditGroup(" + id + ");\">Edit2</a>";
+                html +="</li>";
                 ul_list.append(html);
+
             }
             ul_list.listview('refresh'); },
         dbErrorFunc = function(ttx, e) {
@@ -370,6 +351,8 @@ function queryAllGroupsDB(tx) {
         log("Query All Students \n");
        var sql = 'SELECT * FROM STUDENTS';
        tx.executeSql(sql, [],
+
+
         queryAllStudentsSuccess,
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
@@ -907,7 +890,11 @@ function queryActivitiesSuccess(tx, results) {
    }0 ;
    $('#activities_ul').listview('refresh');
 }
-
+// ----------------------------------------------------------------------------------------------------------
+//
+//      GROUPS      Management:
+//
+// ----------------------------------------------------------------------------------------------------------
    // Insert new group
 function insertNewGroup(db, name, other_data){
 
@@ -918,7 +905,54 @@ function insertNewGroup(db, name, other_data){
        });
        $('#grupos_ul').listview('refresh');
 }
+function updateGroup(db, name, other_data){
 
+    db.transaction(function (tx) {
+        var sql = 'UPDATE GROUPS SET data="' +name + '",  other_data="' +other_data +'"  WHERE id='+global_id; // Supongo que el ID...
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(ttx,rs){
+                return true;
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error updateGroupDB: " + e.message);
+                    alert(" There has been an error updateGroupDB: " + e.message);
+                    return false;
+            });
+   });
+   $('#grupos_ul').listview('refresh');
+}
+
+  // Load only one group!
+   function loadGroup(db, id_group){
+        db.transaction(function (tx) {
+            log("Query Group \n");
+            var sql = 'SELECT * FROM GROUPS WHERE id ='+id_group;
+            tx.executeSql(sql, [],
+                dbSuccessFunc = function(ttx,rs){
+                    $('#in_nombre_grupo').val(rs.rows.item(0).data);
+                    $('#in_nivel_grupo').val(rs.rows.item(0).other_data);
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                        log(" There has been an error queryGroupDB: " + e.message);
+                        alert(" There has been an error queryGroupDB: " + e.message);
+                        return false;
+                });
+        });
+
+   }
+//
+  function loadAllGroups(db) {
+       db.transaction(queryAllGroupsDB);
+   }
+
+
+// ---------------------------------------------------------------------------------------------------------
+//
+//      STUDENTS    Management:
+//
+// ----------------------------------------------------------------------------------------------------------
     // Insert new Student
     function insertNewStudent(db, name, surname, id_group) {
 
@@ -1105,6 +1139,34 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
     exist = stateCheck(db, id_student, id_group, id_session, state, actual_date); // Is asynchronous
 
 }
+
+//
+// Save Student info
+   function saveStudent(db){
+       db.transaction(querySaveStudentDB);
+   }
+
+   function loadStudents(db) {
+       db.transaction(queryStudentsDB);
+   }
+   // Load only one student!
+   function loadStudent(db){
+       db.transaction(queryStudentDB);
+   }
+
+   function loadAllStudents(db) {
+          db.transaction(queryAllStudentsDB);
+   }
+
+   function loadStudentsByGroup(db) {
+       db.transaction(queryStudentsByGroupDB);
+   }
+///---------------------------------------------------------------------------------------------------------
+//
+// End Students
+//
+// ----------------------------------------------------------------------------------------------------------
+
 //
 // POR_HACER
 function insertNewActivity(db, name, other_data) {
@@ -1148,43 +1210,10 @@ function insertNewActivity(db, name, other_data) {
    }
 //
 
-//
-// Save Student info
-   function saveStudent(db){
-       db.transaction(querySaveStudentDB);
-   }
-
-//
-  function loadAllGroups(db) {
-       db.transaction(queryGroupsDB);
-   }
-
-   function loadStudents(db) {
-       db.transaction(queryStudentsDB);
-   }
-   // Load only one student!
-   function loadStudent(db){
-       db.transaction(queryStudentDB);
-   }
-//
-//
-  function loadAllGroups(db) {
-       db.transaction(queryAllGroupsDB);
-   }
-
-
-   function loadAllStudents(db) {
-          db.transaction(queryAllStudentsDB);
-   }
-
-   function loadStudentsByGroup(db) {
-       db.transaction(queryStudentsByGroupDB);
-   }
 /*
  * For Students Attendance Table
- *  => REPORT <=  Works (?)
  */
-    function reportAttendanceDB(db) { // reportAttendance
+    function reportAttendanceDB(db) {
        db.transaction(queryReportAttendanceDB);
    }
 
