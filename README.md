@@ -25,4 +25,6 @@ Classroom Management
  - #daily_schedule fills #groups_day_ul and calls to  listStudents() opens:
  - #list_students
 
+== Conventions =
+onXXX is a function allways called from html code
 

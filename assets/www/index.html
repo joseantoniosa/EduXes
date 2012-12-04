@@ -26,16 +26,16 @@
 <!--- Intro Window//-->
 
 <div data-role="page" id="intro">
-    <div data-role="header" data-add-back-btn="true" data-theme="c">
+    <div data-role="header" data-add-back-btn="true" data-theme="a">
                 <h1>EduXes</h1>
     </div>
-    <div data-role="content" data-theme="c">
+    <div data-role="content" data-theme="a">
         <p  style="text-align:center;" > Easy Class Management for Highschool Teachers </p>
-        <p  style="text-align:center;" ><a href="#daily_work" data-role='button'  >EduXes</a></p>
+        <p  style="text-align:center;" ><a href="#daily_work" data-role='button' data-theme="a"  >EduXes</a></p>
 
     </div>
 
-    <div data-role="footer" class="footer-docs" data-theme="c">
+    <div data-role="footer" class="footer-docs" data-theme="a">
         <p   style="text-align:center;"  id="copyright">&copy; Jose Antonio.org</p>
     </div>
 </div>
@@ -43,10 +43,10 @@
 
 <!-- Main Window    //-->
 <div data-role="page" id="daily_work">
-    <div data-role="header" data-add-back-btn="true" data-theme="c">
+    <div data-role="header" data-add-back-btn="true" data-theme="a">
                 <h1>Day</h1>
     </div>
-    <div data-role="content" data-theme="c">
+    <div data-role="content" data-theme="a">
         <div class="ui-grid-b">
             <div class="ui-block-a">
                 <div data-role="fieldcontain">
@@ -75,7 +75,7 @@
             </li>
         </ul>
     </div><!-- /navbar -->
-    <div data-role="footer" class="footer-docs" data-theme="c">
+    <div data-role="footer" class="footer-docs" data-theme="a">
         <p   style="text-align:center;"  id="teachers_name"></p>
     </div>
 </div>
@@ -90,13 +90,13 @@
             </div>
             <div data-role="content">
 
-                <ul data-role="listview" id="list_reports_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="a" >
+                <ul data-role="listview" id="list_reports_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
                 <li><a href="#" onClick="generalListAttendance();" >Attendance</a></li>
                 <li><a href="#" onClick="" >Assessment</a></li>
                 <li><a href="#" onClick="" >File</a></li>
                 </ul>
             </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
              </div>
 </div>
 
@@ -106,13 +106,13 @@
                 <h1>Settings</h1>
             </div>
             <div data-role="content">
-                <ul data-role="listview" id="list_settings_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="a" >
+                <ul data-role="listview" id="list_settings_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
                     <li><a href="#" onClick="listAllGroups()" >Groups</a></li>
                     <li><a href="#" onClick="listAllStudents() " >Students</a></li>
                     <li><a href="#" onClick=" " >Activities</a></li>
                 </ul>
             </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
              </div>
 </div>
 
@@ -122,13 +122,13 @@
                 <h1>File</h1>
             </div>
             <div data-role="content">
-                <ul data-role="listview" id="file_ul" data-split-icon="gear" data-split-theme="d" data-filter="false" data-inset="true" data-theme="a" >
+                <ul data-role="listview" id="file_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
                     <li><a href="#" onClick=" " >Open-Restore</a></li>
                     <li><a href="#" onClick=" " >Save</a></li>
                     <li><a href="#" onClick="exitApp()" >Quit</a></li>
                 </ul>
             </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
              </div>
 </div>
 <!--
@@ -140,14 +140,14 @@
 <!-- Second Window: List of Classes.
      List of Groups of today  //-->
 <div data-role="page" id="daily_schedule"   data-add-back-btn="true" >
-    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="c">
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="a">
         <h1 id="current_day"> Current Day</h1>
     </div>
-    <div data-role="content" data-theme="c">
-        <ul id="groups_day_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+    <div data-role="content" data-theme="a">
+        <ul id="groups_day_ul" data-role="listview" data-inset="true" data-split-theme="a" data-split-icon="delete">
         </ul>
     </div>
-    <div data-role="footer" class="footer-docs" data-add-back-btn="true" data-theme="c">
+    <div data-role="footer" class="footer-docs" data-add-back-btn="true" data-theme="a">
         <p  style="text-align:center;" > List of Classes</p>
     </div>
 </div>
@@ -159,9 +159,9 @@
         <h1 id="current_group_attendance" >Student List for Group</h1>
     </div>
     <div data-role="content">
-        <ul data-role="listview" id="students_attendance_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="a" ></ul>
+        <ul data-role="listview" id="students_attendance_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
     </div>
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="text-align:center;"  >Students Attendance</p>
     </div>
 </div>
@@ -189,7 +189,7 @@
         </table>
     </div>
     </div>
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="text-align:center;"  >Students Attendance</p>
     </div>
 </div>
@@ -197,7 +197,7 @@
 
 <!-- // -->
 <!--List of students:  Assessment //-->
-<div data-role="page" id="list_students_assessment" data-add-back-btn="true"  data-theme="c">
+<div data-role="page" id="list_students_assessment" data-add-back-btn="true"  data-theme="a">
 
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
                 <h1 id="current_group_assessment" >Student List for Group</h1>
@@ -205,9 +205,9 @@
             <div data-role="content">
 
 <!--- [Photo]-[Surname, Name ] [0/1/2/3/4/5/6/7/8/9]<combobox>   [Behavior] <combobox>//-->
-                <ul data-role="listview" id="students_assessment_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="a" ></ul>
+                <ul data-role="listview" id="students_assessment_ul" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
             </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
                 <p style="text-align:center;"   >  Student List for Group  </p>
              </div>
 
@@ -220,9 +220,9 @@
                 <h1 id="current_group_attendance2" >2 Student List for Group</h1>
     </div>
     <div data-role="content">
-        <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="d" data-filter="true" data-inset="true" data-theme="a" ></ul>
+        <ul data-role="listview" id="students_attendance_by_groups_ul" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
     </div>
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="alignment-adjust: central" >  List Students Attendance 2  </p>
      </div>
 </div>
@@ -236,10 +236,10 @@
             </div>
            <div data-role="content">
 
-                <ul id="groups_attendance_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+                <ul id="groups_attendance_ul" data-role="listview" data-inset="true" data-split-theme="a" data-split-icon="delete">
             </ul>
             </div>
-            <div data-role="footer"  data-rel="back" data-theme="c">
+            <div data-role="footer"  data-rel="back" data-theme="a">
             </div>
 </div>
 
@@ -255,11 +255,11 @@
             </div>
                <div data-role="content">
 
-                <ul id="groups_to_edit_ul" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete">
+                <ul id="groups_to_edit_ul" data-role="listview" data-inset="true" data-split-theme="a" data-split-icon="delete">
                 </ul>
             </div>
             <a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a>
-            <div data-role="footer"  data-rel="back" data-theme="d">
+            <div data-role="footer"  data-rel="back" data-theme="a">
             </div>
 </div>
 
@@ -314,10 +314,13 @@
         <h1 id="id_list_students_by_group"> Students List</h1>
     </div>
     <div data-role="content">
-        <ul id="list_students_by_group_ul" data-role="listview" data-theme="a" data-split-theme="c" data-split-icon="gear" data-filter="true" data-inset="true"  >
+        <ul id="list_students_by_group_ul" data-role="listview" data-theme="a" data-split-theme="a" data-split-icon="gear" data-filter="true" data-inset="true"  >
         </ul>
     </div>
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="c">
+    <hr />
+    <a onClick="onAddNewStudent();" data-role="button" data-icon="add"  data-theme="a" >Add Student</a>
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
+
         <p style="text-align: center">
             List of Students
         </p>
@@ -332,9 +335,11 @@
         <ul  id="full_students_ul" data-role="listview"  data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
 
     </div>
+        <hr />
+    <a onClick="onSaveNewStudent();" data-role="button" data-icon="add"  data-theme="a" >Add Student</a>
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="text-align: center">
-            List of Students
+           Full List of Students
         </p>
     </div>
 </div>
@@ -438,6 +443,101 @@
     </div>
 </div>
 
+<div data-role="page" id="edit_new_student"   data-add-back-btn="true"  >
+            <div data-role="header" data-back-btn-text="previous"  data-add-back-btn="true"  data-theme="a" >
+                <h1>New Student </h1>
+                <ul data-role="listview" >
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label for="name_student">Name</label></div>
+                        <div class="ui-block-b">
+                            <input id="in_new_name_student" enabled="true" />
+                        </div>
+                     </fieldset>
+                 </li>
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="surname_student">Surname</label></div>
+                        <div class="ui-block-b"><input id="in_new_surname_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="photo_student">Photo</label></div>
+                        <div class="ui-block-b"><input id="in_new_photo_student" enabled="false" />
+                            </div>
+                     </fieldset></li>
+
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="birth_date_student">Birth Date</label></div>
+                        <div class="ui-block-b"><input id="in_new_birth_date_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="tutor_student">Tutor</label></div>
+                        <div class="ui-block-b"><input id="in_new_tutor_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="phone_student">Phone</label></div>
+                        <div class="ui-block-b"><input name="phone_student" id="in_new_phone_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="e_phone_student">Cellular</label></div>
+                        <div class="ui-block-b"><input id="in_new_e_phone_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="address_student">Address</label></div>
+                        <div class="ui-block-b"><input name="address_student" id="in_new_address_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="nation_student">Nation</label></div>
+                        <div class="ui-block-b"><input name="nation_student" id="in_new_nation_student" enabled="true" />
+                            </div>
+                     </fieldset></li>
+
+
+                 <li  data-role="fieldcontain" >
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"> <label for="student_edit_group_list_ul">Group</label>
+                     </div>
+                        <div class="ui-block-b">
+                            <select id="student_edit_group_list_ul" name="student_new_edit_group_list_ul" ></select>
+                        </div>
+                     </fieldset></li>
+                </ul>
+                 </div>
+
+
+                 <div data-role="footer" class="footer-docs" data-theme="a">
+                   <!-- TODO: Rellenar   <span class="ui-icon ui-icon-arrow-1-sw"></span> //-->
+                    <a href="#"  onclick="onSaveNewStudent();" data-icon="check" data-theme="a">Save</a>
+
+    </div>
+</div>
 
 <!--
     ----------------------------------------------------------------------------------------------------------
@@ -468,7 +568,7 @@
                 </div>
 
             <a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="d">
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
             <p> Atrás</p>
             </div>
 

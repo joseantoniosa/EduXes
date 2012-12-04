@@ -941,16 +941,36 @@ function loadAllGroups(db) {
 //
 // ----------------------------------------------------------------------------------------------------------
     // Insert new Student
-    function insertNewStudent(db, name, surname, id_group) {
-
-        db.transaction(function(tx) {
-            var sql = 'INSERT INTO STUDENTS ( id_group, name, surname) VALUES (';
-            sql += group_id + ',';
-            sql += '\"' + name + '\" ,  \"' + surname + '\"  )';
-            tx.executeSql(sql);
-        });
-        $('#students_ul').listview('refresh');
-    }
+function insertNewStudent( db, name, surname, group_id, repeated, n_date, photo, tutor,address, phone, e_phone, nation) {
+    db.transaction(function(tx) {
+        var sql = 'INSERT INTO STUDENTS ( id_group';
+        if(name !=null) { sql +=', name '; }
+        if(surname !=null) sql +=', surname';
+        if(repeated !=null) sql +=', repeated';
+        if(n_date !=null) sql +=', n_date';
+        if(photo !=null) sql +=', photo';
+        if(tutor !=null) sql +=', tutor';
+        if(address !=null) sql +=', address';
+        if(phone !=null) sql +=', phone';
+        if(e_phone !=null) sql +=', e_phone';
+        if(nation !=null) sql +=', nation';
+        sql +=' ) VALUES (';
+        sql += group_id + ',';
+        if(name !=null) sql += ', \"' + name + '\" ';
+        if(surname !=null) sql += ', \"' + surname + '\" ';
+        if(repeated !=null) sql += ', \"' + repeated + '\" ';
+        if(n_date !=null) sql += ', \"' + n_date + '\" ';
+        if(photo !=null) sql += ', \"' + photo + '\" ';
+        if(tutor !=null) sql += ', \"' + tutor + '\" ';
+        if(address !=null) sql += ', \"' + address + '\" ';
+        if(phone !=null) sql += ', \"' + phone + '\" ';
+        if(e_phone !=null) sql += ', \"' + e_phone + '\" ';
+        if(nation !=null) sql += ', \"' + nation + '\" ';
+        sql += ' )';
+        tx.executeSql(sql);
+    });
+    $('#students_ul').listview('refresh');
+}
 // Update Student // TODO. Update Student, read info from Student Edit page
 function querySaveStudentDB (tx){
 

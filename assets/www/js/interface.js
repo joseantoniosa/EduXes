@@ -66,35 +66,6 @@ function open_daily_page() {
     }
 }
 
-function EditStudent(id_student){
-    $.mobile.showPageLoadingMsg();
-    global_id = id_student;      //local variable goes global
-    table_global = 'STUDENTS';
-    loadStudent(global_db);
-    $.mobile.changePage("#edit_student", { transition: "slideup"});
-}
-
-
-function onSaveStudent(){
-    $.mobile.showPageLoadingMsg();
-    table_global = 'STUDENTS';
-    saveStudent(global_db);
-    history.back(); // XXX: Cambiarlo por algo más sólido
-    //alert("Ir a la anterior"); // TODO: Go to previous page
-
-  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
-}
-
-function onDeleteStudent(){
-    $.mobile.showPageLoadingMsg();
-    // global_id = id_student;      //local variable goes global
-    table_global = 'STUDENTS';
-    deleteStudent(global_db);
-    history.back(); // XXX: Cambiarlo por algo más sólido
-    //alert("Ir a la anterior"); // TODO: Go to previous page
-  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
-}
-
 function EditGroup(id_group){
     $.mobile.showPageLoadingMsg();
     global_id = id_group;      //local variable goes global
@@ -131,17 +102,20 @@ function listStudentsAttendance(id_group, id_session)
 function requestNewActivity (){
         $.mobile.showPageLoadingMsg();
 }
+
+
+//
+//      Groups:
+//
 function requestNewGroup() {
     $.mobile.showPageLoadingMsg();
     $('#in_nombre_grupo').disabled="false";
     $.mobile.changePage("#edit_groups");
 }
-// inside edit TODO: Add new group
+// inside edit
 function onAddNewGroup(){
     $.mobile.showPageLoadingMsg();
-
     $.mobile.changePage("#edit_new_group");
-
 }
 
 function onUpdateGroup() {
@@ -156,23 +130,104 @@ function onSaveNewGroup() {
     other_data = $("#in_new_nivel_grupo").val();
     insertNewGroup(global_db, name, other_data);
     listAllGroups();
+}
+// List All Groups
+function listAllGroups(){
+    $.mobile.showPageLoadingMsg();
+    table_global='GROUPS';
+    loadAllGroups(global_db); // #groups_ul
+    $.mobile.changePage("#list_groups", { transition: "slideup"} );
+}
+
+//
+//      Students:
+//
+
+
+
+function EditStudent(id_student){
+    $.mobile.showPageLoadingMsg();
+    global_id = id_student;      //local variable goes global
+    table_global = 'STUDENTS';
+    loadStudent(global_db);
+    $.mobile.changePage("#edit_student", { transition: "slideup"});
+}
+
+
+function onDeleteStudent(){
+    $.mobile.showPageLoadingMsg();
+    // global_id = id_student;      //local variable goes global
+    table_global = 'STUDENTS';
+    deleteStudent(global_db);
+    history.back(); // XXX: Cambiarlo por algo más sólido
+    //alert("Ir a la anterior"); // TODO: Go to previous page
+  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
+}
+// Add new Student
+function onAddNewStudent(){
+    $.mobile.showPageLoadingMsg();
+    table_global = 'STUDENTS';
+    $.mobile.changePage("#edit_new_student", { transition: "slideup"});
 
 }
-/////////////////////
-// GROUPS
-////////////////////
-// TODO: Lista de Estudiantes
-function addNewStudent() { // TODO
+
+function onSaveStudent(){
     $.mobile.showPageLoadingMsg();
-    name = $("#in_name_student").val();
-    surname = $("#in_surname_student").val();
+    table_global = 'STUDENTS';
+    saveStudent(global_db);
+    history.back(); // XXX: Cambiarlo por algo más sólido
+    //alert("Ir a la anterior"); // TODO: Go to previous page
+
+  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
+}
+
+function onSaveNewStudent() { // TODO: Fill with data from HTML
+    $.mobile.showPageLoadingMsg();
+    group_id=$('#student_new_edit_group_list_ul')[0].selectedIndex ; // XXX: Contains bugs, DB id's list <> select id's
+    name=  $('#in_name_student').val();
+    surname= $('#in_new_surname_student').val();
+    repeated=0 ;
+    n_date=$('#in_new_birth_date_student').val();
+    photo="";// TODO: How to implement this?
+    tutor=$('#in_new_tutor_student').val();
+    address=$('#in_new_address_student').val();
+    phone=$('#in_new_phone_student').val();
+    e_phone=$('#in_new_e_phone_student').val();
+    nation=$('#in_new_nation_student').val();
 
 
-    group_id = 0; // Choose group from a list
-    insertNewStudent(global_db, name, surname, group_id); //
+//    group_id = 0; // Choose group from a list
+    insertNewStudent(global_db, name, surname, group_id, repeated, n_date, photo, tutor,address, phone, e_phone, nation); //
     $('#students_ul').listview('refresh');
     $.mobile.changePage("#list_students");
 }
+function listStudents(id_group)
+{
+    $.mobile.showPageLoadingMsg();
+    global_id=id_group ;  //local variable goes global
+    table_global='STUDENTS';
+    loadStudentsByGroup(global_db);
+    $.mobile.changePage("#list_students", { transition: "slideup"} );
+}
+// List Students by Group
+function listStudentsByGroup(id_group) { // report
+    $.mobile.showPageLoadingMsg();
+    global_id=id_group ;  //local variable goes global
+    table_global='STUDENTS';
+    loadStudentsByGroup(global_db);
+    $.mobile.changePage("#list_students_by_group", { transition: "slideup"} );
+}
+// List All Students
+function listAllStudents(){
+    $.mobile.showPageLoadingMsg();
+    table_global='STUDENTS';
+    loadAllStudents(global_db);
+    $.mobile.changePage("#list_students", { transition: "slideup"} );
+}
+
+
+
+
 
 function addNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
@@ -188,14 +243,6 @@ function generalListAttendance() {
     loadGroupsAttendance(global_db);
     $.mobile.changePage("#list_groups_attendance");
 }
-function listStudents(id_group)
-{
-    $.mobile.showPageLoadingMsg();
-    global_id=id_group ;  //local variable goes global
-    table_global='STUDENTS';
-    loadStudentsByGroup(global_db);
-    $.mobile.changePage("#list_students", { transition: "slideup"} );
-}
 /*
  * => REPORT <=
  * For list of Attendance: Students
@@ -208,28 +255,7 @@ function listStudentsByGroupAttendance(id_group) { // report
     reportAttendanceDB(global_db); //
     $.mobile.changePage("#list_students_attendance_by_group", { transition: "slideup"} );
 }
-// List Students by Group
-function listStudentsByGroup(id_group) { // report
-    $.mobile.showPageLoadingMsg();
-    global_id=id_group ;  //local variable goes global
-    table_global='STUDENTS';
-    loadStudentsByGroup(global_db);
-    $.mobile.changePage("#list_students_by_group", { transition: "slideup"} );
-}
-// List All Groups
-function listAllGroups(){
-    $.mobile.showPageLoadingMsg();
-    table_global='GROUPS';
-    loadAllGroups(global_db); // #groups_ul
-    $.mobile.changePage("#list_groups", { transition: "slideup"} );
-}
-// List All Students
-function listAllStudents(){
-    $.mobile.showPageLoadingMsg();
-    table_global='STUDENTS';
-    loadAllStudents(global_db);
-    $.mobile.changePage("#list_students", { transition: "slideup"} );
-}
+
 //
 function studentsAttendanceListPrevious() {
     global_reports_date = moment(global_reports_date).subtract('days',7).toDate();

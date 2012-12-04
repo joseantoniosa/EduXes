@@ -9,31 +9,35 @@ Docs:
 Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
-Pendiente:
+PENDIENTE:
     - El botón de "back" no es el adecuado para navegar entre formularios.
-
     - Hacer que el botón "Save" refresque los datos
-
     - Refrescar datos de la lista cuando se cambia un dato en un estudiante. Regenerar la página.
     - Insertar nuevo estudiante
         -¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
-
-        - Ver lo pendiente al final del presente fichero.
            ¿Cómo guardar-importar los datos?
         - Desdoblar database.js (>1k loc)
         - Insertar nuevos alumnos en la base de datos
-            - Instalar datos "reales"
-                    (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
-                - Estudiar la posibilidad de introducir datos:
-                    - Cómo imágenes (ver URL de Manuel)
+            - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Cómo introducir horario (¿?¿?)
         - Rehacer presentación, rehacer memoria
             - Crear presentación con efectos-transiciones espectaculares.
-        - Añadir notas de una actividad:
-            * Añadir actividad
+        - Actividades:
+            * Añadir actividad - Mantener - Eliminar.
+                Dos tablas: actividad, actividad_alumno
+                x actividad: se supone de 0 a 10
+                    Nombre
+                    Peso (de 0 a 100, todas las actividades deben sumar 100)
+                x estudiante_actividad
+                    id_estudiante
+                    id_actividad
+                    nota (número entero entre 0 y 10)
             * Seleccionar actividad
             * Relacionar actividad con alumno
+            * Asignar nota de actividad a los alumnos
+            * Listados de notas y resumen
         - Documentar las funciones, realizar esquemas explicativos.
+        - Ver lo pendiente al final del presente fichero.
 
 = Functions' Tree =
 queryStudentsSuccess
