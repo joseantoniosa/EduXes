@@ -167,6 +167,7 @@ function onDeleteStudent(){
 function onAddNewStudent(){
     $.mobile.showPageLoadingMsg();
     table_global = 'STUDENTS';
+    loadNewStudent(global_db);
     $.mobile.changePage("#edit_new_student", { transition: "slideup"});
 
 }

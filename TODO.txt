@@ -10,6 +10,12 @@ Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
 PENDIENTE:
+    - Añadir nuevo estudiante. Botón guardar:
+    TypeError: Result of expression '$('#student_new_edit_group_list_ul')[0]' [undefined] is not an object. at file:///android_asset/www/js/interface.js:187
+        - Listar grupos dentro de la edición de estudiantes
+
+    - Insertar nuevos alumnos en la base de datos
+
     - El botón de "back" no es el adecuado para navegar entre formularios.
     - Hacer que el botón "Save" refresque los datos
     - Refrescar datos de la lista cuando se cambia un dato en un estudiante. Regenerar la página.
@@ -17,7 +23,7 @@ PENDIENTE:
         -¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
         - Desdoblar database.js (>1k loc)
-        - Insertar nuevos alumnos en la base de datos
+
             - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Cómo introducir horario (¿?¿?)
         - Rehacer presentación, rehacer memoria
