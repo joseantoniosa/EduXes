@@ -29,10 +29,10 @@
         FOREIGN KEY (id_group) REFERENCES GROUPS(id),
         FOREIGN KEY (id_session) REFERENCES SESSIONS(id) );
 
--- Activities        TODO
+-- Activities
         DROP TABLE IF EXISTS ACTIVITIES
         CREATE TABLE IF NOT EXISTS ACTIVITIES
-                (id integer primary key, description text, date_init text, date_end text, weight real);
+                (id integer primary key, name text, date_init text, date_end text, weight integer, final integer );
 
 -- Timezone        TODO
         DROP TABLE IF EXISTS TIMEZONE

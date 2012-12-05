@@ -10,17 +10,28 @@ Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
 PENDIENTE:
-    - Añadir nuevo estudiante. Botón guardar:
-    TypeError: Result of expression '$('#student_new_edit_group_list_ul')[0]' [undefined] is not an object. at file:///android_asset/www/js/interface.js:187
-        - Listar grupos dentro de la edición de estudiantes
-
-    - Insertar nuevos alumnos en la base de datos
-
     - El botón de "back" no es el adecuado para navegar entre formularios.
-    - Hacer que el botón "Save" refresque los datos
-    - Refrescar datos de la lista cuando se cambia un dato en un estudiante. Regenerar la página.
-    - Insertar nuevo estudiante
-        -¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
+            - Actividades:
+            * Añadir actividad - Mantener - Eliminar.
+                Dos tablas: actividad, actividad_alumno
+
+                x estudiante_actividad
+                    id_estudiante
+                    id_actividad
+                    nota (número entero entre 0 y 10)
+                    observaciones (texto)
+
+                Se debe asignar a cada grupo varias actividades
+                Diseñar antes las ventanas?
+                Ventana de Asignar actividades a grupos?
+                Nueva Actividad:
+                    Nombre
+                    Fecha inicio (ahora)
+                    Fecha final
+                    Activa (no finalizada)
+                    Asignar Grupos
+
+    - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
         - Desdoblar database.js (>1k loc)
 
@@ -28,16 +39,6 @@ PENDIENTE:
                     - Cómo introducir horario (¿?¿?)
         - Rehacer presentación, rehacer memoria
             - Crear presentación con efectos-transiciones espectaculares.
-        - Actividades:
-            * Añadir actividad - Mantener - Eliminar.
-                Dos tablas: actividad, actividad_alumno
-                x actividad: se supone de 0 a 10
-                    Nombre
-                    Peso (de 0 a 100, todas las actividades deben sumar 100)
-                x estudiante_actividad
-                    id_estudiante
-                    id_actividad
-                    nota (número entero entre 0 y 10)
             * Seleccionar actividad
             * Relacionar actividad con alumno
             * Asignar nota de actividad a los alumnos
@@ -56,13 +57,24 @@ loadStudentAttendance
             Genera el código html que se mostrará como lista de estudiantes.
 Look at the end of file
 
-
+===========================================================================
 TASKS DONE:
 
-
+5/12/12:
+    - Principio de actividades, esqueleto inicial: base de datos (una tabla de dos o tres?)
+                    x actividad: se supone de 0 a 10
+                    Nombre
+                    Peso (de 0 a 100, todas las actividades deben sumar 100)
+                    Fecha inicio
+                    Fecha final
+                    Finalizada 0/1
 
 5/12/12:
     -Gestión de estudiantes. Sólo se puede añadir estudiantes desde un grupo.
+    - Añadir nuevo estudiante. Botón guardar.
+    - Listar grupos dentro de la edición de estudiantes
+    - Insertar nuevos alumnos en la base de datos
+
 
 4/12/12:
     Realizado:

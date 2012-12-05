@@ -66,26 +66,8 @@ function open_daily_page() {
     }
 }
 
-function EditGroup(id_group){
-    $.mobile.showPageLoadingMsg();
-    global_id = id_group;      //local variable goes global
-    table_global = 'GROUPS';
-    loadGroup(global_db,id_group); // TODO: To be implemented
-    $.mobile.changePage("#edit_groups", { transition: "slideup"});
-}
 
-
-function onDeleteGroup(){
-    $.mobile.showPageLoadingMsg();
-    // global_id = id_student;      //local variable goes global
-    table_global = 'GROUPS';
-    deleteGroup(global_db);
-    history.back(); // XXX: Cambiarlo por algo más sólido
-
-    history.back();   // TODO: Go to previous page and refresh data
-  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
-}
-
+// ----------------------------------------------------------------------------
 
 // Open Students Attendance page
 function listStudentsAttendance(id_group, id_session)
@@ -98,15 +80,11 @@ function listStudentsAttendance(id_group, id_session)
     $.mobile.changePage("#list_students_attendance" );
 }
 
-//inside list:
-function requestNewActivity (){
-        $.mobile.showPageLoadingMsg();
-}
 
 
-//
+//-----------------------------------------------------------------------------
 //      Groups:
-//
+//-----------------------------------------------------------------------------
 function requestNewGroup() {
     $.mobile.showPageLoadingMsg();
     $('#in_nombre_grupo').disabled="false";
@@ -124,6 +102,22 @@ function onUpdateGroup() {
     updateGroup(global_db, name, other_data);
     listAllGroups();
 }
+function EditGroup(id_group){
+    $.mobile.showPageLoadingMsg();
+    global_id = id_group;      //local variable goes global
+    table_global = 'GROUPS';
+    loadGroup(global_db,id_group);
+    $.mobile.changePage("#edit_groups", { transition: "slideup"});
+}
+
+function onDeleteGroup(){
+    $.mobile.showPageLoadingMsg();
+    // global_id = id_student;      //local variable goes global
+    table_global = 'GROUPS';
+    deleteGroup(global_db);
+    history.back(); // XXX: Cambiarlo por algo más sólido
+  //  $.mobile.changePage("#edit_student", { transition: "slideup"});
+}
 
 function onSaveNewGroup() {
     name = $("#in_new_nombre_grupo").val();
@@ -132,18 +126,16 @@ function onSaveNewGroup() {
     listAllGroups();
 }
 // List All Groups
-function listAllGroups(){
+function onListAllGroups(){
     $.mobile.showPageLoadingMsg();
     table_global='GROUPS';
     loadAllGroups(global_db); // #groups_ul
     $.mobile.changePage("#list_groups", { transition: "slideup"} );
 }
 
-//
+//-----------------------------------------------------------------------------
 //      Students:
-//
-
-
+//----------------------------------------------------------------------------
 
 function EditStudent(id_student){
     $.mobile.showPageLoadingMsg();
@@ -152,7 +144,6 @@ function EditStudent(id_student){
     loadStudent(global_db);
     $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
-
 
 function onDeleteStudent(){
     $.mobile.showPageLoadingMsg();
@@ -199,8 +190,8 @@ function onSaveNewStudent() {
     insertNewStudent(global_db, name, surname, group_id, repeated, n_date, photo, tutor,address, phone, e_phone, nation); //
     $('#students_ul').listview('refresh');
     listStudentsByGroup(group_id);
-
 }
+// Dummy function?
 function listStudents(id_group)
 {
     $.mobile.showPageLoadingMsg();
@@ -217,21 +208,32 @@ function listStudentsByGroup(id_group) { // report
     table_global='STUDENTS';
     loadStudentsByGroup(global_db,id_group);
     $.mobile.changePage("#list_students_by_group", { transition: "slideup"} ); // TODO ??
-
 }
 // List All Students
-function listAllStudents(){
+function onListAllStudents(){
     $.mobile.showPageLoadingMsg();
     table_global='STUDENTS';
     loadAllStudents(global_db);
     $.mobile.changePage("#list_students", { transition: "slideup"} );
 }
 
+// ----------------------------------------------------------------------------
+// Activities
+// ----------------------------------------------------------------------------
+function onListAllActivities()
+{
+// fill : activities_ul
+    $.mobile.showPageLoadingMsg();
+    loadAllActivities(global_db);
+    $.mobile.changePage("#list_activities", { transition: "slideup"});
+}
+function EditActivity(id_activity)
+{
 
 
-// -----------------------------------------------
+}
 
-function addNewActivity() { // TODO
+function onAddNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
     name = $("#in_nombre_activity").val();
     other_data = $("#in_nivel_activity").val();
@@ -239,6 +241,7 @@ function addNewActivity() { // TODO
     $('#activities_ul').listview('refresh');
     $.mobile.changePage("#list_activities");
 }
+// ----------------------------------------------------------------------------
 //
 function generalListAttendance() {
     $.mobile.showPageLoadingMsg();
@@ -314,16 +317,16 @@ function Attendance(id_student){
     loadStudentAttendance(global_db);
     $.mobile.changePage("#edit_students_attendance", { transition: "slideup"});
 }
-function generalFile(){
+function onGeneralFile(){
     $.mobile.showPageLoadingMsg();
     $.mobile.changePage("#file", { transition: "slideup"});
 }
-function generalListReports(){
+function onGeneralListReports(){
     $.mobile.showPageLoadingMsg();
     $.mobile.changePage("#list_reports", { transition: "slideup"});
 }
 
-function generalListSettings(){
+function onGeneralListSettings(){
     $.mobile.showPageLoadingMsg();
     $.mobile.changePage("#list_settings", { transition: "slideup"});
 }

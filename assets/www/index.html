@@ -65,13 +65,13 @@
     <div data-role="navbar">
         <ul>
             <li>
-                <a href="#" onClick="generalFile()  "  data-role="button" data-icon="star" > File</a>
+                <a href="#" onClick="onGeneralFile()  "  data-role="button" data-icon="star" > File</a>
             </li>
             <li>
-                <a href="#" onClick="generalListReports();"  data-role="button" data-icon="grid" >Reports</a>
+                <a href="#" onClick="onGeneralListReports();"  data-role="button" data-icon="grid" >Reports</a>
             </li>
             <li>
-                <a href="#" onClick="generalListSettings();" data-role="button" data-icon="gear" >Settings</a>
+                <a href="#" onClick="onGeneralListSettings();" data-role="button" data-icon="gear" >Settings</a>
             </li>
         </ul>
     </div><!-- /navbar -->
@@ -107,9 +107,9 @@
             </div>
             <div data-role="content">
                 <ul data-role="listview" id="list_settings_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
-                    <li><a href="#" onClick="listAllGroups()" >Groups</a></li>
-                    <li><a href="#" onClick="listAllStudents() " >Students</a></li>
-                    <li><a href="#" onClick=" " >Activities</a></li>
+                    <li><a href="#" onClick="onListAllGroups();" >Groups</a></li>
+                    <li><a href="#" onClick="onListAllStudents(); " >Students</a></li>
+                    <li><a href="#" onClick="onListAllActivities(); " >Activities</a></li>
                 </ul>
             </div>
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
@@ -136,9 +136,8 @@
      //-->
 
 
-
 <!-- Second Window: List of Classes.
-     List of Groups of today  //-->
+     List of Today Groups  //-->
 <div data-role="page" id="daily_schedule"   data-add-back-btn="true" >
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="a">
         <h1 id="current_day"> Current Day</h1>
@@ -302,7 +301,6 @@
         </p>
             </div>
 </div>
-
 
 <!--
     ----------------------------------------------------------------------------------------------------------
@@ -556,16 +554,18 @@
 
 
             <div data-role="header"  data-add-back-btn="true" >
-                <h1>Lista de Actividades</h1>
+                <h1>List of Activities</h1>
                 </div>
                 <div data-role="content">
-               <!--  <ul data-role="listview" id="grupos_ul"  ></ul>  -->
-                <h2 data-role="listview" id="activities_ul"  ></h2>
-                </div>
 
-            <a onClick="requestNewActivity();" data-role="button" data-icon="add">Nuevo</a>
+                <h2 data-role="listview" id="header_activities"  ></h2>
+                <ul data-role="listview" id="activities_ul"  ></ul>
+                </div>
+            <hr />
+            <a onClick="onAddNewActivity();" data-role="button" data-icon="check">Add New Activity</a>
+
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-            <p> Atrás</p>
+            <p> List of Activities</p>
             </div>
 
 </div>
