@@ -61,7 +61,8 @@ TASKS DONE:
 
 
 
-
+5/12/12:
+    -Gestión de estudiantes. Sólo se puede añadir estudiantes desde un grupo.
 
 4/12/12:
     Realizado:

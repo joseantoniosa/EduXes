@@ -26,6 +26,9 @@ var DEBUG = true;
 var table_global;
 // new API
 var global_id;
+var global_id_group=0;
+var global_id_student=0;
+var global_id_activity=0;
 var global_week_day=-1;
 var global_db;
 var global_session; // selected session
@@ -341,46 +344,30 @@ function queryStudentDB(tx) {
             });
     }
 
-   function queryNewStudentDB(tx) {
-       log("Query Student \n");
-       var sql = 'SELECT * FROM STUDENTS WHERE id ='+global_id;
-       tx.executeSql(sql, [],
+// TODO: New Student
+function queryNewStudentDB(tx) {
 
-           /*
-                   sql = "SELECT id, data, other_data FROM GROUPS  ";
-        global_id = results.rows.item(0).id; //
+    sql = "SELECT id, data, other_data FROM GROUPS  ";
+    log("queryNewStudentDB "+ sql);
+    tx.executeSql(sql, [], dbSuccessFunc = function(ttx, rs) {
+        var ul_select = $('#student_new_edit_group_list_ul');
+        var html = "";
+        for (var i = 0; i < rs.rows.length; i++) {
+            html += "<option value='" + rs.rows.item(i).id + "' name='" + rs.rows.item(i).data + "' ";
+            html += "  >" + rs.rows.item(i).data + "</option>";
+        }
+        ul_select.empty().append(html);
+        ul_select[0].selectedIndex = global_id; // Pasa en la variable global el grupo al que pertenece
+        // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
+        ul_select.selectmenu('refresh', true);
+    }, dbErrorFunc = function(ttx, e) {
+        if (ttx.message) e = ttx;
+        log("Error queryNewStudentDB . SQL  " + sql);
+        alert(" There has been an error queryNewStudentDB : " + e.message);
+        return false;
+    });
 
-        global_db.transaction(function(ttx) {
-            ttx.executeSql(sql,[],
-                dbSuccessFunc = function(ttx,rs){
-                    var ul_select = $('#student_edit_group_list_ul');
-                    var html ="";
-                    for(var i=0;i<rs.rows.length; i++) {
-                        html += "<option value='"+rs.rows.item(i).id + "' name='"+rs.rows.item(i).data +"' " ;
-                        html += "  >"+ rs.rows.item(i).data+"</option>";
-                    }
-                    ul_select.empty().append(html);
-                    ul_select[0].selectedIndex = results.rows.item(0).id_group; // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
-                    ul_select.selectmenu('refresh', true);
-                },
-                dbErrorFunc = function(ttx, e) {
-                    if (ttx.message) e = ttx;
-                    log("Error. SQL  "+sql);
-                    alert(" There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-        });
-           */
-
-
-        queryNewStudentSuccess,
-            dbErrorFunc = function(tx, e) {
-                if (tx.message) e = tx;
-                log(" There has been an error queryStudentDB: " + e.message);
-                alert(" There has been an error queryStudentDB: " + e.message);
-                return false;
-            });
-    }
+}
 
 
 
@@ -412,7 +399,7 @@ function queryStudentsByGroupDB(tx) {
     sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
     sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
     sql += ' FROM STUDENTS, GROUPS WHERE ';
-    sql += ' STUDENTS.id_group = g_id AND id_group=' + global_id;
+    sql += ' STUDENTS.id_group = g_id AND id_group=' + global_id_group;
     tx.executeSql(sql, [], queryStudentsByGroupSuccess, dbErrorFunc = function(tx, e) {
         if (tx.message)
             e = tx;
@@ -630,26 +617,22 @@ function queryNewStudentSuccess(tx, results) {
 
     // log("queryStudentSuccess. Number of students - rows inserted: " + len);
     if(len>0) {
-        $('#in_name_student').val(results.rows.item(0).name);
-        $('#in_surname_student').val(results.rows.item(0).surname);
-        $('#in_birth_date_student').val(results.rows.item(0).n_date);
-        $('#in_tutor_student').val(results.rows.item(0).tutor);
-        $('#in_address_student').val(results.rows.item(0).address); // TODO: To be filled!
-        $('#in_phone_student').val(results.rows.item(0).phone); // TODO: To be filled!
-        $('#in_e_phone_student').val(results.rows.item(0).e_phone); // TODO: To be filled!
+        $('#in_new_name_student').val(results.rows.item(0).name);
+        $('#in_new_surname_student').val(results.rows.item(0).surname);
+        $('#in_new_birth_date_student').val(results.rows.item(0).n_date);
+        $('#in_new_tutor_student').val(results.rows.item(0).tutor);
+        $('#in_new_address_student').val(results.rows.item(0).address); // TODO: To be filled!
+        $('#in_new_phone_student').val(results.rows.item(0).phone); // TODO: To be filled!
+        $('#in_new_e_phone_student').val(results.rows.item(0).e_phone); // TODO: To be filled!
 
 //         $('#in_id_group_student').val('To be implemented');
-
-        // query groups
-        //sql = "SELECT STUDENTS.id, STUDENTS.id_group, GROUPS.id, GROUPS.data, GROUPS.data_other_data FROM GROUPS, STUDENTS  ";
-        //sql+= " WHERE STUDENTS.id_group = GROUPS.id AND  GROUPS.id= ;"
         sql = "SELECT id, data, other_data FROM GROUPS  ";
         global_id = results.rows.item(0).id; //
 
         global_db.transaction(function(ttx) {
             ttx.executeSql(sql,[],
                 dbSuccessFunc = function(ttx,rs){
-                    var ul_select = $('#student_edit_group_list_ul');
+                    var ul_select = $('#student_new_edit_group_list_ul');
                     var html ="";
                     for(var i=0;i<rs.rows.length; i++) {
                         html += "<option value='"+rs.rows.item(i).id + "' name='"+rs.rows.item(i).data +"' " ;
@@ -986,7 +969,7 @@ function queryAllGroupsDB(tx) {
             for (var i = 0; i < rs.rows.length; i++) {
                 id = rs.rows.item(i).id ;
                 html = "<li>";
-                html += "<a onClick='global_id=" + id + "; table_global=\"groups\"; ";
+                html += "<a onClick='global_id=" + id + "; global_id_group="+id+"; table_global=\"groups\"; ";
                 html += " listStudentsByGroup(" + id + " );'  ";
                 html += " href='#' >";
                 html += rs.rows.item(i).data; // TODO: Add Settings button
@@ -994,7 +977,7 @@ function queryAllGroupsDB(tx) {
                 html += "<a data-role='button'  data-position-to='window' ";
                 html += " data-iconpos='notext' style='float:right;' href='#' ";
                 html += " data-rel='dialog' data-theme='a' data-transition='slideup' ";
-                html += " onClick=\"EditGroup(" + id + "); global_id=" + id + "; \">Edit</a>";
+                html += " onClick=\"EditGroup(" + id + "); global_id_group="+id+"; global_id=" + id + "; \">Edit</a>";
                 html +="</li>";
                 ul_list.append(html);
 
@@ -1020,31 +1003,43 @@ function loadAllGroups(db) {
     // Insert new Student
 function insertNewStudent( db, name, surname, group_id, repeated, n_date, photo, tutor,address, phone, e_phone, nation) {
     db.transaction(function(tx) {
-        var sql = 'INSERT INTO STUDENTS ( id_group';
+        var sql = 'INSERT INTO STUDENTS ( id_group ';
         if(name !=null) { sql +=', name '; }
-        if(surname !=null) sql +=', surname';
-        if(repeated !=null) sql +=', repeated';
-        if(n_date !=null) sql +=', n_date';
-        if(photo !=null) sql +=', photo';
-        if(tutor !=null) sql +=', tutor';
-        if(address !=null) sql +=', address';
-        if(phone !=null) sql +=', phone';
-        if(e_phone !=null) sql +=', e_phone';
-        if(nation !=null) sql +=', nation';
-        sql +=' ) VALUES (';
-        sql += group_id + ',';
-        if(name !=null) sql += ', \"' + name + '\" ';
-        if(surname !=null) sql += ', \"' + surname + '\" ';
-        if(repeated !=null) sql += ', \"' + repeated + '\" ';
-        if(n_date !=null) sql += ', \"' + n_date + '\" ';
-        if(photo !=null) sql += ', \"' + photo + '\" ';
-        if(tutor !=null) sql += ', \"' + tutor + '\" ';
-        if(address !=null) sql += ', \"' + address + '\" ';
-        if(phone !=null) sql += ', \"' + phone + '\" ';
-        if(e_phone !=null) sql += ', \"' + e_phone + '\" ';
-        if(nation !=null) sql += ', \"' + nation + '\" ';
+        if(surname !=null) sql +=', surname ';
+        if(repeated !=0) sql +=', repeated ';
+        if(n_date !=null) sql +=', n_date ';
+        if(photo !=null) sql +=', photo ';
+        if(tutor !=null) sql +=', tutor ';
+        if(address !=null) sql +=', address ';
+        if(phone !=null) sql +=', phone ';
+        if(e_phone !=null) sql +=', e_phone ';
+        if(nation !=null) sql +=', nation ';
+        sql +=' ) VALUES ( ';
+        sql += group_id  ;
+        if(name !=null) sql += ', "' + name + '" ';
+        if(surname !=null) sql += ', "' + surname + '" ';
+        if(repeated !=0) sql += ', ' + repeated + ' ';
+        if(n_date !=null) sql += ', "' + n_date + '" ';
+        if(photo !=null) sql += ', "' + photo + '" ';
+        if(tutor !=null) sql += ', "' + tutor + '" ';
+        if(address !=null) sql += ', "' + address + '\" ';
+        if(phone !=null) sql += ', "' + phone + '" ';
+        if(e_phone !=null) sql += ', "' + e_phone + '" ';
+        if(nation !=null) sql += ', "' + nation + '" ';
         sql += ' )';
-        tx.executeSql(sql);
+        log("insertNewStudent "+sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx, rs) {
+                log("Ok, saved");
+            return false;
+        },
+        dbErrorFunc = function(tx, e) {
+            if (tx.message) e = tx;
+                log(" There has been an error insertNewStudent: " + e.message);
+                alert(" There has been an error insertNewStudent: " + e.message);
+                return false;
+        });
+
     });
     $('#students_ul').listview('refresh');
 }
@@ -1196,8 +1191,6 @@ function updateStudentStateL(db, id_student, id_group, id_session, state, actual
 // Check whether student state changes
 // @id_student student id
 function stateCheck(db, id_student, id_group, id_session, state, actual_date){
-    // check if it is new
-    // if new:
     var today = moment(actual_date);
     var today_str = today.toDate().toDateString();
 
@@ -1253,19 +1246,78 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
    }
 
 
-
-
    function loadNewStudent(db){
-       db.transaction(queryNewStudentDB);
+       db.transaction(  queryNewStudentDB);
    }
 
    function loadAllStudents(db) {
           db.transaction(queryAllStudentsDB);
    }
 
-   function loadStudentsByGroup(db) {
-       db.transaction(queryStudentsByGroupDB);
-   }
+/*
+ *         var today = moment(actual_date);
+        var today_str = today.toDate().toDateString();
+        var sql ="UPDATE attendance  SET a_type=?";
+        sql += " WHERE id_student=? AND id_session=? AND a_date=? ;";
+        db.transaction(function(tx) {
+            tx.executeSql(sql, [state,id_student,id_session,today_str],
+                dbSuccessFunc = function(tx,rs){  return true;  },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("updateStudentState : " + sql + "\n");
+                    alert(" There has been an error updateStudentState2: " + e);
+                    return false;
+                } );
+        });
+ */
+   function loadStudentsByGroup(db,id_group) {
+       db.transaction(
+         function (tx) {
+            var sql = 'SELECT STUDENTS.id as id,  STUDENTS.id_group as id_group, STUDENTS.name as name, ';
+            sql += ' STUDENTS.surname as surname, STUDENTS.n_date as n_date, STUDENTS.photo as photo, ';
+            sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeated as repeated, STUDENTS.tutor as tutor ,';
+            sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
+            sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
+            sql += ' FROM STUDENTS, GROUPS WHERE ';
+            sql += ' STUDENTS.id_group = g_id AND id_group=' + id_group;
+            tx.executeSql(sql, [],
+                dbSuccessFunc = function(tx, results) {
+                    var len = results.rows.length;
+                    log("loadStudentsByGroup. Number of students: " + len);
+                    var ul_list = $('#list_students_by_group_ul');
+                    $('#id_list_students_by_group').text( results.rows.item(0).data );
+                    var html;
+                    ul_list.empty();
+                    var id = 0;
+                    for (var i = 0; i < len; i++) {
+                        id = results.rows.item(i).id;
+                        html = "<li >";
+                        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+                        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname
+                        html += "' style='float:left;' class='ui-li-icon ui-corner-none'>";
+                        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
+                        html += "</a>";
+                        html += "<a data-role='button' data-position-to='window' ";
+                        html += " data-iconpos='notext' style='float:right;' href='#' ";
+                        html += " data-rel='dialog' data-transition='slideup'  ";
+                        html += " onClick=\"EditStudent(" + id + ");\">Edit</a>";
+                        html += "</li>";
+                        ul_list.append(html);
+                    }
+                    ul_list.listview('refresh');
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log(sql);
+                    log(" There has been an error loadStudentsByGroup: "+e.message);
+                    alert("There has been an error loadStudentsByGroup: " + e.message);
+                      return false;
+                });
+            }
+          );
+}
+//            queryStudentsByGroupDB);
+
 ///---------------------------------------------------------------------------------------------------------
 //
 // End Students

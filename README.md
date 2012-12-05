@@ -5,15 +5,19 @@ Classroom Management
 
  Management of groups of students, students, activities, marks.
 
+ - Groups -
  - Students -
  - Activities -
 
 = Howto =
  Type date in "Month/Day/Year" format
- Is working:
+
+ Now is working:
 - Insert and View Attendance, Excused for student.
 - List Students and groups.
 - Chage student's data but photo.
+- Add Group. Goto Settings -> Groups-> Add
+- Add Student. Goto Settings ->Groups -> Choose a group-> Add
 
  contact info : info@joseantonio.org
 

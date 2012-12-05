@@ -336,7 +336,7 @@
 
     </div>
         <hr />
-    <a onClick="onSaveNewStudent();" data-role="button" data-icon="add"  data-theme="a" >Add Student</a>
+    <a onClick="onAddNewStudent();" data-role="button" data-icon="add"  data-theme="a" >Add Student</a>
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="text-align: center">
            Full List of Students
@@ -445,7 +445,7 @@
 
 <div data-role="page" id="edit_new_student"   data-add-back-btn="true"  >
             <div data-role="header" data-back-btn-text="previous"  data-add-back-btn="true"  data-theme="a" >
-                <h1>New Student </h1>
+                <h1>New Student</h1>
                 <ul data-role="listview" >
                  <li  data-role="fieldcontain" >
                      <fieldset class="ui-grid-a">
@@ -518,20 +518,16 @@
                         <div class="ui-block-b"><input name="nation_student" id="in_new_nation_student" enabled="true" />
                             </div>
                      </fieldset></li>
-
-
                  <li  data-role="fieldcontain" >
                      <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"> <label for="student_edit_group_list_ul">Group</label>
+                        <div class="ui-block-a"> <label for="student_new_edit_group_list_ul">Group</label>
                      </div>
                         <div class="ui-block-b">
-                            <select id="student_edit_group_list_ul" name="student_new_edit_group_list_ul" ></select>
+                            <select id="student_new_edit_group_list_ul" name="student_new_edit_group_list_ul" ></select>
                         </div>
                      </fieldset></li>
                 </ul>
                  </div>
-
-
                  <div data-role="footer" class="footer-docs" data-theme="a">
                    <!-- TODO: Rellenar   <span class="ui-icon ui-icon-arrow-1-sw"></span> //-->
                     <a href="#"  onclick="onSaveNewStudent();" data-icon="check" data-theme="a">Save</a>

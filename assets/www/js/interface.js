@@ -182,10 +182,10 @@ function onSaveStudent(){
   //  $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
 
-function onSaveNewStudent() { // TODO: Fill with data from HTML
+function onSaveNewStudent() {
     $.mobile.showPageLoadingMsg();
-    group_id=$('#student_new_edit_group_list_ul')[0].selectedIndex ; // XXX: Contains bugs, DB id's list <> select id's
-    name=  $('#in_name_student').val();
+    group_id=$('#student_new_edit_group_list_ul')[0].selectedIndex ;
+    name=  $('#in_new_name_student').val();
     surname= $('#in_new_surname_student').val();
     repeated=0 ;
     n_date=$('#in_new_birth_date_student').val();
@@ -196,11 +196,10 @@ function onSaveNewStudent() { // TODO: Fill with data from HTML
     e_phone=$('#in_new_e_phone_student').val();
     nation=$('#in_new_nation_student').val();
 
-
-//    group_id = 0; // Choose group from a list
     insertNewStudent(global_db, name, surname, group_id, repeated, n_date, photo, tutor,address, phone, e_phone, nation); //
     $('#students_ul').listview('refresh');
-    $.mobile.changePage("#list_students");
+    listStudentsByGroup(group_id);
+
 }
 function listStudents(id_group)
 {
@@ -214,9 +213,11 @@ function listStudents(id_group)
 function listStudentsByGroup(id_group) { // report
     $.mobile.showPageLoadingMsg();
     global_id=id_group ;  //local variable goes global
+    global_id_group=id_group;
     table_global='STUDENTS';
-    loadStudentsByGroup(global_db);
-    $.mobile.changePage("#list_students_by_group", { transition: "slideup"} );
+    loadStudentsByGroup(global_db,id_group);
+    $.mobile.changePage("#list_students_by_group", { transition: "slideup"} ); // TODO ??
+
 }
 // List All Students
 function listAllStudents(){
@@ -228,7 +229,7 @@ function listAllStudents(){
 
 
 
-
+// -----------------------------------------------
 
 function addNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
