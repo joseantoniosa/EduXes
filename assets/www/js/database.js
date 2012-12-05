@@ -1298,24 +1298,26 @@ function queryAllActivitiesDB(tx) {
                 });
 }
 
+function loadAllActivities(db) {
+       db.transaction(queryAllActivitiesDB );
+   }
+
 //
 // POR_HACER
-function insertNewActivity(db, name, other_data) {
+function  insertNewActivity( db, name , date_init , date_end , weight , e_final  ) {
     var db2 = db;
     var name2 = name;
     var other_data2 = other_data;
-
+    alert("To be implemented. Insert New Activity");
     db2.transaction(function(tx) {
-        var sql = 'INSERT INTO STUDENTS ( data, other_data) VALUES (';
+        var sql = 'INSERT INTO ACTIVITIES ( data, other_data) VALUES (';
         sql += '\"' + name2 + '\" ,  \"' + other_data2 + '\"  )';
         tx.executeSql(sql);
     });
     $('#students_ul').listview('refresh');
 
 }
-   function loadAllActivities(db) {
-       db.transaction(queryAllActivitiesDB );
-   }
+
 //
 // ----------------------------------------------------------------------------------------------------------
 

@@ -13,7 +13,7 @@ PENDIENTE:
     - El botón de "back" no es el adecuado para navegar entre formularios.
             - Actividades:
             * Añadir actividad - Mantener - Eliminar.
-                Dos tablas: actividad, actividad_alumno
+                Dos tablas: actividad, actividad_alumno, actividad_grupo (?)
 
                 x estudiante_actividad
                     id_estudiante
@@ -59,6 +59,8 @@ Look at the end of file
 
 ===========================================================================
 TASKS DONE:
+5/12/12b:
+    - Lista de actividades (por ahora vacía) y edición (por ahora no guarda en base de datos.)
 
 5/12/12:
     - Principio de actividades, esqueleto inicial: base de datos (una tabla de dos o tres?)

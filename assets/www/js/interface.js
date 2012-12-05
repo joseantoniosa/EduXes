@@ -222,25 +222,43 @@ function onListAllStudents(){
 // ----------------------------------------------------------------------------
 function onListAllActivities()
 {
-// fill : activities_ul
     $.mobile.showPageLoadingMsg();
     loadAllActivities(global_db);
-    $.mobile.changePage("#list_activities", { transition: "slideup"});
+
+    $.mobile.changePage("#list_all_activities");
+
+
+//    $.mobile.changePage("#list_all_activities");
+//    alert("Page changed");
 }
 function EditActivity(id_activity)
 {
 
 
 }
-
+// Show edition activity page
 function onAddNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
+
+    $.mobile.changePage("#edit_activities");
+}
+
+function onSaveNewActivity() {
+
     name = $("#in_nombre_activity").val();
     other_data = $("#in_nivel_activity").val();
-    insertNewActivity(global_db, name, other_data);
-    $('#activities_ul').listview('refresh');
-    $.mobile.changePage("#list_activities");
+
+    name = $('#in_name_activity').val();
+    date_init=$('#in_date_init_activity').val();
+    date_end=$('#in_date_end_activity').val();
+    weight=$('#in_weight_activity').val();
+    e_final=$('#in_final_activity').val();
+
+    insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
+
+    onListAllActivities();
 }
+
 // ----------------------------------------------------------------------------
 //
 function generalListAttendance() {
