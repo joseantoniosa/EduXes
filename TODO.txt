@@ -9,28 +9,32 @@ Docs:
 Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
-PENDIENTE:
-    - El botón de "back" no es el adecuado para navegar entre formularios.
+PENDIENTE: (debe ocupar poco)
+
             - Actividades:
             * Añadir actividad - Mantener - Eliminar.
+                Añadir enlace a grupos dentro de la actividad, para asignar dicha actividad a un grupo concreto.
+                Botón de habilitar-deshabilitar actividad
+                Ventana de Asignar actividades a grupos? Se debe asignar a cada grupo varias actividades
+
                 Dos tablas: actividad, actividad_alumno, actividad_grupo (?)
 
-                x estudiante_actividad
-                    id_estudiante
+                x grupo_actividad
+                    id_grupo
                     id_actividad
-                    nota (número entero entre 0 y 10)
-                    observaciones (texto)
+                    habilitado
 
-                Se debe asignar a cada grupo varias actividades
+
                 Diseñar antes las ventanas?
-                Ventana de Asignar actividades a grupos?
+
                 Nueva Actividad:
                     Nombre
                     Fecha inicio (ahora)
                     Fecha final
                     Activa (no finalizada)
                     Asignar Grupos
-
+    - Poner notas:
+        Botón extra
     - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
         - Desdoblar database.js (>1k loc)
@@ -59,6 +63,22 @@ Look at the end of file
 
 ===========================================================================
 TASKS DONE:
+
+
+
+
+6/12/12:
+    - Va a la página "#daily_work":  <a href="#daily_work"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+    - El botón de "back" no es el adecuado para navegar entre formularios.  (queda pendiente para más formularios)
+    - Realizado: Añadir actividad
+    - Database:
+                    x estudiante_actividad
+                    id_estudiante
+                    id_actividad
+                    nota (número entero entre 0 y 10)
+                    observaciones (texto)
+
+
 5/12/12b:
     - Lista de actividades (por ahora vacía) y edición (por ahora no guarda en base de datos.)
 

@@ -12,6 +12,7 @@
 <script type="text/javascript" src="js/moment.min.js"></script>
 
 <script type="text/javascript" src="js/database.js"></script>
+<script type="text/javascript" src="js/create_populate_db.js"></script>
 <script type="text/javascript" src="js/interface.js"></script>
 
 
@@ -65,13 +66,13 @@
     <div data-role="navbar">
         <ul>
             <li>
-                <a href="#" onClick="onGeneralFile()  "  data-role="button" data-icon="star" > File</a>
+                <a href="#" onClick="onGeneralFile()  "  data-role="button" data-icon="star"  data-theme="a" > File</a>
             </li>
             <li>
-                <a href="#" onClick="onGeneralListReports();"  data-role="button" data-icon="grid" >Reports</a>
+                <a href="#" onClick="onGeneralListReports();"  data-role="button" data-icon="grid"  data-theme="a" >Reports</a>
             </li>
             <li>
-                <a href="#" onClick="onGeneralListSettings();" data-role="button" data-icon="gear" >Settings</a>
+                <a href="#" onClick="onGeneralListSettings();" data-role="button" data-icon="gear"   data-theme="a" >Settings</a>
             </li>
         </ul>
     </div><!-- /navbar -->
@@ -84,8 +85,10 @@
     **********************************
      //-->
 <!--Second Window : Reports//-->
-<div data-role="page" id="list_reports" data-add-back-btn="true">
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+<div data-role="page" id="list_reports" data-add-back-btn="false">
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false" >
+            <a href="#daily_work"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+
                 <h1>Reports</h1>
             </div>
             <div data-role="content">
@@ -101,8 +104,9 @@
 </div>
 
 <!--Second Window : Settings //-->
-<div data-role="page" id="list_settings" data-add-back-btn="true">
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+<div data-role="page" id="list_settings" data-add-back-btn="false">
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false" >
+             <a href="#daily_work"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
                 <h1>Settings</h1>
             </div>
             <div data-role="content">
@@ -117,8 +121,9 @@
 </div>
 
 <!--Second Window : File //-->
-<div data-role="page" id="file" data-add-back-btn="true">
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
+<div data-role="page" id="file" data-add-back-btn="false">
+            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false" >
+            <a href="#daily_work"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
                 <h1>File</h1>
             </div>
             <div data-role="content">
@@ -138,8 +143,10 @@
 
 <!-- Second Window: List of Classes.
      List of Today Groups  //-->
-<div data-role="page" id="daily_schedule"   data-add-back-btn="true" >
-    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" data-theme="a">
+<div data-role="page" id="daily_schedule"   data-add-back-btn="false"  data-theme="a" >
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false" data-theme="a">
+        <a href="#daily_work"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+
         <h1 id="current_day"> Current Day</h1>
     </div>
     <div data-role="content" data-theme="a">
@@ -153,8 +160,10 @@
 
 <!-- Third Window: List of Students.
   Attendance //-->
-<div data-role="page" id="list_students_attendance" data-add-back-btn="true">
-    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true"  data-theme="a" >
+<div data-role="page" id="list_students_attendance" data-add-back-btn="false">
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
+        <a href="#" onclick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+
         <h1 id="current_group_attendance" >Student List for Group</h1>
     </div>
     <div data-role="content">
@@ -539,9 +548,16 @@
     ----------------------------------------------------------------------------------------------------------
 //-->
 <!-- TODO: Activity, en proceso //-->
+<!--
+     Should return to #list_settings
+     function onGeneralListSettings()
 
-<div data-role="page" id="list_all_activities" name="activities"   data-add-back-btn="true"   data-theme="a" >
-    <div data-role="header"  data-add-back-btn="true" >
+
+    //-->
+
+<div data-role="page" id="list_all_activities" name="activities"   data-add-back-btn="false"  data-direction="reverse"  data-theme="a" >
+    <div data-role="header"  data-add-back-btn="false" >
+    <a href="#list_settings"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
             <h1>List of Activities</h1>
     </div>
     <div data-role="content">
@@ -556,10 +572,11 @@
 
 
 
+<!-- Should return to #list_all_activities //-->
+<div data-role="page" id="edit_activities"    data-add-back-btn="false"  data-theme="a" data-direction="reverse" >
+            <div data-role="header"  data-add-back-btn="false"   data-theme="a" >
+            <a href="#list_all_activities"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
 
-<div data-role="page" id="edit_activities"    data-add-back-btn="true"  data-theme="a" >
-
-            <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
                 <h1> Edit Activity</h1>
                 <div data-role="content">
                  <label for="in_name_activity">Name</label><input id="in_name_activity" enabled="true" />
@@ -577,18 +594,18 @@
             </div>
 </div>
 
-<div data-role="page" id="list_all_activities2"  name="list_all_activities"  data-add-back-btn="true"  data-theme="a" >
+<div data-role="page" id="update_activities"    data-add-back-btn="true"  data-theme="a" data-direction="reverse" >
 
             <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
                 <h1> Edit Activity</h1>
                 <div data-role="content">
-                 <label for="in_name_activity">Name</label><input id="in_name_activity" enabled="true" />
-                 <label for="in_date_init_activity">Initial Date</label> <input type="date" name="in_date_init_activity" id="in_date_init_activity" value=""  />
-                 <label for="in_date_end_activity">Final Date</label>    <input type="date" name="in_date_end_activity" id="in_date_end_activity" value=""  />
-                 <label for="in_weight_activity">Weight (1-100)</label> <input type="number" id="in_weight_activity" enabled="true" />
-                <label for="in_final_activity">Disabled</label> <input type="radio" id="in_final_activity" enabled="true" value="0" />
+                 <label for="in_update_name_activity">Name</label><input id="in_update_name_activity" enabled="true" />
+                 <label for="in_update_date_init_activity">Initial Date</label> <input type="date" name="in_update_date_init_activity" id="in_update_date_init_activity" value=""  />
+                 <label for="in_update_date_end_activity">Final Date</label>    <input type="date" name="in_update_date_end_activity" id="in_update_date_end_activity" value=""  />
+                 <label for="in_update_weight_activity">Weight (1-100)</label> <input type="number" name="in__update_weight_activity" id="in__update_weight_activity" enabled="true" />
+                <label for="in_update_final_activity">Disabled</label> <input type="radio" name="in_update_final_activity"  id="in_update_final_activity" enabled="true" value="0" />
 
-                 <a onClick="onSaveNewActivity();" data-role="button" data-icon="check">Save</a>
+                 <a onClick="onUpdateActivity();" data-role="button" data-icon="check">Save</a>
                  </div>
 
 

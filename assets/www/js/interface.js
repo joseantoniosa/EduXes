@@ -123,7 +123,7 @@ function onSaveNewGroup() {
     name = $("#in_new_nombre_grupo").val();
     other_data = $("#in_new_nivel_grupo").val();
     insertNewGroup(global_db, name, other_data);
-    listAllGroups();
+    onlistAllGroups();
 }
 // List All Groups
 function onListAllGroups(){
@@ -236,6 +236,16 @@ function EditActivity(id_activity)
 
 
 }
+
+function onUpdateActivity(id_activity) {
+    $.mobile.showPageLoadingMsg();
+    global_id = id_activity;      //local variable goes global
+    table_global = 'ACTIVITIES';
+    loadActivity(global_db, id_activity );
+    $.mobile.changePage("#update_activities", { transition: "slideup"});
+
+}
+
 // Show edition activity page
 function onAddNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
@@ -245,17 +255,16 @@ function onAddNewActivity() { // TODO
 
 function onSaveNewActivity() {
 
-    name = $("#in_nombre_activity").val();
-    other_data = $("#in_nivel_activity").val();
 
-    name = $('#in_name_activity').val();
-    date_init=$('#in_date_init_activity').val();
-    date_end=$('#in_date_end_activity').val();
-    weight=$('#in_weight_activity').val();
-    e_final=$('#in_final_activity').val();
-
-    insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
-
+    var    name = $('#in_name_activity').val();
+    var date_init=$('#in_date_init_activity').val();
+    var date_end=$('#in_date_end_activity').val();
+    var weight=$('#in_weight_activity').val();
+    var e_final=$('#in_final_activity').val();
+    if(weight=="") weight=0;
+    if(name!="")  {
+        insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
+    }
     onListAllActivities();
 }
 

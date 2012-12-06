@@ -30,9 +30,23 @@
         FOREIGN KEY (id_session) REFERENCES SESSIONS(id) );
 
 -- Activities
-        DROP TABLE IF EXISTS ACTIVITIES
+        DROP TABLE IF EXISTS ACTIVITIES ;
         CREATE TABLE IF NOT EXISTS ACTIVITIES
                 (id integer primary key, name text, date_init text, date_end text, weight integer, final integer );
+
+        DROP TABLE IF EXISTS activities_student;
+        CREATE TABLE IF NOT EXISTS activities_student
+                (id integer primary key ,  id_student integer, id_activity integer,
+                mark integer, a_date text, notes text,
+                FOREIGN KEY (id_student) REFERENCES students (id),
+                FOREIGN KEY (id_activity) REFERENCES activities(id) );
+
+        DROP TABLE IF EXISTS activities_group;
+        CREATE TABLE IF NOT EXISTS activities_group
+                (id integer primary key ,  id_group integer, id_activity integer,
+                enabled integer, a_date text, notes text,
+                FOREIGN KEY (id_group) REFERENCES groups (id),
+                FOREIGN KEY (id_activity) REFERENCES activities(id) );
 
 -- Timezone        TODO
         DROP TABLE IF EXISTS TIMEZONE
