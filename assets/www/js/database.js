@@ -128,7 +128,7 @@ function queryStudentDB(tx) {
             });
     }
 
-// TODO: New Student
+//
 function queryNewStudentDB(tx) {
 
     sql = "SELECT id, data, other_data FROM GROUPS  ";
@@ -152,7 +152,6 @@ function queryNewStudentDB(tx) {
     });
 
 }
-
 
 
    function queryStudentsDB(tx) {
@@ -464,62 +463,38 @@ function queryStudentsSuccess(tx, results) {
 
 /*
  *  Main Window
+ * TODO: To be filled with marks
  */
-   function queryScheduleSuccess(tx, results) {
+function queryScheduleSuccess(tx, results) {
+    var len = results.rows.length;
+    var html;
+    var id=0;
+    var description="";
+    var start = "";
+    var t_id_session=-1;
+    $('#groups_day_ul').empty();
 
-       var len = results.rows.length;
+    log("queryScheduleSuccess number of sessions: "+len );
 
-         $('#groups_day_ul').empty();
-
-       var html;
-       var id=0;
-       var description="";
-       var start = "";
-       var t_id_session=-1;
-       log("queryScheduleSuccess number of sessions: "+len );
-       for (var i=0;i<len;i++) {
+    for (var i=0;i<len;i++) {
            id = results.rows.item(i).id;
            t_id_session = results.rows.item(i).t_id_session;
+           group = results.rows.item(i).t_id_group;
+           description = results.rows.item(i).g_description;  //group_description
 
-//           html += "<div data-role='fieldcontain'>";
-//            html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
-//            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
-// TODO: fill with correct fields vvv
-        //   html += "<a onClick='global_id="+ results.rows.item(i).id +"; table_global=\"students\"; ' href='index.html#show_student_activity' data-rel='dialog' data-transition='slideup'>";
-        //   html += "<img height='20px' src='photos/"+results.rows.item(i).photo +"' alt='"+results.rows.item(i).surname +"' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
-        //   html += "</a>";
-        //   html += "<label>"+ results.rows.item(i).surname +" "+ results.rows.item(i).name +"</label>";
-        //   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
-//           html += "</div>";
-// query = "SELECT id_session, day, id_group FROM teacher_schedule WHERE day=" +week_day_global + " ORDER BY id_session;";
-//
-//            var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
-//            create_session +="description text, h_start text, h_end text);";
-
-
-           start = results.rows.item(i).s_h_start;  // s_h_end
-           description = results.rows.item(i).g_description;  // description=group_description
            html = "<li>";
-           html += "<div data-role='fieldcontain'>";
-           html += start;
-
+           html += "<div data-role='fieldcontain' onClick='listStudentsAttendance(" + group + ","+t_id_session + ");' >";
+           html += results.rows.item(i).s_h_start;  // s_h_end
            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#' ";
-//           html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
-           html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ","+t_id_session + ");\">" + description + "</a>";
-
-           html += "";
+           html += " onClick='listStudentsAttendance(" + group + ","+t_id_session + ");'>" + description + "</a>";
            html += "</div>";
            html += "</li>";
            $('#groups_day_ul').append(html);
-       }
-       $('#groups_day_ul').listview('refresh');
+    }
+    $('#groups_day_ul').listview('refresh');
 
-   }
-
-function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
 }
+
 
 
 //  Fill select option

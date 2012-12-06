@@ -10,7 +10,7 @@ Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
 PENDIENTE: (debe ocupar poco)
-
+        Línea index.html : 575
             - Actividades:
             * Añadir actividad - Mantener - Eliminar.
                 Añadir enlace a grupos dentro de la actividad, para asignar dicha actividad a un grupo concreto.
@@ -33,16 +33,27 @@ PENDIENTE: (debe ocupar poco)
                     Fecha final
                     Activa (no finalizada)
                     Asignar Grupos
-    - Poner notas:
-        Botón extra
+    >>- Poner notas:  #groups_day_ul
+     * TODO: To be filled with marks 466 de database.js:
+        - Incorporar combo con las actividades (en database.js)
+        - Incorporar botón abajo con "marks" (en index.html)
+
+       - Listar Notas
+        Botón extra en la página de "schedule"??
+        [Nada(*)  ] [ Combo desplegable con las actividades evaluables (**)]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Attendance(*)][Marks (**)]
+
     - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
-        - Desdoblar database.js (>1k loc)
 
-            - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
+        - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Cómo introducir horario (¿?¿?)
         - Rehacer presentación, rehacer memoria
-            - Crear presentación con efectos-transiciones espectaculares.
+            - Crear presentación con Latex Beamer, usando la plantilla del Máster
             * Seleccionar actividad
             * Relacionar actividad con alumno
             * Asignar nota de actividad a los alumnos
@@ -68,6 +79,7 @@ TASKS DONE:
 
 
 6/12/12:
+    - - Desdoblar database.js (>1k loc)
     - Va a la página "#daily_work":  <a href="#daily_work"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
     - El botón de "back" no es el adecuado para navegar entre formularios.  (queda pendiente para más formularios)
     - Realizado: Añadir actividad
