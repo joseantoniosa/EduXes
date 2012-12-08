@@ -1073,23 +1073,7 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
                     alert("There has been an error insertNewActivity: " + e.message);
                     return false;
         });
-        //
-        // TODO:  red in_group_activity_" + id + "' where 0<id<no_groups
-        for (var i=0;i<global_no_groups;i++) {
-            var checkbox=$('#in_group_activity_' + i );
-            var checked=checkbox.is(':checked');
-            alert(checked );
-        }
-/*
- *
- *         CREATE TABLE IF NOT EXISTS activities_group
-                (id integer primary key ,  id_group integer, id_activity integer,
-                enabled integer, a_date text, notes text,
 
- * TODO ¿De dónde saco id_activity?
- *  select  last_insert_rowid() from activities;
- *
- */
         var sql = 'SELECT  last_insert_rowid() FROM activities;';
 
         log("insertNewActivity02 :"+sql); // SOLO funcionará para el primero
@@ -1102,15 +1086,8 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
                         var checkbox=$('#in_group_activity_' + i );
                         if(checkbox.is(':checked')) { enabled=1;};
                         notes ="";
-
-                        insertActivitiesGroup(db,i , i_last_inserted_row, enabled , a_date, notes);
+                        insertActivitiesGroup(db, i , i_last_inserted_row, enabled , a_date, notes);
                 }
-
-
-
-
-
-
 //
                 return true;
             },
@@ -1120,12 +1097,6 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
                     alert("There has been an error insertNewActivity2: " + e.message);
                     return false;
         });
-
-
-
-
-
-
     });
 }
 
@@ -1196,6 +1167,134 @@ function loadGroupsActivitiesEdit(db){
 
 
 
+
+}
+
+//
+//------------- Assessment:
+// TODO: assessment
+// XXX:  Assessment
+
+function loadGroupAssessment(db,id_group) {
+
+
+    var list_asset=$('#list_assessment_select'); // list of activities for a group
+    var html="";
+//
+// Lista de actividades por grupo.
+//CREATE TABLE IF NOT EXISTS activities_group
+//                (id integer primary key ,  id_group integer, id_activity integer,
+//                enabled integer, a_date text, notes text,
+    sql="SELECT "; // Do not need groups info at !!: GROUPS.id as g_id, GROUPS.data as g_data, ";
+    sql += " ACTIVITIES_GROUP.a_date AS ag_date, ACTIVITIES_GROUP.id_group AS ag_group, ";
+    sql += " ACTIVITIES_GROUP.id_activity AS ag_activity, ACTIVITIES_GROUP.enabled AS ag_enabled ,"; //
+    sql += " ACTIVITIES.id AS a_id,  ACTIVITIES.name AS a_name,";
+    sql += " ACTIVITIES.date_init AS a_date_init,  ACTIVITIES.final AS a_final ";
+    sql += " FROM  ACTIVITIES, ACTIVITIES_GROUP ";
+    sql += " WHERE ag_group= "+ id_group;
+    sql += " AND ag_activity=a_id ORDER BY a_date_init ASC; ";
+    log("LoadGroupAssessment  : "+ sql);
+
+    db.transaction(function(tx) {
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx, results) {
+                var len = results.rows.length;
+                var html ="";
+                for (var i=0;i<len;i++) {
+
+                    a_id = results.rows.item(i).a_id;
+                    alert(a_name);
+                    a_name = results.rows.item(i).a_name;
+                    a_date_init  = results.rows.item(i).a_date_init;
+                    a_final = results.rows.item(i).a_final;
+                    html =' <option value="'+a_name+'">'+a_name+'</option> ';
+                }
+
+                list_asset.append(html);
+                return true;
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error  insertActivitiesGroup : "+e.message);
+                    alert("There has been an error  insertActivitiesGroup : " + e.message);
+                    return false;
+        });
+
+    });
+
+
+// LoadGroupAssessment  :
+
+//            CREATE TABLE IF NOT EXISTS ACTIVITIES
+// id integer primary key, name text, date_init text, date_end text, weight integer, final integer );
+
+/*
+    html =' <option value="standard">Standard: 7 day</option> ';
+    html +=' <option value="rush">Rush: 3 days</option>';
+    html +=' <option value="express">Express: next day</option>';
+    html +=' <option value="overnight">Overnight</option>';
+
+    list_asset.append(html);
+//*/
+/*
+    var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo ,";
+    sql += " GROUPS.id as g_id, GROUPS.data as data, ";
+    sql += " GROUPS.id as g_id, GROUPS.data as data, ";
+    sql += " FROM STUDENTS, GROUPS WHERE  ( g_id=STUDENTS.id_group  ";
+    sql += " AND g_id=" + global_id + " ) ORDER BY id_student";
+
+    tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
+        dbErrorFunc = function(tx, e) {
+            if (tx.message) e = tx;
+            log(" queryStudentsAttendanceDB " + sql);
+            alert(" There has been an error queryStudentsAttendanceDB: " + e.message);
+        return false;
+    });
+
+
+
+
+    $('#current_group_assessment').text("Curso");
+    var student_asset=$('#students_assessment_ul');
+
+    student_asset.empty();
+
+ var len = results.rows.length;
+    var html="";
+    var id=0;
+    var photo="";
+    var name="";
+    var surname="";
+    var id_group=0;
+    var id_session=0;
+
+    $('#students_attendance_ul').empty();
+    if(len>0) {
+        $('#current_group_attendance').text(results.rows.item(0).data);
+    }
+    for (var i=0;i<len;i++) {
+        id = results.rows.item(i).id_student;
+        photo = results.rows.item(i).photo;
+        name = results.rows.item(i).name;
+        surname = results.rows.item(i).surname;
+        id_group = results.rows.item(i).g_id;
+
+        id_session = global_session; //
+
+        html = "<li data-role='fieldcontain'> ";
+        html += "<label for='select_student_"+id+"' class='select'> ";
+        html += "<img height='20px' src='photos/"+photo +"' alt='" + id+surname + "' >";
+        html += surname + "," + name + "</label> " ;
+        html +="<select name='select_student_"+id+"' id='select_student_"+id+"' ";
+        html += " onChange='studentState("+id + "," +id_group + ","+id_session+ ");'>";
+        html +="</select>";
+        html += "</li>";
+        $('#students_attendance_ul').append(html);
+// #id to be filled, id_session, id_student // Asynchronous
+        fillSelectStudent(global_db, "select_student_"+id, id_session, id);
+    }
+    $('#students_attendance_ul').listview('refresh');
+//*/
 
 }
 //

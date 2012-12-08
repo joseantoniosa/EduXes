@@ -76,6 +76,23 @@ Look at the end of file
 TASKS DONE:
 
 <!-- TODO: Update  Activity
+    Prioridad -> introducir notas, trabajar sobre la página de index.html:
+            <div data-role="page" id="list_students_assessment" data-add-back-btn="false">
+            1. Leer datos de actividades_group. las tareas que tiene el grupo: (hecho)
+            2. Mostrarlas en un combo. (hecho)
+            3. El usuario selecciona una actividad <Actividad>
+            4. Se muestra el listado de los alumnos y sus notas (si existiesen)
+                Alumno + Combo <Nota>
+            5. El botón "Save" lee la nota <Nota> de la actividad <Actividad> y escribe los datos en
+                actividades_estudiante
+            6. Realiza esta tarea para cada estudiante.
+//--->
+
+8/12/12 b:
+    Dentro de Notas, añadida lista de actividades a evaluar, pendiente corregir posible error al no aparecer todas
+        database.js  loadGroupAssessment  1175
+        index.html list_students_attendance 163
+
 
 8/12/12:
     - Añadida nueva actividad, enlazada con los grupos correspondientes.

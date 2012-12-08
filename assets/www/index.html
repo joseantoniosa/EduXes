@@ -179,7 +179,7 @@
 </div>
 
 <!-- Fourth Window: List of Students Assessment.
-    TODO:
+    TODO: List of Students Assessment.
    //-->
 <div data-role="page" id="list_students_assessment" data-add-back-btn="false">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
@@ -189,7 +189,19 @@
 
         <h1 id="current_group_assessment" >Student List Assesment</h1>
     </div>
-    <div data-role="content"> List of Activities
+    <div data-role="content">
+
+         <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label for="list_assessment_select" class="select">List of Activities</label>
+                            </div>
+                        <div class="ui-block-b">
+                            <select name="list_assessment_select" id="list_assessment_select">
+                                        </select>
+                        </div>
+                     </fieldset>
+
+
     </div>
     <div data-role="content">
         <ul data-role="listview" id="students_assessment_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
@@ -633,47 +645,35 @@
                         <div class="ui-block-a">
                      <label for="in_name_activity">Name</label>
                      </div>
-                        <div class="ui-block-b">
-                            <input id="in_name_activity" enabled="true" />
-                            </div>
+                        <div class="ui-block-b">  <input id="in_name_activity" enabled="true" />  </div>
                      </fieldset>
 
                  <fieldset class="ui-grid-a">
-                        <div class="ui-block-a">
-                     <label for="in_date_init_activity">Initial Date</label>
-                     </div>
-                        <div class="ui-block-b">
-                            <input type="date" name="in_date_init_activity" id="in_date_init_activity" value=""  />
+                        <div class="ui-block-a"> <label for="in_date_init_activity">Initial Date</label> </div>
+                        <div class="ui-block-b"> <input type="date" name="in_date_init_activity" id="in_date_init_activity" value=""  />
                             </div>
                      </fieldset>
 
 
                  <fieldset class="ui-grid-a">
-                        <div class="ui-block-a">
-                    <label for="in_date_end_activity">Final Date</label>
-                     </div>
-                        <div class="ui-block-b">
-                            <input type="date" name="in_date_end_activity" id="in_date_end_activity" value=""  />
+                        <div class="ui-block-a"><label for="in_date_end_activity">Final Date</label>   </div>
+                        <div class="ui-block-b"><input type="date" name="in_date_end_activity" id="in_date_end_activity" value=""  />
                             </div>
                      </fieldset>
 
 
                  <fieldset class="ui-grid-a">
-                        <div class="ui-block-a">
-                     <label for="in_weight_activity">Weight (1-100)</label>
+                        <div class="ui-block-a"><label for="in_weight_activity">Weight (1-100)</label>
                      </div>
-                        <div class="ui-block-b">
-                            <input type="number" id="in_weight_activity" enabled="true" />
+                        <div class="ui-block-b"><input type="number" id="in_weight_activity" enabled="true" />
                             </div>
                      </fieldset>
 
 
                  <fieldset class="ui-grid-a">
-                        <div class="ui-block-a">
-                     <label for="in_final_activity">Disabled</label>
+                        <div class="ui-block-a"><label for="in_final_activity">Disabled</label>
                      </div>
-                        <div class="ui-block-b">
-                            <input type="checkbox" id="in_final_activity" enabled="true" value="0" />
+                        <div class="ui-block-b"><input type="checkbox" id="in_final_activity" enabled="true" value="0" />
                             </div>
                      </fieldset>
 
@@ -725,7 +725,7 @@
 <div data-role="page" id="update_activities2"    data-add-back-btn="true"  data-theme="a" data-direction="reverse" >
 
             <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
-                <h1> Edit Activity</h1>
+                <h1> Edit Activity 2</h1>
                 <div data-role="content">
                  <label for="in_update_name_activity">Name</label><input id="in_update_name_activity" enabled="true" />
                  <label for="in_update_date_init_activity">Initial Date</label> <input type="date" name="in_update_date_init_activity" id="in_update_date_init_activity" value=""  />

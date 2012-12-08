@@ -76,6 +76,7 @@ function listStudentsAttendance(id_group, id_session)
 {
     $.mobile.showPageLoadingMsg();
     global_id=id_group ;  //local variable goes global
+    global_id_group = id_group;
     table_global='STUDENTS';
     global_session = id_session;
     loadStudentAttendance(global_db);
@@ -275,6 +276,11 @@ function onSaveNewActivity() {
 function onOpenStudentsAssessment(){
 
     $.mobile.showPageLoadingMsg();
+    id_group=global_id_group; // Se supone que vendra de una variable global:
+    loadGroupAssessment(global_db,id_group);
+    // TODO: primero lista las actividades (selecciona por defecto la  primera actividad activa),
+    //  cuando se rellene
+    //  - Lista de estudiantes
 
     $.mobile.changePage("#list_students_assessment");
 
@@ -295,6 +301,7 @@ function generalListAttendance() {
 function listStudentsByGroupAttendance(id_group) { // report
     $.mobile.showPageLoadingMsg();
     global_id=id_group ;  //local variable goes global
+    global_id_group = id_group;
     table_global='STUDENTS';
     reportAttendanceDB(global_db); //
     $.mobile.changePage("#list_students_attendance_by_group", { transition: "slideup"} );
