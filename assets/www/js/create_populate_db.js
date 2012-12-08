@@ -25,14 +25,6 @@ function createDB(tx) {
         var sql = "";
         var create_attendance ="";
 
-        tx.executeSql('DROP TABLE IF EXISTS groups;',[],
-            dbSuccessFunc = function(tx,rs){ return true; },
-            dbErrorFunc = function(ttx, e) {
-                if (ttx.message) e = ttx;
-                alert(" There has been an error 0: " + e);
-                return false;
-                }
-            );  // To be removed on production
         tx.executeSql('CREATE TABLE IF NOT EXISTS groups (id  integer primary key , data text , other_data text)',[],
             dbSuccessFunc = function(tx,rs){ return true; },
             dbErrorFunc = function(ttx, e) {
@@ -41,13 +33,6 @@ function createDB(tx) {
                 return false;
                 });
 
-        tx.executeSql('DROP TABLE IF EXISTS STUDENTS;',[],
-            dbSuccessFunc = function(tx,rs){ return true;},
-            dbErrorFunc = function(ttx, e) {
-                if (ttx.message) e = ttx;
-                alert(" There has been an error 2: " + e);
-                return false;
-                });  // To be removed on production
         var create_students="CREATE TABLE IF NOT EXISTS students ";
         create_students +=" (id integer primary key, id_group integer not null, name text, surname text,";
         create_students +=" repeated integer, n_date text , photo text, ";
@@ -63,7 +48,7 @@ function createDB(tx) {
                 });
 
 //        -- Sessions (franja horaria)
-        tx.executeSql('DROP TABLE IF EXISTS sessions;'); // To be removed on production
+
         var create_session="CREATE TABLE IF NOT EXISTS sessions (id  integer primary key,";
         create_session +="description text, h_start text, h_end text);";
         tx.executeSql(create_session,[],
@@ -75,7 +60,6 @@ function createDB(tx) {
                 });
 
 //      -- Teacher's schedule
-        tx.executeSql('DROP TABLE IF EXISTS teacher_schedule;'); // To be removed on production
         var create_schedule = "CREATE TABLE IF NOT EXISTS teacher_schedule (id  integer primary key,";
         create_schedule +=" id_teacher integer, id_session integer, day integer, id_group integer,";
         create_schedule +="FOREIGN KEY(id_group) REFERENCES groups(id),";
@@ -85,16 +69,6 @@ function createDB(tx) {
             dbErrorFunc = function(ttx, e) {
                 if (ttx.message) e = ttx;
                 alert(" There has been an error 5: " + e);
-                return false;
-                });
-//
-        var sql2 = " DROP TABLE IF EXISTS attendance; ";
-        tx.executeSql( sql2 ,[],
-            dbSuccessFunc = function(tx,rs){
-                return true;  },
-            dbErrorFunc = function(ttx, e) {
-                if (ttx.message) e = ttx;
-                alert(" There has been an error sql2: " + e);
                 return false;
                 });
 
@@ -114,15 +88,6 @@ function createDB(tx) {
                 });
 
 // Activities
-        var sql2 = " DROP TABLE IF EXISTS activities; ";
-        tx.executeSql( sql2 ,[],
-            dbSuccessFunc = function(tx,rs){
-                return true;  },
-            dbErrorFunc = function(ttx, e) {
-                if (ttx.message) e = ttx;
-                alert(" There has been an error sql2: " + e);
-                return false;
-                });
 
         var create_activity = "CREATE TABLE IF NOT EXISTS activities (id integer primary key , ";
         create_activity += " name text, weight integer, date_init text, date_end text, final integer); ";
@@ -135,8 +100,8 @@ function createDB(tx) {
                 alert(" Error:There has been an error create_activity: " + e);
                 return false;
                 });
-        var create_a_student = "DROP TABLE IF EXISTS activities_student; ";
-        create_a_student += " CREATE TABLE IF NOT EXISTS activities_student (id integer primary key , ";
+
+        create_a_student = " CREATE TABLE IF NOT EXISTS activities_student (id integer primary key , ";
         create_a_student += " id_student integer, id_activity integer, mark integer, a_date text, notes text, ";
         create_a_student += " FOREIGN KEY (id_student) REFERENCES students (id), ";
         create_a_student += " FOREIGN KEY (id_activity) REFERENCES activities(id) ); ";
@@ -150,13 +115,13 @@ function createDB(tx) {
                 alert(" Error:There has been an error create_a_student: " + e);
                 return false;
                 });
-        var create_a_group = "DROP TABLE IF EXISTS activities_group; ";
-        create_a_group += " CREATE TABLE IF NOT EXISTS activities_group (id integer primary key , ";
+
+        create_a_group = " CREATE TABLE IF NOT EXISTS activities_group (id integer primary key , ";
         create_a_group += " id_group integer, id_activity integer, enabled integer, a_date text, notes text, ";
         create_a_group += " FOREIGN KEY (id_group) REFERENCES groups (id), ";
         create_a_group += " FOREIGN KEY (id_activity) REFERENCES activities(id) ); ";
 
-        //log(create_a_group);
+        log("ACtivities_Group: " + create_a_group);
         tx.executeSql( create_a_group ,[],
             dbSuccessFunc = function(tx,rs){
                 return true;  },
@@ -167,6 +132,88 @@ function createDB(tx) {
                 });
 
 }
+//
+function drop_table_if_exist(tx)
+{
+
+    tx.executeSql('DROP TABLE IF EXISTS groups;',[],
+        dbSuccessFunc = function(tx,rs){ return true; },
+        dbErrorFunc = function(ttx, e) {
+            if (ttx.message) e = ttx;
+            alert(" There has been an error 0: " + e);
+            return false;
+            }
+        );  // To be removed on production
+
+
+    tx.executeSql('DROP TABLE IF EXISTS STUDENTS;',[],
+        dbSuccessFunc = function(tx,rs){ return true;},
+        dbErrorFunc = function(ttx, e) {
+            if (ttx.message) e = ttx;
+            alert(" There has been an error 2: " + e);
+            return false;
+            });  // To be removed on production
+
+
+    tx.executeSql('DROP TABLE IF EXISTS teacher_schedule;',[],
+            dbSuccessFunc = function(tx,rs){ return true;},
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error 2: " + e);
+                return false;
+                });  // To be removed on production
+
+    //
+    var sql2 = " DROP TABLE IF EXISTS attendance; ";
+    tx.executeSql( sql2 ,[],
+        dbSuccessFunc = function(tx,rs){
+            return true;  },
+        dbErrorFunc = function(ttx, e) {
+            if (ttx.message) e = ttx;
+            alert(" There has been an error sql2: " + e);
+            return false;
+            });
+
+
+
+    var sql2 = " DROP TABLE IF EXISTS activities; ";
+    tx.executeSql( sql2 ,[],
+        dbSuccessFunc = function(tx,rs){
+            return true;  },
+        dbErrorFunc = function(ttx, e) {
+            if (ttx.message) e = ttx;
+            alert(" There has been an error sql2: " + e);
+            return false;
+            });
+    var sql2  = "DROP TABLE IF EXISTS activities_student; ";
+    tx.executeSql( sql2 ,[],
+            dbSuccessFunc = function(tx,rs){
+                return true;  },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error sql2: " + e);
+                return false;
+                });
+    var sql2 = "DROP TABLE IF EXISTS activities_group; ";
+    tx.executeSql( sql2 ,[],
+            dbSuccessFunc = function(tx,rs){
+                return true;  },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error sql2: " + e);
+                return false;
+                });
+    tx.executeSql('DROP TABLE IF EXISTS sessions;',[],
+            dbSuccessFunc = function(tx,rs){
+        		return true;  },
+			dbErrorFunc = function(ttx, e) {
+    			if (ttx.message) e = ttx;
+				alert(" There has been an error sql2: " + e);
+					return false;
+        		});
+
+}
+
 //
 // Fake data:
 //

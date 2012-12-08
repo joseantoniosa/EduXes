@@ -75,7 +75,14 @@ Look at the end of file
 ===========================================================================
 TASKS DONE:
 
+<!-- TODO: Update  Activity
 
+8/12/12:
+    - Añadida nueva actividad, enlazada con los grupos correspondientes.
+
+    'in_group_activity_" + id + "' << añadido como actividad-grupo (??)
+    TODO ¿De dónde saco id_activity?, obtener el último valor de un auto-increment http://www.sqlite.org/lang_corefunc.html#last_insert_rowid
+    select  last_insert_rowid() from algo;
 
 
 6/12/12:

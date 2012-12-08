@@ -23,10 +23,12 @@
         var db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 5*1024*1024);
         global_db=db;
 // On first time it populate DB:
+
+    global_db.transaction(drop_table_if_exist); // DEBUG
     global_db.transaction(createDB); // , errorCB, successCB);
 // On production this will be removed:
     log("onDeviceReady PopulateDB ");
-    global_db.transaction(populateDB); //, errorCB, successCB);
+    global_db.transaction(populateDB); //, errorCB, successCB); // DEBUG
     initialize_data() ;
     $.mobile.page.prototype.options.backBtnTheme = "a";
     $.mobile.changePage("#intro");
@@ -242,14 +244,15 @@ function onUpdateActivity(id_activity) {
     global_id = id_activity;      //local variable goes global
     table_global = 'ACTIVITIES';
     loadActivity(global_db, id_activity );
-    $.mobile.changePage("#update_activities", { transition: "slideup"});
+    $.mobile.changePage("#update_activity", { transition: "slideup"});
 
 }
 
 // Show edition activity page
 function onAddNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
-
+    // TODO: Fill with  groups info: #list_groups_activities_ul
+    loadGroupsActivitiesEdit(global_db);
     $.mobile.changePage("#edit_activities");
 }
 
@@ -266,6 +269,15 @@ function onSaveNewActivity() {
         insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
     }
     onListAllActivities();
+}
+// Assessment (part of Activities)
+// TODO: Assesssment
+function onOpenStudentsAssessment(){
+
+    $.mobile.showPageLoadingMsg();
+
+    $.mobile.changePage("#list_students_assessment");
+
 }
 
 // ----------------------------------------------------------------------------

@@ -29,6 +29,7 @@ var global_id;
 var global_id_group=0;
 var global_id_student=0;
 var global_id_activity=0;
+var global_no_groups=0;
 var global_week_day=-1;
 var global_db;
 var global_session; // selected session
@@ -1051,8 +1052,9 @@ function loadActivity(db, id_activity ) {
 
 }
 function  insertNewActivity( db, name , date_init , date_end , weight , e_final  ) {
+    var last_inserted_row;
     db.transaction(function(tx) {
-        var sql = 'INSERT INTO ACTIVITIES ( name , date_init , date_end , weight , final) VALUES (';
+        var sql = 'INSERT INTO activities ( name , date_init , date_end , weight , final) VALUES (';
         sql += '"' + name + '" ';
         sql += ', "' + date_init + '" ';
         sql += ', "' + date_end + '" ';
@@ -1060,20 +1062,142 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
         sql += ', ' + e_final;
         sql += ');';
 
-        log("insertNewActivity"+sql);
+        log("insertNewActivity :"+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 return true;
             },
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
-                    log(" There has been an error loadStudentsByGroup: "+e.message);
-                    alert("There has been an error loadStudentsByGroup: " + e.message);
+                    log(" There has been an error insertNewActivity: "+e.message);
+                    alert("There has been an error insertNewActivity: " + e.message);
                     return false;
         });
+        //
+        // TODO:  red in_group_activity_" + id + "' where 0<id<no_groups
+        for (var i=0;i<global_no_groups;i++) {
+            var checkbox=$('#in_group_activity_' + i );
+            var checked=checkbox.is(':checked');
+            alert(checked );
+        }
+/*
+ *
+ *         CREATE TABLE IF NOT EXISTS activities_group
+                (id integer primary key ,  id_group integer, id_activity integer,
+                enabled integer, a_date text, notes text,
+
+ * TODO ¿De dónde saco id_activity?
+ *  select  last_insert_rowid() from activities;
+ *
+ */
+        var sql = 'SELECT  last_insert_rowid() FROM activities;';
+
+        log("insertNewActivity02 :"+sql); // SOLO funcionará para el primero
+        tx.executeSql(sql ,[],
+            dbSuccessFunc = function(tx, results) {
+                var i_last_inserted_row=results.rows.length;
+                var enabled=0;
+                var a_date = Date();
+                for (var i=0;i<global_no_groups;i++) {
+                        var checkbox=$('#in_group_activity_' + i );
+                        if(checkbox.is(':checked')) { enabled=1;};
+                        notes ="";
+
+                        insertActivitiesGroup(db,i , i_last_inserted_row, enabled , a_date, notes);
+                }
+
+
+
+
+
+
+//
+                return true;
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error insertNewActivity2: "+e.message);
+                    alert("There has been an error insertNewActivity2: " + e.message);
+                    return false;
+        });
+
+
+
+
+
+
     });
 }
 
+function insertActivitiesGroup(db,id_group, last_inserted_row, enabled , a_date, notes){
+    db.transaction(function(tx) {
+        var sql = 'INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (';
+        sql +=  id_group ;
+        sql += ','+ last_inserted_row;
+        sql += ', ' + enabled ; // 0/1
+        sql += ', "' + a_date+'"';
+        sql += ', "' + notes+'"';
+        sql += ');';
+        log(" insertActivitiesGroup  : "+sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx, results) {
+                return true;
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error  insertActivitiesGroup : "+e.message);
+                    alert("There has been an error  insertActivitiesGroup : " + e.message);
+                    return false;
+        });
+
+    });
+
+}
+
+    // TODO: Fill with  groups info: #list_groups_activities_ul
+    // 'in_group_activity_" + id + "'
+function loadGroupsActivitiesEdit(db){
+    db.transaction(function(tx) {
+        var sql = 'SELECT id, data, other_data FROM groups; ' ;
+
+        log("loadGroupsActivitiesEdit : "+sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx, results) {
+                var len = results.rows.length;
+                global_no_groups = len;
+                if(len>0) {
+                    var ul_list = $('#list_groups_activities_ul');
+                    var html;
+                        ul_list.empty();
+                        var id = 0;
+                        for (var i = 0; i < len; i++) {
+                            id = results.rows.item(i).id;
+                            html = "<li >";
+
+                            html += "<input style='text-align=right' type='checkbox' ";
+                            html += "name='in_group_activity_"+id + "'  id='in_group_activity_" + id + "' enabled='true'  />";
+                            html +="<label for='in_group_activity_"+ id +"' >";
+                            html += results.rows.item(i).data +"</label>";
+                            html += " </li></br>";
+                            ul_list.append(html);
+                        }
+                        ul_list.listview('refresh');
+                    }
+
+                return true;
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error loadGroupsActivitiesEdit: "+e.message);
+                    alert("There has been an error loadGroupsActivitiesEdit: " + e.message);
+                    return false;
+        });
+    });
+
+
+
+
+}
 //
 // ----------------------------------------------------------------------------------------------------------
 
