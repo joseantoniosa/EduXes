@@ -87,12 +87,16 @@ TASKS DONE:
                 actividades_estudiante
             6. Realiza esta tarea para cada estudiante.
 //--->
+10/12/2012 :
+    - Añadido widget para las fechas (desde Igalia/libreplanapp) mobiscroll (también podría gestionar las horas)
+    1221 database.js list of students by group:
+    - Dentro de Assessment empiezo a reorganizar código (nada visible aún)
 
 8/12/12 b:
     Dentro de Notas, añadida lista de actividades a evaluar, pendiente corregir posible error al no aparecer todas
         database.js  loadGroupAssessment  1175
         index.html list_students_attendance 163
-
+        Corregido, faltaba con "+" html+=
 
 8/12/12:
     - Añadida nueva actividad, enlazada con los grupos correspondientes.

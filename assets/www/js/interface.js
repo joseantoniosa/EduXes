@@ -42,14 +42,50 @@ function initialize_data() {
     var a_today = new Date(); // Today
     global_actual_date = a_today;
     global_reports_date = global_actual_date ;
-    $("#daily_date").noWeekends ;
-    $("#daily_date").val( textDate(a_today) );
+   // $("#daily_date").noWeekends ;
+    $("#daily_date_scroller").val( textDate(a_today) );
     $("#teachers_name").text("Geography");
+// New:
+//    $("#daily_date_scroller").mobiscroll().date();
+
+    $('#daily_date_scroller').scroller({
+        preset: 'date',
+        invalid: { daysOfWeek: [0, 6], daysOfMonth: ['5/1', '12/24', '12/25'] },
+        theme: 'android',
+        display: 'modal',
+        mode: 'scroller',
+        animate: 'slidedown',
+        dateOrder: 'mmD ddyy'
+    });
+    $("#in_date_end_activity_scroller").val( textDate(a_today) );
+    $('#in_date_init_activity_scroller').scroller({
+        preset: 'date',
+        invalid: { daysOfWeek: [0, 6], daysOfMonth: ['5/1', '12/24', '12/25'] },
+        theme: 'android',
+        display: 'modal',
+        mode: 'scroller',
+        animate: 'slidedown',
+        dateOrder: 'mmD ddyy'
+    });
+
+    $("#in_date_end_activity_scroller").val( textDate(a_today) );
+    $('#in_date_end_activity_scroller').scroller({
+        preset: 'date',
+        invalid: { daysOfWeek: [0, 6], daysOfMonth: ['5/1', '12/24', '12/25'] },
+        theme: 'android',
+        display: 'modal',
+        mode: 'scroller',
+        animate: 'slidedown',
+        dateOrder: 'mmD ddyy'
+    });
+
+    // daily_date_scroller
+
 }
 //
 // Open Daily work page: list of groups
 function open_daily_page() {
-    var this_date = $("#daily_date").val();
+    var this_date = $("#daily_date_scroller").val();
     if (this_date != "") {
         var a_date = new Date(this_date);
         if (a_date.getDay() == 6 || a_date.getDay() == 0) {
@@ -261,8 +297,8 @@ function onSaveNewActivity() {
 
 
     var    name = $('#in_name_activity').val();
-    var date_init=$('#in_date_init_activity').val();
-    var date_end=$('#in_date_end_activity').val();
+    var date_init=$('#in_date_init_activity_scroller').val();
+    var date_end=$('#in_date_end_activity_scroller').val();
     var weight=$('#in_weight_activity').val();
     var e_final=$('#in_final_activity').val();
     if(weight=="") weight=0;
@@ -346,8 +382,8 @@ function studentState(id_student, id_group, id_session) {
     // Consider Today as default date.
     if(global_actual_date!=null) {
         var actual_date = global_actual_date;
-    } else  if($('#daily_date').val() != null ) {
-        var actual_date = $('#daily_date').val();
+    } else  if($('#daily_date_scroller').val() != null ) {
+        var actual_date = $('#daily_date_scroller').val();
     } else {
         var actual_date = new Date();
     }

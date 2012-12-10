@@ -11,6 +11,9 @@
 <script type="text/javascript" src="js/jquery/jquery.mobile-1.1.1.js"></script>
 <script type="text/javascript" src="js/moment.min.js"></script>
 
+<link href="css/mobiscroll-2.3.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="js/mobiscroll/mobiscroll-2.3.custom.min.js" type="text/javascript"></script>
+
 <script type="text/javascript" src="js/database.js"></script>
 <script type="text/javascript" src="js/create_populate_db.js"></script>
 <script type="text/javascript" src="js/interface.js"></script>
@@ -55,7 +58,8 @@
                 </div>
             </div>
             <div class="ui-block-b">
-                <input type="date" name="date" id="daily_date" value=""  />
+                <!-- <input type="date" name="date" id="daily_date" value=""  /> //-->
+                <input id="daily_date_scroller" name="daily_date_scroller" />
             </div>
             <div class="ui-block-c">
                 <a href="#" data-role='button' data-icon='info' data-iconpos='notext' style='float: right;' onClick="help('date');">Help</a>
@@ -638,7 +642,7 @@
             <div data-role="header"  data-add-back-btn="false"   data-theme="a" >
             <a href="#list_all_activities"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
 
-                <h1> Edit Activity</h1>
+                <h1> New Activity</h1>
                 <div data-role="content">
 
                      <fieldset class="ui-grid-a">
@@ -650,14 +654,21 @@
 
                  <fieldset class="ui-grid-a">
                         <div class="ui-block-a"> <label for="in_date_init_activity">Initial Date</label> </div>
-                        <div class="ui-block-b"> <input type="date" name="in_date_init_activity" id="in_date_init_activity" value=""  />
+                        <div class="ui-block-b">
+                            <input id="in_date_init_activity_scroller" name="in_date_init_activity_scroller" />
+                            <!-- <input type="date" name="in_date_init_activity" id="in_date_init_activity" value=""  /> //-->
                             </div>
                      </fieldset>
 
 
                  <fieldset class="ui-grid-a">
                         <div class="ui-block-a"><label for="in_date_end_activity">Final Date</label>   </div>
-                        <div class="ui-block-b"><input type="date" name="in_date_end_activity" id="in_date_end_activity" value=""  />
+
+                        <div class="ui-block-b">
+                                                        <input id="in_date_end_activity_scroller" name="in_date_end_activity_scroller" />
+                            <!--
+                            <input type="date" name="in_date_end_activity" id="in_date_end_activity" value=""  />
+                            //-->
                             </div>
                      </fieldset>
 
@@ -690,7 +701,7 @@
 
 
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-            <p> New Activity</p>
+            <p style="text-align: center"> New Activity</p>
             </div>
 </div>
 
