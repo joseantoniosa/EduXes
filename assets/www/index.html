@@ -184,6 +184,7 @@
 
 <!-- Fourth Window: List of Students Assessment.
     TODO: List of Students Assessment.
+    XXX: Development is here vvvvvv
    //-->
 <div data-role="page" id="list_students_assessment" data-add-back-btn="false">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
@@ -200,7 +201,7 @@
                             <label for="list_assessment_select" class="select">List of Activities</label>
                             </div>
                         <div class="ui-block-b">
-                            <select name="list_assessment_select" id="list_assessment_select">
+                            <select onChange="onRefreshGroupAssessment();" name="list_assessment_select" id="list_assessment_select">
                                         </select>
                         </div>
                      </fieldset>

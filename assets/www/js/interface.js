@@ -321,6 +321,9 @@ function onOpenStudentsAssessment(){
     $.mobile.changePage("#list_students_assessment");
 
 }
+function onRefreshGroupAssessment(){
+    refreshGroupAssessment();
+}
 
 // ----------------------------------------------------------------------------
 //
