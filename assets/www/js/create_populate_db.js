@@ -315,6 +315,57 @@ function populateDB(tx) {
         );
 
         //
+// Activities:
+        var sql='INSERT INTO activities ( name , date_init , date_end , weight , final) VALUES ("been " , "12/11/2012" , "12/11/2012" , 0, 0);'
+    	log(sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx,rs){ return true; },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error attendance: " + e);
+                return false;
+                }
+        );
+        var sql='INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (0,1, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");'
+    	log(sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx,rs){ return true; },
+            dbErrorFunc = function(ttx, e) {
+                if (ttx.message) e = ttx;
+                alert(" There has been an error attendance: " + e);
+                return false;
+                }
+        );
+        var sql='INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (1,1, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");'
+        	log(sql);
+            tx.executeSql(sql,[],
+                dbSuccessFunc = function(tx,rs){ return true; },
+                dbErrorFunc = function(ttx, e) {
+                    if (ttx.message) e = ttx;
+                    alert(" There has been an error attendance: " + e);
+                    return false;
+                    }
+            );
+        var sql='INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (2,1, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");'
+            	log(sql);
+                tx.executeSql(sql,[],
+                    dbSuccessFunc = function(tx,rs){ return true; },
+                    dbErrorFunc = function(ttx, e) {
+                        if (ttx.message) e = ttx;
+                        alert(" There has been an error attendance: " + e);
+                        return false;
+                        }
+                );
+        var sql='INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (3,1, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");'
+                	log(sql);
+                    tx.executeSql(sql,[],
+                        dbSuccessFunc = function(tx,rs){ return true; },
+                        dbErrorFunc = function(ttx, e) {
+                            if (ttx.message) e = ttx;
+                            alert(" There has been an error attendance: " + e);
+                            return false;
+                            }
+                    );
 /*
 //    Activities        TODO
 

@@ -87,6 +87,8 @@ TASKS DONE:
                 actividades_estudiante
             6. Realiza esta tarea para cada estudiante.
 //--->
+11/12/2012:
+    - Añadida lista de notas de 0 a 10
 10/12/2012 :
     - Añadido widget para las fechas (desde Igalia/libreplanapp) mobiscroll (también podría gestionar las horas)
     1221 database.js list of students by group:
