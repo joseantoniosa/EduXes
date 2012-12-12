@@ -10,55 +10,25 @@ Icons:
     http://www.iconfinder.com/search/?q=iconset%3Afaceavatars
 
 PENDIENTE: (debe ocupar poco)
-        Línea index.html : 575
-            - Actividades:
+  CÓDIGO:
+        * Actividades:
             * Añadir actividad - Mantener - Eliminar.
                 Añadir enlace a grupos dentro de la actividad, para asignar dicha actividad a un grupo concreto.
-                Botón de habilitar-deshabilitar actividad
-                Ventana de Asignar actividades a grupos? Se debe asignar a cada grupo varias actividades
-
-                Dos tablas: actividad, actividad_alumno, actividad_grupo (?)
-
-                x grupo_actividad
-                    id_grupo
-                    id_actividad
-                    habilitado
-
-
-                Diseñar antes las ventanas?
-
-                Nueva Actividad:
-                    Nombre
-                    Fecha inicio (ahora)
-                    Fecha final
-                    Activa (no finalizada)
-                    Asignar Grupos
-    >>- Poner notas:  #groups_day_ul
-     * TODO: To be filled with marks 466 de database.js:
-        - Incorporar combo con las actividades (en database.js)
-        - Incorporar botón abajo con "marks" (en index.html)
-
-       - Listar Notas
-        Botón extra en la página de "schedule"??
-        [Nada(*)  ] [ Combo desplegable con las actividades evaluables (**)]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Attendance(*)][Marks (**)]
-
-    - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
+                Botón de habilitar-deshabilitar actividades
+        - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
 
         - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Cómo introducir horario (¿?¿?)
+        * Lista notas
+            * Listados de notas y resumen
+
+  DOCUMENTACIÓN:
+        - Documentar las funciones, realizar esquemas explicativos.
+
+  PRESENTACIÓN:
         - Rehacer presentación, rehacer memoria
             - Crear presentación con Latex Beamer, usando la plantilla del Máster
-            * Seleccionar actividad
-            * Relacionar actividad con alumno
-            * Asignar nota de actividad a los alumnos
-            * Listados de notas y resumen
-        - Documentar las funciones, realizar esquemas explicativos.
         - Ver lo pendiente al final del presente fichero.
 
 = Functions' Tree =
@@ -75,8 +45,11 @@ Look at the end of file
 ===========================================================================
 TASKS DONE:
 
-<!-- TODO: Update  Activity
-    Prioridad -> introducir notas, trabajar sobre la página de index.html:
+<!-- TODO: Update and New Activity
+    - Asignación grupos<-> actividad
+
+12/12/2012:
+         introducir notas, trabajar sobre la página de index.html:
             <div data-role="page" id="list_students_assessment" data-add-back-btn="false">
             1. Leer datos de actividades_group. las tareas que tiene el grupo: (hecho)
             2. Mostrarlas en un combo. (hecho)
@@ -86,7 +59,31 @@ TASKS DONE:
             5. El botón "Save" lee la nota <Nota> de la actividad <Actividad> y escribe los datos en
                 actividades_estudiante
             6. Realiza esta tarea para cada estudiante.
-//--->
+                        Nueva Actividad:
+                    Nombre
+                    Fecha inicio (ahora)
+                    Fecha final
+                    Activa (no finalizada)
+                    Asignar Grupos
+    >>- Poner notas:  #groups_day_ul
+     * TODO: To be filled with marks 466 de database.js:
+        - Incorporar combo con las actividades (en database.js)
+        - Incorporar botón abajo con "marks" (en index.html)
+                    * Seleccionar actividad
+            * Relacionar actividad con alumno
+            * Asignar nota de actividad a los alumnos
+
+
+       - Listar Notas
+        Botón extra en la página de "schedule"??
+        [Nada(*)  ] [ Combo desplegable con las actividades evaluables (**)]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Attendance(*)][Marks (**)]
+                Tres tablas: actividad, actividad_alumno, actividad_grupo.
+
 11/12/2012:
     - Añadida lista de notas de 0 a 10
 10/12/2012 :
