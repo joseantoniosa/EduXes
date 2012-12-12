@@ -274,6 +274,7 @@ function onListAllActivities()
 // Show edition activity page
 function onUpdateActivity(id_activity) {
     $.mobile.showPageLoadingMsg();
+    global_is_new=0;
     global_id = id_activity;      //local variable goes global
     global_id_activity = id_activity;      //local variable goes global
     table_global = 'ACTIVITIES';
@@ -290,6 +291,7 @@ function onUpdateActivity(id_activity) {
 // Show edition activity page
 function onAddNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
+    global_is_new=1;
     // TODO: Fill with  groups info: #list_groups_activities_ul
     global_id_activity = -1;      //local variable goes global NEW activity
     loadGroupsActivitiesEdit(global_db);
@@ -311,12 +313,13 @@ function onSaveNewActivity() {
     var e_final=$('#in_final_activity').val();
     if(weight=="") weight=0;
 
-    if(global_id_activity==-1) { // NEW
+    if(global_is_new==1) { // NEW
         if(name!="")  {
            insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
         }
     } else { // UPDATE
-
+        alert("UPDATE");
+          updateActivity(global_db, name , date_init , date_end , weight , e_final  );
     }
     onListAllActivities();
 }

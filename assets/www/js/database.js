@@ -35,6 +35,8 @@ var global_db;
 var global_session; // selected session
 var global_actual_date=null ; // Date
 var global_reports_date=null ; // Date for reports TODO: Date for reports
+
+var global_is_new=0;
 //
 var global_exist = false; // if exist current record
 
@@ -1159,6 +1161,15 @@ function loadActivity(db, id_activity ) {
 
 
 }
+// TODO: Update activity
+// TODO: Update activity
+function updateActivity(db, name , date_init , date_end , weight , e_final  ){
+    alert("UPDATE TO BE DONE!");
+
+
+
+}
+
 function  insertNewActivity( db, name , date_init , date_end , weight , e_final  ) {
     var last_inserted_row;
     db.transaction(function(tx) {
