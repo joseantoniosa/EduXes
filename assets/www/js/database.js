@@ -1006,6 +1006,11 @@ function queryActivitiesSuccess(tx, results) {
    }0 ;
    $('#activities_ul').listview('refresh');
 }
+// TODO: Edit Activity
+function editActivityL(id_activity) {
+
+
+}
 
 function queryAllActivitiesDB(tx) {
        log("Query Activities \n");
@@ -1027,7 +1032,7 @@ function queryAllActivitiesDB(tx) {
                             html += "<a data-role='button' data-position-to='window' ";
                             html += " data-iconpos='notext' style='float:right;' href='#' ";
                             html += " data-rel='dialog' data-transition='slideup'  ";
-                            html += " onClick=\"EditActivity(" + id + ");\">Edit</a>";
+                            html += " onClick=\"onUpdateActivity(" + id + ");\">Edit</a>";
                             html += "</li>";
                             ul_list.append(html);
                         }
@@ -1046,9 +1051,112 @@ function queryAllActivitiesDB(tx) {
 function loadAllActivities(db) {
        db.transaction(queryAllActivitiesDB );
    }
-function loadActivity(db, id_activity ) {
 
-    alert("Here it should populate Page #update_activity with data from database  ");
+// TODO: populate update_activity page
+function loadActivity(db, id_activity ) {
+// $('#activity_page_name').text("Update");
+// $('#activity_page_name_footer').text("Update");
+
+    var sql = " SELECT  id, name , date_init , date_end , weight , final FROM ACTIVITIES WHERE id="+id_activity;
+
+    db.transaction(function(tx) {
+
+        log("getActivity :"+sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx, results) {
+                if(results.rows.length>0 ){
+                    $('#in_name_activity').val(results.rows.item(0).name);
+                    $('#in_date_init_activity_scroller').val(results.rows.item(0).date_init);
+                    $('#in_date_end_activity_scroller').val(results.rows.item(0).date_end);
+                    $('#in_weight_activity').val(results.rows.item(0).weight);
+                    $('#in_final_activity').val(results.rows.item(0).final);
+
+                    // TODO: Fill with groups information
+                    // list_e_groups_activities_ul
+
+                    var sql= "SELECT id, data, other_data FROM groups;";
+
+                    tx.executeSql(sql,[],
+                        dbSuccessFunc = function(ttx, rs) {
+                        global_no_groups = rs.rows.length;
+                    //alert("Nº Groups: "+ global_no_groups);
+                        if(global_no_groups>0) {
+                            var ul_list = $('#list_groups_activities_ul');
+                            var html;
+                            ul_list.empty();
+                            var id = 0;
+                            for (var i = 0; i < global_no_groups; i++) {
+                                id = rs.rows.item(i).id;
+                                html = "<li >";
+                                html += "<input style='text-align=right' type='checkbox' ";
+                                html += "name='in_group_activity_"+id + "'  id='in_group_activity_" + id + "' enabled='true'  />";
+                                html +="<label for='in_group_activity_"+ id +"' >";
+                                html += rs.rows.item(i).data +"</label>";
+                                html += " </li></br>";
+
+                                ul_list.append(html);
+                            }
+                            // TODO: Fill per-group assessment
+
+                            var sql2=" SELECT groups.id as id_group , groups.data as data , groups.other_data AS other_data, ";
+                            sql2 += " activities_group.id_group AS ag_id_group, activities_group.id_activity ag_id_activity, ";
+                            sql2 += " activities_group.enabled AS enabled ";
+                            sql2 += " FROM groups,activities_group ";
+                            sql2 += " WHERE  ag_id_activity="+id_activity;
+                            sql2 += " AND ag_id_group=id_group";
+
+                            tx.executeSql(sql2,[],
+                            dbSuccessFunc = function(txx, rrs) {
+                                var len=  rrs.rows.length;
+                                for (var i = 0; i < len; i++) {
+                                    var id_group = rrs.rows.item(i).id_group;
+                                    var in_act = $("#in_group_activity_" + id_group );
+                                    if(rrs.rows.item(i).enabled ==1) {
+                                         in_act.attr("checked",true); //.checkboxradio("refresh"); // XXX: Too many rows
+                                        }
+
+                                }
+
+                                    return true;
+                                },
+                            dbErrorFunc = function(txx, e) {
+                                if (txx.message) e = txx;
+                                    log(" There has been an error insertNewActivity: "+e.message);
+                                    alert("There has been an error insertNewActivity: " + e.message);
+                                    return false;
+                            });
+/*
+ *
+ *                 (id integer primary key ,  id_group integer, id_activity integer,
+                enabled integer, a_date text, notes text,
+
+ */
+
+                            //ul_list.listview('refresh');
+                        }
+                        return true;
+                    },
+                    dbErrorFunc = function(ttx, e) {
+                    if (ttx.message) e = ttx;
+                        log(" There has been an error loadGroupsActivitiesEdit: "+e.message);
+                        alert("There has been an error loadGroupsActivitiesEdit: " + e.message);
+                        return false;
+                });
+//
+//
+//
+                }
+                return true;
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error insertNewActivity: "+e.message);
+                    alert("There has been an error insertNewActivity: " + e.message);
+                    return false;
+        });
+
+    });
+
 
 }
 function  insertNewActivity( db, name , date_init , date_end , weight , e_final  ) {
@@ -1082,7 +1190,7 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
                 var i_last_inserted_row=results.rows.length; // ahora ya sabe cual es la última actividad
                 var enabled=0;
                 var a_date = Date();
-                for (var i=0;i<global_no_groups;i++) { // supone que los ids de grupo son correlativos
+                for (var i=0;i<global_no_groups;i++) { // XXX: supone que los ids de grupo son correlativos
                         var checkbox=$('#in_group_activity_' + i );
                         enabled=0;
                         if(checkbox.is(':checked')) {
@@ -1129,36 +1237,33 @@ function insertActivitiesGroup(db, id_group, last_inserted_row, enabled , a_date
 
 }
 
-    // TODO: Fill with  groups info: #list_groups_activities_ul
-    // 'in_group_activity_" + id + "'
+
 function loadGroupsActivitiesEdit(db){
     db.transaction(function(tx) {
         var sql = 'SELECT id, data, other_data FROM groups; ' ;
-
-        log("loadGroupsActivitiesEdit : "+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
-                var len = results.rows.length;
-                global_no_groups = len;
-                if(len>0) {
-                    var ul_list = $('#list_groups_activities_ul');
+                global_no_groups = results.rows.length;
+                //alert("Nº Groups: "+ global_no_groups);
+                if(global_no_groups>0) {
+                    var ul_list = $('#list_groups_activity_ul');
                     var html;
-                        ul_list.empty();
-                        var id = 0;
-                        for (var i = 0; i < len; i++) {
-                            id = results.rows.item(i).id;
-                            html = "<li >";
+                    ul_list.empty();
+                    var id = 0;
+                    for (var i = 0; i < results.rows.length; i++) {
+                        id = results.rows.item(i).id;
+                        html = "<li >";
+                        html += "<input style='text-align=right' type='checkbox' ";
+                        html += "name='in_group_activity_"+id + "'  id='in_group_activity_" + id + "' enabled='true'  />";
+                        html +="<label for='in_group_activity_"+ id +"' >";
+                        html += results.rows.item(i).data +"</label>";
+                        html += " </li></br>";
 
-                            html += "<input style='text-align=right' type='checkbox' ";
-                            html += "name='in_group_activity_"+id + "'  id='in_group_activity_" + id + "' enabled='true'  />";
-                            html +="<label for='in_group_activity_"+ id +"' >";
-                            html += results.rows.item(i).data +"</label>";
-                            html += " </li></br>";
-                            ul_list.append(html);
-                        }
-                        ul_list.listview('refresh');
+                       // alert("HTML: "+ html);
+                        ul_list.append(html);
                     }
-
+                    //ul_list.listview('refresh');
+                }
                 return true;
             },
             dbErrorFunc = function(tx, e) {
@@ -1170,36 +1275,15 @@ function loadGroupsActivitiesEdit(db){
     });
 
 
-
-
 }
 
 //
 //------------- Assessment:
-// TODO: Fill Student Assessment
-// Aclarar todo este código
+
+// TODO: clean this code! Aclarar todo este código
 //
 
 function fillSelectStudentAssessment(db, select_student_id, id_session, id_student) {
-    // TODO: adaptar para Assessment
-    // PRIMERO debe hacer un select de las notas que tiene el alumno, si el resultado es
-    // len=0 -> no anota nada
-    // len>0 -> debe escribir la nota, decir que tal nota es la seleccionada
-    //
-    // sql= "SELECT id_student, id_activity, mark FROM ACTIVITIES_STUDENT WHERE id_activity= AND id_student=
-    //         CREATE TABLE IF NOT EXISTS activities_student
-//                (id integer primary key ,  id_student integer, id_activity integer,
-//                mark integer, a_date text, notes text,
-
-/*
-To get the text of the selected option
-
-$("#your_select :selected").text();
-
-To get the value of the selected option
-
-$("#your_select").val();
-//*/
 
     var id_activity= $('#list_assessment_select').val() ;// Activity selected
     global_id_activity= id_activity;
@@ -1269,7 +1353,7 @@ function insertStudentAssessmentL(db,id_student,id_group, id_activity,mark) {
     });
 }
 
-// TODO: List o students assessment
+
 function onChangeStudentAssessment(id_student,id_group, id_activity){
 
 // Debe hacer un insert o un update según existan datos
@@ -1302,7 +1386,6 @@ function onChangeStudentAssessment(id_student,id_group, id_activity){
     });
 
 }
-
 
 // Assessment. List Students
 function listStudentsByGroupAssessment(db, id_group, students_ul) {
@@ -1402,7 +1485,6 @@ function loadGroupAssessment(db,id_group) {
 } // end of function
 
 
-
 // TODO: List of students Assessment
 // studentAssesment
 function queryStudentsAssessmentSuccess(tx, results) {
@@ -1454,15 +1536,6 @@ function queryStudentsAssessmentDB(tx) {
     sql += " AND a_id=as_id_activity  " ;
     sql += " AND id_student =as_id_activity  " ;
 
-    /*        CREATE TABLE IF NOT EXISTS ACTIVITIES
-                (id integer primary key, name text, date_init text, date_end text, weight integer, final integer );
-
-        DROP TABLE IF EXISTS activities_student;
-        CREATE TABLE IF NOT EXISTS activities_student
-                (id integer primary key ,  id_student integer, id_activity integer,
-                mark integer, a_date text, notes text,
-
-    //*/
     sql += " ) ORDER BY id_student";
 
     tx.executeSql(sql, [], queryStudentsAttendanceSuccess,

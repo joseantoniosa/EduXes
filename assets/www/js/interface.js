@@ -270,18 +270,20 @@ function onListAllActivities()
 //    $.mobile.changePage("#list_all_activities");
 //    alert("Page changed");
 }
-function EditActivity(id_activity)
-{
-
-
-}
-
+// TODO: Activity update
+// Show edition activity page
 function onUpdateActivity(id_activity) {
     $.mobile.showPageLoadingMsg();
     global_id = id_activity;      //local variable goes global
+    global_id_activity = id_activity;      //local variable goes global
     table_global = 'ACTIVITIES';
     loadActivity(global_db, id_activity );
+
+    $('#activity_page_name').text("Activity");
+    $('#activity_page_name_footer').text("Update Activity");
+
     $.mobile.changePage("#update_activity", { transition: "slideup"});
+//    alert("Update Page Loaded");
 
 }
 
@@ -289,21 +291,32 @@ function onUpdateActivity(id_activity) {
 function onAddNewActivity() { // TODO
     $.mobile.showPageLoadingMsg();
     // TODO: Fill with  groups info: #list_groups_activities_ul
+    global_id_activity = -1;      //local variable goes global NEW activity
     loadGroupsActivitiesEdit(global_db);
-    $.mobile.changePage("#edit_activities");
+    $('#activity_page_name').text("New Acitivity");
+    $('#activity_page_name_footer').text("New Activity");
+    $.mobile.changePage("#update_activity");
+
+//    $.mobile.changePage("#edit_activity");
 }
 
 function onSaveNewActivity() {
 
-
+//TODO: New or Update?
+// TODO:  ¿Cómo diferenciar el "nuevo" del "actualizado"
     var    name = $('#in_name_activity').val();
     var date_init=$('#in_date_init_activity_scroller').val();
     var date_end=$('#in_date_end_activity_scroller').val();
     var weight=$('#in_weight_activity').val();
     var e_final=$('#in_final_activity').val();
     if(weight=="") weight=0;
-    if(name!="")  {
-        insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
+
+    if(global_id_activity==-1) { // NEW
+        if(name!="")  {
+           insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
+        }
+    } else { // UPDATE
+
     }
     onListAllActivities();
 }

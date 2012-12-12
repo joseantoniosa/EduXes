@@ -19,7 +19,6 @@
 <script type="text/javascript" src="js/interface.js"></script>
 
 
-
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.1.1.css" />
 <script type="text/javascript" >
 	document.addEventListener("deviceready", onDeviceReady, false);
@@ -58,7 +57,6 @@
                 </div>
             </div>
             <div class="ui-block-b">
-                <!-- <input type="date" name="date" id="daily_date" value=""  /> //-->
                 <input id="daily_date_scroller" name="daily_date_scroller" />
             </div>
             <div class="ui-block-c">
@@ -84,10 +82,7 @@
         <p   style="text-align:center;"  id="teachers_name"></p>
     </div>
 </div>
-<!-- End of Main Window //-->
-<!--
-    **********************************
-     //-->
+
 <!--Second Window : Reports//-->
 <div data-role="page" id="list_reports" data-add-back-btn="false">
             <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false" >
@@ -140,10 +135,6 @@
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
              </div>
 </div>
-<!--
-    **********************************
-     //-->
-
 
 <!-- Second Window: List of Classes.
      List of Today Groups  //-->
@@ -189,38 +180,25 @@
 <div data-role="page" id="list_students_assessment" data-add-back-btn="false">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
         <a href="#" onclick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
-            <a href="#list_all_activities"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
-
 
         <h1 id="current_group_assessment" >Student List Assesment</h1>
     </div>
     <div data-role="content">
 
-         <fieldset class="ui-grid-a">
-                        <div class="ui-block-a">
-                            <label for="list_assessment_select" class="select">List of Activities</label>
-                            </div>
-                        <div class="ui-block-b">
-                            <select onChange="onRefreshGroupAssessment();" name="list_assessment_select" id="list_assessment_select">
-                                        </select>
-                        </div>
-                     </fieldset>
-
-
+     <fieldset class="ui-grid-a">
+            <div class="ui-block-a">
+                <label for="list_assessment_select" class="select">List of Activities</label>
+            </div>
+            <div class="ui-block-b">
+                <select onChange="onRefreshGroupAssessment();" name="list_assessment_select" id="list_assessment_select">
+                </select>
+            </div>
+     </fieldset>
     </div>
     <div data-role="content">
         <ul data-role="listview" id="students_assessment_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
     </div>
 
-    <!--
-         Botón extra en la página de "schedule"??
-        [Nada(*)  ] [ Combo desplegable con las actividades evaluables (**)]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Attendance(*)][Marks (**)]
-    //-->
 <!-- TODO: Change history.back
     //-->
 <div data-role="content">   <a href="#" onclick="history.back();" data-icon="gear" data-theme="a" data-role="button">Go to Attendance</a>
@@ -238,8 +216,6 @@
         <h1 style="alignment-adjust: central" id="current_group_attendance_by_group" >Student List for Group</h1>
     </div>
     <div data-role="content">
-<!--- XXX: Fill Table  //-->
-<!--- TODO: Fill Table  queryStudentsAttendanceByGroupSuccess  //-->
     <div >
         <div data-role="navbar" data-iconpos="notext" >
             <ul>
@@ -253,15 +229,6 @@
         </table>
     </div>
     </div>
-<!--
-         Botón extra en la página de "schedule"??
-        [Nada(*)  ] [ Combo desplegable con las actividades evaluables (**)]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Lista de alumnos]
-        [Attendance(*)][Marks (**)]
-    //-->
 
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="text-align:center;"  >Students Attendance by Group</p>
@@ -632,14 +599,82 @@
     </div>
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
             <a onClick="onAddNewActivity();" data-role="button" data-icon="add">Add New Activity</a>
-            <p> List of Activities</p>
+            <p style="text-align: center"> List of Activities</p>
     </div>
 </div>
 
 
 
+<!-- TODO: Update  Activity
+
+    //-->
+<div data-role="page" id="update_activity"    data-add-back-btn="false"  data-theme="a" data-direction="reverse" >
+            <div data-role="header"  data-add-back-btn="false"   data-theme="a" >
+            <a href="#list_all_activities"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+
+                <h1 id="activity_page_name">Activity</h1>
+                <div data-role="content">
+
+                     <fieldset class="ui-grid-a">
+                        <div class="ui-block-a">
+                     <label for="in_e_name_activity">Name</label>
+                     </div>
+                        <div class="ui-block-b">  <input name="in_name_activity" id="in_name_activity" enabled="true" />  </div>
+                     </fieldset>
+
+                 <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"> <label for="in_date_init_activity">Initial Date</label> </div>
+                        <div class="ui-block-b">
+                            <input id="in_date_init_activity_scroller" name="in_date_init_activity_scroller" />
+                            <!-- <input type="date" name="in_date_init_activity" id="in_date_init_activity" value=""  /> //-->
+                            </div>
+                     </fieldset>
+
+
+                 <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><label for="in_date_end_activity">Final Date</label>   </div>
+
+                        <div class="ui-block-b">
+                            <input id="in_date_end_activity_scroller" name="in_date_end_activity_scroller" />
+                            </div>
+                     </fieldset>
+
+
+                 <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><label for="in_weight_activity">Weight (1-100)</label>
+                     </div>
+                        <div class="ui-block-b"><input type="number" name="in_weight_activity" id="in_weight_activity" enabled="true" />
+                            </div>
+                     </fieldset>
+
+
+                 <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><label for="in_final_activity">Disabled</label>
+                     </div>
+                        <div class="ui-block-b"><input type="checkbox" id="in_final_activity" id="in_final_activity" enabled="true" value="0" />
+                            </div>
+                     </fieldset>
+
+                    <p style="text-align: center ">List of Groups:</p>
+
+                    <ul data-role="listview" name="list_groups_activities_ul" id="list_groups_activities_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
+
+                 </div>
+                 <div data-role="content">
+                 <a onClick="onSaveNewActivity();" data-role="button" data-icon="check">Save</a>
+                </div>
+<hr />
+
+            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
+            <p style="text-align: center" id="activity_page_name_footer"> Update Activity</p>
+            </div>
+</div>
+
+
+
+
 <!-- New Activity //-->
-<div data-role="page" id="edit_activities"    data-add-back-btn="false"  data-theme="a" data-direction="reverse" >
+<div data-role="page" id="edit_activity"    data-add-back-btn="false"  data-theme="a" data-direction="reverse" >
             <div data-role="header"  data-add-back-btn="false"   data-theme="a" >
             <a href="#list_all_activities"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
 
@@ -692,7 +727,7 @@
 
 <p style="text-align: center ">List of Groups:</p>
 
-                    <ul data-role="listview" id="list_groups_activities_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
+                    <ul data-role="listview" id="list_groups_activity_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
 
                  </div>
                  <div data-role="content">
@@ -700,59 +735,8 @@
                 </div>
 <hr />
 
-
             <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
             <p style="text-align: center"> New Activity</p>
-            </div>
-</div>
-
-
-<!-- TODO: Update  Activity
-
-    //-->
-
-<div data-role="page" id="update_activity"    data-add-back-btn="true"  data-theme="a" data-direction="reverse" >
-
-            <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
-                <h1> Update Activity</h1>
-                <div data-role="content">
-                 <label for="in_update_name_activity">Name</label><input id="in_update_name_activity" enabled="true" />
-                 <label for="in_update_date_init_activity">Initial Date</label> <input type="date" name="in_update_date_init_activity" id="in_update_date_init_activity" value=""  />
-                 <label for="in_update_date_end_activity">Final Date</label>    <input type="date" name="in_update_date_end_activity" id="in_update_date_end_activity" value=""  />
-                 <label for="in_update_weight_activity">Weight (1-100)</label> <input type="number" name="in__update_weight_activity" id="in__update_weight_activity" enabled="true" />
-                <label for="in_update_final_activity">Disabled</label> <input type="checkbox" name="in_update_final_activity"  id="in_update_final_activity" enabled="true" value="0" />
-
-<p style="alignment-adjust: central">List of Groups:</p>
-<p style="alignment-adjust: central"> Group Name - Enabled (Yes/No)</p>
-<hr />
-                    <ul data-role="listview" id="list_groups_activities_ul2" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
-
-                 <a onClick="onUpdateActivity();" data-role="button" data-icon="check">Save</a>
-                 </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-            <p> Edit Activity</p>
-            </div>
-</div>
-
-<div data-role="page" id="update_activities2"    data-add-back-btn="true"  data-theme="a" data-direction="reverse" >
-
-            <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
-                <h1> Edit Activity 2</h1>
-                <div data-role="content">
-                 <label for="in_update_name_activity">Name</label><input id="in_update_name_activity" enabled="true" />
-                 <label for="in_update_date_init_activity">Initial Date</label> <input type="date" name="in_update_date_init_activity" id="in_update_date_init_activity" value=""  />
-                 <label for="in_update_date_end_activity">Final Date</label>    <input type="date" name="in_update_date_end_activity" id="in_update_date_end_activity" value=""  />
-                 <label for="in_update_weight_activity">Weight (1-100)</label> <input type="number" name="in__update_weight_activity" id="in__update_weight_activity" enabled="true" />
-                <label for="in_update_final_activity">Disabled</label> <input type="checkbox" name="in_update_final_activity"  id="in_update_final_activity" enabled="true" value="0" />
-
-<p style="alignment-adjust: central">List of Groups:</p>
-<p style="alignment-adjust: central"> Group Name - Enabled (Yes/No)</p>
-<hr />
-
-                 <a onClick="onUpdateActivity();" data-role="button" data-icon="check">Save</a>
-                 </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-            <p> Edit Activity</p>
             </div>
 </div>
 
