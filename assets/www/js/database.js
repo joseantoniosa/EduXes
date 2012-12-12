@@ -1217,11 +1217,9 @@ $("#your_select").val();
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
-
                     if (results.rows.length>0) {
                         var state = results.rows.item(0).mark;
-                        log(" Mark => " + state);
-                        text_select[0].selectedIndex = state; // TODO: Set to the current mark
+                        text_select.val(state);
                         return true;
                     } else {
                         log("No data");
@@ -1242,7 +1240,6 @@ function updateStudentAssessmentL(db,id_student,id_group, id_activity,mark){
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
-                    alert("UPDATE");
                     return true;
                 },
                 dbErrorFunc = function(tx, e) {
@@ -1260,7 +1257,7 @@ function insertStudentAssessmentL(db,id_student,id_group, id_activity,mark) {
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
-                    alert("INSERT");
+
                     return true;
                 },
                 dbErrorFunc = function(tx, e) {
@@ -1284,30 +1281,15 @@ function onChangeStudentAssessment(id_student,id_group, id_activity){
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
-
+                    var mark=$('#assessment_select_student_' + id_student).val();
                     if (results.rows.length>0) {
                         var state = results.rows.item(0).mark;
-// TODO get mark
-// text_select[0].selectedIndex
-//
-                        var mark=$('#assessment_select_student_' + id_student).val();
 
-                        // var mark=-1; // TODO obtener la nota
                         updateStudentAssessmentL(db,id_student,id_group, id_activity,mark);
-                        alert("Update");
-                        log(" Mark => " + state);
-                        //text_select[0].selectedIndex = state; // TODO: Set to the current mark
+                        log(" Mark => " + mark);
                         return true;
                     } else {
-                        var mark=-1;
-// TODO get mark
-// text_select[0].selectedIndex
-                        var mark=$('#assessment_select_student_' + id_student).val();
                         insertStudentAssessmentL(db,id_student,id_group, id_activity,mark);
-
-                        log("No data");
-
-                        alert("Insert");
                         return false;
                     }
                 },
@@ -1322,8 +1304,7 @@ function onChangeStudentAssessment(id_student,id_group, id_activity){
 }
 
 
-// TODO: Assessment:
-
+// Assessment. List Students
 function listStudentsByGroupAssessment(db, id_group, students_ul) {
     db.transaction(function(ttx) {
         var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group as id_group, STUDENTS.name as name, STUDENTS.surname as surname, STUDENTS.photo as photo, ";
@@ -1369,8 +1350,7 @@ function refreshGroupAssessment(){
 
     listStudentsByGroupAssessment( global_db, global_id_group, $('#students_assessment_ul'));
 }
-// TODO: assessment
-// XXX:  Assessment
+// Assessment
 
 function loadGroupAssessment(db,id_group) {
     var html="";
@@ -1402,11 +1382,10 @@ function loadGroupAssessment(db,id_group) {
                 list_asset[0].selectedIndex = 0; // Selects the very first
         // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
                 list_asset.selectmenu('refresh', true);
-//      TODO:     List of students by group    students_assessment_ul
+
                 if(results.rows.length>0) {
                     $('#current_group_assessment').text(results.rows.item(0).g_data); // Group Name
                 }
-                // Si se ha seleccionado una actividad :=>
                 global_id_group = id_group;
                 listStudentsByGroupAssessment( db, id_group, $('#students_assessment_ul'));
 
@@ -1420,8 +1399,7 @@ function loadGroupAssessment(db,id_group) {
             ); // tx.executeSql(sql,[],
         });
 
-
-    } // end of function
+} // end of function
 
 
 
