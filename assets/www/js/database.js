@@ -279,47 +279,25 @@ function queryReportAttendanceSuccess(tx, results) {
 function loadGroupsAssessment(db){
     var sql="SELECT id, data, other_data FROM groups;";
     db.transaction(function(tx) {
-        tx.executeSql(sql,[id, id_session,today_str],
+        tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
-                    var ul=$('#groups_assessment_ul');
-                    // var text_select = $('#' + select_student_id); // TODO:
-
-
-
-                        var len = results.rows.length;
-    var html = "";
-    var ul_list = $('#groups_to_edit_ul');
-
-    ul_list.empty();
-    for (var i = 0; i < len; i++) {
-        html = "<li><h3> ";
-        // listStudentsAttendance (id_group, -1), -1=> any session
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
-        html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
-        html += " href='#' data-transition='slideup'>";
-//        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
-        html += results.rows.item(i).data + "</a></h3>";
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-        html += "</a></li>";
-        ul_list.append(html);
-    }
-    ul_list.listview('refresh');
-
-                    html = "<option value=''></option>";
-                    html += "<option value='Absence' >Absence</option>";
-                    html += "<option value='Unpunctuality' >Unpunctuality</option>";
-                    html += "<option value='Excused'  >Excused</option>";
-                    html += "<option value='Behavior' name='Behavior' >Behavior</option>";
-                    ul.empty().append(html);
-                    if (results.rows.length>0) {
-                        var state = results.rows.item(0).a_type;
-                        log(" State => " + state);
-                        text_select[0].selectedIndex = state;
-                        return true;
-                    } else {
-                        log("No data");
-                        return false;
+                    var len = results.rows.length;
+                    var ul_list=$('#groups_assessment_ul');
+                    // var text_select = $('#' + select_student_id); //
+                    ul_list.empty();
+                    for (var i = 0; i < len; i++) {
+                        var id = results.rows.item(i).id;
+                        html = "<li><h3> ";
+                        html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
+                        html += " onListStudentsAssessment(" + id + ");' ";
+                        html += " href='#' data-transition='slideup'>";
+                        html += results.rows.item(i).data + "</a></h3>";
+                        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='#' data-rel='dialog' data-transition='slideup'>";
+                        html += "</a></li>";
+                        ul_list.append(html);
                     }
+                    ul_list.listview('refresh');
+                    return true;
                 },
                 dbErrorFunc = function(tx, e) {
                     if (tx.message) e = tx;
@@ -329,7 +307,41 @@ function loadGroupsAssessment(db){
                 } );
     }  );
 }
+ // TODO: Assessment - List Students
+function loadStudentsAssessment(db, id_group){
+// TODO !!
+    var sql="SELECT id, data, other_data FROM groups;";
+    db.transaction(function(tx) {
+        tx.executeSql(sql,[],
+                dbSuccessFunc = function(tx,results){
+                    var len = results.rows.length;
+                    var ul_list=$('#groups_assessment_ul');
+                    // var text_select = $('#' + select_student_id); //
+                    ul_list.empty();
+                    for (var i = 0; i < len; i++) {
+                        var id = results.rows.item(i).id;
+                        html = "<li><h3> ";
+                        html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
+                        html += " onListStudentsAssessment(" + id + ");' ";
+                        html += " href='#' data-transition='slideup'>";
+                        html += results.rows.item(i).data + "</a></h3>";
+                        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='#' data-rel='dialog' data-transition='slideup'>";
+                        html += "</a></li>";
+                        ul_list.append(html);
+                    }
+                    ul_list.listview('refresh');
+                    return true;
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("fillSelectStudent. SQL  "+sql);
+                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
+                    return false;
+                } );
+    }  );
 
+
+}
 
 //
 //

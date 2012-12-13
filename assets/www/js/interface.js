@@ -348,11 +348,18 @@ function onReportListAttendance() {
     $.mobile.changePage("#list_groups_attendance");
 }
 
-// TODO: Assessment Reports
+// TODO: Assessment Reports. List Groups
 function onReportListAssessment() {
     $.mobile.showPageLoadingMsg();
-    loadGroupsAssessment(global_db); // TODO: Assessment
+    loadGroupsAssessment(global_db); // TODO: Assessment - List Groups (?)
     $.mobile.changePage("#list_groups_assessment");
+
+}
+// TODO : List Students:
+function onListStudentsAssessment(id_group){
+    $.mobile.showPageLoadingMsg();
+    loadStudentsAssessment(global_db, id_group); // TODO: Assessment - List Students
+    $.mobile.changePage("#list_students_assessment");// TODO: Assessment - List Students
 
 }
 /*
