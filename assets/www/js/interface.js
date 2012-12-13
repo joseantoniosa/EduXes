@@ -304,9 +304,7 @@ function onAddNewActivity() { // TODO
 
 function onSaveNewActivity() {
 
-//TODO: New or Update?
-// TODO:  ¿Cómo diferenciar el "nuevo" del "actualizado"
-    var    name = $('#in_name_activity').val();
+    var name = $('#in_name_activity').val();
     var date_init=$('#in_date_init_activity_scroller').val();
     var date_end=$('#in_date_end_activity_scroller').val();
     var weight=$('#in_weight_activity').val();
@@ -318,7 +316,6 @@ function onSaveNewActivity() {
            insertNewActivity(global_db, name , date_init , date_end , weight , e_final  );
         }
     } else { // UPDATE
-        alert("UPDATE");
           updateActivity(global_db, name , date_init , date_end , weight , e_final  );
     }
     onListAllActivities();
@@ -330,9 +327,6 @@ function onOpenStudentsAssessment(){
     $.mobile.showPageLoadingMsg();
     id_group=global_id_group; // Se supone que vendra de una variable global:
     loadGroupAssessment(global_db,id_group);
-    // TODO: primero lista las actividades (selecciona por defecto la  primera actividad activa),
-    //  cuando se rellene
-    //  - Lista de estudiantes
 
     $.mobile.changePage("#list_students_assessment");
 

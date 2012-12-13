@@ -49,6 +49,13 @@ TASKS DONE:
     - Error en Asignación grupos<-> actividad
     - Limpiar los formularios de datos antiguos.
     - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
+13/12/2012:
+
+        - function loadActivity(db, id_activity ) {
+            En el último query realiza una consulta que da como resultado 4x4= 16 filas.
+            Debería dar sólo 4. ¿Cómo? -> GROUP BY
+        - con el UPDATE no funciona
+
 
 12/12/2012:
          introducir notas, trabajar sobre la página de index.html:
