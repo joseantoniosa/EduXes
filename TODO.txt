@@ -46,9 +46,14 @@ Look at the end of file
 TASKS DONE:
 
 <!-- TODO: Update and New Activity
-    - Error en Asignación grupos<-> actividad
+
     - Limpiar los formularios de datos antiguos.
     - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
+
+13/12/2012b:
+        Resuelto  problema con el SELECT al cargar grupos en las actividades.
+        - Error en Asignación grupos<-> actividad
+
 13/12/2012:
 
         - function loadActivity(db, id_activity ) {

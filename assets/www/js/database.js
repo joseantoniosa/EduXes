@@ -273,6 +273,70 @@ function queryReportAttendanceSuccess(tx, results) {
     }
 }
 
+
+// TODO:   loadGroupsAssessment(global_db); Reports
+
+function loadGroupsAssessment(db){
+    var sql="SELECT id, data, other_data FROM groups;";
+    db.transaction(function(tx) {
+        tx.executeSql(sql,[id, id_session,today_str],
+                dbSuccessFunc = function(tx,results){
+                    var ul=$('#groups_assessment_ul');
+                    // var text_select = $('#' + select_student_id); // TODO:
+
+
+
+                        var len = results.rows.length;
+    var html = "";
+    var ul_list = $('#groups_to_edit_ul');
+
+    ul_list.empty();
+    for (var i = 0; i < len; i++) {
+        html = "<li><h3> ";
+        // listStudentsAttendance (id_group, -1), -1=> any session
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
+        html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
+        html += " href='#' data-transition='slideup'>";
+//        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
+        html += results.rows.item(i).data + "</a></h3>";
+        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
+        html += "</a></li>";
+        ul_list.append(html);
+    }
+    ul_list.listview('refresh');
+
+                    html = "<option value=''></option>";
+                    html += "<option value='Absence' >Absence</option>";
+                    html += "<option value='Unpunctuality' >Unpunctuality</option>";
+                    html += "<option value='Excused'  >Excused</option>";
+                    html += "<option value='Behavior' name='Behavior' >Behavior</option>";
+                    ul.empty().append(html);
+                    if (results.rows.length>0) {
+                        var state = results.rows.item(0).a_type;
+                        log(" State => " + state);
+                        text_select[0].selectedIndex = state;
+                        return true;
+                    } else {
+                        log("No data");
+                        return false;
+                    }
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("fillSelectStudent. SQL  "+sql);
+                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
+                    return false;
+                } );
+    }  );
+}
+
+
+//
+//
+//
+//
+
+//
 function queryReportAttendanceDB(tx) {// report->Attendance->Group
 
     var sql = "SELECT GROUPS.id, GROUPS.data as g_description, STUDENTS.id_group AS s_g_id, STUDENTS.id as s_id, STUDENTS.name as name , STUDENTS.surname as surname, ";
@@ -300,10 +364,13 @@ function queryReportAttendanceDB(tx) {// report->Attendance->Group
     });
 
 }
+////
 
 
 
-
+//
+//
+//
 function queryGroupsSuccess(tx, results) {
     var len = results.rows.length;
     var html = "";
@@ -466,7 +533,7 @@ function queryStudentsSuccess(tx, results) {
 
 /*
  *  Main Window
- * TODO: To be filled with marks
+ *
  */
 function queryScheduleSuccess(tx, results) {
     var len = results.rows.length;
@@ -497,7 +564,6 @@ function queryScheduleSuccess(tx, results) {
     $('#groups_day_ul').listview('refresh');
 
 }
-
 
 
 //  Fill select option
@@ -1075,7 +1141,7 @@ function loadActivity(db, id_activity ) {
                     tx.executeSql(sql,[],
                         dbSuccessFunc = function(ttx, rs) {
                         global_no_groups = rs.rows.length;
-                    //alert("Nº Groups: "+ global_no_groups);
+
                         if(global_no_groups>0) {
                             var ul_list = $('#list_groups_activities_ul');
                             var html;
@@ -1098,7 +1164,7 @@ function loadActivity(db, id_activity ) {
                             sql += " FROM activities_group, groups WHERE activities_group.id_activity="+id_activity ;
                             sql += "  AND   activities_group.id_group=groups.id";
 
-                            log("SQL : "+ sql);
+                            log("SQL : "+ sql); // VIP query
 
                             tx.executeSql(sql,[],
                             dbSuccessFunc = function(txx, rrs) {
@@ -1147,7 +1213,7 @@ function loadActivity(db, id_activity ) {
 
 
 }
-// TODO: Update activity
+// Update activity
 
 function updateActivity(db, name , date_init , date_end , weight , e_final  ){
     var id_activity = global_id_activity;
@@ -1394,6 +1460,7 @@ function fillSelectStudentAssessment(db, select_student_id, id_session, id_stude
 function updateStudentAssessmentL(db,id_student,id_group, id_activity,mark){
     var sql ="UPDATE ACTIVITIES_STUDENT SET mark="+mark;
     sql += " WHERE id_activity="+ id_activity + "  AND id_student="+ id_student;
+    log("updateStudentAssessmentL SQL : " + sql);
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
@@ -1411,10 +1478,10 @@ function updateStudentAssessmentL(db,id_student,id_group, id_activity,mark){
 function insertStudentAssessmentL(db,id_student,id_group, id_activity,mark) {
     var sql ="INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ";
     sql += "( "+id_student +","+ id_activity +","+mark +" )";
+    log("insertStudentAssessmentL SQL : " + sql);
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
-
                     return true;
                 },
                 dbErrorFunc = function(tx, e) {
@@ -1522,6 +1589,8 @@ function loadGroupAssessment(db,id_group) {
     sql += " FROM  ACTIVITIES, ACTIVITIES_GROUP, GROUPS ";
     sql += " WHERE ag_group= "+ id_group;
     sql += " AND ag_activity=a_id AND g_id=ag_group  ORDER BY a_date_init ASC; ";
+
+    log("loadGroupAssessment SQL: "+sql);
 
     db.transaction(function(tx) {
         tx.executeSql(sql,[],

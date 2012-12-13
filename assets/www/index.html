@@ -93,8 +93,8 @@
             <div data-role="content">
 
                 <ul data-role="listview" id="list_reports_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
-                <li><a href="#" onClick="generalListAttendance();" >Attendance</a></li>
-                <li><a href="#" onClick="" >Assessment</a></li>
+                <li><a href="#" onClick="onReportListAttendance();" >Attendance</a></li>
+                <li><a href="#" onClick="onReportlListAssessment();" >Assessment</a></li>
                 <li><a href="#" onClick="" >File</a></li>
                 </ul>
             </div>
@@ -202,6 +202,7 @@
 <!-- TODO: Change history.back
     //-->
 <div data-role="content">   <a href="#" onclick="history.back();" data-icon="gear" data-theme="a" data-role="button">Go to Attendance</a>
+<!-- onclick="onOpenStudentsAttendance();" //--->
     </div>
 
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
@@ -273,7 +274,7 @@
 //-->
 <div data-role="page" id="list_groups_attendance" data-add-back-btn="true"  data-theme="a" >
             <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
-                <h1>Lista de Asistencia - Grupos</h1>
+                <h1>Attendance List - Groups</h1>
             </div>
            <div data-role="content">
 
@@ -283,6 +284,25 @@
             <div data-role="footer"  data-rel="back" data-theme="a">
             </div>
 </div>
+
+<!--
+    List Students Assessment
+    TODO: Assessment Reports
+//-->
+<div data-role="page" id="list_groups_assessment" data-add-back-btn="true"  data-theme="a" >
+            <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
+                <h1>Assessment List - Groups</h1>
+            </div>
+           <div data-role="content">
+
+                <ul id="groups_assessment_ul" data-role="listview" data-inset="true" data-split-theme="a" data-split-icon="delete">
+            </ul>
+            </div>
+            <div data-role="footer"  data-rel="back" data-theme="a">
+            <p style="alignment-adjust: central" >Assessment List</p>
+            </div>
+</div>
+
 
 <!--
     ----------------------------------------------------------------------------------------------------------

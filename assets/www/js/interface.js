@@ -321,7 +321,7 @@ function onSaveNewActivity() {
     onListAllActivities();
 }
 // Assessment (part of Activities)
-// TODO: Assesssment
+//
 function onOpenStudentsAssessment(){
 
     $.mobile.showPageLoadingMsg();
@@ -337,10 +337,23 @@ function onRefreshGroupAssessment(){
 
 // ----------------------------------------------------------------------------
 //
-function generalListAttendance() {
+// TO BE DONE!
+function onOpenStudentsAttendance(){
+
+}
+// REPORTS:
+function onReportListAttendance() {
     $.mobile.showPageLoadingMsg();
     loadGroupsAttendance(global_db);
     $.mobile.changePage("#list_groups_attendance");
+}
+
+// TODO: Assessment Reports
+function onReportListAssessment() {
+    $.mobile.showPageLoadingMsg();
+    loadGroupsAssessment(global_db); // TODO: Assessment
+    $.mobile.changePage("#list_groups_assessment");
+
 }
 /*
  * => REPORT <=
