@@ -221,12 +221,12 @@ function populateDB(tx) {
 
     log("populateDB. Populate DB");
 
-// Groups - Could be removed
+// Groups -
         tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 0, "Second A")');
         tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 1, "Second B")');
         tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 2, "Third A" )');
         tx.executeSql('INSERT INTO GROUPS ( id, data) VALUES ( 3, "Third B")');
-// Students Could be removed
+// Students
         var header="INSERT INTO STUDENTS ( id_group, name, surname, photo) VALUES (";
         tx.executeSql(header +'0, "John",   "Doe",        "f001.png" )' );
         tx.executeSql(header +'0, "Daniel", "Mallice",    "f002.png" )' );

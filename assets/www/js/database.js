@@ -1092,28 +1092,15 @@ function loadActivity(db, id_activity ) {
 
                                 ul_list.append(html);
                             }
-// TODO: 4x4 Matrix
-//
-// SELECT DISTINCT groups.id as id_group , groups.data as data , groups.other_data AS other_data,
-// activities_group.id_group AS ag_id_group, activities_group.id_activity ag_id_activity,
-// activities_group.enabled AS enabled  FROM groups,activities_group  WHERE  ag_id_activity=2 AND ag_id_group=id_group
 
-                            var sql2=" SELECT DISTINCT groups.id as id_group , groups.data as data , groups.other_data AS other_data, ";
-                            sql2 += " activities_group.id_group AS ag_id_group, activities_group.id_activity ag_id_activity, ";
-                            sql2 += " activities_group.enabled AS enabled ";
-                            sql2 += " FROM groups,activities_group ";
-                            sql2 += " WHERE  ag_id_activity="+id_activity;
-                            sql2 += " AND ag_id_group=id_group ";
+                            var sql = "SELECT  activities_group.id_group, activities_group.id_activity, ";
+                            sql += " activities_group.enabled AS enabled, groups.id , groups.data as data ";
+                            sql += " FROM activities_group, groups WHERE activities_group.id_activity="+id_activity ;
+                            sql += "  AND   activities_group.id_group=groups.id";
 
-                            var sql3="SELECT DISTINCT groups.id as id_group , groups.data as data , groups.other_data AS other_data,";
-                            sql3 += " activities_group.id_group AS ag_id_group, activities_group.id_activity ag_id_activity, ";
-                            sql3 += " activities_group.enabled AS enabled ";
-                            sql3 += " FROM groups, activities_group ";
-                            sql3 += " WHERE  ag_id_activity="+id_activity;
-                            sql3 += " AND ag_id_group=id_group GROUP  BY id_group; ";
-                            log("SQL3 : "+ sql3);
+                            log("SQL : "+ sql);
 
-                            tx.executeSql(sql3,[],
+                            tx.executeSql(sql,[],
                             dbSuccessFunc = function(txx, rrs) {
                                 var len=  rrs.rows.length;
                                 log("Len : "+ len);
@@ -1121,18 +1108,14 @@ function loadActivity(db, id_activity ) {
                                     var id_group = rrs.rows.item(i).id_group;
                                     var in_act = $("#in_group_activity_" + id_group );
                                     log("LOAD. Data "+ rrs.rows.item(i).data);
-                                    log("LOAD. Ag_id_group "+ rrs.rows.item(i).ag_id_group);
+                                    log("LOAD. Ag_id_group "+ rrs.rows.item(i).id_group);
                                     if(rrs.rows.item(i).enabled !=0) {
-                                        // alert("Activado");
-// TODO: Check?
-                                         in_act.attr("checked",true); //.checkboxradio("refresh"); // XXX: Too many rows
+                                         in_act.attr("checked",true); //.checkboxradio("refresh");
                                          //in_act.checkboxradio("refresh");
                                     }
-
                                 }
-
-                                    return true;
-                                },
+                                return true;
+                            },
                             dbErrorFunc = function(txx, e) {
                                 if (txx.message) e = txx;
                                     log(" There has been an error insertNewActivity: "+e.message);
