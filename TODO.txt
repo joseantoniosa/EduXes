@@ -22,6 +22,7 @@ PENDIENTE: (debe ocupar poco)
                     - Cómo introducir horario (¿?¿?)
         * Lista notas
             * Listados de notas y resumen
+            - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
 
   DOCUMENTACIÓN:
         - Documentar las funciones, realizar esquemas explicativos.

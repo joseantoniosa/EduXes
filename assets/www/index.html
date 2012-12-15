@@ -153,62 +153,49 @@
     </div>
 </div>
 
-<!-- Third Window: List of Students.
-  Attendance //-->
+<!-- Third Window: List of Students.  Attendance //-->
 <div data-role="page" id="list_students_attendance" data-add-back-btn="false">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
         <a href="#" onclick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
-
         <h1 id="current_group_attendance" >Student List for Group</h1>
     </div>
-    <div data-role="content">   </div>
-    <div data-role="content">
+    <div data-role="content"> <!---Data goes here //-->
         <ul data-role="listview" id="students_attendance_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
     </div>
-<div data-role="content">   <a href="#" onclick="onOpenStudentsAssessment();" data-icon="gear" data-theme="a" data-role="button">Go to Marks</a>
+    <div data-role="content">   <a href="#" onclick="onOpenStudentsAssessment();" data-icon="gear" data-theme="a" data-role="button">Go to Marks</a>
     </div>
-
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-        <p style="text-align:center;"  >Students' Attendance</p>
+        <p style="text-align:center;"  >Students' Attendance (b)</p>
     </div>
 </div>
 
-<!-- Fourth Window: List of Students Assessment.
-    TODO: List of Students Assessment.
-    XXX: Development is here vvvvvv
-   //-->
-<div data-role="page" id="list_students_assessment" data-add-back-btn="false">
-    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
+<!--Fourth Window A: List of Students.  Assessment //-->
+<div data-role="page" id="list_students_assessment" data-add-back-btn="true"  data-theme="a">
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false" >
         <a href="#" onclick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
-
-        <h1 id="current_group_assessment" >Student List Assesment</h1>
+        <h1 id="current_group_assessment" >Student List for Group</h1>
     </div>
     <div data-role="content">
-
-     <fieldset class="ui-grid-a">
-            <div class="ui-block-a">
-                <label for="list_assessment_select" class="select">List of Activities</label>
-            </div>
-            <div class="ui-block-b">
-                <select onChange="onRefreshGroupAssessment();" name="list_assessment_select" id="list_assessment_select">
-                </select>
-            </div>
-     </fieldset>
+        <fieldset class="ui-grid-a">
+        <div class="ui-block-a">
+        <label for="list_assessment_select" class="select">List of Activities</label>
+        </div>
+        <div class="ui-block-b">
+            <select onChange="onRefreshGroupAssessment();" name="list_assessment_select" id="list_assessment_select">
+            </select>
+        </div>
+        </fieldset>
     </div>
-    <div data-role="content">
-        <ul data-role="listview" id="students_assessment_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
+    <div data-role="content"> <!---Data goes here //-->
+                <ul data-role="listview" id="students_assessment_ul" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
     </div>
-
-<!-- TODO: Change history.back
-    //-->
-<div data-role="content">   <a href="#" onclick="history.back();" data-icon="gear" data-theme="a" data-role="button">Go to Attendance</a>
-<!-- onclick="onOpenStudentsAttendance();" //--->
+    <div data-role="content">   <a href="#" onclick="onOpenStudentsAttendance();" data-icon="gear" data-theme="a" data-role="button">Go to Attendance</a>
     </div>
-
-    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-        <p style="text-align:center;"  >Students' Assesment</p>
-    </div>
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">  <p style="text-align:center;"   >  Student Assesment by Group (c) </p>
+     </div>
 </div>
+
+
 
 
 <!--List of students:  List of Attendance //-->
@@ -236,24 +223,6 @@
     </div>
 </div>
 
-
-<!-- // -->
-<!--List of students:  Assessment //-->
-<div data-role="page" id="list_students_assessment2" data-add-back-btn="true"  data-theme="a">
-
-            <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="true" >
-                <h1 id="current_group_assessment" >Student List for Group</h1>
-            </div>
-            <div data-role="content">
-
-<!--- [Photo]-[Surname, Name ] [0/1/2/3/4/5/6/7/8/9]<combobox>   [Behavior] <combobox>//-->
-                <ul data-role="listview" id="students_assessment_ul2" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
-            </div>
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-                <p style="text-align:center;"   >  Student List for Group  </p>
-             </div>
-
-</div>
 
 
 <!--TODO: List of Attendance //-->
@@ -285,12 +254,21 @@
             </div>
 </div>
 
+
+
 <!--
-    List Students Assessment
-    TODO: Assessment Reports
+    ----------------------------------------------------------------------------------------------------------
+    Reports:
+    ----------------------------------------------------------------------------------------------------------
 //-->
-<div data-role="page" id="list_groups_assessment" data-add-back-btn="true"  data-theme="a" >
-            <div data-role="header"  data-add-back-btn="true"   data-theme="a" >
+
+
+
+<!--     List Students Assessment //-->
+<div data-role="page" id="list_groups_assessment" data-add-back-btn="false"  data-theme="a" >
+            <div data-role="header"  data-add-back-btn="false"   data-theme="a" >
+            <a href="#list_reports"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+
                 <h1>Assessment List - Groups</h1>
             </div>
            <div data-role="content">
@@ -299,10 +277,42 @@
             </ul>
             </div>
             <div data-role="footer"  data-rel="back" data-theme="a">
-            <p style="alignment-adjust: central" >Assessment List</p>
+            <p style="text-align:center;"  >Assessment List</p>
             </div>
 </div>
 
+<!--  List of Students Assessment. By group    //-->
+<div data-role="page" id="list_students_assessment_reports" data-add-back-btn="false">
+    <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
+        <a href="#" onclick="onReportListAssessment();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+        <h1 id="current_group_assessment_reports" >Student List Assesment</h1>
+    </div>
+    <div data-role="content">
+     <fieldset class="ui-grid-a">
+            <div class="ui-block-a"> <label for="list_assessment_select" class="select">List of Activities</label>
+            </div>
+            <div class="ui-block-b">
+                <select onChange="onRefreshGroupAssessment();" name="list_assessment_select" id="list_assessment_select">
+                </select>
+            </div>
+     </fieldset>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="students_assessment__reports_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
+        <table id="students_assessment__reports_table">
+        </table>
+    </div>
+
+<!-- TODO: Change history.back
+    //-->
+<div data-role="content">   <a href="#" onclick="history.back();" data-icon="gear" data-theme="a" data-role="button">Go to Attendance</a>
+<!-- onclick="onOpenStudentsAttendance();" //--->
+    </div>
+
+    <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
+        <p style="text-align:center;"  >Students' Assesment</p>
+    </div>
+</div>
 
 <!--
     ----------------------------------------------------------------------------------------------------------

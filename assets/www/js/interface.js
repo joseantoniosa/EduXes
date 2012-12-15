@@ -339,9 +339,12 @@ function onRefreshGroupAssessment(){
 //
 // TO BE DONE!
 function onOpenStudentsAttendance(){
+    // Debería abrir la página list_students_attendance
+    listStudentsAttendance(global_id_group, global_session); // XXX: un mal parche
 
 }
-// REPORTS:
+//------------------
+// REPORTS: List Attendance
 function onReportListAttendance() {
     $.mobile.showPageLoadingMsg();
     loadGroupsAttendance(global_db);
@@ -358,8 +361,10 @@ function onReportListAssessment() {
 // TODO : List Students:
 function onListStudentsAssessment(id_group){
     $.mobile.showPageLoadingMsg();
+    //alert("Assessment "+ id_group) ;
+    global_id_group = id_group;
     loadStudentsAssessment(global_db, id_group); // TODO: Assessment - List Students
-    $.mobile.changePage("#list_students_assessment");// TODO: Assessment - List Students
+    $.mobile.changePage("#list_students_assessment_reports");// TODO: Assessment - List Students
 
 }
 /*

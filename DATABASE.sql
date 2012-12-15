@@ -102,7 +102,7 @@
         INSERT INTO teacher_schedule ( id_session, day , id_group ) VALUES (0, 5, 1 ); -- // 1st hour (0), Friday (5)  2nd group (0)
         INSERT INTO teacher_schedule ( id_session, day , id_group ) VALUES (1, 5, 2 ); -- // 2nd hour (0), Friday (5)  3nd group (0)
         INSERT INTO teacher_schedule ( id_session, day , id_group ) VALUES (3, 5, 2 );  --// 2nd hour (0), Friday (5)  3nd group (0)
-        INSERT INTO teacher_schedule ( id_session, day , id_group ) VALUES (2, 5, 0 ); 
+        INSERT INTO teacher_schedule ( id_session, day , id_group ) VALUES (2, 5, 0 );
 
 ---Attendance:
 
@@ -127,6 +127,13 @@
 
 
 
+INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 1,1,5 );
+INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 2,1,6 );
+INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 4,1,8 );
+
+INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 1,2,3 );
+INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 2,2,3 );
+INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 4,2,4 );
 
 
 

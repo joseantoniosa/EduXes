@@ -416,25 +416,90 @@ function populateDB(tx) {
 	}, dbErrorFunc = function(ttx, e) {
 		if (ttx.message)
 			e = ttx;
-		alert(" There has been an error attendance: " + e);
+		alert(" There has been an error activities_group: " + e);
+		return false;
+	});
+// Insert marks:
+
+	var sql = 'INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 1,1,5 );'
+	log(sql);
+	tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+		return true;
+	}, dbErrorFunc = function(ttx, e) {
+		if (ttx.message)
+			e = ttx;
+		alert(" There has been an error activities_group: " + e);
+		return false;
+	});
+	var sql = 'INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 2,1,6 );'
+	log(sql);
+	tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+		return true;
+	}, dbErrorFunc = function(ttx, e) {
+		if (ttx.message)
+			e = ttx;
+		alert(" There has been an error activities_group: " + e);
+		return false;
+	});
+	var sql = 'INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 4,1,8 );'
+	log(sql);
+	tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+		return true;
+	}, dbErrorFunc = function(ttx, e) {
+		if (ttx.message)
+			e = ttx;
+		alert(" There has been an error activities_group: " + e);
 		return false;
 	});
 
+	var sql = '	INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 1,2,3 );'
+	log(sql);
+	tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+		return true;
+	}, dbErrorFunc = function(ttx, e) {
+		if (ttx.message)
+			e = ttx;
+		alert(" There has been an error activities_group: " + e);
+		return false;
+	});
+	var sql = 'INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 2,2,3 );'
+	log(sql);
+	tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+		return true;
+	}, dbErrorFunc = function(ttx, e) {
+		if (ttx.message)
+			e = ttx;
+		alert(" There has been an error activities_group: " + e);
+		return false;
+	});
+	var sql = 'INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ( 4,2,4 );'
+	log(sql);
+	tx.executeSql(sql, [], dbSuccessFunc = function(tx, rs) {
+		return true;
+	}, dbErrorFunc = function(ttx, e) {
+		if (ttx.message)
+			e = ttx;
+		alert(" There has been an error activities_group: " + e);
+		return false;
+	});
+
+
 /*
-//    Activities        TODO
-
-
-        var header = "INSERT INTO ACTIVITIES ( description,date_init, date_end ,weight) VALUES (";
-
-        tx.executeSql( header + '"Activity 1", "2012-01-01", "2012-02-01", 10 )');
-        tx.executeSql( header + '"Activity 2", "2012-01-01", "2012-02-01", 7 )');
-        tx.executeSql( header + '"Activity 3", "2012-01-01", "2012-02-01", 3 )');
-        tx.executeSql( header + '"Activity 4", "2012-01-01", "2012-02-01", 10 )');
-        tx.executeSql( header + '"Activity 5", "2012-01-01", "2012-02-01", 10 )');
-        tx.executeSql( header + '"Activity 6", "2012-01-01", "2012-02-01", 10 )');
-        tx.executeSql( header + '"Activity 7", "2012-01-01", "2012-02-01", 10 )');
-        tx.executeSql( header + '"Activity 8", "2012-01-01", "2012-02-01", 20 )');
-        tx.executeSql( header + '"Activity 9", "2012-01-01", "2012-02-01", 20 )');
-**/
+ * // Activities TODO
+ * 
+ * 
+ * var header = "INSERT INTO ACTIVITIES ( description,date_init, date_end
+ * ,weight) VALUES (";
+ * 
+ * tx.executeSql( header + '"Activity 1", "2012-01-01", "2012-02-01", 10 )');
+ * tx.executeSql( header + '"Activity 2", "2012-01-01", "2012-02-01", 7 )');
+ * tx.executeSql( header + '"Activity 3", "2012-01-01", "2012-02-01", 3 )');
+ * tx.executeSql( header + '"Activity 4", "2012-01-01", "2012-02-01", 10 )');
+ * tx.executeSql( header + '"Activity 5", "2012-01-01", "2012-02-01", 10 )');
+ * tx.executeSql( header + '"Activity 6", "2012-01-01", "2012-02-01", 10 )');
+ * tx.executeSql( header + '"Activity 7", "2012-01-01", "2012-02-01", 10 )');
+ * tx.executeSql( header + '"Activity 8", "2012-01-01", "2012-02-01", 20 )');
+ * tx.executeSql( header + '"Activity 9", "2012-01-01", "2012-02-01", 20 )');
+ */
 
    }

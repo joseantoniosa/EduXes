@@ -25,13 +25,14 @@ var DEBUG = true;
 //
 var table_global;
 // new API
-var global_id;
-var global_id_group=0;
+// XXX: Too many global variables
+var global_id; // used
+var global_id_group=0; // used
 var global_id_student=0;
-var global_id_activity=0;
-var global_no_groups=0;
+var global_id_activity=0; // used
+var global_no_groups=0; // used
 var global_week_day=-1;
-var global_db;
+var global_db; // used
 var global_session; // selected session
 var global_actual_date=null ; // Date
 var global_reports_date=null ; // Date for reports
@@ -283,13 +284,12 @@ function loadGroupsAssessment(db){
                 dbSuccessFunc = function(tx,results){
                     var len = results.rows.length;
                     var ul_list=$('#groups_assessment_ul');
-                    // var text_select = $('#' + select_student_id); //
                     ul_list.empty();
                     for (var i = 0; i < len; i++) {
                         var id = results.rows.item(i).id;
                         html = "<li><h3> ";
-                        html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
-                        html += " onListStudentsAssessment(" + id + ");' ";
+                        // html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
+                        html += " <a onClick='onListStudentsAssessment(" + id + ");' ";
                         html += " href='#' data-transition='slideup'>";
                         html += results.rows.item(i).data + "</a></h3>";
                         html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='#' data-rel='dialog' data-transition='slideup'>";
@@ -310,16 +310,64 @@ function loadGroupsAssessment(db){
  // TODO: Assessment - List Students
 function loadStudentsAssessment(db, id_group){
 // TODO !!
-    var sql="SELECT id, data, other_data FROM groups;";
+// var text_select = $('#' + select_student_id); //
+    $('#current_group_assessment_reports').text("Name of the group");
+
+    var sql=" SELECT students.id as s_id, students.name as s_name, students.surname as s_surname, students.id_group, " ;
+    sql +="  GROUPS.id,  groups.data, activities.id, activities.weight as a_weight, activities.name as a_name, " ;
+    sql +="  activities_student.id_student, activities_student.id_activity as a_id , activities_student.mark as a_mark" ;
+    sql +="  FROM groups, students, activities, activities_student " ;
+    sql +="  WHERE students.id=activities_student.id_student " ;
+    sql +="  AND activities.id=activities_student.id_activity " ;
+    sql +="  AND GROUPS.id=students.id_group AND GROUPS.id="+id_group;
+    sql +="  ORDER BY students.id; " ;
+
+    log("loadStudentsAssessment SQL: "+sql )
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
+                    var html="";
                     var len = results.rows.length;
-                    var ul_list=$('#groups_assessment_ul');
+                    var ul_list=$('#students_assessment__reports_ul');
+                    var table = $('#students_assessment__reports_table');
                     // var text_select = $('#' + select_student_id); //
-                    ul_list.empty();
+                    var s_id =0;
+                    var s_old=-1;
+                    alert(len);
+                    // ul_list.empty();
+                    s_old = results.rows.item(0).s_id;
+                    if (len<1) {return false;}
+                    html +="<tr>";
                     for (var i = 0; i < len; i++) {
-                        var id = results.rows.item(i).id;
+                         s_id = results.rows.item(i).s_id; //TODO Work in progress here!!
+
+                        var s_name = results.rows.item(i).s_name;
+                        var s_surname = results.rows.item(i).s_surname;
+                        var activities_name = results.rows.item(i).a_name;
+
+                        var weight = results.rows.item(i).a_weight;
+                        var mark = results.rows.item(i).a_mark;
+                        var activity_id = results.rows.item(i).a_id;
+
+                        if(s_old==s_id) { // Add column
+                                html +="<td>";
+                                html += s_id +"</td><td>";
+                                html += " "+s_surname;
+                                html += ", " +s_name;
+                                html +="</td><td>";
+                                html += mark +"</td><td>";
+                        } else { // new student, add row
+                            html +="</tr>";
+                            html +="<tr>";
+                            s_old=s_id;
+                        }
+
+
+                        html +="<tr>";
+
+                        table.append(html);
+                    }
+/*
                         html = "<li><h3> ";
                         html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
                         html += " onListStudentsAssessment(" + id + ");' ";
@@ -327,9 +375,10 @@ function loadStudentsAssessment(db, id_group){
                         html += results.rows.item(i).data + "</a></h3>";
                         html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='#' data-rel='dialog' data-transition='slideup'>";
                         html += "</a></li>";
-                        ul_list.append(html);
-                    }
-                    ul_list.listview('refresh');
+                        */
+  //                      ul_list.append(html);
+
+        //            ul_list.listview('refresh');
                     return true;
                 },
                 dbErrorFunc = function(tx, e) {
@@ -1593,14 +1642,20 @@ function loadGroupAssessment(db,id_group) {
 //
 //                enabled integer, a_date text, notes text,
     sql="SELECT ";
-    sql += " ACTIVITIES_GROUP.a_date AS ag_date, ACTIVITIES_GROUP.id_group AS ag_group, ";
-    sql += " ACTIVITIES_GROUP.id_activity AS ag_activity, ACTIVITIES_GROUP.enabled AS ag_enabled ,"; //
-    sql += " ACTIVITIES.id AS a_id,  ACTIVITIES.name AS a_name,";
-    sql += " ACTIVITIES.date_init AS a_date_init,  ACTIVITIES.final AS a_final,  ";
+    sql += " ACTIVITIES_GROUP.a_date AS ag_date, ";
+    sql += " ACTIVITIES_GROUP.id_group AS ag_group, ";
+    sql += " ACTIVITIES_GROUP.id_activity AS ag_activity, ";
+    sql += " ACTIVITIES_GROUP.enabled AS ag_enabled ,"; //
+    sql += " ACTIVITIES.id AS a_id, ";
+    sql +="  ACTIVITIES.name AS a_name,";
+    sql += " ACTIVITIES.date_init AS a_date_init, ";
+    sql += " ACTIVITIES.final AS a_final,  ";
     sql += " GROUPS.data AS g_data,  GROUPS.id as g_id ";
     sql += " FROM  ACTIVITIES, ACTIVITIES_GROUP, GROUPS ";
-    sql += " WHERE ag_group= "+ id_group;
-    sql += " AND ag_activity=a_id AND g_id=ag_group  ORDER BY a_date_init ASC; ";
+    sql += " WHERE  ACTIVITIES_GROUP.id_group = "+ id_group;
+    sql += " AND ACTIVITIES_GROUP.id_activity = ACTIVITIES.id ";
+    sql += " AND  GROUPS.id =  ACTIVITIES_GROUP.id_group  ";
+    sql += " ORDER BY  ACTIVITIES.date_init  ASC; ";
 
     log("loadGroupAssessment SQL: "+sql);
 
@@ -1608,6 +1663,7 @@ function loadGroupAssessment(db,id_group) {
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 var html ="";
+                alert(results.rows.length);
                 for (var i=0;i<results.rows.length;i++) {
                     a_id = results.rows.item(i).a_id;
                     a_name = results.rows.item(i).a_name;
@@ -1618,7 +1674,7 @@ function loadGroupAssessment(db,id_group) {
                 list_asset.empty().append(html);
                 list_asset[0].selectedIndex = 0; // Selects the very first
         // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
-                list_asset.selectmenu('refresh', true);
+               // list_asset.selectmenu('refresh', true);
 
                 if(results.rows.length>0) {
                     $('#current_group_assessment').text(results.rows.item(0).g_data); // Group Name
