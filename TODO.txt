@@ -17,12 +17,11 @@ PENDIENTE: (debe ocupar poco)
                 Botón de habilitar-deshabilitar actividades
         - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
-
         - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Cómo introducir horario (¿?¿?)
-        * Lista notas
-            * Listados de notas y resumen
             - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
+    - Limpiar los formularios de datos antiguos.
+    - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
 
   DOCUMENTACIÓN:
         - Documentar las funciones, realizar esquemas explicativos.
@@ -48,9 +47,12 @@ TASKS DONE:
 
 <!-- TODO: Update and New Activity
 
-    - Limpiar los formularios de datos antiguos.
-    - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
 
+18/12/2012:
+        - Weight sum should return 100
+        - Listado de notas de estudiantes.
+        - Lista notas
+            * Listados de notas y resumen
 13/12/2012b:
         Resuelto  problema con el SELECT al cargar grupos en las actividades.
         - Error en Asignación grupos<-> actividad

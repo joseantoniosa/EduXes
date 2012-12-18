@@ -111,7 +111,7 @@
         INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (1, 0, 1,1, date('now') );
 
 --  Activities (1):
-        INSERT INTO activities ( name , date_init , date_end , weight , final) VALUES ("been " , "12/11/2012" , "12/11/2012" , 0, 0);
+        INSERT INTO activities ( name , date_init , date_end , weight , final) VALUES ("been " , "12/11/2012" , "12/11/2012" , 40, 0);
         INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (0,1, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");
         INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (1,1, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");
         INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (2,1, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");
@@ -119,7 +119,7 @@
 
 --- activities (2)
 
-    INSERT INTO activities ( name , date_init , date_end , weight , final) VALUES ("polite " , "12/11/2012" , "12/15/2012" , 10, 0);
+    INSERT INTO activities ( name , date_init , date_end , weight , final) VALUES ("polite " , "12/11/2012" , "12/15/2012" , 60, 0);
     INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (0,2, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");
     INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (1,2, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");
     INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (2,2, 1, "Tue Dec 11 2012 16:02:21 GMT+0000 (GMT)", "");

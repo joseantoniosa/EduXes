@@ -374,10 +374,11 @@ function loadStudentsAssessment(db, id_group){
 
                         }
                         html +="<td>"+mark+"</td>";
-                        measure +=mark*weight/10.0;
+// XXX: Weight sum should return 100
+                        measure +=mark*weight/100.0; //
                         old_s_id=s_id;
 
-                        log("Name: "+ s_name+" activity: "+activity_id + " Mark: "+mark+ " mean :"+ measure);
+                        log("Name: "+ s_name+" Weight : "+weight + " Mark: "+mark+ " mean :"+ measure);
 
                     }
                     html +="<td>["+measure+"]</td></tr>";
