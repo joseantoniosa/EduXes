@@ -342,6 +342,7 @@ function loadStudentsAssessment(db, id_group){
                     var name_a = new Array();
 
                     var activity_a = new Array();
+                    var activity_name_a = new Array();
                     var mark_a = new Array();
                     var weight_a = new Array();
                     var mark_a = new Array();
@@ -358,7 +359,7 @@ function loadStudentsAssessment(db, id_group){
                         s_id = results.rows.item(i).s_id;
                         s_name = results.rows.item(i).s_name;
                         s_surname = results.rows.item(i).s_surname;
-                        activities_name = results.rows.item(i).a_name;
+                        activity_name = results.rows.item(i).a_name;
                         weight = results.rows.item(i).a_weight;
                         mark = results.rows.item(i).a_mark;
                         activity_id = results.rows.item(i).a_id;
@@ -376,6 +377,8 @@ function loadStudentsAssessment(db, id_group){
                             no_students ++; // si es nuevo estudiante
 
                             activity_a[no_students] = new Array();
+                            activity_name_a[no_students] = new Array();
+
                             mark_a[no_students] = new Array();
                             weight_a[no_students] = new Array();
 
@@ -390,6 +393,7 @@ function loadStudentsAssessment(db, id_group){
 
                         }
                         activity_a[no_students].push(activity_id);
+                        activity_name_a[no_students].push(activity_name);
                         mark_a[no_students].push(mark);
                         weight_a[no_students].push(weight);
 
@@ -434,10 +438,10 @@ function loadStudentsAssessment(db, id_group){
                         for(j=0;j<activity_a[i].length;j++) {
                             html += "<td>"+mark_a[i][j] +"</td>";
                             measure +=mark_a[i][j]*weight_a[i][j]/100.0; //
-                            alert(" Measure : "+ mark_a[i][j]+ "  "+ weight_a[i][j]  );
+                           // alert(" Measure : "+ mark_a[i][j]+ "  "+ weight_a[i][j]  );
 
                         }
-                        html += "<td>"+measure +"</td>";
+                        html += "<td>("+measure +")</td>";
                         html +="</tr>";
 
                     }
@@ -445,11 +449,10 @@ function loadStudentsAssessment(db, id_group){
                     html_pre ="<tr>";
                     html_pre +="<th>Surname, Name </th>";
                     for(var j=0;j<no_activities;j++) {
-                        html_pre +="<th>"+activity_a[j]+"</th>";
+                        html_pre +="<th>"+activity_name_a[j]+"</th>";
                     }
                     html_pre +="<th>Mean</th></tr>";
 
-                    html +="<td>["+measure+"]</td></tr>";
                     table.empty().append("<thead>"+html_pre+"</thead><tbody>"+html+"<tbody>");
 
                     return true;
