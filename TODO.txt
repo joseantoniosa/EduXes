@@ -20,7 +20,6 @@ PENDIENTE: (debe ocupar poco)
         - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
                     - Cómo introducir horario (¿?¿?)
             - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
-    - Limpiar los formularios de datos antiguos.
     - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
 
   DOCUMENTACIÓN:
@@ -46,9 +45,16 @@ Look at the end of file
 TASKS DONE:
 
 <!-- TODO: Update and New Activity
+    BUGS:
+    - Reports->Assessment:
+        * No lista todos los alumnos
+        * Lista con nombre incorrecto las actividades
+
+
 
 
 18/12/2012:
+         - Limpiar los formularios de datos antiguos.
         - Weight sum should return 100
         - Listado de notas de estudiantes.
         - Lista notas

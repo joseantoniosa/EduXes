@@ -86,12 +86,12 @@ function queryGroupsAttendanceDB(tx) {
         ul_list.empty();
         table_global="groups";
         for (var i = 0; i < rs.rows.length; i++) {
-            html = "<li><h3> ";
+            html = "<li>";
             html += "<a onClick='global_id=" + rs.rows.item(i).id + "; table_global=\"groups\"; ";
             html += " listStudentsByGroupAttendance(" + rs.rows.item(i).id + " );'  ";
             html += " href='#' >";
             html += rs.rows.item(i).data  ;
-            html += "</a></h3></li>";
+            html += "</a></li>";
             ul_list.append(html);
         }
         ul_list.listview('refresh');
@@ -287,11 +287,11 @@ function loadGroupsAssessment(db){
                     ul_list.empty();
                     for (var i = 0; i < len; i++) {
                         var id = results.rows.item(i).id;
-                        html = "<li><h3> ";
+                        html = "<li>";
                         // html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
                         html += " <a onClick='onListStudentsAssessment(" + id + ");' ";
                         html += " href='#' data-transition='slideup'>";
-                        html += results.rows.item(i).data + "</a></h3>";
+                        html += results.rows.item(i).data + "</a>";
                         html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='#' data-rel='dialog' data-transition='slideup'>";
                         html += "</a></li>";
                         ul_list.append(html);
@@ -386,7 +386,7 @@ function loadStudentsAssessment(db, id_group){
                     html_pre +="<th>Mean</th></tr>";
 
                     html +="<td>["+measure+"]</td></tr>";
-                    table.find('tbody').append(html_pre+html);
+                    table.empty().append("<thead>"+html_pre+"</thead><tbody>"+html+"<tbody>");
 
                     return true;
                 },
@@ -448,13 +448,13 @@ function queryGroupsSuccess(tx, results) {
 
     ul_list.empty();
     for (var i = 0; i < len; i++) {
-        html = "<li><h3> ";
+        html = "<li> ";
         // listStudentsAttendance (id_group, -1), -1=> any session
         html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
         html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
         html += " href='#' data-transition='slideup'>";
 //        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
-        html += results.rows.item(i).data + "</a></h3>";
+        html += results.rows.item(i).data + "</a>";
         html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
         html += "</a></li>";
         ul_list.append(html);
