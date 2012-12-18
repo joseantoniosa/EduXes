@@ -338,11 +338,7 @@ function loadStudentsAssessment(db, id_group){
 //TODO Work in progress here!!
                     s_old = results.rows.item(0).s_id;
                     if (len<1) {return false;}
-                    var mark_a = new Array();
-                    var weight_a = new Array();
-                    var name_a = new Array();
                     var activity_a = new Array();
-                    var student_a = new Array();
                     var no_activities=0;
                     var a_no_activities=0;
                     var measure =0.0;
@@ -366,24 +362,31 @@ function loadStudentsAssessment(db, id_group){
                                 no_activities=Math.max(no_activities, a_no_activities);
                             }
                             html +="<tr><td>"+s_surname+", "+s_name+"</td>" ;
-                            // alert("Nuevo estudiante:" + s_name + " "+s_surname);
+
                             measure=0.0;
-                            a_no_activities=0;
+                            a_no_activities=1;
                         } else { // Viejo
                             a_no_activities++;
 
                         }
+//                       alert("Max activities: "+no_activities);
+
+                        activity_a.push(activities_name); // TODO: Polish this!!
                         html +="<td>"+mark+"</td>";
 // XXX: Weight sum should return 100
                         measure +=mark*weight/100.0; //
                         old_s_id=s_id;
 
-                        log("Name: "+ s_name+" Weight : "+weight + " Mark: "+mark+ " mean :"+ measure);
-
                     }
+                    html_pre ="<tr>";
+                    html_pre +="<th>Surname, Name </th>";
+                    for(var j=0;j<no_activities;j++) {
+                        html_pre +="<th>"+activity_a[j]+"</th>";
+                    }
+                    html_pre +="<th>Mean</th></tr>";
+
                     html +="<td>["+measure+"]</td></tr>";
-                    log("html ("+ html + ")");
-                    table.find('tbody').append(html);
+                    table.find('tbody').append(html_pre+html);
 
                     return true;
                 },
