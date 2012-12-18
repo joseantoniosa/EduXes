@@ -486,11 +486,11 @@ function populateDB(tx) {
 
 /*
  * // Activities TODO
- * 
- * 
+ *
+ *
  * var header = "INSERT INTO ACTIVITIES ( description,date_init, date_end
  * ,weight) VALUES (";
- * 
+ *
  * tx.executeSql( header + '"Activity 1", "2012-01-01", "2012-02-01", 10 )');
  * tx.executeSql( header + '"Activity 2", "2012-01-01", "2012-02-01", 7 )');
  * tx.executeSql( header + '"Activity 3", "2012-01-01", "2012-02-01", 3 )');

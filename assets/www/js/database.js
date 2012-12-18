@@ -313,14 +313,14 @@ function loadStudentsAssessment(db, id_group){
 // var text_select = $('#' + select_student_id); //
     $('#current_group_assessment_reports').text("Name of the group");
 
-    var sql=" SELECT students.id as s_id, students.name as s_name, students.surname as s_surname, students.id_group, " ;
+    var sql=" SELECT DISTINCT students.id as s_id, students.name as s_name, students.surname as s_surname, students.id_group, " ;
     sql +="  GROUPS.id,  groups.data, activities.id, activities.weight as a_weight, activities.name as a_name, " ;
     sql +="  activities_student.id_student, activities_student.id_activity as a_id , activities_student.mark as a_mark" ;
     sql +="  FROM groups, students, activities, activities_student " ;
     sql +="  WHERE students.id=activities_student.id_student " ;
     sql +="  AND activities.id=activities_student.id_activity " ;
     sql +="  AND GROUPS.id=students.id_group AND GROUPS.id="+id_group;
-    sql +="  ORDER BY students.id; " ;
+    sql +="  ORDER BY students.id ; " ;
 
     log("loadStudentsAssessment SQL: "+sql )
     db.transaction(function(tx) {
@@ -328,57 +328,62 @@ function loadStudentsAssessment(db, id_group){
                 dbSuccessFunc = function(tx,results){
                     var html="";
                     var len = results.rows.length;
-                    var ul_list=$('#students_assessment__reports_ul');
-                    var table = $('#students_assessment__reports_table');
+                    var ul_list=$('#students_assessment_reports_ul');
+                    var table = $('#students_assessment_reports_table');
                     // var text_select = $('#' + select_student_id); //
                     var s_id =0;
                     var s_old=-1;
-                    alert(len);
+
                     // ul_list.empty();
+//TODO Work in progress here!!
                     s_old = results.rows.item(0).s_id;
                     if (len<1) {return false;}
-                    html +="<tr>";
+                    var mark_a = new Array();
+                    var weight_a = new Array();
+                    var name_a = new Array();
+                    var activity_a = new Array();
+                    var student_a = new Array();
+                    var no_activities=0;
+                    var a_no_activities=0;
+                    var measure =0.0;
+                    // html +="<tr>";
+                    var is_new=1;
+                    var old_s_id=-1;
                     for (var i = 0; i < len; i++) {
-                         s_id = results.rows.item(i).s_id; //TODO Work in progress here!!
+                        s_id = results.rows.item(i).s_id;
+                        s_name = results.rows.item(i).s_name;
+                        s_surname = results.rows.item(i).s_surname;
+                        activities_name = results.rows.item(i).a_name;
+                        weight = results.rows.item(i).a_weight;
+                        mark = results.rows.item(i).a_mark;
+                        activity_id = results.rows.item(i).a_id;
 
-                        var s_name = results.rows.item(i).s_name;
-                        var s_surname = results.rows.item(i).s_surname;
-                        var activities_name = results.rows.item(i).a_name;
+                        if(s_id!=old_s_id) {// Es nuevo
+                            if (is_new==1){
+                                is_new=0;
+                            } else {
+                                html +="<td>["+measure+"]</td></tr>";
+                                no_activities=Math.max(no_activities, a_no_activities);
+                            }
+                            html +="<tr><td>"+s_surname+", "+s_name+"</td>" ;
+                            // alert("Nuevo estudiante:" + s_name + " "+s_surname);
+                            measure=0.0;
+                            a_no_activities=0;
+                        } else { // Viejo
+                            a_no_activities++;
 
-                        var weight = results.rows.item(i).a_weight;
-                        var mark = results.rows.item(i).a_mark;
-                        var activity_id = results.rows.item(i).a_id;
-
-                        if(s_old==s_id) { // Add column
-                                html +="<td>";
-                                html += s_id +"</td><td>";
-                                html += " "+s_surname;
-                                html += ", " +s_name;
-                                html +="</td><td>";
-                                html += mark +"</td><td>";
-                        } else { // new student, add row
-                            html +="</tr>";
-                            html +="<tr>";
-                            s_old=s_id;
                         }
+                        html +="<td>"+mark+"</td>";
+                        measure +=mark*weight/10.0;
+                        old_s_id=s_id;
 
+                        log("Name: "+ s_name+" activity: "+activity_id + " Mark: "+mark+ " mean :"+ measure);
 
-                        html +="<tr>";
-
-                        table.append(html);
                     }
-/*
-                        html = "<li><h3> ";
-                        html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
-                        html += " onListStudentsAssessment(" + id + ");' ";
-                        html += " href='#' data-transition='slideup'>";
-                        html += results.rows.item(i).data + "</a></h3>";
-                        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='#' data-rel='dialog' data-transition='slideup'>";
-                        html += "</a></li>";
-                        */
-  //                      ul_list.append(html);
+                    html +="<td>["+measure+"]</td></tr>";
+                    log("html ("+ html + ")");
+                    table.find('tbody').append(html);
 
-        //            ul_list.listview('refresh');
                     return true;
                 },
                 dbErrorFunc = function(tx, e) {
