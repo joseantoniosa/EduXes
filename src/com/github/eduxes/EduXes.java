@@ -21,7 +21,7 @@ import android.webkit.*;
 import android.support.v4.app.NavUtils;
 
 import org.apache.cordova.*;
-public class MainActivity extends DroidGap {
+public class EduXes extends DroidGap {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

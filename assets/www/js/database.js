@@ -371,7 +371,7 @@ function loadStudentsAssessment(db, id_group){
                         }
 //                       alert("Max activities: "+no_activities);
 
-                        activity_a.push(activities_name); // TODO: Polish this!!
+                        activity_a.push(activities_name); // TODO: Polish this!! 00001
                         html +="<td>"+mark+"</td>";
 // XXX: Weight sum should return 100
                         measure +=mark*weight/100.0; //

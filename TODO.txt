@@ -12,12 +12,11 @@ Icons:
 PENDIENTE: (debe ocupar poco)
   CÓDIGO:
         * Actividades:
-            * Añadir actividad - Mantener - Eliminar.
-                Añadir enlace a grupos dentro de la actividad, para asignar dicha actividad a un grupo concreto.
+            *  Eliminar actividades.
                 Botón de habilitar-deshabilitar actividades
         - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
-        - Instalar datos "reales"  (he escrito algunos datos, no es posible utilizar el % en el executeSql, ¿por qué?
+        - ( no es posible utilizar el % en el executeSql, ¿por qué?
                     - Cómo introducir horario (¿?¿?)
             - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
     - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
@@ -48,7 +47,7 @@ TASKS DONE:
     BUGS:
     - Reports->Assessment:
         * No lista todos los alumnos
-        * Lista con nombre incorrecto las actividades
+        * Lista con nombre incorrecto las actividades 00001
 
 
 
@@ -394,7 +393,7 @@ function queryStudentsAttendanceByGroupSuccess(tx, results) { * XXX: Falta indic
         * Pendiente diferenciar fechas de informes global_reports_date de la fecha actual, global_actual_date. (hecho)
 
         * Enlazar pantalla de edición de estudiantes. (hecho)
-        * Crear pantalla de edición de actividades.
+        * Crear pantalla de edición de actividades.  (hecho)
         * Revisar y actualizar este TODO a partir de la memoria.
 
         * ¿Hacer pruebas con base de datos MySQL/SQLite real? ¿Dónde está el query para construir la BBDD.?
