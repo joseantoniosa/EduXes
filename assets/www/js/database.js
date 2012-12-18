@@ -338,13 +338,64 @@ function loadStudentsAssessment(db, id_group){
 //TODO Work in progress here!!
                     s_old = results.rows.item(0).s_id;
                     if (len<1) {return false;}
+                    var student_a = new Array();
+                    var name_a = new Array();
+
                     var activity_a = new Array();
+                    var mark_a = new Array();
+                    var weight_a = new Array();
+                    var mark_a = new Array();
+
+                    var no_students =-1;
+
                     var no_activities=0;
                     var a_no_activities=0;
                     var measure =0.0;
                     // html +="<tr>";
                     var is_new=1;
                     var old_s_id=-1;
+                    for (var i = 0; i < len; i++) {
+                        s_id = results.rows.item(i).s_id;
+                        s_name = results.rows.item(i).s_name;
+                        s_surname = results.rows.item(i).s_surname;
+                        activities_name = results.rows.item(i).a_name;
+                        weight = results.rows.item(i).a_weight;
+                        mark = results.rows.item(i).a_mark;
+                        activity_id = results.rows.item(i).a_id;
+
+
+                        if(s_id!=old_s_id) {// Es nuevo, meter en el array los datos
+                            if (is_new==1){
+                                is_new=0;
+                            } else {
+                             //   html +="<td>["+measure+"]</td></tr>";
+                                no_activities=Math.max(no_activities, a_no_activities);
+
+                            }
+                            // Es nuevo, crear el array y meterle datos
+                            no_students ++; // si es nuevo estudiante
+
+                            activity_a[no_students] = new Array();
+                            mark_a[no_students] = new Array();
+                            weight_a[no_students] = new Array();
+
+                            student_a.push(s_surname+", "+s_name);
+
+                           // html +="<tr><td>"+s_surname+", "+s_name+"</td>" ;
+
+                            measure=0.0;
+                            a_no_activities=1;
+                        } else { // Viejo
+                            a_no_activities++;
+
+                        }
+                        activity_a[no_students].push(activity_id);
+                        mark_a[no_students].push(mark);
+                        weight_a[no_students].push(weight);
+
+                        old_s_id=s_id;
+                    }
+/*
                     for (var i = 0; i < len; i++) {
                         s_id = results.rows.item(i).s_id;
                         s_name = results.rows.item(i).s_name;
@@ -370,14 +421,27 @@ function loadStudentsAssessment(db, id_group){
 
                         }
 //                       alert("Max activities: "+no_activities);
-
                         activity_a.push(activities_name); // TODO: Polish this!! 00001
                         html +="<td>"+mark+"</td>";
 // XXX: Weight sum should return 100
                         measure +=mark*weight/100.0; //
                         old_s_id=s_id;
+                    } //*/
+                    html ="";
+                    for(var i=0;i<=no_students; i++) {
+                        html +="<tr><td>"+student_a[i]+"</td>";
+                        measure=0.0;
+                        for(j=0;j<activity_a[i].length;j++) {
+                            html += "<td>"+mark_a[i][j] +"</td>";
+                            measure +=mark_a[i][j]*weight_a[i][j]/100.0; //
+                            alert(" Measure : "+ mark_a[i][j]+ "  "+ weight_a[i][j]  );
+
+                        }
+                        html += "<td>"+measure +"</td>";
+                        html +="</tr>";
 
                     }
+
                     html_pre ="<tr>";
                     html_pre +="<th>Surname, Name </th>";
                     for(var j=0;j<no_activities;j++) {

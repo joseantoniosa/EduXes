@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2012 jantonio.
+# Copyright (c) 2012 José Antonio Salgueiro Aquino.
+# GPL-3 Licensed
 
 Repository:
 	https://github.com/joseantoniosa/EduXes
@@ -11,15 +12,17 @@ Icons:
 
 PENDIENTE: (debe ocupar poco)
   CÓDIGO:
+
+        - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
+        * Github Issues
         * Actividades:
             *  Eliminar actividades.
                 Botón de habilitar-deshabilitar actividades
         - ¿Cómo subir imágenes? photo="";             - Cómo imágenes (ver URL de Manuel) ???
            ¿Cómo guardar-importar los datos?
         - ( no es posible utilizar el % en el executeSql, ¿por qué?
-                    - Cómo introducir horario (¿?¿?)
-            - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
-    - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
+            - Cómo introducir horario (¿?¿?)
+        - Mejoras en navegación (posibilidad de acceder al menú principal desde algunas pantallas)
 
   DOCUMENTACIÓN:
         - Documentar las funciones, realizar esquemas explicativos.
@@ -48,6 +51,7 @@ TASKS DONE:
     - Reports->Assessment:
         * No lista todos los alumnos
         * Lista con nombre incorrecto las actividades 00001
+        * Si no hay nota, esta debe ser "0"!!
 
 
 
