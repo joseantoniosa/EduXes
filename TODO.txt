@@ -13,7 +13,6 @@ Icons:
 PENDIENTE: (debe ocupar poco)
   CÓDIGO:
 
-        - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
         * Github Issues
         * Actividades:
             *  Eliminar actividades.
@@ -47,15 +46,14 @@ Look at the end of file
 TASKS DONE:
 
 <!-- TODO: Update and New Activity
-    BUGS:
+
+
+19/12/2012:
     - Reports->Assessment:
         * No lista todos los alumnos
         * Lista con nombre incorrecto las actividades 00001
         * Si no hay nota, esta debe ser "0"!!
-
-
-
-
+        - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
 18/12/2012:
          - Limpiar los formularios de datos antiguos.
         - Weight sum should return 100

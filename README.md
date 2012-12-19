@@ -1,23 +1,36 @@
 
 Classroom Management
 
- This application is intended to be used by high school teachers
+ This application is intended to be used by high school teachers.
 
- Management of groups of students, students, activities, marks.
+
+ Management of groups of students, students, activities and marks.
 
  - Groups -
  - Students -
  - Activities -
 
+ User can control attendance and assessment for several groups of students.
+
+== Acknowledgments
+
+Coded for  Master Software Libre Practicum 5th Edition Vigo
+
+ http://www.mastersoftwarelibre.com
+
+
 = Howto =
  Type date in "Month/Day/Year" format
 
- Now is working:
+ == Now is working:
 - Insert and View Attendance, Excused for student.
 - List Students and groups.
 - Chage student's data but photo.
 - Add Group. Goto Settings -> Groups-> Add
 - Add Student. Goto Settings ->Groups -> Choose a group-> Add
+- Add, Edit Activity
+- Manage marks for students
+- List of marks for groups, includes mean values for each activity.
 
  contact info : info@joseantonio.org
 

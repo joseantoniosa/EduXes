@@ -4,6 +4,10 @@
  *
  * Copyright (C) 2012  José Antonio Salgueiro Aquino <info@joseantonio.org>
  *
+ * Coded for  Master Software Libre Practicum 5th Edition Vigo
+
+ http://www.mastersoftwarelibre.com
+
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +34,7 @@ var global_id; // used
 var global_id_group=0; // used
 var global_id_student=0;
 var global_id_activity=0; // used
-var global_max_activities=0;
+var global_max_activities=0; // used
 var global_no_groups=0; // used
 var global_week_day=-1;
 var global_db; // used
@@ -276,8 +280,7 @@ function queryReportAttendanceSuccess(tx, results) {
 }
 
 
-// TODO:   loadGroupsAssessment(global_db); Reports
-
+//
 function loadGroupsAssessment(db){
     var sql="SELECT id, data, other_data FROM groups;";
     db.transaction(function(tx) {
@@ -1203,11 +1206,6 @@ function queryActivitiesSuccess(tx, results) {
    }0 ;
    $('#activities_ul').listview('refresh');
 }
-// TODO: Edit Activity
-function editActivityL(id_activity) {
-
-
-}
 
 function queryLoadAllActivitiesDB(tx) {
        log("Query Activities \n");
@@ -1255,7 +1253,6 @@ function loadActivity(db, id_activity ) {
     var sql = " SELECT  id, name , date_init , date_end , weight , final FROM ACTIVITIES WHERE id="+id_activity;
 
     db.transaction(function(tx) {
-
         log("getActivity :"+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
@@ -1293,9 +1290,7 @@ function loadActivity(db, id_activity ) {
                             sql += " activities_group.enabled AS enabled, groups.id , groups.data as data ";
                             sql += " FROM activities_group, groups WHERE activities_group.id_activity="+id_activity ;
                             sql += "  AND   activities_group.id_group=groups.id";
-
-                            log("SQL : "+ sql); // VIP query
-
+                            //log("SQL : "+ sql); // VIP query
                             tx.executeSql(sql,[],
                             dbSuccessFunc = function(txx, rrs) {
                                 var len=  rrs.rows.length;
@@ -1303,8 +1298,6 @@ function loadActivity(db, id_activity ) {
                                 for (var i = 0; i < len; i++) { // ¿por que 16?
                                     var id_group = rrs.rows.item(i).id_group;
                                     var in_act = $("#in_group_activity_" + id_group );
-                                    log("LOAD. Data "+ rrs.rows.item(i).data);
-                                    log("LOAD. Ag_id_group "+ rrs.rows.item(i).id_group);
                                     if(rrs.rows.item(i).enabled !=0) {
                                          in_act.attr("checked",true); //.checkboxradio("refresh");
                                          //in_act.checkboxradio("refresh");
@@ -1344,7 +1337,6 @@ function loadActivity(db, id_activity ) {
 
 }
 // Update activity
-
 function updateActivity(db, name , date_init , date_end , weight , e_final  ){
     var id_activity = global_id_activity;
     var e_name= name;
@@ -1395,7 +1387,6 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
 }
 
 //
-// TODO: por hacer updateActivity
 // Update Activities for each group
 function updateActivitiesGroup(db, id_group, id_activity, enabled , a_date, notes){
     db.transaction(function(tx) {
@@ -1542,17 +1533,18 @@ function loadGroupsActivitiesEdit(db){
 //
 //------------- Assessment:
 
-// TODO: clean this code! Aclarar todo este código
+// TODO: clean this code!
 //
 
 function fillSelectStudentAssessment(db, select_student_id, id_session, id_student) {
-
+    var html="";
     var id_activity= $('#list_assessment_select').val() ;// Activity selected
     global_id_activity= id_activity;
 
     var text_select = $('#' + select_student_id);
-    var html="";
-    for(var i=0;i<=10;i++) {
+
+    html += "<option value=' ' selected='selected' > </option>";
+    for(var i=10;i>=0;i--) {
         html += "<option value='"+i+"'>"+ i+"</option>";
     }
     text_select.empty().append(html);
@@ -1618,9 +1610,7 @@ function insertStudentAssessmentL(db,id_student,id_group, id_activity,mark) {
 
 
 function onChangeStudentAssessment(id_student,id_group, id_activity){
-
-// Debe hacer un insert o un update según existan datos
-    var db= global_db;
+    var db = global_db;
 
     var sql= "SELECT id_student, id_activity, mark FROM ACTIVITIES_STUDENT  ";
     sql += "WHERE id_activity="+id_activity+ " AND id_student="+ id_student ;

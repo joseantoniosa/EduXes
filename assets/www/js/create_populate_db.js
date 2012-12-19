@@ -1,11 +1,11 @@
 /* Create and populate database
-*/
-
-/*
  * EduXes
  *
  * Copyright (C) 2012  José Antonio Salgueiro Aquino <info@joseantonio.org>
- *
+ *Coded for  Master Software Libre Practicum 5th Edition Vigo
+
+ http://www.mastersoftwarelibre.com
+
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
