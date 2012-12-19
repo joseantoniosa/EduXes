@@ -30,6 +30,7 @@ var global_id; // used
 var global_id_group=0; // used
 var global_id_student=0;
 var global_id_activity=0; // used
+var global_max_activities=0;
 var global_no_groups=0; // used
 var global_week_day=-1;
 var global_db; // used
@@ -307,6 +308,46 @@ function loadGroupsAssessment(db){
                 } );
     }  );
 }
+//
+// TODO: Create a object to store activity information
+// XXX: Very experimental
+// >> var a = [[{mark: 23, weight: 5}, {mark: 12, weight: 3}], [{mark: 9, weight: 12}]];a[1][0].mark;
+function Activity(i,j){
+      this.i = i;
+      this.j = j;
+      this.a = new Array();
+    // inicializa la matriz estudiantes-actividades
+    var SActivity = new Array(max_students);
+    for (var i = 0; i < SActivity.length; ++i) {
+        SActivity[i] = new Array(max_activities);
+        for (var j = 0; j < SActivity[i].length; ++j) {
+            SActivity[i][j].mark = 0;
+            SActivity[i][j].weight = 0;
+        }
+    }
+
+}
+/*
+ * function oss (aa,bb) {
+    this.mark=aa;
+    this.weight = bb;
+}
+Brady = new Array (3);
+for (i = 0; i < Brady . length; ++ i) {
+    Brady [i] = new Array (3);
+    for (j = 0; j < Brady[i] . length; ++ j) {
+        Brady[i][j] = new  oss(1,2) ;
+    }
+}
+ */
+
+////*/
+function Peers (mark, weight, activity){
+    this.mark = mark;
+    this.weight = weight;
+    this.activity = activity;
+}
+
  // TODO: Assessment - List Students
 function loadStudentsAssessment(db, id_group){
 // TODO !!
@@ -327,7 +368,7 @@ function loadStudentsAssessment(db, id_group){
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
                     var html="";
-                    var len = results.rows.length;
+
                     var ul_list=$('#students_assessment_reports_ul');
                     var table = $('#students_assessment_reports_table');
                     // var text_select = $('#' + select_student_id); //
@@ -337,7 +378,7 @@ function loadStudentsAssessment(db, id_group){
                     // ul_list.empty();
 //TODO Work in progress here!!
                     s_old = results.rows.item(0).s_id;
-                    if (len<1) {return false;}
+
                     var student_a = new Array();
                     var name_a = new Array();
 
@@ -350,11 +391,50 @@ function loadStudentsAssessment(db, id_group){
                     var no_students =-1;
 
                     var no_activities=0;
+
                     var a_no_activities=0;
-                    var measure =0.0;
+                    var measure =0.00;
                     // html +="<tr>";
                     var is_new=1;
                     var old_s_id=-1;
+                    var len = results.rows.length; // max number of students
+                    var max_activities = global_max_activities;
+                    var max_students = results.rows.length; // max number of students
+
+                    if (len<1) {return false;}
+
+                    // inicializa la matriz estudiantes-actividades
+                    var SActivity = new Array (max_students);
+                    for (var i = 0; i < SActivity.length; ++ i) {
+                        SActivity[i] = new Array (max_activities);
+                            for (var j = 0; j < SActivity[i].length; ++ j) {
+                                SActivity[i][j] = new  Peers(0,0,0) ;   // XXX: Initialize to zero
+                            }
+                    }
+
+
+                    alert("Máximo número de actividades : "+ global_max_activities);
+                    // mejor => Todas las actividades activas.<< Demasiado complicado (Tijera de Ochkam)
+                    old_s_id=-1;
+                    a_no_activities=0;
+                    no_activities=0;
+                    var k=0;
+//
+//  activity = {}00
+// SER CUIDADOSO.
+/// TAKE CARE!!
+// http://www.w3schools.com/js/js_objects.asp
+                    //var activity = {};
+//      activity-1  activity-3  activity-5
+// A                    8           7
+// B         7          5
+// C         3
+// Max actividades => 3
+// Max students => 3 !
+// act_id_1. act_id_3, act_id_5
+//
+// var a = [[{mark: 23, weight: 5}, {mark: 12, weight: 3}], [{mark: 9, weight: 12}]];a[1][0].mark;
+//
                     for (var i = 0; i < len; i++) {
                         s_id = results.rows.item(i).s_id;
                         s_name = results.rows.item(i).s_name;
@@ -364,20 +444,22 @@ function loadStudentsAssessment(db, id_group){
                         mark = results.rows.item(i).a_mark;
                         activity_id = results.rows.item(i).a_id;
 
-
                         if(s_id!=old_s_id) {// Es nuevo, meter en el array los datos
                             if (is_new==1){
                                 is_new=0;
                             } else {
                              //   html +="<td>["+measure+"]</td></tr>";
                                 no_activities=Math.max(no_activities, a_no_activities);
-
                             }
+
                             // Es nuevo, crear el array y meterle datos
                             no_students ++; // si es nuevo estudiante
 
-                            activity_a[no_students] = new Array();
-                            activity_name_a[no_students] = new Array();
+                          //  SActivity[no_students][0].mark = mark;
+                          //  SActivity[no_students][0].weight = weight;
+
+                            activity_a[no_students] = new Array(max_activities);
+                            activity_name_a[no_students] = new Array(max_activities);
 
                             mark_a[no_students] = new Array();
                             weight_a[no_students] = new Array();
@@ -388,10 +470,16 @@ function loadStudentsAssessment(db, id_group){
 
                             measure=0.0;
                             a_no_activities=1;
+                            k=0;
                         } else { // Viejo
                             a_no_activities++;
+                            k++;
 
                         }
+                        SActivity[no_students][k].mark =  results.rows.item(i).a_mark;
+                        SActivity[no_students][k].weight =  results.rows.item(i).a_weight;
+                        SActivity[no_students][k].activity = results.rows.item(i).a_id;
+
                         activity_a[no_students].push(activity_id);
                         activity_name_a[no_students].push(activity_name);
                         mark_a[no_students].push(mark);
@@ -1217,7 +1305,7 @@ function editActivityL(id_activity) {
 
 }
 
-function queryAllActivitiesDB(tx) {
+function queryLoadAllActivitiesDB(tx) {
        log("Query Activities \n");
        tx.executeSql('SELECT * FROM ACTIVITIES',[],
         dbSuccessFunc = function(tx, results) {
@@ -1242,6 +1330,7 @@ function queryAllActivitiesDB(tx) {
                             ul_list.append(html);
                         }
                         ul_list.listview('refresh');
+                        global_max_activities = results.rows.length;
                     }
                 },
                 dbErrorFunc = function(tx, e) {
@@ -1254,7 +1343,7 @@ function queryAllActivitiesDB(tx) {
 }
 
 function loadAllActivities(db) {
-       db.transaction(queryAllActivitiesDB );
+       db.transaction(queryLoadAllActivitiesDB );
    }
 
 //  populate update_activity page
@@ -1372,7 +1461,6 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
         log("updateActivity :"+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
-///
                 var enabled=0;
                 // alert("Nº groups "+ global_no_groups);
                 for (var i=0;i<global_no_groups;i++) { // XXX: supone que los ids de grupo son correlativos
@@ -1387,9 +1475,6 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
                         log("UPDATE.  updateActivity ID Group id="+ i +" <-> "+enabled )
                         updateActivitiesGroup(db, i , id_activity, enabled , date_init, notes);
                 }
-//
-///
-///
                 return true;
             },
             dbErrorFunc = function(tx, e) {
@@ -1401,8 +1486,7 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
 
     });
 //
-//^^^  ^^^^^
-// POR HACER
+
 
 }
 
@@ -1434,6 +1518,30 @@ function updateActivitiesGroup(db, id_group, id_activity, enabled , a_date, note
 }
 
 
+function insertActivitiesGroup(db, id_group, last_inserted_row, enabled , a_date, notes){
+    db.transaction(function(tx) {
+        var sql = 'INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (';
+        sql +=  id_group ;
+        sql += ','+ last_inserted_row;
+        sql += ', ' + enabled ; // 0/1
+        sql += ', "' + a_date+'"';
+        sql += ', "' + notes+'"';
+        sql += ');';
+        log(" insertActivitiesGroup  : "+sql);
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx, results) {
+                global_max_activities ++; // A new activity
+                return true;
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error  insertActivitiesGroup : "+e.message);
+                    alert("There has been an error  insertActivitiesGroup : " + e.message);
+                    return false;
+        });
+
+    });
+}
 
 function  insertNewActivity( db, name , date_init , date_end , weight , e_final  ) {
     var last_inserted_row;
@@ -1473,10 +1581,8 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
                              enabled=1;
                         }
                         notes ="";
-                      //  alert("ID Group "+ i +" <-> "+enabled )
                         insertActivitiesGroup(db, i , i_last_inserted_row, enabled , a_date, notes);
                 }
-//
                 return true;
             },
             dbErrorFunc = function(tx, e) {
@@ -1488,30 +1594,6 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
     });
 }
 
-function insertActivitiesGroup(db, id_group, last_inserted_row, enabled , a_date, notes){
-    db.transaction(function(tx) {
-        var sql = 'INSERT INTO activities_group ( id_group, id_activity, enabled , a_date, notes) VALUES (';
-        sql +=  id_group ;
-        sql += ','+ last_inserted_row;
-        sql += ', ' + enabled ; // 0/1
-        sql += ', "' + a_date+'"';
-        sql += ', "' + notes+'"';
-        sql += ');';
-        log(" insertActivitiesGroup  : "+sql);
-        tx.executeSql(sql,[],
-            dbSuccessFunc = function(tx, results) {
-                return true;
-            },
-            dbErrorFunc = function(tx, e) {
-                if (tx.message) e = tx;
-                    log(" There has been an error  insertActivitiesGroup : "+e.message);
-                    alert("There has been an error  insertActivitiesGroup : " + e.message);
-                    return false;
-        });
-
-    });
-
-}
 
 
 function loadGroupsActivitiesEdit(db){
@@ -1739,7 +1821,6 @@ function loadGroupAssessment(db,id_group) {
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 var html ="";
-                alert(results.rows.length);
                 for (var i=0;i<results.rows.length;i++) {
                     a_id = results.rows.item(i).a_id;
                     a_name = results.rows.item(i).a_name;
@@ -1757,7 +1838,6 @@ function loadGroupAssessment(db,id_group) {
                 }
                 global_id_group = id_group;
                 listStudentsByGroupAssessment( db, id_group, $('#students_assessment_ul'));
-
             },
             dbErrorFunc = function(tx, e) {
                 if (tx.message) e = tx;
@@ -1768,8 +1848,7 @@ function loadGroupAssessment(db,id_group) {
             ); // tx.executeSql(sql,[],
         });
 
-} // end of function
-
+}
 
 //
 // studentAssesment
@@ -1833,88 +1912,31 @@ function queryStudentsAssessmentDB(tx) {
     });
 
 }
+////
 
+function queryListMaxActivities(tx) {
+       tx.executeSql('SELECT id FROM ACTIVITIES',[],
+        dbSuccessFunc = function(tx, results) {
+                    global_max_activities = results.rows.length;
+                    alert("MAx ACTIVITIES : " + global_max_activities );
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("queryListMaxActivities: " +sql);
+                    log(" There has been an error queryListMaxActivities: "+e.message);
+                    alert("There has been an error queryListMaxActivities: " + e.message);
+                    return false;
+                });
+}
+///
+function listMaxActivities(db) {
 
+    global_max_activities=0;
+    db.transaction(queryListMaxActivities);
 
-// LoadGroupAssessment  :
+}
 
-//            CREATE TABLE IF NOT EXISTS ACTIVITIES
-// id integer primary key, name text, date_init text, date_end text, weight integer, final integer );
-
-/*
-    html =' <option value="standard">Standard: 7 day</option> ';
-    html +=' <option value="rush">Rush: 3 days</option>';
-    html +=' <option value="express">Express: next day</option>';
-    html +=' <option value="overnight">Overnight</option>';
-
-    list_asset.append(html);
-//*/
-/*
-    var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo ,";
-    sql += " GROUPS.id as g_id, GROUPS.data as data, ";
-    sql += " GROUPS.id as g_id, GROUPS.data as data, ";
-    sql += " FROM STUDENTS, GROUPS WHERE  ( g_id=STUDENTS.id_group  ";
-    sql += " AND g_id=" + global_id + " ) ORDER BY id_student";
-
-    tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
-        dbErrorFunc = function(tx, e) {
-            if (tx.message) e = tx;
-            log(" queryStudentsAttendanceDB " + sql);
-            alert(" There has been an error queryStudentsAttendanceDB: " + e.message);
-        return false;
-    });
-
-
-
-
-    $('#current_group_assessment').text("Curso");
-    var student_asset=$('#students_assessment_ul');
-
-    student_asset.empty();
-
- var len = results.rows.length;
-    var html="";
-    var id=0;
-    var photo="";
-    var name="";
-    var surname="";
-    var id_group=0;
-    var id_session=0;
-
-    $('#students_attendance_ul').empty();
-    if(len>0) {
-        $('#current_group_attendance').text(results.rows.item(0).data);
-    }
-    for (var i=0;i<len;i++) {
-        id = results.rows.item(i).id_student;
-        photo = results.rows.item(i).photo;
-        name = results.rows.item(i).name;
-        surname = results.rows.item(i).surname;
-        id_group = results.rows.item(i).g_id;
-
-        id_session = global_session; //
-
-        html = "<li data-role='fieldcontain'> ";
-        html += "<label for='select_student_"+id+"' class='select'> ";
-        html += "<img height='20px' src='photos/"+photo +"' alt='" + id+surname + "' >";
-        html += surname + "," + name + "</label> " ;
-        html +="<select name='select_student_"+id+"' id='select_student_"+id+"' ";
-        html += " onChange='studentState("+id + "," +id_group + ","+id_session+ ");'>";
-        html +="</select>";
-        html += "</li>";
-        $('#students_attendance_ul').append(html);
-// #id to be filled, id_session, id_student // Asynchronous
-        fillSelectStudent(global_db, "select_student_"+id, id_session, id);
-    }
-    $('#students_attendance_ul').listview('refresh');
-//*/
-
-
-//
 // ----------------------------------------------------------------------------------------------------------
-
-
-
 // delete
    function deleteRawRecord(db, table, id){
        var db2 = db;

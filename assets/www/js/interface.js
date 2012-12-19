@@ -24,12 +24,13 @@
         global_db=db;
 // On first time it populate DB:
 
-    global_db.transaction(drop_table_if_exist); // DEBUG
-    global_db.transaction(createDB); // , errorCB, successCB);
+    db.transaction(drop_table_if_exist); // DEBUG
+    db.transaction(createDB); // , errorCB, successCB);
 // On production this will be removed:
     log("onDeviceReady PopulateDB ");
     global_db.transaction(populateDB); //, errorCB, successCB); // DEBUG
-    initialize_data() ;
+    initialize_data(db) ;
+
     $.mobile.page.prototype.options.backBtnTheme = "a";
     $.mobile.changePage("#intro");
 }
@@ -37,12 +38,14 @@ function init(){
     document.addEventListener("deviceready", onDeviceReady, false);
 }
 // Load default data
-function initialize_data() {
+function initialize_data(db) {
     // set date to current date:  Month / Day /Year
     var a_today = new Date(); // Today
     global_actual_date = a_today;
     global_reports_date = global_actual_date ;
-   // $("#daily_date").noWeekends ;
+
+    listMaxActivities(db);
+
     $("#daily_date_scroller").val( textDate(a_today) );
     $("#teachers_name").text("Geography");
 // New:
@@ -78,7 +81,6 @@ function initialize_data() {
         animate: 'slidedown',
         dateOrder: 'mmD ddyy'
     });
-
     // daily_date_scroller
 
 }
@@ -363,6 +365,7 @@ function onListStudentsAssessment(id_group){
     $.mobile.showPageLoadingMsg();
     //alert("Assessment "+ id_group) ;
     global_id_group = id_group;
+// Get all activities list!!??
     loadStudentsAssessment(global_db, id_group); // TODO: Assessment - List Students
     $.mobile.changePage("#list_students_assessment_reports");// TODO: Assessment - List Students
 
