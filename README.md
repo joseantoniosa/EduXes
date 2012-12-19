@@ -21,6 +21,15 @@ Coded for  Master Software Libre Practicum 5th Edition Vigo
 
 = Howto =
  Type date in "Month/Day/Year" format
+ In your smart-phone or tablet:
+  - Look up "EduXes" in google:
+  - Go to "bin" folder 
+  - open "EduXes.apk"
+  - Click on "Raw"
+  - Save and Install
+  - Send bugs, complaints:
+  https://github.com/joseantoniosa/EduXes/issues?state=open
+  
 
  == Now is working:
 - Insert and View Attendance, Excused for student.
