@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: master_memoriae.aux
+A level-1 auxiliary file: copyright.aux
 A level-1 auxiliary file: agradecimientos.aux
 A level-1 auxiliary file: resumen.aux
 A level-1 auxiliary file: introduccion.aux
@@ -14,7 +15,7 @@ The style file: alpha.bst
 Database file #1: librero.bib
 You've used 2 entries,
             2543 wiz_defined-function locations,
-            581 strings with 4866 characters,
+            582 strings with 4879 characters,
 and the built_in function-call counts, 687 in all, are:
 = -- 65
 > -- 27
