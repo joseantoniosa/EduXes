@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  20 DEC 2012 05:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  20 DEC 2012 06:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -290,6 +290,37 @@ LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip53
+\fb@frw=\dimen125
+\fb@frh=\dimen126
+\FrameRule=\dimen127
+\FrameSep=\dimen128
+)
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count110
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+\tw=\dimen129
+
 (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/dsfont.sty
 Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 )
@@ -304,20 +335,20 @@ Writing index file master_memoriae.idx
 (./conclusiones.aux) (./anexos.aux))
 \openout1 = `master_memoriae.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -325,10 +356,17 @@ Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+34.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
-Package epstopdf Warning: Drivers other than `pdftex.def' are not supported.
-
-)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
@@ -367,24 +405,38 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box26
-Package hyperref Info: Link coloring OFF on input line 35.
+Package hyperref Info: Link coloring OFF on input line 42.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count110
+\c@section@level=\count111
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 42.
+LaTeX Info: Redefining \pageref on input line 42.
+LaTeX Info: Redefining \nameref on input line 42.
 
 (./master_memoriae.out) (./master_memoriae.out)
 \@outlinefile=\write5
 \openout5 = `master_memoriae.out'.
 
- [1
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count112
+\scratchdimen=\dimen130
+\scratchbox=\box27
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen131
+\MPnumerator=\count116
+\makeMPintoPDFobject=\count117
+\everyMPtoPDFconversion=\toks20
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
@@ -392,23 +444,43 @@ LaTeX Info: Redefining \nameref on input line 35.
 \openout2 = `copyright.aux'.
 
  (./copyright.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 3.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 12.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3.
-File: creative-commons.ps Graphic file (type eps)
- <creative-commons.ps>) [1
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 12.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 12.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 12.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 12.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+<creative-commons.png, id=128, 88.33pt x 31.11626pt>
+File: creative-commons.png Graphic file (type png)
+
+<use creative-commons.png>
+Package pdftex.def Info: creative-commons.png used on input line 15.
+(pdftex.def)             Requested size: 88.32977pt x 31.11617pt.
+) [1
 
 
 
-
-Non-PDF special ignored!]
+ <./creative-commons.png (PNG copy)>]
 \openout2 = `agradecimientos.aux'.
 
- (./agradecimientos.tex
+
+(./agradecimientos.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -426,30 +498,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 
-]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 19.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-LaTeX Font Info:    Try loading font information for U+msa on input line 19.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 19.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) [5]) [6]
-(./master_memoriae.toc [7
+] [5]) [6] (./master_memoriae.toc [7
 
 
 ])
 \tf@toc=\write6
 \openout6 = `master_memoriae.toc'.
 
- [8] (./master_memoriae.lof)
+ [8]
+(./master_memoriae.lof)
 \tf@lof=\write7
 \openout7 = `master_memoriae.lof'.
 
@@ -460,14 +517,13 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ]
 \openout2 = `introduccion.aux'.
 
-
-(./introduccion.tex
+ (./introduccion.tex
 Chapter 1.
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.138 \include{introduccion}
+l.145 \include{introduccion}
                              [1
 
 
@@ -501,13 +557,13 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.140 \include{working}
+l.147 \include{working}
                        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (521.61993pt too wide) in paragraph at lines 111--140
+Overfull \hbox (521.61993pt too wide) in paragraph at lines 111--147
 \T1/cmr/m/n/12 not known or fea-si-ble, global vari-ables are used: named af-te
 r global$[]\OML/cmm/m/it/12 ; andinblockcapitals:Deadline:Developmentwasdelayed
 becauseIhavenoenoughsparetimeandaboveproblemsweretimecostly:$ 
@@ -522,53 +578,80 @@ becauseIhavenoenoughsparetimeandaboveproblemsweretimecostly:$
 
 ]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 14.
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.21 \begin{minipage}[c]{200}
+                             
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.23  \end{minipage}
+                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 29.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [7]
-Overfull \hbox (711.54596pt too wide) in paragraph at lines 43--43
-[]\T1/cmtt/m/n/12 <a href="#" onclick="navegaMes(\''.$mes_actual.'\',\''.$anyo_
-actual.'\',\'menos\')" title="'.$id_anterior.'"><img src="imgs/anterior_peq.png
-" class="alin_bajo" alt="'.$id_anterior.'" /></a>[] 
- []
+) [7])
+Underfull \vbox (badness 3333) has occurred while \output is active []
 
-) [8]
+ [8]
+
+Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
+ Make it at least 29.11858pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
 \openout2 = `objetivo.aux'.
 
- (./objetivo.tex
-Chapter 4.
-) [9
+ (./objetivo.tex [10
 
 
 
 ]
+Chapter 4.
+) [11]
 \openout2 = `descripcion_informatica.aux'.
 
- (./descripcion_informatica.tex [10
+ (./descripcion_informatica.tex [12
 
 
 
 ]
 Chapter 5.
-) [11]
+) [13]
 \openout2 = `resultados_experimentales.aux'.
 
- (./resultados_experimentales.tex [12
+ (./resultados_experimentales.tex [14
 
 
 
 ]
 Chapter 6.
-) [13]
+) [15]
 \openout2 = `conclusiones.aux'.
 
- (./conclusiones.tex [14
+ (./conclusiones.tex [16
 
 
 
 ]
 Chapter 7.
-) [15] [16
+) [17] [18
 
 
 ]
@@ -579,42 +662,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--10
 
  []
 
-) [17
+) [19
 
 
-] (./master_memoriae.bbl [18
+] (./master_memoriae.bbl [20
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
- [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
  (./master_memoriae.aux
 (./copyright.aux) (./agradecimientos.aux) (./resumen.aux) (./introduccion.aux)
 (./working.aux) (./estado_del_arte.aux) (./objetivo.aux)
 (./descripcion_informatica.aux) (./resultados_experimentales.aux)
 (./conclusiones.aux) (./anexos.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 167.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
-
-
-Package rerunfilecheck Warning: File `master_memoriae.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `master_memoriae.out':
-(rerunfilecheck)             Before: EECF2612C3C2FA021EACAD6F0E372630;2198
-(rerunfilecheck)             After:  A5DE6F3E3C8D7250AB42E1F57CCF6B2B;2191.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 167.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
+Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
+(rerunfilecheck)             Checksum: 1496AFA9E5DD76EE154FE2AF6983A6CE;2245.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 174.
  ) 
 Here is how much of TeX's memory you used:
- 7146 strings out of 494956
- 104546 string characters out of 3179077
- 189996 words of memory out of 3000000
- 10086 multiletter control sequences out of 15000+200000
+ 8165 strings out of 494956
+ 117669 string characters out of 3179077
+ 211072 words of memory out of 3000000
+ 11080 multiletter control sequences out of 15000+200000
  21554 words of font info for 61 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
- 44i,10n,43p,407b,452s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,11n,43p,515b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -632,10 +708,10 @@ antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master_memoriae.pdf (31 pages, 196832 bytes).
+Output written on master_memoriae.pdf (33 pages, 202486 bytes).
 PDF statistics:
- 788 PDF objects out of 1000 (max. 8388607)
- 320 compressed objects within 4 object streams
- 62 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 804 PDF objects out of 1000 (max. 8388607)
+ 331 compressed objects within 4 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 230 words of extra memory for PDF output out of 10000 (max. 10000000)
 

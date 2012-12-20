@@ -8,12 +8,25 @@ From user point-of-view there are online documentation5. This application includ
 	Several screen-shots were taken and will be reused in current application:
 
 
+\section{Siestta}
 
 This application (Siestta) are also available for PDAs, it could be a valid solution but it is server-side with outdated technologies. Data structure from Siestta is standard and fully functional, and it could be partially reused by EduXes.
 Source code are also shown: calendario.php. It shows us a PHP application which uses sessions variables and is not Model-View-Controller oriented.
-\begin{verbatim}
-  
 
+\fcolorbox{black}{gray!20}{
+\parbox{\tw}{All parts of this prealgebra textbook are copyrighted © 2009 in the name Department of Mathematics, College of the Redwoods. They are not in the public domain. However, they are being made available free for use in educational institutions. This offer does not extend to any application that is made for profit. Users who have such applications in mind should contact David Arnold or Bruce Wagner at [hidden email] or [hidden email].
+}} 
+
+
+\begin{minipage}[c]{200}
+ text text
+ \end{minipage}
+
+
+
+
+\begin {shaded}
+\begin{verbatim}
 <?php 
 session_start(); 
 require('config.php'); 
@@ -37,11 +50,14 @@ echo '
 <table class="tablacentrada_i"> 
 <tr> 
 <td> 
-<a href="#" onclick="navegaMes(\''.$mes_actual.'\',\''.$anyo_actual.'\',\'menos\')" title="'.$id_anterior.'"><img src="imgs/anterior_peq.png" class="alin_bajo" alt="'.$id_anterior.'" /></a> 
+<a href="#" onclick="navegaMes(\''.$mes_actual.'\',\''.$anyo_actual.
+'\',\'menos\')" title="'.$id_anterior.'"><img src="imgs/anterior_peq.png" 
+class="alin_bajo" alt="'.$id_anterior.'" /></a> 
 '; 
 $nombre_mes = numero_mes_a_nombre($mes_actual);
 \end{verbatim}
 
+\end{shaded}
 
 Develop database structure: tables and relationships. 
 Data base structure looks like Illustration 5: EduXes Database structure 
