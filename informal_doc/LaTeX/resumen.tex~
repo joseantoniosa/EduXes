@@ -1,4 +1,44 @@
-\chapter{Resumen}
+\chapter{Description of the practicum}
 %\thispagestyle {empty}
+The main objective of this Master Thesis consist in the development of an mobile application to be used int highschools by teachers.
+It could allows teachers to carry on control students attendance, their behavior. Also it permits quick assessment by activity.
+Teachers would read students reports: weekly and daily assessment, by activity assessments and total marks.
+\begin{itemize}
+  \item {Name :} Jos\'e Antonio Salgueiro Aquino.
+  \item {Birth date: } august 5th 1970
+\item {Education:} B.Sc. in Fundamental Physics, University of Santiago de Compostela University 1988-1993.
+\item {Address:} Marin (Pontevedra). Spain.
+\item {Current position: } Secondary School teacher in Technology.
+\end{itemize}
 
-    Resumen del documento \dots
+Working times (planned) :
+  300 hours. 	From 6th August, to 30 September, on an eight hours day basis.
+
+Technologies involved:
+\begin{itemize}
+  \item  Java \texttrademark  language.
+  \item  Android \texttrademark  . The operatig  skeleton application.
+  \item  PhoneGap \texttrademark (alias Cordova ) framework to develop multi-platform applications.
+  \item  JQuery and JqueryMobile to development of mobile oriented applications.
+  \item  JavaScript with Web Databases.
+  \item  Git for version control system.
+  \item \LaTeX{} for documentation.
+\end{itemize}
+
+Meetings:
+\begin{itemize}
+  \item Technologies to be used were stated, work methodologies, first application windows (pages), Android version to be used (2.3.3) because is the most popular. 
+  \item	Several emails and gtalk conversations about organization, general problems were written.
+\end{itemize}
+Teleworking is carried on 
+
+
+Materials and special equipment used:
+\begin{itemize}
+  \item {Hardware: } Intel Quad, 6GiB RAM, 500GiB HD. 
+  \item {Software: } Debian GNU/Linux Wheezy (testing), Eclipse Juno, JQuery 1.8.1, jQueryMobile 1.1.1, and PhoneGap-Cordova 1.8.1, Android Virtual Manager 2.3.3, Git 1.7.10.4-1.
+\item { Real testing: } Sony-Ericsson Xperia V mobile phone, with USB cable and wifi.
+\end{itemize}
+
+    
+    

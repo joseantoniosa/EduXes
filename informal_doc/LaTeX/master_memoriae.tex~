@@ -58,11 +58,11 @@
 
 \vspace{2cm}
 %
-\begin{figure}[htb]
-%%Escudo de la reyjuan
-%Para que inserte la imagen en el pdf ejecutar DVI2DPF
-\centerline{\resizebox{.05\textwidth}{!}{\includegraphics{logo_urjc.eps}}}
-\end{figure}
+%%\begin{figure}[htb]
+%%%%Escudo de la reyjuan
+%%%Para que inserte la imagen en el pdf ejecutar DVI2DPF
+%%\centerline{\resizebox{.05\textwidth}{!}{\includegraphics{logo_urjc.eps}}}
+%%\end{figure}
 %
 \begin{center}
 %%{\Large {\bf Universidad Rey Juan Carlos}} \vspace{5mm}
@@ -136,6 +136,8 @@ Manuel Rego Casasnovas\\
 
 % ----------------- INTRODUCCIÓN -----------------------
 \include{introduccion}
+% -----------------  Working plan -----------------------
+\include{working}
 % ----------------- ESTADO DEL ARTE --------------------
 \include{estado_del_arte}
 % ----------------- OBJETIVO ---------------------------
