@@ -1,12 +1,3 @@
-@electronic{PhoneGap,
-  author        = {PhoneGap},
-  title         = {PhoneGap is a free and open source framework that allows you to create mobile apps using standardized web APIs for the platforms you care about},
-  description = {PhoneGap is a free and open source framework that allows you to create mobile apps using standardized web APIs for the platforms you care about},
-  URL           = {http://phonegap.com/},
-  url           = {http://www.phonegap.com},
-  year          = {2012}
-}
-
 @Article{NewCam97,
   author    = {Isaac Newton and Naomi Campbell},
   title     = {A Re-formulation of Gravity with

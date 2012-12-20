@@ -23,6 +23,13 @@
 \usepackage{eucal}
 \usepackage{setspace}\singlespacing
 % Para otros interlineados: \renewcommand{\baselinestretch}{1.05}
+%% Framed-shaded:
+\usepackage{framed}
+\usepackage{xcolor}
+\usepackage{framed}
+\newdimen\tw \tw=\textwidth\advance\tw-10pt
+\definecolor{shadecolor}{gray}{0.9} 
+%% /Shaded
 \usepackage{dsfont} %Para las formulitas
 
 %\pagestyle{headings}
@@ -154,13 +161,14 @@ Manuel Rego Casasnovas\\
 % para que no ponga "Capítulo n" en las secciones anexo y bibliografía
 \renewcommand{\chaptermark}[1]{\markboth{\small{\  #1}}{}}
 % ----------------- ANEXOS -----------------------------
-\include{anexos}
-% ----------------- BIBLIOGRAFÍA -----------------------
+
     % para que funcione bien esto se debe compilar allá donde halla una cita usando "bibtext"
     % el "alpha" es para que ordene la bibliografía por orden alfabético
 \bibliographystyle{alpha} \bibliography{librero}
 % incluye la bibliografía en el índice
-\addcontentsline{toc}{chapter}{Bibliografía}
+\addcontentsline{toc}{chapter}{Bibliography}
+% ----------------- BIBLIOGRAFÍA -----------------------
+\include{bibliography}
 
 %\printindex  %%%% crea un índice alfabético con las palabras indexadas en el documento: \index{palabra}
 
