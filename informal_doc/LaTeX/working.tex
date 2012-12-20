@@ -1,10 +1,17 @@
 \chapter{Working plan}
 %\thispagestyle {empty}
+\section{Description and objectives}
 
-Description and objectives:
-	A multi-platform management application for high school teachers is developed. It can be run on a smart-phone or tablet, or even a personal computer. 
+	A multi-platform management application for high school teachers is developed. It can be run on a smart-phone or tablet. 
 	The actual objectives of the applications are student's management:
-Attendance control.
+	\begin{itemize}
+	  \item Attendance control.
+	  \item Attendance control.
+	  \item Attendance control.
+	  \item Attendance control.
+	  \item Attendance control.
+	\end{itemize}
+
 Misbehaviour control.
 Activities evaluation.
 	Application should include this features:
@@ -54,6 +61,9 @@ Students management window (insert-update-delete students)
 In the following table a broad estimation of time spent in each task are shown.  
 
 Tasks
+\begin{tabular}
+\end{tabular}
+
 Time  (hours)
 State-of-art solutions
 10
@@ -96,16 +106,20 @@ Save data into disk
 Total
 394
 
-Motivation:
-	I am a Technologies teacher, in my daily work I have to evaluate students work such as working with tools, cooperative work, cooperative work with other classmates etc., besides usual activities as written exercises. It could used a long sheet, or an awkward long spreadsheet, but a portable device with a custom application should be desirable.
-	This application increases teacher's productivity because teacher only has to write attendance, or unpunctuality two times (on official report and on application's window), and classroom notes and activity grades on very easy way.
-	The most important feature is to be as easy, fast and intuitive as possible. It could be desirable to be platform independent (Android, iOS, Windows RT), but Android is preferred because it is open source, has a high market share, and to buy an Apple Macintosh computer is not mandatory.
-	I wish to learn from this application how to develop a mobile application, and several technologies: JQuery,  jQueryMobile, PhoneGap/Cordova, SQLITE, git repository management.
+\section {Motivation}
+  As a Technologies teacher, in my daily work I have to evaluate students work such as working with tools, cooperative work, cooperative work with other classmates etc., besides usual activities as written exercises. It could used a long sheet, or an awkward long spreadsheet, but a portable device with a custom application should be desirable.
+  
+	This application tries to increase teacher's productivity because teacher only has to write attendance, or unpunctuality two times (on official report and on application's window), and classroom notes and activity grades on very easy way.
+	
+	The most important feature is to be as easy, fast and intuitive as possible. It could be desirable to be platform independent (Android, iOS, Windows RT), but Android is preferred because it is open source and has a high market share.
+	
+	On the other hand, development of this application improves my computer science skills in  mobile-phone applications development: JQuery,  jQueryMobile, PhoneGap/Cordova, SQLite, Android,  git repository management.
 
-Methodology:
+\section {Methodology}
+
 	This work was carried on building little blocks, also called pages, and make up it into final application. Database structure was separated from interface, and interface was also separated into dynamic and static. Each new functionality was written, tested, and polished. Each new function was written from previous one, and son on.
 	Tools involved were Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality was developed, application was tested on AVM,  if it worked, source code was polished, applicable was tested again, if it was satisfactory a new change was committed into git repository. 
-Work plan:
+\section {Work plan}
 
 Several problems were faced:
 Eclipse environment: A stable, reliable and up-to-date IDE, with several plug-ins is needed. Download vanilla Eclipse Juno from its web-site is chosen because it is more stable, reliable, compatible with newer versions.  Aptana Javascript plugin was chosen because Aptana allows source code auto-completion in JQuery.
@@ -117,3 +131,5 @@ db.transaction(queryFunction, errorHandler, successHandler)
 have up to four and three parameters respectively, only first one is mandatory. I rather use success and error handlers for tx.executeSql function, atomic error control could be better choice.
 Passing variables to functions: Only if another solution is not known or feasible, global variables are used: named after global_*, and in block capitals.
 Deadline. Development was delayed because I have no enough spare time and above problems were time costly.
+
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  20 DEC 2012 23:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  20 DEC 2012 23:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -881,50 +881,18 @@ Chapter 1.
 
 LaTeX Warning: Citation `PhoneGap' on page 1 undefined on input line 8.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.24 \begin{framed}
-                    [1
+l.190 \include{introduccion}
+                             [1
 
 
 ]
-! Missing { inserted.
-<to be read again> 
-                   O
-l.33 O
-      VAL BOX
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
+\openout2 = `working.aux'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.34 \end{ovalbox}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Package hyperref Info: bookmark level for unknown bclogo defaults to 0 on input
- line 46.
-! Undefined control sequence.
-\bcval@logo ->\bcrayon 
-                       
-l.46 \end{bclogo}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-)
+ (./working.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -935,20 +903,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.190 \include{introduccion}
-                             [2]
-\openout2 = `working.aux'.
-
- (./working.tex
-Chapter 2.
-
-Underfull \vbox (badness 6125) has occurred while \output is active []
-
- [3
+l.1 \chapter{
+             Working plan} [2
 
 
 
 ]
+Chapter 2.
+
+Underfull \vbox (badness 6125) has occurred while \output is active []
+
+ [3]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -1078,23 +1043,58 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 Chapter 5.
-) [13]
-\openout2 = `resultados_experimentales.aux'.
+[13]
+! Missing { inserted.
+<to be read again> 
+                   O
+l.27 O
+      VAL BOX
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
 
- (./resultados_experimentales.tex
+! Missing } inserted.
+<inserted text> 
+                }
+l.28 \end{ovalbox}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Package hyperref Info: bookmark level for unknown bclogo defaults to 0 on input
+ line 40.
+! Undefined control sequence.
+\bcval@logo ->\bcrayon 
+                       
+l.40 \end{bclogo}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[14
+[14]
+\openout2 = `resultados_experimentales.aux'.
 
-
-
-]
+ (./resultados_experimentales.tex
 Chapter 6.
-[15])
+[15
+
+
+
+])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1228,7 +1228,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 221.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 221.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 221.
 Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
-(rerunfilecheck)             Checksum: CCA4C8787D9052AEE9773D35725B8993;2316.
+(rerunfilecheck)             Checksum: F80029AB8523AB6B216DE230F8AFE383;2316.
 
 
 LaTeX Warning: There were undefined references.
@@ -1238,7 +1238,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 221.
 Here is how much of TeX's memory you used:
  17220 strings out of 494956
  304559 string characters out of 3179077
- 382841 words of memory out of 3000000
+ 382789 words of memory out of 3000000
  19897 multiletter control sequences out of 15000+200000
  21554 words of font info for 61 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
@@ -1263,7 +1263,7 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
 type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/latxfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (32 pages, 235075 bytes).
+Output written on master_memoriae.pdf (32 pages, 234969 bytes).
 PDF statistics:
  849 PDF objects out of 1000 (max. 8388607)
  346 compressed objects within 4 object streams
