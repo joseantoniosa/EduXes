@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  20 DEC 2012 06:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  20 DEC 2012 06:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -332,7 +332,7 @@ Writing index file master_memoriae.idx
 (./master_memoriae.aux (./copyright.aux) (./agradecimientos.aux) (./resumen.aux
 ) (./introduccion.aux) (./working.aux) (./estado_del_arte.aux) (./objetivo.aux)
 (./descripcion_informatica.aux) (./resultados_experimentales.aux)
-(./conclusiones.aux) (./anexos.aux))
+(./conclusiones.aux) (./anexos.aux) (./bibliography.aux))
 \openout1 = `master_memoriae.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
@@ -668,31 +668,122 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--10
 ] (./master_memoriae.bbl [20
 
 
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
- (./master_memoriae.aux
-(./copyright.aux) (./agradecimientos.aux) (./resumen.aux) (./introduccion.aux)
-(./working.aux) (./estado_del_arte.aux) (./objetivo.aux)
-(./descripcion_informatica.aux) (./resultados_experimentales.aux)
-(./conclusiones.aux) (./anexos.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
+]) [21]
+\openout2 = `bibliography.aux'.
+
+ (./bibliography.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--12
+
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.23 ...: http://en.wikipedia.org/wiki/Comparison_
+                                                  of_open_source_software_ho...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.32 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (446.40584pt too wide) in paragraph at lines 22--32
+[]\T1/cmr/m/it/12 References: Com-par-i-son among open source host-ing fa-cil-i
+-ties: http://en.wikipedia.org/wiki/Comparison$[]\OML/cmm/m/it/12 f[]pen[]ource
+[]oftware[]osting[]acilitiesW\OT1/cmr/m/n/12 3\OML/cmm/m/it/12 CDatabaseSpecifi
+cations \OT1/cmr/m/n/12 :
+ []
+
+
+Overfull \hbox (297.42905pt too wide) in paragraph at lines 22--32
+\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==www:w\OT1/cmr/m/n/12
+ 3\OML/cmm/m/it/12 :org=TR=webdatabase=PhoneGapStorage \OT1/cmr/m/n/12 : \OML/c
+mm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==docs:phonegap:com=en=\OT1/
+cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/1
+2 1\OML/cmm/m/it/12 =cordova[]torage[]torage:md:htmlJqueryMobile \OT1/cmr/m/n/1
+2 :
+ []
+
+
+Overfull \hbox (0.54172pt too wide) in paragraph at lines 22--32
+\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==jquerymobile:com=dem
+os=\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/c
+mr/m/n/12 1\OML/cmm/m/it/12 =Jquery \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 http \OT
+1/cmr/m/n/12 : \OML/cmm/m/it/12 ==docs:jquery:com=SergasApp \OT1/cmr/m/n/12 :
+ []
+
+
+Overfull \hbox (83.40916pt too wide) in paragraph at lines 22--32
+\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==mrego:github:com=ser
+gasapp=EduXes \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 https \OT1/cmr/m/n/12 : \OML/c
+mm/m/it/12 ==github:com=joseantoniosa=EduXes=Siestta \OT1/cmr/m/n/12 :
+ []
+
+
+Overfull \hbox (54.49124pt too wide) in paragraph at lines 22--32
+\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==siestta:sourceforge:
+net=doc=index:htmlXadeWeb \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 https \OT1/cmr/m/n
+/12 : \OML/cmm/m/it/12 ==auth:edu:xunta:es=cas=login$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.34 ...ntoniosa/EduXes/blob/master/docs/PhoneGap_
+                                                  Project_MSWL_Memory.odt
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+)
+! Missing $ inserted.
+<inserted text> 
+                $
+l.172 \include{bibliography}
+                            
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (210.34161pt too wide) in paragraph at lines 33--172
+[]\T1/cmr/m/it/12 This doc-u-ment is hosted at: https://github.com/joseantonios
+a/EduXes/blob/master/docs/PhoneGap$[]\OML/cmm/m/it/12 roject[]SWL[]emory:odt$ 
+ []
+
+[22
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
+ (./master_memoriae.aux (./copyright.aux) (./agradecimientos.aux)
+(./resumen.aux) (./introduccion.aux) (./working.aux) (./estado_del_arte.aux)
+(./objetivo.aux) (./descripcion_informatica.aux)
+(./resultados_experimentales.aux) (./conclusiones.aux) (./anexos.aux)
+(./bibliography.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
 Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
-(rerunfilecheck)             Checksum: 1496AFA9E5DD76EE154FE2AF6983A6CE;2245.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 174.
+(rerunfilecheck)             Checksum: A2943C94F29AC371520D5AC277E12209;2242.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 176.
  ) 
 Here is how much of TeX's memory you used:
- 8165 strings out of 494956
- 117669 string characters out of 3179077
- 211072 words of memory out of 3000000
- 11080 multiletter control sequences out of 15000+200000
+ 8174 strings out of 494956
+ 117804 string characters out of 3179077
+ 211537 words of memory out of 3000000
+ 11081 multiletter control sequences out of 15000+200000
  21554 words of font info for 61 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
  44i,11n,43p,515b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
 
  </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/
 jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/jantonio
@@ -706,12 +797,14 @@ ecrm1095.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488
 </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/j
 antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master_memoriae.pdf (33 pages, 202486 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb>
+Output written on master_memoriae.pdf (34 pages, 231611 bytes).
 PDF statistics:
- 804 PDF objects out of 1000 (max. 8388607)
- 331 compressed objects within 4 object streams
- 65 named destinations out of 1000 (max. 500000)
+ 841 PDF objects out of 1000 (max. 8388607)
+ 345 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
  230 words of extra memory for PDF output out of 10000 (max. 10000000)
 
