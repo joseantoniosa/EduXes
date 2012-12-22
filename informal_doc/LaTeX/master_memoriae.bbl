@@ -15,6 +15,11 @@ Eclipse Foundation.
 \newblock Eclipse interface development environment.
 \newblock \url{ http://www.eclipse.org/ }, 2001.
 
+\bibitem[Inc01]{AndroidDevelopmentKit}
+Android Inc.
+\newblock Android simple development kit.
+\newblock \url{ http://developer.android.com/sdk/index.html }, 2001.
+
 \bibitem[Mob12]{JQueryMobile}
 JQuery Mobile.
 \newblock Jquerymobile.

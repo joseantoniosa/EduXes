@@ -3,14 +3,14 @@
 \section{Description and objectives}
 
 	An open source multi-platform management application for high school teachers is developed. It can be run on a smartphone or tablet. 
-	The actual objectives of the applications are students management:
+	The actual objectives of the application are students management:
 	\begin{itemize}
 	  \item Attendance and punctuality control. 
 	  \item Misbehaviour control.
 	  \item Activities assessment. Each student will have an activity mark.
 	\end{itemize}
 
-	Application should include these features:
+	Application should also include these features:
 	\begin{itemize}
 	  \item Data visualization. As table-like format. Attendance and misbehaviour
 	  \item Server synchronization with a custom application or Xade \cite{Xade}.
@@ -27,7 +27,7 @@
   \item   Develop database structure: tables (field names and type of data), and relationships among tables. 
   \item   Preparation for development:
 \subitem  Build development and staging environment: 
-\subsubitem Install Eclipse \cite{Eclipse}, Android Virtual Machine \cite{AndroidDevelopmentKit}, Aptana Plugin for Eclipse, JQuery, JQueryMobile \cite{JQueryMobile} and Phonegap \cite{PhoneGap} from their respective websites.
+\subsubitem Install Eclipse \cite{Eclipse}, Android Virtual Machine \cite{AndroidDevelopmentKit}, Aptana Plugin for Eclipse, JQuery, JQueryMobile \cite{JQueryMobile} and Phonegap \cite{PhoneGap} from their respective websites \cite{PhoneGapGS}.
 \subitem   Choose application name and folder's policy.
 \subitem   Make a simple application: only a blank page.
 \subitem  Configure a git repository and upload the application: \cite{EduXes}.
@@ -90,70 +90,152 @@
   \item   Find out a website to host a forum, a bug report system,  documentation and application download.
 	\end{itemize}
 	
-
-
 In the following table a broad estimation of time spent in each task are shown.  
 
-Tasks
-\begin{tabular} {c|c}
-1 & 2  \\
+
+\begin{tabular}{lc}
+Task    & Time (hours) \\
+\hline 
+State-of-art solutions   & 10 \\
+Develop database & 8 \\
+Preparation for development & 40 \\
+Development.  & \\
+\cr
+
+	Populate database with sample data & 20 \\
+	Groups. List and management & 50 \\
+	Students. List and management & 30 \\
+	Timetable for actual date & 80 \\
+	Add attendance, behaviour & 50 \\
+	Add error handling &2 \\
+	Retrieve and insert data from and to database &30 \\
+	List of attendance, misbehaviour incidents. &12 \\
+	Add activities grades for each student. &12 \\
+	List students marks and final mark. &14 \\
+	Activities management window  &14 \\
+	Management of student notes. &20 \\
+	List of student notes.  &2 \\
+Test into real hardware &20 \\
+\hline
+Total &384 \\
 \end{tabular}
 
-Time  (hours)
-State-of-art solutions
-10
-Develop database
-8
-Preparation for development
-40
-Development.
-
-	Populate database with sample data.
-20
-	Groups. List and management
-50
-	Students. List and management
-30
-	Timetable for actual date
-80
-	Add attendance, behaviour
-50
-	Add error handling
-2
-	Retrieve and insert data from and to database
-30
-	List of attendance, misbehaviour incidents.
-12
-	Add activities grades for each student.
-12
-	List students marks and final mark.
-14
-	Activities management window 
-14
-	Management of student notes.
-20
-	List of student notes. 
-2
-Test into real hardware
-20
-Save data into disk
-10*
-Total
-394
-
 \section {Motivation}
-  As a Technologies teacher, in my daily work I have to evaluate students work such as working with tools, cooperative work, cooperative work with other classmates etc., besides usual activities as written exercises. It could used a long sheet, or an awkward long spreadsheet, but a portable device with a custom application should be desirable.
+  As a Technologies teacher, in my daily work I have to evaluate students work such as working with tools, cooperative work with other classmates etc., besides usual activities as written exercises. A long data sheet could used, or an awkward long spreadsheet, but a portable device with a custom application should be desirable.
   
 	This application tries to increase teacher's productivity because teacher only has to write attendance, or unpunctuality two times (on official report and on application's window), and classroom notes and activity grades on very easy way.
 	
-	The most important feature is to be as easy, fast and intuitive as possible. It could be desirable to be platform independent (Android, iOS, Windows RT), but Android is preferred because it is open source and has a high market share.
+	The most important feature is to be as easy, fast and intuitive as possible. It could be desirable to be platform independent (Android, iOS, Windows RT), but Android is preferred because it is open source and has a higher market share.
 	
 	On the other hand, development of this application improves my computer science skills in  mobile-phone applications development: JQuery,  jQueryMobile, PhoneGap/Cordova, SQLite, Android,  git repository management.
 
 \section {Methodology}
+	This work was carried on building little blocks, also called pages, and make it up into final application. Database structure was separated from interface, and interface was also separated into dynamic and static contents. Each new functionality was written, tested, and
+	polished. Each new function was written from previous one, and so on.
+	\subsection{HTML}
+  Complete \textbf{index.html} file is build by blocks called pages, gathered together.  \cite{JQueryMobilePage}
+	
 
-	This work was carried on building little blocks, also called pages, and make up it into final application. Database structure was separated from interface, and interface was also separated into dynamic and static. Each new functionality was written, tested, and polished. Each new function was written from previous one, and son on.
-	Tools involved were Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality was developed, application was tested on AVM,  if it worked, source code was polished, applicable was tested again, if it was satisfactory a new change was committed into git repository. 
+	
+	\subsection{Interface code }
+	\subsection{Database code}
+	
+		\subsection{Tools}
+	
+	Tools involved were Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality was developed, application was tested on AVM,  if it worked, source code was polished, applicable was tested again, if it was satisfactory a new change was committed into git repository. From time to time application was downloaded from git repository into a real hardware and tested. 
+	
+	%% logo=\bcrayon,
+\begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
+{Main Page}
+\begin{verbatim}
+<div data-role="page" id="daily_work">
+    <div data-role="header" data-add-back-btn="true" data-theme="a">
+                <h1>Day</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <div class="ui-grid-b">
+            <div class="ui-block-a">
+                <div data-role="fieldcontain">
+                    <label for="date"  >Date:</label>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <input id="daily_date_scroller"
+                   name="daily_date_scroller" />
+            </div>
+            <div class="ui-block-c">
+                <a href="#" data-role='button' 
+                  data-icon='info' data-iconpos='notext' 
+                  style='float: right;' 
+                  onClick="help('date');">Help</a>
+                <a href="#" data-role="button" 
+                  data-icon="arrow-r" data-iconpos="notext"  
+                  onclick="open_daily_page() " >Go</a>
+            </div>
+        </div>
+    </div>
+    <div data-role="navbar">
+        <ul>
+            <li>
+                <a href="#" onClick="onGeneralFile()"  
+                data-role="button" data-icon="star"  
+                data-theme="a" > File</a>
+            </li>
+            <li>
+                <a href="#" onClick="onGeneralListReports();"  
+                data-role="button" data-icon="grid"  
+                data-theme="a" >Reports</a>
+            </li>
+            <li>
+                <a href="#" onClick="onGeneralListSettings();" 
+                data-role="button" data-icon="gear"   
+                data-theme="a" >Settings</a>
+            </li>
+        </ul>
+    </div><!-- /navbar -->
+    <div data-role="footer" class="footer-docs" data-theme="a">
+        <p   style="text-align:center;"  id="teachers_name"></p>
+    </div>
+</div> 
+\end{verbatim}
+
+\end{bclogo}
+
+\newpage
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Reports Page}
+\begin{verbatim}
+  
+ <div data-role="page" id="list_reports" data-add-back-btn="false">
+            <div data-role="header"  data-back-btn-text="previous" 
+              data-add-back-btn="false" >
+            <a href="#daily_work"  data-icon="arrow-l" data-theme="a" 
+              data-role="button">Back</a>
+
+                <h1>Reports</h1>
+            </div>
+            <div data-role="content">
+
+                <ul data-role="listview" id="list_reports_ul" 
+                  data-split-icon="gear" data-split-theme="a" 
+                  data-filter="false" 
+                  data-inset="true" data-theme="a" >
+                <li><a href="#" onClick="onReportListAttendance();"
+                 >Attendance</a></li>
+                <li><a href="#" onClick="onReportListAssessment();" 
+                >Assessment</a></li>
+                <li><a href="#" onClick="" >File</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back"
+             data-theme="a">
+             </div>
+ </div>
+\end{verbatim}
+
+\end{bclogo}
+	
 \section {Work plan}
 
 Several problems were faced:

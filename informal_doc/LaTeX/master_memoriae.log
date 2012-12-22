@@ -1,9 +1,13 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 04:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 19:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\nonstopmode \input{master_memoriae.tex}
-(./master_memoriae.tex (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+**master_memoriae.tex
+(./master_memoriae.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, us
+englishmax, ukenglish, galician, catalan, spanish, loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/bk12.clo
 File: bk12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
@@ -635,25 +639,10 @@ LaTeX Info: Redefining \addtolength on input line 77.
 )
 \boxw=\skip64
 \boxh=\skip65
-
-
-! LaTeX Error: Command \shadowsize already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.51 \newlength{\shadowsize}
-                            
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 \boxroundness=\skip66
 \tmpa=\skip67
 \shadowblockbox=\box40
-(/usr/share/texlive/texmf-dist/tex/latex/doublestroke/dsfont.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/doublestroke/dsfont.sty
 Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 )
 \@indexfile=\write6
@@ -667,20 +656,20 @@ Writing index file master_memoriae.idx
 (./conclusiones.aux) (./bibliography_general.aux))
 \openout1 = `master_memoriae.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -737,7 +726,7 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box41
-Package hyperref Info: Link coloring OFF on input line 96.
+Package hyperref Info: Link coloring OFF on input line 113.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -746,9 +735,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count136
 )
-LaTeX Info: Redefining \ref on input line 96.
-LaTeX Info: Redefining \pageref on input line 96.
-LaTeX Info: Redefining \nameref on input line 96.
+LaTeX Info: Redefining \ref on input line 113.
+LaTeX Info: Redefining \pageref on input line 113.
+LaTeX Info: Redefining \nameref on input line 113.
 
 (./master_memoriae.out) (./master_memoriae.out)
 \@outlinefile=\write7
@@ -798,7 +787,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<creative-commons.png, id=167, 88.33pt x 31.11626pt>
+<creative-commons.png, id=187, 88.33pt x 31.11626pt>
 File: creative-commons.png Graphic file (type png)
 
 <use creative-commons.png>
@@ -882,7 +871,7 @@ Chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.199 \include{introduccion}
+l.216 \include{introduccion}
                              [1
 
 
@@ -909,16 +898,6 @@ l.1 \chapter{
 Chapter 2.
 [3]
 
-LaTeX Warning: Citation `AndroidDevelopmentKit' on page 4 undefined on input li
-ne 30.
-
-
-Overfull \hbox (3.08989pt too wide) in paragraph at lines 30--31
-[]| \T1/cmr/m/n/12 In-stall Eclipse [[]], An-droid Vir-tual Ma-chine [[]], Ap-t
-ana Plu-gin for Eclipse,
- []
-
-
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
@@ -933,28 +912,29 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.96   \end{itemize}
-                    
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
 [6]
-Overfull \hbox (16.73627pt too wide) in paragraph at lines 197--198
+Overfull \hbox (16.73627pt too wide) in paragraph at lines 140--141
 \T1/cmr/m/n/12 skills in mobile-phone ap-pli-ca-tions de-vel-op-ment: JQuery, j
 Query-Mo-bile, Phone-Gap/Cordova,
  []
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 158.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+Package hyperref Info: bookmark level for unknown bclogo defaults to 0 on input
+ line 210.
+File: bc-aux-301.mps Graphic file (type mps)
+ [MP to PDF]
+(/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -962,7 +942,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7])
+[7]
+Overfull \vbox (40.40604pt too high) has occurred while \output is active []
+
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -970,38 +953,38 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [8]
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 243--243
+[]            \T1/cmtt/m/n/12 <a href="#daily_work"  data-icon="arrow-l" data-t
+heme="a"[] 
+ []
+
+
+Overfull \hbox (13.23044pt too wide) in paragraph at lines 243--243
+[]            \T1/cmtt/m/n/12 <div data-role="footer" class="footer-docs" data-
+rel="back"[] 
+ []
+
+File: bc-fleur.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps))
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10]
 \openout2 = `estado_del_arte.aux'.
 
  (./estado_del_arte.tex
 Chapter 3.
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   !
-l.21 \begin{minipage}[c]{200}
-                             
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   !
-l.23  \end{minipage}
-                    
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 29.
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [9
+[11
 
 
 
@@ -1015,33 +998,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10]
+[12]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 29.11858pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11]
+[13]
 \openout2 = `objetivo.aux'.
 
  (./objetivo.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[12
-
-
-
-]
-Chapter 4.
-) [13]
-\openout2 = `descripcion_informatica.aux'.
-
- (./descripcion_informatica.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1053,55 +1020,38 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ]
-Chapter 5.
-[15]
-! Missing { inserted.
-<to be read again> 
-                   O
-l.27 O
-      VAL BOX
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
+Chapter 4.
+) [15]
+\openout2 = `descripcion_informatica.aux'.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.28 \end{ovalbox}
-                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Package hyperref Info: bookmark level for unknown bclogo defaults to 0 on input
- line 40.
-! Undefined control sequence.
-\bcval@logo ->\bcrayon 
-                       
-l.40 \end{bclogo}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-)
+ (./descripcion_informatica.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[16]
+[16
+
+
+
+]
+Chapter 5.
+[17]
+File: bc-fleur.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps))
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[18]
 \openout2 = `resultados_experimentales.aux'.
 
  (./resultados_experimentales.tex
 Chapter 6.
-[17
+[19
 
 
 
@@ -1112,12 +1062,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18]
+[20]
 \openout2 = `conclusiones.aux'.
 
  (./conclusiones.tex
 Chapter 7.
-) [19
+) [21
 
 
 
@@ -1128,20 +1078,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[20
+[22
 
 
-] (./master_memoriae.bbl) [21
+] (./master_memoriae.bbl) [23
 
 ]
 \openout2 = `bibliography_general.aux'.
 
  (./bibliography_general.tex
 
-LaTeX Warning: Citation `NewCam97' on page 22 undefined on input line 6.
+LaTeX Warning: Citation `NewCam97' on page 24 undefined on input line 6.
 
 
-LaTeX Warning: Citation `Pesce' on page 22 undefined on input line 7.
+LaTeX Warning: Citation `Pesce' on page 24 undefined on input line 7.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--10
@@ -1155,34 +1105,34 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[22
+[24
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 249.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 249.
  (./master_memoriae.aux (./copyright.aux) (./agradecimientos.aux)
 (./resumen.aux) (./introduccion.aux) (./working.aux) (./estado_del_arte.aux)
 (./objetivo.aux) (./descripcion_informatica.aux)
 (./resultados_experimentales.aux) (./conclusiones.aux)
 (./bibliography_general.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 249.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 249.
 Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
-(rerunfilecheck)             Checksum: 2D8162FBE5791CBFE3912C4069995375;2560.
+(rerunfilecheck)             Checksum: AE92B0113E6AEC6C536A5802D21CE7D7;2877.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 249.
  ) 
 Here is how much of TeX's memory you used:
- 17239 strings out of 494956
- 304779 string characters out of 3179077
- 380926 words of memory out of 3000000
- 19906 multiletter control sequences out of 15000+200000
+ 17368 strings out of 494956
+ 306519 string characters out of 3179077
+ 425939 words of memory out of 3000000
+ 20017 multiletter control sequences out of 15000+200000
  21554 words of font info for 61 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
- 64i,12n,71p,515b,799s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,13n,71p,494b,1238s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1202,10 +1152,10 @@ ecrm1095.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488
 antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (34 pages, 199678 bytes).
+Output written on master_memoriae.pdf (36 pages, 211422 bytes).
 PDF statistics:
- 879 PDF objects out of 1000 (max. 8388607)
- 378 compressed objects within 4 object streams
- 76 named destinations out of 1000 (max. 500000)
- 378 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 941 PDF objects out of 1000 (max. 8388607)
+ 417 compressed objects within 5 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 418 words of extra memory for PDF output out of 10000 (max. 10000000)
 
