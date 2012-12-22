@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 02:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 04:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -910,10 +910,10 @@ Chapter 2.
 [3]
 
 LaTeX Warning: Citation `AndroidDevelopmentKit' on page 4 undefined on input li
-ne 31.
+ne 30.
 
 
-Overfull \hbox (3.08989pt too wide) in paragraph at lines 31--32
+Overfull \hbox (3.08989pt too wide) in paragraph at lines 30--31
 []| \T1/cmr/m/n/12 In-stall Eclipse [[]], An-droid Vir-tual Ma-chine [[]], Ap-t
 ana Plu-gin for Eclipse,
  []
@@ -933,62 +933,46 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.96   \end{itemize}
+                    
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
 [6]
-Overfull \hbox (16.73627pt too wide) in paragraph at lines 173--174
+Overfull \hbox (16.73627pt too wide) in paragraph at lines 197--198
 \T1/cmr/m/n/12 skills in mobile-phone ap-pli-ca-tions de-vel-op-ment: JQuery, j
 Query-Mo-bile, Phone-Gap/Cordova,
  []
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.189 ...l variables are used: named after global_
-                                                  *, and in block capitals.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.191 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (453.09497pt too wide) in paragraph at lines 181--191
-\T1/cmr/m/n/12 fea-si-ble, global vari-ables are used: named af-ter global$[]\O
-ML/cmm/m/it/12 ; andinblockcapitals:Deadline:DevelopmentwasdelayedbecauseIhaven
-oenoughsparetimeandaboveproblemsweretimecostly:$ 
- []
-
-)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7]
+[7])
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8]
 \openout2 = `estado_del_arte.aux'.
 
  (./estado_del_arte.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8
-
-
-
-]
 Chapter 3.
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
@@ -1017,7 +1001,11 @@ two letters. (See Chapter 27 of The TeXbook.)
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 29.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [9])
+) [9
+
+
+
+])
 Underfull \vbox (badness 3333) has occurred while \output is active []
 
 
@@ -1188,35 +1176,36 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
  ) 
 Here is how much of TeX's memory you used:
- 17238 strings out of 494956
- 304768 string characters out of 3179077
- 382897 words of memory out of 3000000
+ 17239 strings out of 494956
+ 304779 string characters out of 3179077
+ 380926 words of memory out of 3000000
  19906 multiletter control sequences out of 15000+200000
  21554 words of font info for 61 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
- 64i,11n,71p,515b,799s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
+ 64i,12n,71p,515b,799s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
- </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/
-jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/jantonio
-/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/jantonio/.texmf-
-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/jantonio/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljf
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+ </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/
+jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/jantonio
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jantonio/.texmf-
+var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/jantonio/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecbx1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jkna
 ppen/ec/ecrm0800.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/
 ecrm1095.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488
 .600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> 
 </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/j
 antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (34 pages, 217845 bytes).
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
+Output written on master_memoriae.pdf (34 pages, 199678 bytes).
 PDF statistics:
- 881 PDF objects out of 1000 (max. 8388607)
- 382 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 879 PDF objects out of 1000 (max. 8388607)
+ 378 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
  378 words of extra memory for PDF output out of 10000 (max. 10000000)
 

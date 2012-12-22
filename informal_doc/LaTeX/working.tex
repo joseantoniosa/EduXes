@@ -16,10 +16,9 @@
 	  \item Server synchronization with a custom application or Xade \cite{Xade}.
 	\end{itemize}
 
-	The final goal is to develop an application to make teacher's work easier and comfortable. 
+	The final goal is to develop an application to make teacher's work easier and comfortable. This application is focused on user  (teacher) experience.
 	Also an objective is to write extensible, easy to read code, which allows external developers to take part into application development.
 	
-
 	Task to be done:
 	\begin{itemize}
 	  \item Study state-of-art solutions: 
@@ -35,90 +34,64 @@
 	\end{itemize}
 	
 		
-  Development will follow next stages:
+  Development will follow these stages:
 	\begin{itemize}
   \item   Populate database with sample data. Firstly, data will be hard-coded into source code to stagging. Several tables will be created:
   groups, students, sessions, teacher schedule, students attendance, activities, student activities, and activities per group. Secondly 
   the appropiate windows to manage these tables will be built.
+  
   \item   Groups: Several groups (four) of students will be hard-coded into javascript source code, with three or four students each other.
   \subitem  Make list of groups window. This will list the four groups.
   \subitem  Groups management window. Another group could be added, or removed.
+  
   \item  Students information:
   \subitem   Make list of students window per group and complete list of students. 
   \subitem   Students management window: to insert and update data students: name, surname, birthday, address, e-mail,  tutor name,
     landline and cell phone numbers and nationality.
+    
   \item  Sessions. Each lecture has a description (as 'first hour', or 'recreation'), starting and ending time.  These sessions will be hard-coded on first version.
   \item  Teacher schedule. For the current teacher, it contains weekly and daily schedule: name of group, session and day of the week. This information will be also hard-coded. 
-  \item  Attendance. For each student, it contains information about day of the week, attendance, misbehaviour, unpunctuality or excused. 
-  Though an interface this information will be set by teacher. 
-  \item  Activities. Name and description of assessable exercises. Though an adequate interface this information will be set by teacher. 
-  \subitem  Activities group will be set in activities window, and activities student will be related with assessment.
-  \item Timetable for current date: daily schedule, list of groups for each day.
-  \item    e) Add attendance, misbehaviour for each student.
-  \item    f) Add error handling.
-  \item    g) Retrieve and insert data from and to database
-  \item    h) List of attendance, misbehaviour incidents.
-  \item    i) Add activities grades for each student.
-  \item    j) List students marks and final mark.
-  \item    k) Activities management window (add-update-remove activities)
-  \item    l) Management of student annotations.
-  \item    m) List of student annotations. 
+  \item Main window (or \emph{page} in PhoneGap notation) will be created. Teacher can set current data and go to \textit{daily page}, 
+   manage activities, students and groups or manage reports: assessment and attendance. Next page will be \textit{daily page}.
+   
+  \item Timetable for current date: daily schedule, list of groups for each day ordered by session.
+  
+  \item Attendance page will be next to be build. It contains a list of students by group. Teacher can assign an attendance code to each student (attendance, misbehaviour, unpunctuality or excused).
+  
+  \item Assessment page is next to previous one. It contains one upper list of activities and a list of students similar to 
+  \emph{attendance page }. Teacher could set activity and assign adequate mark to each student.
+     
+  \item  Activities. This page manage activities (add and disable activities \footnote{still not coded} ): name and description of assessable exercises. 
+  \subitem  Activities group will be set in activities page, and activities student will be related with assessment.
+  \item Reports pages.
+  \subitem  List activities.
+  \subitem  List groups.
+  \subitem  List students by group.
+  \subitem  List students attendance by week. User can select previous or next week, or set another date.
+  \subitem  List students marks and final mark.
+  
+  \item Error handling. While developing each SQL query, any error will be catched and an error window will appears. 
+  \item Eventually, test into real hardware: an Android 2.3.3 mobile phone, tablets, and so on.
   \end{itemize}
   
+	   Next steps will include :  
   \begin{itemize}
-  \item    5. Test into real hardware: Android 2.3.3 mobile phone.
-  \item    6. Save or download data from database to disk.
-  \item    7. Xade web interface.
-  \item    a) Study Xade web interface.
-  \item    b) Develop an ad-hoc application for retrieve Xade's data. 
-  \item    8. Develop an ad-hoc application for store data. 
-  \item    9. Synchronization with a custom server or with Xade.
-  \item    10. Test units.
-  \item    11. User documentation. Manual with images.
-  \item    12. Developer's documentation.
-  \item    13. Find out a website to host a forum, a bug report system,  documentation and application download.
-
+  \item   Load data from an external file. This is well-documented \cite{}.  
+  \item   Load images from disk (SD-Card).
+  \item  Save or download data from database to disk.
+  \item  Xade web interface.
+  \subitem    a) Study Xade web interface.
+  \subitem    b) Develop an ad-hoc application for retrieve Xade's data. With javascript or a native one. 
+  \subitem    8. Develop an ad-hoc application for store data. 
+  \subitem    9. Synchronization with a custom server or with Xade.
+  \item   Test units. To ensure previous step were implemented.
+  \item   User documentation. Manual with images.
+  \item   Developer's documentation.
+  \item   Find out a website to host a forum, a bug report system,  documentation and application download.
 	\end{itemize}
-Tasks:
-	The current list of tasks are:
- 1. Study state-of-art solutions. 
- a) Find out other solutions: PDAs and smart-phone or tablet related and web-based applications.
- b) Download to study and reuse graphical user interfaces, code or/and database structure. 
- 2. Develop database structure: tables and relationships. 
- 3. Preparation of development:
- a) Build development environment: install Eclipse, Android Virtual Machine, Aptana Plugin, JQuery, JQueryMobile and Phonegap.
- b) Choose application name and folder's policy.
- c) Make a simple application: only a blank page.
- d) Upload simple application into a git repository2
- 4. Development:
- a) Populate database with sample data.
- b) Groups:
-Make list of groups window.
-Groups management window.
- c) Students:
-Make list of students window.
-Students management window (insert-update-delete students)
- d) Timetable for actual date: list of groups for each day.
- e) Add attendance, misbehaviour for each student.
- f) Add error handling.
- g) Retrieve and insert data from and to database
- h) List of attendance, misbehaviour incidents.
- i) Add activities grades for each student.
- j) List students marks and final mark.
- k) Activities management window (add-update-remove activities)
- l) Management of student notes.
- m) List of student notes. 
- 5. Test into real hardware: Android 2.3.3 mobile phone.
- 6. Save or download data from database to disk.
- 7. Xade web interface.
- a) Study Xade web interface.
- b) Develop an ad-hoc application for retrieve Xade's data. 
- 8. Develop an ad-hoc application for store data. 
- 9. Synchronization with a custom server or with Xade.
- 10. Test units.
- 11. User documentation. Manual with images.
- 12. Developer's documentation.
- 13. Find out a website to host a forum, a bug report system,  documentation and application download.
+	
+
+
 In the following table a broad estimation of time spent in each task are shown.  
 
 Tasks
@@ -191,6 +164,6 @@ tx.executeSql(sql, [parameters],  successHandler, errorHandler)
 and
 db.transaction(queryFunction, errorHandler, successHandler)  
 have up to four and three parameters respectively, only first one is mandatory. I rather use success and error handlers for tx.executeSql function, atomic error control could be better choice.
-Passing variables to functions: Only if another solution is not known or feasible, global variables are used: named after global_*, and in block capitals.
+Passing variables to functions: Only if another solution is not known or feasible, global variables are used: named after global\_\*, and in block capitals.
 Deadline. Development was delayed because I have no enough spare time and above problems were time costly.
 
