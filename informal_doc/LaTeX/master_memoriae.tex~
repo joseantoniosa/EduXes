@@ -24,11 +24,56 @@
 \usepackage{setspace}\singlespacing
 % Para otros interlineados: \renewcommand{\baselinestretch}{1.05}
 %% Framed-shaded:
-\usepackage{framed}
+\usepackage{framed,color}
+\usepackage{fancybox}
 \usepackage{xcolor}
 \usepackage{framed}
 \newdimen\tw \tw=\textwidth\advance\tw-10pt
 \definecolor{shadecolor}{gray}{0.9} 
+\usepackage[tikz]{bclogo}
+
+\usepackage{tikz}
+\usepackage{calc}
+
+ %% Shadow
+ %
+% Boxed environment with semi-transparent shadow.
+%
+\newlength{\boxw}
+\newlength{\boxh}
+\newlength{\shadowsize}
+\newlength{\boxroundness}
+\newlength{\tmpa}
+\newsavebox{\shadowblockbox}
+
+\setlength{\shadowsize}{6pt}
+\setlength{\boxroundness}{3pt}
+
+\newenvironment{shadowblock}[1]%
+{\begin{lrbox}{\shadowblockbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{lrbox}%
+\settowidth{\boxw}{\usebox{\shadowblockbox}}%
+\settodepth{\tmpa}{\usebox{\shadowblockbox}}%
+\settoheight{\boxh}{\usebox{\shadowblockbox}}%
+\addtolength{\boxh}{\tmpa}%
+\begin{tikzpicture}
+\addtolength{\boxw}{\boxroundness * 2}
+\addtolength{\boxh}{\boxroundness * 2}
+
+\foreach \x in {0,.05,...,1}
+{
+\setlength{\tmpa}{\shadowsize * \real{\x}}
+\fill[xshift=\shadowsize - 1pt,yshift=-\shadowsize +
+1pt,black,opacity=.04,rounded corners=\boxroundness]
+(\tmpa, \tmpa) rectangle +(\boxw - \tmpa - \tmpa, \boxh - \tmpa -
+\tmpa);
+}
+\filldraw[fill=yellow!50, draw=black!50, rounded corners=\boxroundness] (0,
+0) rectangle (\boxw, \boxh);
+\draw node[xshift=\boxroundness,yshift=\boxroundness,inner sep=0pt,outer
+sep=0pt,anchor=south west] (0,0) {\usebox{\shadowblockbox}};
+\end{tikzpicture}}
+ %% /Shadow box
 %% /Shaded
 \usepackage{dsfont} %Para las formulitas
 
@@ -168,7 +213,8 @@ Manuel Rego Casasnovas\\
 % incluye la bibliografía en el índice
 \addcontentsline{toc}{chapter}{Bibliography}
 % ----------------- BIBLIOGRAFÍA -----------------------
-\include{bibliography}
+\include{bibliography_general}
+
 
 %\printindex  %%%% crea un índice alfabético con las palabras indexadas en el documento: \index{palabra}
 

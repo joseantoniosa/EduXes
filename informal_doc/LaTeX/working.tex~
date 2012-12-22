@@ -1,17 +1,71 @@
 \chapter{Working plan}
 %\thispagestyle {empty}
+\section{Description and objectives}
 
+	A multi-platform management application for high school teachers is developed. It can be run on a smart-phone or tablet. 
+	The actual objectives of the applications are students management:
+	\begin{itemize}
+	  \item Attendance and punctuality control. 
+	  \item Misbehaviour control.
+	  \item Activities assessment. Each student will have an activity mark.
+	\end{itemize}
 
-Description and objectives:
-	A multi-platform management application for high school teachers is developed. It can be run on a smart-phone or tablet, or even a personal computer. 
-	The actual objectives of the applications are student's management:
-Attendance control.
-Misbehaviour control.
-Activities evaluation.
-	Application should include this features:
-Data visualization. As table-like.
-Server synchronization with a custom application or Xade1.
-	The final goal is to develop an application to make teacher's work easier and comfortable. Also an objective is to write extensible code, which allow another developers to take part into application development.
+	Application should include these features:
+	\begin{itemize}
+	  \item Data visualization. As table-like format. Attendance and misbehaviour
+	  \item  Server synchronization with a custom application or Xade \cite{Xade}.
+	\end{itemize}
+
+	The final goal is to develop an application to make teacher's work easier and comfortable. 
+	Also an objective is to write extensible code, which allow another developers to take part into application development.
+	
+	
+	Task to be done:
+	\begin{itemize}
+	  \item Study state-of-art solutions. 
+  \subitem  Find out other solutions: PDAs and smart-phone or tablet related and web-based applications.
+  \subitem  Download to study and reuse graphical user interfaces, code or/and database structure. 
+  \item   Develop database structure: tables: field names and types, and relationships among tables. 
+  \item   Preparation of development:
+\subitem  Build development environment: install Eclipse, Android Virtual Machine, Aptana Plugin, JQuery, JQueryMobile and Phonegap.
+\subitem   Choose application name and folder's policy.
+\subitem   Make a simple application: only a blank page.
+\subitem   Upload simple application into a git repository \cite{}
+
+  
+	\end{itemize}
+  Development:
+	\begin{itemize}
+  \item    a) Populate database with sample data.
+  \item    b) Groups:
+  \item   Make list of groups window.
+  \item   Groups management window.
+  \item    c) Students:
+  \item   Make list of students window.
+  \item   Students management window (insert-update-delete students)
+  \item    d) Timetable for actual date: list of groups for each day.
+  \item    e) Add attendance, misbehaviour for each student.
+  \item    f) Add error handling.
+  \item    g) Retrieve and insert data from and to database
+  \item    h) List of attendance, misbehaviour incidents.
+  \item    i) Add activities grades for each student.
+  \item    j) List students marks and final mark.
+  \item    k) Activities management window (add-update-remove activities)
+  \item    l) Management of student notes.
+  \item    m) List of student notes. 
+  \item    5. Test into real hardware: Android 2.3.3 mobile phone.
+  \item    6. Save or download data from database to disk.
+  \item    7. Xade web interface.
+  \item    a) Study Xade web interface.
+  \item    b) Develop an ad-hoc application for retrieve Xade's data. 
+  \item    8. Develop an ad-hoc application for store data. 
+  \item    9. Synchronization with a custom server or with Xade.
+  \item    10. Test units.
+  \item    11. User documentation. Manual with images.
+  \item    12. Developer's documentation.
+  \item    13. Find out a website to host a forum, a bug report system,  documentation and application download.
+
+	\end{itemize}
 Tasks:
 	The current list of tasks are:
  1. Study state-of-art solutions. 
@@ -55,6 +109,10 @@ Students management window (insert-update-delete students)
 In the following table a broad estimation of time spent in each task are shown.  
 
 Tasks
+\begin{tabular} [c|c]
+1 & 2 
+\end{tabular}
+
 Time  (hours)
 State-of-art solutions
 10
@@ -97,16 +155,20 @@ Save data into disk
 Total
 394
 
-Motivation:
-	I am a Technologies teacher, in my daily work I have to evaluate students work such as working with tools, cooperative work, cooperative work with other classmates etc., besides usual activities as written exercises. It could used a long sheet, or an awkward long spreadsheet, but a portable device with a custom application should be desirable.
-	This application increases teacher's productivity because teacher only has to write attendance, or unpunctuality two times (on official report and on application's window), and classroom notes and activity grades on very easy way.
-	The most important feature is to be as easy, fast and intuitive as possible. It could be desirable to be platform independent (Android, iOS, Windows RT), but Android is preferred because it is open source, has a high market share, and to buy an Apple Macintosh computer is not mandatory.
-	I wish to learn from this application how to develop a mobile application, and several technologies: JQuery,  jQueryMobile, PhoneGap/Cordova, SQLITE, git repository management.
+\section {Motivation}
+  As a Technologies teacher, in my daily work I have to evaluate students work such as working with tools, cooperative work, cooperative work with other classmates etc., besides usual activities as written exercises. It could used a long sheet, or an awkward long spreadsheet, but a portable device with a custom application should be desirable.
+  
+	This application tries to increase teacher's productivity because teacher only has to write attendance, or unpunctuality two times (on official report and on application's window), and classroom notes and activity grades on very easy way.
+	
+	The most important feature is to be as easy, fast and intuitive as possible. It could be desirable to be platform independent (Android, iOS, Windows RT), but Android is preferred because it is open source and has a high market share.
+	
+	On the other hand, development of this application improves my computer science skills in  mobile-phone applications development: JQuery,  jQueryMobile, PhoneGap/Cordova, SQLite, Android,  git repository management.
 
-Methodology:
+\section {Methodology}
+
 	This work was carried on building little blocks, also called pages, and make up it into final application. Database structure was separated from interface, and interface was also separated into dynamic and static. Each new functionality was written, tested, and polished. Each new function was written from previous one, and son on.
 	Tools involved were Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality was developed, application was tested on AVM,  if it worked, source code was polished, applicable was tested again, if it was satisfactory a new change was committed into git repository. 
-Work plan:
+\section {Work plan}
 
 Several problems were faced:
 Eclipse environment: A stable, reliable and up-to-date IDE, with several plug-ins is needed. Download vanilla Eclipse Juno from its web-site is chosen because it is more stable, reliable, compatible with newer versions.  Aptana Javascript plugin was chosen because Aptana allows source code auto-completion in JQuery.
@@ -118,3 +180,5 @@ db.transaction(queryFunction, errorHandler, successHandler)
 have up to four and three parameters respectively, only first one is mandatory. I rather use success and error handlers for tx.executeSql function, atomic error control could be better choice.
 Passing variables to functions: Only if another solution is not known or feasible, global variables are used: named after global_*, and in block capitals.
 Deadline. Development was delayed because I have no enough spare time and above problems were time costly.
+
+

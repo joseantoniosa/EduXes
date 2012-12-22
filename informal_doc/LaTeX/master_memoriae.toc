@@ -5,27 +5,31 @@
 \contentsline {chapter}{Description of the practicum}{v}{chapter*.3}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Working plan}{3}{chapter.2}
-\contentsline {chapter}{\numberline {3}State-of-art solutions}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Siestta}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Descripci\'on del problema}{8}{section.3.2}
-\contentsline {section}{\numberline {3.3}Descripci\'on de los trabajos anteriores que se han dedicado a resolverlo}{9}{section.3.3}
-\contentsline {chapter}{\numberline {4}Objetivo (5\%)}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Descripci\'on, en un objetivo general, de la finalidad del proyecto.}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Descripci\'on de objetivos parciales que se necesitan cubrir para llegar al objetivo final}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}Descripci\'on de alto nivel de las etapas que sigues en el desarrollo}{11}{section.4.3}
-\contentsline {chapter}{\numberline {5}Descripci\'on Inform\'atica (20-35\%)}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}La base de datos coleccionada (si tiene sentido).}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Los algoritmos para el desarrollo de la soluci\'on}{13}{section.5.2}
-\contentsline {section}{\numberline {5.3}qu\'e quieres resolver}{13}{section.5.3}
-\contentsline {section}{\numberline {5.4}c\'omo lo vas a hacer}{13}{section.5.4}
-\contentsline {section}{\numberline {5.5}herramientas conceptuales necesarias}{13}{section.5.5}
-\contentsline {section}{\numberline {5.6}herramientas utilizadas}{13}{section.5.6}
-\contentsline {chapter}{\numberline {6}Results}{15}{chapter.6}
-\contentsline {section}{\numberline {6.1}Objectives completed}{15}{section.6.1}
-\contentsline {section}{\numberline {6.2}Further objectives}{15}{section.6.2}
-\contentsline {section}{\numberline {6.3}Resultados en forma de tablas, gr\'aficas e im\'agenes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\'on}{16}{section.6.3}
-\contentsline {section}{\numberline {6.4}An\'alisis cr\IeC {\'\i }tico de los resultados con el objetivo de decidir si el sistema implementado es v\'alido}{16}{section.6.4}
-\contentsline {chapter}{\numberline {7}Conclusiones y trabajos futuros (5\%)}{17}{chapter.7}
-\contentsline {section}{\numberline {7.1}Implementaci\'on}{17}{section.7.1}
-\contentsline {section}{\numberline {7.2}Resultados}{17}{section.7.2}
-\contentsline {chapter}{Bibliography}{19}{chapter*.6}
+\contentsline {section}{\numberline {2.1}Description and objectives}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Motivation}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}Methodology}{7}{section.2.3}
+\contentsline {section}{\numberline {2.4}Work plan}{7}{section.2.4}
+\contentsline {chapter}{\numberline {3}State-of-art solutions}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Siestta}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Descripci\'on del problema}{10}{section.3.2}
+\contentsline {section}{\numberline {3.3}Descripci\'on de los trabajos anteriores que se han dedicado a resolverlo}{11}{section.3.3}
+\contentsline {chapter}{\numberline {4}Objetivo (5\%)}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Descripci\'on, en un objetivo general, de la finalidad del proyecto.}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}Descripci\'on de objetivos parciales que se necesitan cubrir para llegar al objetivo final}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}Descripci\'on de alto nivel de las etapas que sigues en el desarrollo}{13}{section.4.3}
+\contentsline {chapter}{\numberline {5}Descripci\'on Inform\'atica (20-35\%)}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}La base de datos coleccionada (si tiene sentido).}{15}{section.5.1}
+\contentsline {section}{\numberline {5.2}Los algoritmos para el desarrollo de la soluci\'on}{15}{section.5.2}
+\contentsline {section}{\numberline {5.3}qu\'e quieres resolver}{15}{section.5.3}
+\contentsline {section}{\numberline {5.4}c\'omo lo vas a hacer}{15}{section.5.4}
+\contentsline {section}{\numberline {5.5}herramientas conceptuales necesarias}{15}{section.5.5}
+\contentsline {section}{\numberline {5.6}herramientas utilizadas}{15}{section.5.6}
+\contentsline {chapter}{\numberline {6}Results}{17}{chapter.6}
+\contentsline {section}{\numberline {6.1}Objectives completed}{17}{section.6.1}
+\contentsline {section}{\numberline {6.2}Further objectives}{17}{section.6.2}
+\contentsline {section}{\numberline {6.3}Resultados en forma de tablas, gr\'aficas e im\'agenes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\'on}{18}{section.6.3}
+\contentsline {section}{\numberline {6.4}An\'alisis cr\IeC {\'\i }tico de los resultados con el objetivo de decidir si el sistema implementado es v\'alido}{18}{section.6.4}
+\contentsline {chapter}{\numberline {7}Conclusiones y trabajos futuros (5\%)}{19}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implementaci\'on}{19}{section.7.1}
+\contentsline {section}{\numberline {7.2}Resultados}{19}{section.7.2}
+\contentsline {chapter}{Bibliography}{21}{chapter*.6}

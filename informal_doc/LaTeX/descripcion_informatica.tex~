@@ -5,4 +5,34 @@ Para ello describirás:
 \section{La base de datos coleccionada (si tiene sentido).}
 \dots
 \section{Los algoritmos para el desarrollo de la solución}
+\dots
+\section {qué quieres resolver}
 \dots
+\section {cómo lo vas a hacer}
+\dots
+\section {herramientas conceptuales necesarias}
+ \dots
+\section {herramientas utilizadas}
+\dots\begin{framed}
+  ASD
+\end{framed}
+
+\begin{shaded}
+  FFG
+\end{shaded}
+
+\begin{ovalbox}
+OVAL BOX
+\end{ovalbox}
+
+
+
+\begin{shadowblock}{6cm}
+OVAL BOX shadowblock
+\end{shadowblock}
+
+
+\begin{bclogo} [couleur=blue!30,arrondi=0.1, logo=\bcrayon, ombre=true ] 
+{Contenido}
+, contenido ...
+\end{bclogo}

@@ -1,14 +1,30 @@
-\begin{thebibliography}{Pes03}
+\begin{thebibliography}{dEXdG12}
 
-\bibitem[NC97]{NewCam97}
-Isaac Newton and Naomi Campbell.
-\newblock A re-formulation of gravity with respect to really cool models.
-\newblock {\em Jornal of Funny Physics}, 35:39--78, 1997.
+\bibitem[Aqu12]{EduXes}
+Jos\'e Antonio~Salgueiro Aquino.
+\newblock Classroom management for high school teachers.
+\newblock \url{https://github.com/joseantoniosa/EduXes}, 2012.
 
-\bibitem[Pes03]{Pesce}
-Mark~D. Pesce.
-\newblock {\em Programming Microsoft DirectShow for digital video and
-  television}.
-\newblock Microsoft Press, 2003.
+\bibitem[dEXdG12]{Xade}
+Conseller\'{\i}a de~Educaci\'on. Xunta~de Galicia.
+\newblock Xade web is a web interface for educational data management.
+\newblock \url{http://edu.xunta.es/xade/}, 2012.
+
+\bibitem[Fou01]{Eclipse}
+Eclipse Foundation.
+\newblock Eclipse interface development environment.
+\newblock \url{ http://www.eclipse.org/ }, 2001.
+
+\bibitem[Mob12]{JQueryMobile}
+JQuery Mobile.
+\newblock Jquerymobile.
+\newblock \url{ http://jquerymobile.com/demos/1.1.1/ }, 2012.
+
+\bibitem[Pho12]{PhoneGap}
+PhoneGap.
+\newblock Phonegap is a free and open source framework that allows you to
+  create mobile apps using standardized web apis for the platforms you care
+  about.
+\newblock \url{http://www.phonegap.com}, 2012.
 
 \end{thebibliography}

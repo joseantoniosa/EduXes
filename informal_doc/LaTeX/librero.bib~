@@ -1,3 +1,36 @@
+@electronic{PhoneGap,
+  author        = {PhoneGap},
+  title         = {PhoneGap is a free and open source framework that allows you to create mobile apps using standardized web APIs for the platforms you care about},
+  description = {PhoneGap is a free and open source framework that allows you to create mobile apps using standardized web APIs for the platforms you care about},
+  URL           = {http://phonegap.com/},
+  url           = {http://www.phonegap.com},
+  year          = {2012}
+}
+
+
+
+@electronic{Xade,
+  author        = {Conseller\'{\i}a de Educaci\'on. Xunta de Galicia},
+  title         = {Xade Web is a web interface for educational data management.},
+  description = {Xade Web is a web interface for educational data management.},
+  URL           = http://edu.xunta.es/xade/},
+  url           = {http://edu.xunta.es/xade/},
+  year          = {2012}
+}
+
+
+Comparison among open source hosting facilities: http://en.wikipedia.org/wiki/Comparison_of_open_source_software_hosting_facilities
+W3C Database Specifications: http://www.w3.org/TR/webdatabase/
+PhoneGap Storage:  http://docs.phonegap.com/en/1.8.1/cordova_storage_storage.md.html
+JqueryMobile: http://jquerymobile.com/demos/1.1.1/
+Jquery: http://docs.jquery.com/
+SergasApp: http://mrego.github.com/sergasapp/
+EduXes: https://github.com/joseantoniosa/EduXes/
+Siestta: http://siestta.sourceforge.net/doc/index.html
+Xade Web: https://auth.edu.xunta.es/cas/login 
+
+
+
 @Article{NewCam97,
   author    = {Isaac Newton and Naomi Campbell},
   title     = {A Re-formulation of Gravity with

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  20 DEC 2012 23:09
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 02:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -644,7 +644,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.44 \newlength{\shadowsize}
+l.51 \newlength{\shadowsize}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -667,20 +667,20 @@ Writing index file master_memoriae.idx
 (./conclusiones.aux) (./bibliography_general.aux))
 \openout1 = `master_memoriae.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -737,7 +737,7 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box41
-Package hyperref Info: Link coloring OFF on input line 87.
+Package hyperref Info: Link coloring OFF on input line 96.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -746,9 +746,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count136
 )
-LaTeX Info: Redefining \ref on input line 87.
-LaTeX Info: Redefining \pageref on input line 87.
-LaTeX Info: Redefining \nameref on input line 87.
+LaTeX Info: Redefining \ref on input line 96.
+LaTeX Info: Redefining \pageref on input line 96.
+LaTeX Info: Redefining \nameref on input line 96.
 
 (./master_memoriae.out) (./master_memoriae.out)
 \@outlinefile=\write7
@@ -798,7 +798,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<creative-commons.png, id=151, 88.33pt x 31.11626pt>
+<creative-commons.png, id=167, 88.33pt x 31.11626pt>
 File: creative-commons.png Graphic file (type png)
 
 <use creative-commons.png>
@@ -878,14 +878,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
  (./introduccion.tex
 Chapter 1.
-
-LaTeX Warning: Citation `PhoneGap' on page 1 undefined on input line 8.
-
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.190 \include{introduccion}
+l.199 \include{introduccion}
                              [1
 
 
@@ -910,32 +907,15 @@ l.1 \chapter{
 
 ]
 Chapter 2.
+[3]
 
-Underfull \vbox (badness 6125) has occurred while \output is active []
-
- [3]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.118 ...l variables are used: named after global_
-                                                  *, and in block capitals.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-)
-! Missing $ inserted.
-<inserted text> 
-                $
-l.192 \include{working}
-                       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+LaTeX Warning: Citation `AndroidDevelopmentKit' on page 4 undefined on input li
+ne 31.
 
 
-Overfull \hbox (521.61993pt too wide) in paragraph at lines 110--192
-\T1/cmr/m/n/12 not known or fea-si-ble, global vari-ables are used: named af-te
-r global$[]\OML/cmm/m/it/12 ; andinblockcapitals:Deadline:Developmentwasdelayed
-becauseIhavenoenoughsparetimeandaboveproblemsweretimecostly:$ 
+Overfull \hbox (3.08989pt too wide) in paragraph at lines 31--32
+[]| \T1/cmr/m/n/12 In-stall Eclipse [[]], An-droid Vir-tual Ma-chine [[]], Ap-t
+ana Plu-gin for Eclipse,
  []
 
 
@@ -952,6 +932,49 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [5]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6]
+Overfull \hbox (16.73627pt too wide) in paragraph at lines 173--174
+\T1/cmr/m/n/12 skills in mobile-phone ap-pli-ca-tions de-vel-op-ment: JQuery, j
+Query-Mo-bile, Phone-Gap/Cordova,
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.189 ...l variables are used: named after global_
+                                                  *, and in block capitals.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.191 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (453.09497pt too wide) in paragraph at lines 181--191
+\T1/cmr/m/n/12 fea-si-ble, global vari-ables are used: named af-ter global$[]\O
+ML/cmm/m/it/12 ; andinblockcapitals:Deadline:DevelopmentwasdelayedbecauseIhaven
+oenoughsparetimeandaboveproblemsweretimecostly:$ 
+ []
+
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[7]
 \openout2 = `estado_del_arte.aux'.
 
  (./estado_del_arte.tex
@@ -961,7 +984,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6
+[8
 
 
 
@@ -994,7 +1017,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 29.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [7])
+) [9])
 Underfull \vbox (badness 3333) has occurred while \output is active []
 
 
@@ -1004,33 +1027,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8]
+[10]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 29.11858pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9]
+[11]
 \openout2 = `objetivo.aux'.
 
  (./objetivo.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[10
-
-
-
-]
-Chapter 4.
-) [11]
-\openout2 = `descripcion_informatica.aux'.
-
- (./descripcion_informatica.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1042,8 +1049,24 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ]
+Chapter 4.
+) [13]
+\openout2 = `descripcion_informatica.aux'.
+
+ (./descripcion_informatica.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[14
+
+
+
+]
 Chapter 5.
-[13]
+[15]
 ! Missing { inserted.
 <to be read again> 
                    O
@@ -1085,12 +1108,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[14]
+[16]
 \openout2 = `resultados_experimentales.aux'.
 
  (./resultados_experimentales.tex
 Chapter 6.
-[15
+[17
 
 
 
@@ -1101,114 +1124,16 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[16]
+[18]
 \openout2 = `conclusiones.aux'.
 
  (./conclusiones.tex
 Chapter 7.
-) [17
+) [19
 
 
 
 ]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[18
-
-
-] (./master_memoriae.bbl) [19
-
-]
-\openout2 = `bibliography_general.aux'.
-
- (./bibliography_general.tex
-Underfull \hbox (badness 10000) in paragraph at lines 6--10
-
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.21 ...: http://en.wikipedia.org/wiki/Comparison_
-                                                  of_open_source_software_ho...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.30 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (446.40584pt too wide) in paragraph at lines 20--30
-[]\T1/cmr/m/it/12 References: Com-par-i-son among open source host-ing fa-cil-i
--ties: http://en.wikipedia.org/wiki/Comparison$[]\OML/cmm/m/it/12 f[]pen[]ource
-[]oftware[]osting[]acilitiesW\OT1/cmr/m/n/12 3\OML/cmm/m/it/12 CDatabaseSpecifi
-cations \OT1/cmr/m/n/12 :
- []
-
-
-Overfull \hbox (297.42905pt too wide) in paragraph at lines 20--30
-\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==www:w\OT1/cmr/m/n/12
- 3\OML/cmm/m/it/12 :org=TR=webdatabase=PhoneGapStorage \OT1/cmr/m/n/12 : \OML/c
-mm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==docs:phonegap:com=en=\OT1/
-cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/1
-2 1\OML/cmm/m/it/12 =cordova[]torage[]torage:md:htmlJqueryMobile \OT1/cmr/m/n/1
-2 :
- []
-
-
-Overfull \hbox (0.54172pt too wide) in paragraph at lines 20--30
-\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==jquerymobile:com=dem
-os=\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/c
-mr/m/n/12 1\OML/cmm/m/it/12 =Jquery \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 http \OT
-1/cmr/m/n/12 : \OML/cmm/m/it/12 ==docs:jquery:com=SergasApp \OT1/cmr/m/n/12 :
- []
-
-
-Overfull \hbox (83.40916pt too wide) in paragraph at lines 20--30
-\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==mrego:github:com=ser
-gasapp=EduXes \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 https \OT1/cmr/m/n/12 : \OML/c
-mm/m/it/12 ==github:com=joseantoniosa=EduXes=Siestta \OT1/cmr/m/n/12 :
- []
-
-
-Overfull \hbox (54.49124pt too wide) in paragraph at lines 20--30
-\OML/cmm/m/it/12 http \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 ==siestta:sourceforge:
-net=doc=index:htmlXadeWeb \OT1/cmr/m/n/12 : \OML/cmm/m/it/12 https \OT1/cmr/m/n
-/12 : \OML/cmm/m/it/12 ==auth:edu:xunta:es=cas=login$ 
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.32 ...ntoniosa/EduXes/blob/master/docs/PhoneGap_
-                                                  Project_MSWL_Memory.odt
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-)
-! Missing $ inserted.
-<inserted text> 
-                $
-l.216 \include{bibliography_general}
-                                    
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (210.34161pt too wide) in paragraph at lines 31--216
-[]\T1/cmr/m/it/12 This doc-u-ment is hosted at: https://github.com/joseantonios
-a/EduXes/blob/master/docs/PhoneGap$[]\OML/cmm/m/it/12 roject[]SWL[]emory:odt$ 
- []
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1217,29 +1142,56 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [20
 
+
+] (./master_memoriae.bbl) [21
+
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 221.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 221.
+\openout2 = `bibliography_general.aux'.
+
+ (./bibliography_general.tex
+
+LaTeX Warning: Citation `NewCam97' on page 22 undefined on input line 6.
+
+
+LaTeX Warning: Citation `Pesce' on page 22 undefined on input line 7.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--10
+
+ []
+
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[22
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
  (./master_memoriae.aux (./copyright.aux) (./agradecimientos.aux)
 (./resumen.aux) (./introduccion.aux) (./working.aux) (./estado_del_arte.aux)
 (./objetivo.aux) (./descripcion_informatica.aux)
 (./resultados_experimentales.aux) (./conclusiones.aux)
 (./bibliography_general.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 221.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 221.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
 Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
-(rerunfilecheck)             Checksum: F80029AB8523AB6B216DE230F8AFE383;2316.
+(rerunfilecheck)             Checksum: 2D8162FBE5791CBFE3912C4069995375;2560.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 221.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
  ) 
 Here is how much of TeX's memory you used:
- 17220 strings out of 494956
- 304559 string characters out of 3179077
- 382789 words of memory out of 3000000
- 19897 multiletter control sequences out of 15000+200000
+ 17238 strings out of 494956
+ 304768 string characters out of 3179077
+ 382897 words of memory out of 3000000
+ 19906 multiletter control sequences out of 15000+200000
  21554 words of font info for 61 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
  64i,11n,71p,515b,799s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1258,15 +1210,13 @@ ecrm1095.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488
 </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/j
 antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/latxfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (32 pages, 234969 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/latxfont/lcircle1.pfb>
+Output written on master_memoriae.pdf (34 pages, 217845 bytes).
 PDF statistics:
- 849 PDF objects out of 1000 (max. 8388607)
- 346 compressed objects within 4 object streams
- 66 named destinations out of 1000 (max. 500000)
- 346 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 881 PDF objects out of 1000 (max. 8388607)
+ 382 compressed objects within 4 object streams
+ 75 named destinations out of 1000 (max. 500000)
+ 378 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,22 +2,83 @@
 %\thispagestyle {empty}
 \section{Description and objectives}
 
-	A multi-platform management application for high school teachers is developed. It can be run on a smart-phone or tablet. 
-	The actual objectives of the applications are student's management:
+	An open source multi-platform management application for high school teachers is developed. It can be run on a smartphone or tablet. 
+	The actual objectives of the applications are students management:
 	\begin{itemize}
-	  \item Attendance control.
-	  \item Attendance control.
-	  \item Attendance control.
-	  \item Attendance control.
-	  \item Attendance control.
+	  \item Attendance and punctuality control. 
+	  \item Misbehaviour control.
+	  \item Activities assessment. Each student will have an activity mark.
 	\end{itemize}
 
-Misbehaviour control.
-Activities evaluation.
-	Application should include this features:
-Data visualization. As table-like.
-Server synchronization with a custom application or Xade1.
-	The final goal is to develop an application to make teacher's work easier and comfortable. Also an objective is to write extensible code, which allow another developers to take part into application development.
+	Application should include these features:
+	\begin{itemize}
+	  \item Data visualization. As table-like format. Attendance and misbehaviour
+	  \item Server synchronization with a custom application or Xade \cite{Xade}.
+	\end{itemize}
+
+	The final goal is to develop an application to make teacher's work easier and comfortable. 
+	Also an objective is to write extensible, easy to read code, which allows external developers to take part into application development.
+	
+
+	Task to be done:
+	\begin{itemize}
+	  \item Study state-of-art solutions: 
+  \subitem  Find out other solutions: PDAs and smart-phone or tablet related and web-based applications.
+  \subitem  Download to study and reuse graphical user interfaces, code or/and database structure. 
+  \item   Develop database structure: tables (field names and type of data), and relationships among tables. 
+  \item   Preparation for development:
+\subitem  Build development and staging environment: 
+\subsubitem Install Eclipse \cite{Eclipse}, Android Virtual Machine \cite{AndroidDevelopmentKit}, Aptana Plugin for Eclipse, JQuery, JQueryMobile \cite{JQueryMobile} and Phonegap \cite{PhoneGap} from their respective websites.
+\subitem   Choose application name and folder's policy.
+\subitem   Make a simple application: only a blank page.
+\subitem  Configure a git repository and upload the application: \cite{EduXes}.
+	\end{itemize}
+	
+		
+  Development will follow next stages:
+	\begin{itemize}
+  \item   Populate database with sample data. Firstly, data will be hard-coded into source code to stagging. Several tables will be created:
+  groups, students, sessions, teacher schedule, students attendance, activities, student activities, and activities per group. Secondly 
+  the appropiate windows to manage these tables will be built.
+  \item   Groups: Several groups (four) of students will be hard-coded into javascript source code, with three or four students each other.
+  \subitem  Make list of groups window. This will list the four groups.
+  \subitem  Groups management window. Another group could be added, or removed.
+  \item  Students information:
+  \subitem   Make list of students window per group and complete list of students. 
+  \subitem   Students management window: to insert and update data students: name, surname, birthday, address, e-mail,  tutor name,
+    landline and cell phone numbers and nationality.
+  \item  Sessions. Each lecture has a description (as 'first hour', or 'recreation'), starting and ending time.  These sessions will be hard-coded on first version.
+  \item  Teacher schedule. For the current teacher, it contains weekly and daily schedule: name of group, session and day of the week. This information will be also hard-coded. 
+  \item  Attendance. For each student, it contains information about day of the week, attendance, misbehaviour, unpunctuality or excused. 
+  Though an interface this information will be set by teacher. 
+  \item  Activities. Name and description of assessable exercises. Though an adequate interface this information will be set by teacher. 
+  \subitem  Activities group will be set in activities window, and activities student will be related with assessment.
+  \item Timetable for current date: daily schedule, list of groups for each day.
+  \item    e) Add attendance, misbehaviour for each student.
+  \item    f) Add error handling.
+  \item    g) Retrieve and insert data from and to database
+  \item    h) List of attendance, misbehaviour incidents.
+  \item    i) Add activities grades for each student.
+  \item    j) List students marks and final mark.
+  \item    k) Activities management window (add-update-remove activities)
+  \item    l) Management of student annotations.
+  \item    m) List of student annotations. 
+  \end{itemize}
+  
+  \begin{itemize}
+  \item    5. Test into real hardware: Android 2.3.3 mobile phone.
+  \item    6. Save or download data from database to disk.
+  \item    7. Xade web interface.
+  \item    a) Study Xade web interface.
+  \item    b) Develop an ad-hoc application for retrieve Xade's data. 
+  \item    8. Develop an ad-hoc application for store data. 
+  \item    9. Synchronization with a custom server or with Xade.
+  \item    10. Test units.
+  \item    11. User documentation. Manual with images.
+  \item    12. Developer's documentation.
+  \item    13. Find out a website to host a forum, a bug report system,  documentation and application download.
+
+	\end{itemize}
 Tasks:
 	The current list of tasks are:
  1. Study state-of-art solutions. 
@@ -61,7 +122,8 @@ Students management window (insert-update-delete students)
 In the following table a broad estimation of time spent in each task are shown.  
 
 Tasks
-\begin{tabular}
+\begin{tabular} {c|c}
+1 & 2  \\
 \end{tabular}
 
 Time  (hours)
@@ -131,5 +193,4 @@ db.transaction(queryFunction, errorHandler, successHandler)
 have up to four and three parameters respectively, only first one is mandatory. I rather use success and error handlers for tx.executeSql function, atomic error control could be better choice.
 Passing variables to functions: Only if another solution is not known or feasible, global variables are used: named after global_*, and in block capitals.
 Deadline. Development was delayed because I have no enough spare time and above problems were time costly.
-
 
