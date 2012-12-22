@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 19:57
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -918,21 +918,34 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [6]
-Overfull \hbox (16.73627pt too wide) in paragraph at lines 140--141
+Overfull \hbox (16.73627pt too wide) in paragraph at lines 130--131
 \T1/cmr/m/n/12 skills in mobile-phone ap-pli-ca-tions de-vel-op-ment: JQuery, j
 Query-Mo-bile, Phone-Gap/Cordova,
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 158.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 142.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 169--169
+[]            \T1/cmtt/m/n/12 <a href="#daily_work"  data-icon="arrow-l" data-t
+heme="a"[] 
+ []
+
+
+Overfull \hbox (13.23044pt too wide) in paragraph at lines 169--169
+[]            \T1/cmtt/m/n/12 <div data-role="footer" class="footer-docs" data-
+rel="back"[] 
+ []
+
 Package hyperref Info: bookmark level for unknown bclogo defaults to 0 on input
- line 210.
-File: bc-aux-301.mps Graphic file (type mps)
- [MP to PDF]
-(/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+ line 171.
+File: bc-fleur.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
+File: bc-fleur.mps Graphic file (type mps)
+
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -943,7 +956,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [7]
-Overfull \vbox (40.40604pt too high) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -953,19 +966,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [8]
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 243--243
-[]            \T1/cmtt/m/n/12 <a href="#daily_work"  data-icon="arrow-l" data-t
-heme="a"[] 
- []
+File: bc-aux-301.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (13.23044pt too wide) in paragraph at lines 243--243
-[]            \T1/cmtt/m/n/12 <div data-role="footer" class="footer-docs" data-
-rel="back"[] 
- []
-
-File: bc-fleur.mps Graphic file (type mps)
-[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps))
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -973,22 +978,39 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [9]
+Overfull \vbox (40.40604pt too high) has occurred while \output is active []
+
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10]
+[10])
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11]
 \openout2 = `estado_del_arte.aux'.
 
  (./estado_del_arte.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12
+
+
+
+]
 Chapter 3.
-[11
-
-
-
-])
+[13])
 Underfull \vbox (badness 3333) has occurred while \output is active []
 
 
@@ -998,33 +1020,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12]
+[14]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 29.11858pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[13]
+[15]
 \openout2 = `objetivo.aux'.
 
  (./objetivo.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[14
-
-
-
-]
-Chapter 4.
-) [15]
-\openout2 = `descripcion_informatica.aux'.
-
- (./descripcion_informatica.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1036,8 +1042,24 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ]
+Chapter 4.
+) [17]
+\openout2 = `descripcion_informatica.aux'.
+
+ (./descripcion_informatica.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[18
+
+
+
+]
 Chapter 5.
-[17]
+[19]
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps))
 
@@ -1046,12 +1068,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18]
+[20]
 \openout2 = `resultados_experimentales.aux'.
 
  (./resultados_experimentales.tex
 Chapter 6.
-[19
+[21
 
 
 
@@ -1062,12 +1084,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[20]
+[22]
 \openout2 = `conclusiones.aux'.
 
  (./conclusiones.tex
 Chapter 7.
-) [21
+) [23
 
 
 
@@ -1078,20 +1100,32 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[22
+[24
 
 
-] (./master_memoriae.bbl) [23
+] (./master_memoriae.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 35--40
+[]\T1/cmr/m/n/12 PhoneGap.  Phone-gap get-ting started with an-droid.  []$\T1/c
+mtt/m/n/12 http :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--40
+\T1/cmtt/m/n/12 / / docs . phonegap . com / en / 1 . 8 . 1 / guide _ getting-[]
+started _ android _
+ []
+
+) [25
 
 ]
 \openout2 = `bibliography_general.aux'.
 
  (./bibliography_general.tex
 
-LaTeX Warning: Citation `NewCam97' on page 24 undefined on input line 6.
+LaTeX Warning: Citation `NewCam97' on page 26 undefined on input line 6.
 
 
-LaTeX Warning: Citation `Pesce' on page 24 undefined on input line 7.
+LaTeX Warning: Citation `Pesce' on page 26 undefined on input line 7.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--10
@@ -1105,7 +1139,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[24
+[26
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 249.
@@ -1126,13 +1160,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 249.
  ) 
 Here is how much of TeX's memory you used:
- 17368 strings out of 494956
- 306519 string characters out of 3179077
- 425939 words of memory out of 3000000
- 20017 multiletter control sequences out of 15000+200000
+ 17378 strings out of 494956
+ 306760 string characters out of 3179077
+ 423336 words of memory out of 3000000
+ 20020 multiletter control sequences out of 15000+200000
  21554 words of font info for 61 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
- 63i,13n,71p,494b,1238s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,13n,71p,494b,1234s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1152,10 +1186,10 @@ ecrm1095.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488
 antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (36 pages, 211422 bytes).
+Output written on master_memoriae.pdf (38 pages, 217651 bytes).
 PDF statistics:
- 941 PDF objects out of 1000 (max. 8388607)
- 417 compressed objects within 5 object streams
- 86 named destinations out of 1000 (max. 500000)
+ 976 PDF objects out of 1000 (max. 8388607)
+ 437 compressed objects within 5 object streams
+ 91 named destinations out of 1000 (max. 500000)
  418 words of extra memory for PDF output out of 10000 (max. 10000000)
 

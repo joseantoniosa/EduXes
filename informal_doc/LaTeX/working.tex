@@ -133,13 +133,85 @@ Total &384 \\
 	This work was carried on building little blocks, also called pages, and make it up into final application. Database structure was separated from interface, and interface was also separated into dynamic and static contents. Each new functionality was written, tested, and
 	polished. Each new function was written from previous one, and so on.
 	\subsection{HTML}
-  Complete \textbf{index.html} file is build by blocks called pages, gathered together.  \cite{JQueryMobilePage}
-	
+  There are only two html files: \textbf{index.html} and \textbf{remove.html}. The most important: \textbf{index.html} file is build by
+   blocks called pages, gathered together \cite{JQueryMobilePage}. Each page is its own {\bf div } 
+   with custom properties (\emph{propieraty} properties in Eclipse jargon ) : {\bf data-role="page"}. Below as show an example: list of several reports, user could choose one and a function (\emph{onReportListAttendance() } or \emph{onReportListAssessment() }  ) is executed .
+  
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Reports Page}
+\begin{verbatim}
+  
+ <div data-role="page" id="list_reports" data-add-back-btn="false">
+            <div data-role="header"  data-back-btn-text="previous" 
+              data-add-back-btn="false" >
+            <a href="#daily_work"  data-icon="arrow-l" data-theme="a" 
+              data-role="button">Back</a>
+
+                <h1>Reports</h1>
+            </div>
+            <div data-role="content">
+
+                <ul data-role="listview" id="list_reports_ul" 
+                  data-split-icon="gear" data-split-theme="a" 
+                  data-filter="false" 
+                  data-inset="true" data-theme="a" >
+                <li><a href="#" onClick="onReportListAttendance();"
+                 >Attendance</a></li>
+                <li><a href="#" onClick="onReportListAssessment();" 
+                >Assessment</a></li>
+                <li><a href="#" onClick="" >File</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" class="footer-docs" data-rel="back"
+             data-theme="a">
+             </div>
+ </div>
+\end{verbatim}
+
+\end{bclogo}
+
+A complete list of pages is shown below:
+
+\begin{bclogo}[couleur=orange!30,arrondi=0.1,ombre=true ] 
+{List of Pages}
+\begin{tabular}{ll}
+intro & daily\_work \\
+list\_reports &
+list\_settings \\
+file &
+daily\_schedule \\
+list\_students\_attendance &
+list\_students\_assessment \\
+list\_students\_attendance\_by\_group  &
+general\_list\_attendance \\
+
+list\_groups\_attendance  &
+list\_groups\_assessment \\
+
+list\_students\_assessment\_reports &
+
+list\_groupsto\_edit \\
+edit\_new\_group &
+
+edit\_groups \\
+list\_groups &
+
+list\_students\_by\_group \\
+list\_students &
+edit\_student \\
+edit\_new\_student &
+
+list\_all\_activities \\
+update\_activity
+	\end{tabular}
+
+\end{bclogo}	
 
 	
 	\subsection{Interface code }
+	There is only onle file which deals with interface interactions (events from {\bf html} files): \emph{ interface.js}
 	\subsection{Database code}
-	
+  The file which carry on querys and data manipulation on database (SQLite) is : \emph{ database.js}
 		\subsection{Tools}
 	
 	Tools involved were Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality was developed, application was tested on AVM,  if it worked, source code was polished, applicable was tested again, if it was satisfactory a new change was committed into git repository. From time to time application was downloaded from git repository into a real hardware and tested. 
@@ -203,38 +275,6 @@ Total &384 \\
 
 \newpage
 
-\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
-{Reports Page}
-\begin{verbatim}
-  
- <div data-role="page" id="list_reports" data-add-back-btn="false">
-            <div data-role="header"  data-back-btn-text="previous" 
-              data-add-back-btn="false" >
-            <a href="#daily_work"  data-icon="arrow-l" data-theme="a" 
-              data-role="button">Back</a>
-
-                <h1>Reports</h1>
-            </div>
-            <div data-role="content">
-
-                <ul data-role="listview" id="list_reports_ul" 
-                  data-split-icon="gear" data-split-theme="a" 
-                  data-filter="false" 
-                  data-inset="true" data-theme="a" >
-                <li><a href="#" onClick="onReportListAttendance();"
-                 >Attendance</a></li>
-                <li><a href="#" onClick="onReportListAssessment();" 
-                >Assessment</a></li>
-                <li><a href="#" onClick="" >File</a></li>
-                </ul>
-            </div>
-            <div data-role="footer" class="footer-docs" data-rel="back"
-             data-theme="a">
-             </div>
- </div>
-\end{verbatim}
-
-\end{bclogo}
 	
 \section {Work plan}
 

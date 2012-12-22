@@ -20,12 +20,25 @@ Android Inc.
 \newblock Android simple development kit.
 \newblock \url{ http://developer.android.com/sdk/index.html }, 2001.
 
-\bibitem[Mob12]{JQueryMobile}
+\bibitem[Mob12a]{JQueryMobile}
 JQuery Mobile.
-\newblock Jquerymobile.
+\newblock Jquery mobile.
 \newblock \url{ http://jquerymobile.com/demos/1.1.1/ }, 2012.
 
-\bibitem[Pho12]{PhoneGap}
+\bibitem[Mob12b]{JQueryMobilePage}
+JQuery Mobile.
+\newblock The jquery mobile "page" structure.
+\newblock \url{
+  http://jquerymobile.com/demos/1.1.1/docs/pages/page-anatomy.html}, 2012.
+
+\bibitem[Pho12a]{PhoneGapGS}
+PhoneGap.
+\newblock Phonegap getting started with android.
+\newblock \url{
+  http://docs.phonegap.com/en/1.8.1/guide_getting-started_android_index.md.html#Getting%20Started%20with%20Android},
+  2012.
+
+\bibitem[Pho12b]{PhoneGap}
 PhoneGap.
 \newblock Phonegap is a free and open source framework that allows you to
   create mobile apps using standardized web apis for the platforms you care
