@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  22 DEC 2012 20:52
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  23 DEC 2012 04:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -656,20 +656,20 @@ Writing index file master_memoriae.idx
 (./conclusiones.aux) (./bibliography_general.aux))
 \openout1 = `master_memoriae.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 100.
+LaTeX Font Info:    ... okay on input line 100.
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -726,7 +726,7 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box41
-Package hyperref Info: Link coloring OFF on input line 113.
+Package hyperref Info: Link coloring OFF on input line 100.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -735,9 +735,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count136
 )
-LaTeX Info: Redefining \ref on input line 113.
-LaTeX Info: Redefining \pageref on input line 113.
-LaTeX Info: Redefining \nameref on input line 113.
+LaTeX Info: Redefining \ref on input line 100.
+LaTeX Info: Redefining \pageref on input line 100.
+LaTeX Info: Redefining \nameref on input line 100.
 
 (./master_memoriae.out) (./master_memoriae.out)
 \@outlinefile=\write7
@@ -871,7 +871,7 @@ Chapter 1.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.216 \include{introduccion}
+l.203 \include{introduccion}
                              [1
 
 
@@ -923,29 +923,29 @@ Overfull \hbox (16.73627pt too wide) in paragraph at lines 130--131
 Query-Mo-bile, Phone-Gap/Cordova,
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 142.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 146.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 169--169
-[]            \T1/cmtt/m/n/12 <a href="#daily_work"  data-icon="arrow-l" data-t
-heme="a"[] 
+Overfull \hbox (7.05695pt too wide) in paragraph at lines 173--173
+[]            \T1/cmtt/m/n/12 <a href="#daily\_work"  data-icon="arrow-l" data-
+theme="a"[] 
  []
 
 
-Overfull \hbox (13.23044pt too wide) in paragraph at lines 169--169
+Overfull \hbox (13.23044pt too wide) in paragraph at lines 173--173
 []            \T1/cmtt/m/n/12 <div data-role="footer" class="footer-docs" data-
 rel="back"[] 
  []
 
 Package hyperref Info: bookmark level for unknown bclogo defaults to 0 on input
- line 171.
+ line 175.
 File: bc-fleur.mps Graphic file (type mps)
 [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
-File: bc-fleur.mps Graphic file (type mps)
+File: bc-book.mps Graphic file (type mps)
 
-[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-book.mps)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -966,6 +966,25 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [8]
+File: bc-book.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-book.mps)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+Overfull \vbox (29.58502pt too high) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10]
 File: bc-aux-301.mps Graphic file (type mps)
  [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -977,40 +996,45 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9]
-Overfull \vbox (40.40604pt too high) has occurred while \output is active []
-
-
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[10])
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
 [11]
+File: bc-aux-301.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12]
+Overfull \vbox (41.40579pt too high) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[13])
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[14]
 \openout2 = `estado_del_arte.aux'.
 
  (./estado_del_arte.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[12
-
-
-
-]
 Chapter 3.
-[13])
+[15
+
+
+
+])
 Underfull \vbox (badness 3333) has occurred while \output is active []
 
 
@@ -1020,33 +1044,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[14]
+[16]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 29.11858pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[15]
+[17]
 \openout2 = `objetivo.aux'.
 
  (./objetivo.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[16
-
-
-
-]
-Chapter 4.
-) [17]
-\openout2 = `descripcion_informatica.aux'.
-
- (./descripcion_informatica.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1058,26 +1066,30 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 
 ]
-Chapter 5.
-[19]
-File: bc-fleur.mps Graphic file (type mps)
- [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps))
+Chapter 4.
+) [19]
+\openout2 = `descripcion_informatica.aux'.
+
+ (./descripcion_informatica.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[20]
-\openout2 = `resultados_experimentales.aux'.
-
- (./resultados_experimentales.tex
-Chapter 6.
-[21
+[20
 
 
 
-])
+]
+Chapter 5.
+[21]
+Overfull \hbox (28.82478pt too wide) in paragraph at lines 51--52
+[][] 
+ []
+
+File: bc-fleur.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps))
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1085,11 +1097,82 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [22]
+\openout2 = `resultados_experimentales.aux'.
+
+ (./resultados_experimentales.tex
+Chapter 6.
+[23
+
+
+
+]
+Overfull \hbox (464.60626pt too wide) in paragraph at lines 59--59
+[] \T1/cmtt/m/n/12 ohcount  -i  assets/www/js/interface.js assets/www/js/databa
+se.js assets/www/js/create\_populate_db.js  assets/www/index.html assets/www/re
+move.html[] 
+ []
+
+
+Overfull \hbox (20.1148pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 Language               Code    Comment  Comment %      Blank 
+     Total  File[] 
+ []
+
+
+Overfull \hbox (285.57498pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 ----------------  ---------  ---------  ---------  --------- 
+ ---------  -----------------------------------------------[] 
+ []
+
+
+Overfull \hbox (69.50275pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 javascript              393         93      19.1%         54 
+       540  interface.js[] 
+ []
+
+
+Overfull \hbox (63.32925pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 javascript             1462        187      11.3%        226 
+      1875  database.js[] 
+ []
+
+
+Overfull \hbox (131.23767pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 javascript              402         57      12.4%         46 
+       505  create\_populate_db.js[] 
+ []
+
+
+Overfull \hbox (57.15576pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 html                    546         99      15.3%        117 
+       762  index.html[] 
+ []
+
+
+Overfull \hbox (57.15576pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 javascript                1          0       0.0%          0 
+         1  index.html[] 
+ []
+
+
+Overfull \hbox (63.32925pt too wide) in paragraph at lines 59--59
+[]\T1/cmtt/m/n/12 html                     28          1       3.4%          8 
+        37  remove.html[] 
+ []
+
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[24]
 \openout2 = `conclusiones.aux'.
 
  (./conclusiones.tex
 Chapter 7.
-) [23
+) [25
 
 
 
@@ -1100,7 +1183,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[24
+[26
 
 
 ] (./master_memoriae.bbl
@@ -1115,17 +1198,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--40
 started _ android _
  []
 
-) [25
+) [27
 
 ]
 \openout2 = `bibliography_general.aux'.
 
  (./bibliography_general.tex
 
-LaTeX Warning: Citation `NewCam97' on page 26 undefined on input line 6.
+LaTeX Warning: Citation `NewCam97' on page 28 undefined on input line 6.
 
 
-LaTeX Warning: Citation `Pesce' on page 26 undefined on input line 7.
+LaTeX Warning: Citation `Pesce' on page 28 undefined on input line 7.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--10
@@ -1139,57 +1222,63 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[26
+[28
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 249.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 249.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 236.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 236.
  (./master_memoriae.aux (./copyright.aux) (./agradecimientos.aux)
 (./resumen.aux) (./introduccion.aux) (./working.aux) (./estado_del_arte.aux)
 (./objetivo.aux) (./descripcion_informatica.aux)
 (./resultados_experimentales.aux) (./conclusiones.aux)
 (./bibliography_general.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 249.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 249.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 236.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 236.
 Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
 (rerunfilecheck)             Checksum: AE92B0113E6AEC6C536A5802D21CE7D7;2877.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 249.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 236.
  ) 
 Here is how much of TeX's memory you used:
- 17378 strings out of 494956
- 306760 string characters out of 3179077
- 423336 words of memory out of 3000000
- 20020 multiletter control sequences out of 15000+200000
- 21554 words of font info for 61 fonts, out of 3000000 for 9000
+ 17395 strings out of 494956
+ 307172 string characters out of 3179077
+ 424335 words of memory out of 3000000
+ 20025 multiletter control sequences out of 15000+200000
+ 22927 words of font info for 63 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
- 63i,13n,71p,494b,1234s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
+ 63i,16n,71p,494b,1239s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
 st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
  </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/
-jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/jantonio
-/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jantonio/.texmf-
-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/jantonio/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/ecbx1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecrm0800.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecrm1095.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488
-.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> 
-</home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/j
-antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (38 pages, 217651 bytes).
+jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0700.600pk> </home/jantonio
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0800.600pk> </home/jantonio/.texmf-
+var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/jantonio/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jantonio/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecrm0700.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jkna
+ppen/ec/ecti1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecbx1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800
+.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> 
+</home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/j
+antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/jantonio/
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jantonio/.texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/latxfont/lcircle1.pfb>
+Output written on master_memoriae.pdf (40 pages, 244104 bytes).
 PDF statistics:
- 976 PDF objects out of 1000 (max. 8388607)
- 437 compressed objects within 5 object streams
- 91 named destinations out of 1000 (max. 500000)
+ 1024 PDF objects out of 1200 (max. 8388607)
+ 458 compressed objects within 5 object streams
+ 96 named destinations out of 1000 (max. 500000)
  418 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -136,22 +136,26 @@ Total &384 \\
   There are only two html files: \textbf{index.html} and \textbf{remove.html}. The most important: \textbf{index.html} file is build by
    blocks called pages, gathered together \cite{JQueryMobilePage}. Each page is its own {\bf div } 
    with custom properties (\emph{propieraty} properties in Eclipse jargon ) : {\bf data-role="page"}. Below as show an example: list of several reports, user could choose one and a function (\emph{onReportListAttendance() } or \emph{onReportListAssessment() }  ) is executed .
+   
+   
+  Inside each page there are several identificatives \emph{id="name"} which are used by application to fill with data (e.g.
+   within \emph{daily\_schedule} page \emph{current\_day} id is used to set date to current date). 
   
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {Reports Page}
 \begin{verbatim}
   
- <div data-role="page" id="list_reports" data-add-back-btn="false">
+ <div data-role="page" id="list\_reports" data-add-back-btn="false">
             <div data-role="header"  data-back-btn-text="previous" 
               data-add-back-btn="false" >
-            <a href="#daily_work"  data-icon="arrow-l" data-theme="a" 
+            <a href="#daily\_work"  data-icon="arrow-l" data-theme="a" 
               data-role="button">Back</a>
 
                 <h1>Reports</h1>
             </div>
             <div data-role="content">
 
-                <ul data-role="listview" id="list_reports_ul" 
+                <ul data-role="listview" id="list\_reports\_ul" 
                   data-split-icon="gear" data-split-theme="a" 
                   data-filter="false" 
                   data-inset="true" data-theme="a" >
@@ -172,46 +176,182 @@ Total &384 \\
 
 A complete list of pages is shown below:
 
-\begin{bclogo}[couleur=orange!30,arrondi=0.1,ombre=true ] 
+\begin{bclogo}[couleur=orange!30,logo=\bcbook,arrondi=0.1,ombre=true ] 
 {List of Pages}
-\begin{tabular}{ll}
-intro & daily\_work \\
-list\_reports &
-list\_settings \\
-file &
-daily\_schedule \\
-list\_students\_attendance &
-list\_students\_assessment \\
-list\_students\_attendance\_by\_group  &
-general\_list\_attendance \\
-
-list\_groups\_attendance  &
-list\_groups\_assessment \\
-
-list\_students\_assessment\_reports &
-
-list\_groupsto\_edit \\
-edit\_new\_group &
-
-edit\_groups \\
-list\_groups &
-
-list\_students\_by\_group \\
-list\_students &
-edit\_student \\
-edit\_new\_student &
-
-list\_all\_activities \\
-update\_activity
-	\end{tabular}
+\begin{tabular}{l|l}
+intro & Introductiony page              \\
+daily\_work & daily work \\
+list\_reports & List reports             \\
+list\_settings  & List settings\\
+file & Exit application                  \\
+daily\_schedule & List of groups per day\\
+list\_students\_attendance &             \\
+list\_students\_assessment &  \\
+list\_students\_attendance\_by\_group &  \\
+general\_list\_attendance &  \\
+list\_groups\_attendance  &              \\
+list\_groups\_assessment &  \\
+list\_students\_assessment\_reports &    \\
+list\_groupsto\_edit &  \\
+edit\_new\_group &                      \\
+ edit\_groups  & \\
+list\_groups &                          \\
+  list\_students\_by\_group & \\
+list\_students &                        \\
+  edit\_student   &   \\
+edit\_new\_student &                    \\
+  list\_all\_activities & \\
+update\_activity  &                     
+\end{tabular}
 
 \end{bclogo}	
 
 	
 	\subsection{Interface code }
-	There is only onle file which deals with interface interactions (events from {\bf html} files): \emph{ interface.js}
+	There is only onle file which deals with interface interactions (events from {\bf html} files): \emph{ interface.js}.
+If the function is called directly from \emph{html}	code, function name contains {\bf on} prefix.
+There are several groups of functions:
+\begin{itemize}
+    \item \emph{Students} and \emph{Groups} functions, which manage and list general students and groups information.
+    \item \emph{Activities} functions, which update, list and add new activities.
+    \item \emph{Assessment} functions, list and update students marks.
+    \item \emph{Attendance} functions, list when student attend classes and update their values.
+\end{itemize}
+Whether these functions need access to data (every function but \emph{ onGeneral* } ) they call  their counterpart 
+function in {\bf database.js } file.
+
+
+\begin{bclogo}[couleur=orange!30,logo=\bcbook, arrondi=0.1,ombre=true ] 
+{List of Functions: {\bf interface.js}}	
+\begin{tabular}{lll}
+Task                    & Name            & Group \\
+\hline
+Firstly loaded, create and    & \emph{ onDeviceReady()  }& Initial\\
+populate database,              &   &                       \\
+load initial page               &   &                       \\
+Initial                         &   \emph{ init()  } & \\
+Load default date               &  \emph{ initialize\_data )      } & Initial \\
+Daily work page:                &   \emph{open\_daily\_page()     } & Schedule \\
+list of groups                  &                         &  \\
+Students Attendance page        &  \emph{ listStudentsAttendance() }&   \\
+New Group                       &  \emph{ requestNewGroup()     }   & Groups \\
+Edit Group                      &  \emph{ onAddNewGroup()       }   & Groups \\
+Update Group                    &  \emph{ onAddNewGroup()       }   & Groups \\
+Delete Group                    &  \emph{ onDeleteGroup()       }   & Groups \\    
+Save Group                      &  \emph{ onSaveNewGroup()      }   & Groups \\
+List All Groups                 &  \emph{ onListAllGroups()     }   & Groups \\
+Edit Student                    &  \emph{ EditStudent()         }   & Students \\
+Delete Student                  &  \emph{ onDeleteStudent()     }   & Students \\   
+Add new Student                 &  \emph{ onAddNewStudent()     }   & Students \\    
+Save Student                    &  \emph{ onSaveStudent()       }   & Students \\
+Save New Student                &  \emph{ onSaveNewStudent()    }   &  Students \\
+Full list of students           &  \emph{ listStudents()        }   & Students \\
+List Students by group          &  \emph{ listStudentsByGroup( )}   & Students \\
+Full list of students           &  \emph{ onListAllStudents()  }    & Students \\
+List All Activities             &  \emph{ onListAllActivities()}   &   Activities \\
+Activity update                 &  \emph{ onUpdateActivity()  }   &   Activities \\
+Add new Activity                &  \emph{ onAddNewActivity()  }   &   Activities \\
+Save New Activity               &  \emph{ onSaveNewActivity() }    &   Activities \\
+Open Students Assessment        &  \emph{ onOpenStudentsAssessment()} & Assessment \\
+Reload Group Assessment         &  \emph{ onRefreshGroupAssessment()} & Assessment \\
+Open Student Attendance         &  \emph{onOpenStudentsAttendance() }& Attendance \\
+List Attendance                 &  \emph{onReportListAttendance() }  & Attendance\ \\
+                         &                                   & Reports \\
+List Students by             & \emph{listStudentsByGroupAttendance() } & Attendance \\
+ Group Attendance           &   & Reports \\
+List Students by Group     & \emph{studentsAttendanceListPrevious()} & Attendance\\
+Previous week                   &                           & Reports \\
+
+List Students by Group    & \emph{ studentsAttendanceListNext()} & Attendance  \\
+Next week   &  & Reports\\
+
+List Groups for Assessment      &  \emph{ onReportListAssessment() } & Assessment  \\
+                         &                                   & Reports \\
+List Students for Assessment    &  \emph{onListStudentsAssessment()} & Assessment  \\
+                         &                                   & Reports \\
+Student State       &    \emph{ studentState() }    & Student \\
+Student Attendance &   \emph{ Attendance()}    & Student  \\
+                 &                  &  Attendance \\
+Exit            & \emph{ onGeneralFile()} & Exit  \\
+List Reports    & \emph{ onGeneralListReports()}    & Reports \\
+List Settings   &  \emph{ onGeneralListSettings()}  & Settings \\
+
+\end{tabular}	
+\end{bclogo}
+	
+	
 	\subsection{Database code}
-  The file which carry on querys and data manipulation on database (SQLite) is : \emph{ database.js}
+  The file which contains functions which carry on querys and data manipulation (on data base (SQLite)) is : \emph{ database.js}
+
+There are  global variables on top of this file. These variables are used by functions because there are not obvious
+ways to pass values from {\bf html } code  through functions ( e.g. as day week, database, current date, $\dots$ ):
+
+  
+\begin{shadowblock}{13cm}
+\begin{tabular}{lc}
+{\bf Variable}  & {\bf Meaning } \\
+  \hline
+  \texttt{global\_id}  & General and unique \\
+                       & identification of any table   \\
+                       & as students  \\                       
+                       & or groups\footnote{will be deprecated} \\
+\texttt{table\_global} & students, groups table\\
+
+\texttt{global\_id\_group} &  Identification of a group \\
+\texttt{global\_id\_student } &  Identification of a student \\
+\texttt{global\_id\_activity} &  Identification of an activity  \\
+\texttt{global\_max\_activities}& Number of activities \\
+\texttt{global\_no\_groups} & Number of groups\\
+\texttt{global\_week\_day} & Number of week day (0-6) \\
+\texttt{global\_db }& Database pointer \\
+\texttt{global\_session} &  Selected session \\
+\texttt{global\_actual\_date} & Current date \\
+\texttt{global\_reports\_date} & Date for reports\\
+
+\texttt{global\_is\_new} & Whether activity is new \\
+
+\texttt{global\_exist } & if exist current record\\
+
+\texttt{STATE\_NONE  }& Default Student state\\
+\texttt{STATE\_ABSENCE} & Truancy \\
+\texttt{STATE\_UNPUNCTUAL}  & Unpunctuality \\
+\texttt{STATE\_EXCUSED} & Excused unattendance  \\
+\texttt{STATE\_BEHAVIOR } &  Bad behaviour \\
+
+\end{tabular}
+\end{shadowblock}
+
+Several approaches have been considered, a lot of tiny, one function equals one simple task, but code were 
+growing in complexity, became very difficult to read, maintain and pass variables to them. Other perspective was to write 
+only several complete functions which carry all (or almost all) the work. From this point of view functions become longer, 
+(up to a hundred of lines of code) but easier to test and follow.
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
+{List of Functions: {\bf database.js}}	
+\begin{tabular}{lll}
+Task                    & Name            & Group \\
+\hline
+Firstly loaded, create and    & \emph{ onDeviceReady()  }& Initial\\
+
+
+
+
+
+\end{tabular}
+
+\end{bclogo}  
+
+
+
+
+
+
+
+
+
+
+
+  
 		\subsection{Tools}
 	
 	Tools involved were Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality was developed, application was tested on AVM,  if it worked, source code was polished, applicable was tested again, if it was satisfactory a new change was committed into git repository. From time to time application was downloaded from git repository into a real hardware and tested. 
@@ -220,7 +360,7 @@ update\_activity
 \begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
 {Main Page}
 \begin{verbatim}
-<div data-role="page" id="daily_work">
+<div data-role="page" id="daily\_work">
     <div data-role="header" data-add-back-btn="true" data-theme="a">
                 <h1>Day</h1>
     </div>
@@ -232,8 +372,8 @@ update\_activity
                 </div>
             </div>
             <div class="ui-block-b">
-                <input id="daily_date_scroller"
-                   name="daily_date_scroller" />
+                <input id="daily\_date\_scroller"
+                   name="daily\_date\_scroller" />
             </div>
             <div class="ui-block-c">
                 <a href="#" data-role='button' 
@@ -242,7 +382,7 @@ update\_activity
                   onClick="help('date');">Help</a>
                 <a href="#" data-role="button" 
                   data-icon="arrow-r" data-iconpos="notext"  
-                  onclick="open_daily_page() " >Go</a>
+                  onclick="open\_daily\_page() " >Go</a>
             </div>
         </div>
     </div>
@@ -266,7 +406,7 @@ update\_activity
         </ul>
     </div><!-- /navbar -->
     <div data-role="footer" class="footer-docs" data-theme="a">
-        <p   style="text-align:center;"  id="teachers_name"></p>
+        <p   style="text-align:center;"  id="teachers\_name"></p>
     </div>
 </div> 
 \end{verbatim}
