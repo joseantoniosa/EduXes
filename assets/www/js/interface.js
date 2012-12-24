@@ -295,10 +295,9 @@ function onUpdateActivity(id_activity) {
 }
 
 // Show edition activity page
-function onAddNewActivity() { // TODO
+function onAddNewActivity() { 
     $.mobile.showPageLoadingMsg();
     global_is_new=1;
-    // TODO: Fill with  groups info: #list_groups_activities_ul
     global_id_activity = -1;      //local variable goes global NEW activity
     loadGroupsActivitiesEdit(global_db);
     $('#activity_page_name').text("New Acitivity");

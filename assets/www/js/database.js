@@ -1134,19 +1134,6 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
 //
 // ----------------------------------------------------------------------------------------------------------
 
-
-function queryActivitiesSuccess(tx, results) {
-    var len = results.rows.length;
-
-    $('#activities_ul').empty();
-    var id=0;
-    for (var i=0;i<len;i++) {
-       id = results.rows.item(i).id;
-       $('#activities_ul').append("<li onClick='"+"' >"+id +" "+results.rows.item(i).data +"</li>");
-   }0 ;
-   $('#activities_ul').listview('refresh');
-}
-
 function queryLoadAllActivitiesDB(tx) {
        log("Query Activities \n");
        tx.executeSql('SELECT * FROM ACTIVITIES',[],
