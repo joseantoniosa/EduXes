@@ -29,313 +29,17 @@
 \emph { queryReportAttendanceDB() } & report->Attendance->Group \\
 \emph { queryReportAttendanceSuccess() }& report->Attendance->Group \\
 
-//
-\emph { loadGroupsAssessment(db){
-    var sql="SELECT id, data, other_data FROM groups;";
-    db.transaction(\emph {(tx) {
-        tx.executeSql(sql,[],
-                dbSuccessFunc = \emph {(tx,results){
-                    var len = results.rows.length;
-                    var ul_list=$('#groups_assessment_ul');
-                    ul_list.empty();
-                    for (var i = 0; i < len; i++) {
-                        var id = results.rows.item(i).id;
-                        html = "<li>";
-                        // html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
-                        html += " <a onClick='onListStudentsAssessment(" + id + ");' ";
-                        html += " href='#' data-transition='slideup'>";
-                        html += results.rows.item(i).data + "</a>";
-                        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='#' data-rel='dialog' data-transition='slideup'>";
-                        html += "</a></li>";
-                        ul_list.append(html);
-                    }
-                    ul_list.listview('refresh');
-                    return true;
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("fillSelectStudent. SQL  "+sql);
-                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-    }  );
-}
-//
-//
-// >> var a = [[{mark: 23, weight: 5}, {mark: 12, weight: 3}], [{mark: 9, weight: 12}]];a[1][0].mark;
-//
-//Brady = new Array (3);
-//for (i = 0; i < Brady . length; ++ i) {
-//    Brady [i] = new Array (3);
-//    for (j = 0; j < Brady[i] . length; ++ j) {
-//        Brady[i][j] = new  Peers(1,2) ;
-//    }
-//}
-//
-////*/
-\emph { Peers (mark, weight, activity){
-    this.mark = mark;
-    this.weight = weight;
-    this.activity = activity;
-}
+\emph { loadGroupsAssessment() } Report->Assessment ->  Group\\
 
-// XXX: Warning with 1 begining indexes  Adjust
-// Assessment - List Students
-// http://www.w3schools.com/js/js_objects.asp
-//      activity-1  activity-3  activity-5
-// A                    8           7
-// B         7          5
-// C         3
-// Max actividades => 3
-// Max students => 3 !
-// act_id_1. act_id_3, act_id_5
-//
-// var a = [[{mark: 23, weight: 5}, {mark: 12, weight: 3}], [{mark: 9, weight: 12}]];a[1][0].mark;
+\emph { Peers () } Activities object
 
-\emph { loadStudentsAssessment(db, id_group){
-
-// var text_select = $('#' + select_student_id); //
-    $('#current_group_assessment_reports').text("Name of the group");
-
-    var sql=" SELECT DISTINCT students.id as s_id, students.name as s_name, students.surname as s_surname, students.id_group, " ;
-    sql +="  GROUPS.id,  groups.data, activities.id, activities.weight as a_weight, activities.name as a_name, " ;
-    sql +="  activities_student.id_student, activities_student.id_activity as a_id , activities_student.mark as a_mark" ;
-    sql +="  FROM groups, students, activities, activities_student " ;
-    sql +="  WHERE students.id=activities_student.id_student " ;
-    sql +="  AND activities.id=activities_student.id_activity " ;
-    sql +="  AND GROUPS.id=students.id_group AND GROUPS.id="+id_group;
-    sql +="  ORDER BY students.id ; " ;
-
-    log("loadStudentsAssessment SQL: "+sql )
-    db.transaction(\emph {(tx) {
-        tx.executeSql(sql,[],
-                dbSuccessFunc = \emph {(tx,results){
-                    var html="";
-                    var ul_list=$('#students_assessment_reports_ul');
-                    var table = $('#students_assessment_reports_table');
-                    var student_a = new Array();
-                    var activity_name_a = new Array(global_max_activities+1);
-                    var no_students =-1;
-                    var no_activities=0;
-                    var a_no_activities=0;
-                    var measure =0.00;
-                    var is_new=1;
-                    var s_id =0;
-                    var old_s_id=-1;
-                    var len = results.rows.length; // max number of students
-                    var max_activities = global_max_activities;
-
-                    if (len<1) {return false;}
-
-                    //  Initialize to zero Students-Activities Matrix
-                    var SActivity = new Array (len+1);
-                    for (var i = 0; i < SActivity.length; ++ i) {
-                        SActivity[i] = new Array (max_activities+1);
-                            for (var j = 0; j < SActivity[i].length; ++ j) {
-                                SActivity[i][j] = new  Peers(0,0,0) ;
-                            }
-                    }
-                    old_s_id=-1;
-                    a_no_activities=0;
-                    no_activities=0;
-                    var k=0;
-
-                    for (var i = 0; i < len; i++) {
-                        s_id = results.rows.item(i).s_id;
-                        s_name = results.rows.item(i).s_name;
-                        s_surname = results.rows.item(i).s_surname;
-                        activity_name = results.rows.item(i).a_name;
-                        weight = results.rows.item(i).a_weight;
-                        mark = results.rows.item(i).a_mark;
-                        activity_id = results.rows.item(i).a_id;
-
-                        if(s_id!=old_s_id) {// Es nuevo, meter en el array los datos
-                            if (is_new==1){
-                                is_new=0;
-                            } else {
-                                no_activities=Math.max(no_activities, a_no_activities);
-                            }
-                            no_students ++; // si es nuevo estudiante
-                            student_a.push(s_surname+", "+s_name);
-                            a_no_activities=1;
-                            k=0;
-                        } else { // Viejo
-                            a_no_activities++;
-                            k++;
-                        }
-
-                        SActivity[no_students][activity_id].mark =  mark;
-                        SActivity[no_students][activity_id].weight =  weight;
-                        SActivity[no_students][activity_id].activity = activity_id;
-
-                        activity_name_a[activity_id] = activity_name ;
-
-                        old_s_id=s_id;
-                    }
-                    max_students = no_students;
-
-                    html ="";
-                    for(var i=0;i<=max_students; i++) {
-                        html +="<tr><td>"+student_a[i]+"</td>";
-                        measure=0.0;
-// XXX: Check DB ID's, if it begins in 0 or 1 (assumed 1)
-                        for(j=1;j<global_max_activities+1;j++) {
-                            html += "<td>" + SActivity[i][j].mark  +"</td>";
-// XXX: Weight sum should return 100
-                            measure +=SActivity[i][j].mark*SActivity[i][j].weight/100.0;
-
-                        }
-                        html += "<td>("+measure +")</td>";
-                        html +="</tr>";
-
-                    }
-
-                    html_pre ="<tr>";
-                    html_pre +="<th> Name </th>";
-// XXX: Check DB ID's, if it begins in 0 or 1 (assumed 1)
-                    for(var j=1;j<global_max_activities+1 ; j++) {
-                        html_pre +="<th>"+activity_name_a[j]+"</th>";
-                    }
-                    html_pre +="<th>Mean</th></tr>";
-
-                    table.empty().append("<thead>"+html_pre+"</thead><tbody>"+html+"<tbody>");
-
-                    return true;
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("fillSelectStudent. SQL  "+sql);
-                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-    }  );
-
-}
-
-// ----------------------------------------------------------------------------------------------------------
-//
-//
-//
+\emph { loadStudentsAssessment() } Report->Assessment ->  Students\\
 
 //
 
+\emph {  fillSelectStudent() } {  Fill attendance student page with options } \\
 
 
-//
-//
-//
-\emph { queryGroupsSuccess(tx, results) {
-    var len = results.rows.length;
-    var html = "";
-    var ul_list = $('#groups_to_edit_ul');
-
-    ul_list.empty();
-    for (var i = 0; i < len; i++) {
-        html = "<li> ";
-        // listStudentsAttendance (id_group, -1), -1=> any session
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
-        html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
-        html += " href='#' data-transition='slideup'>";
-//        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
-        html += results.rows.item(i).data + "</a>";
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-        html += "</a></li>";
-        ul_list.append(html);
-    }
-    ul_list.listview('refresh');
-}
-
-
-\emph { queryNewStudentSuccess(tx, results) {
-    var len = results.rows.length;
-
-    // log("queryStudentSuccess. Number of students - rows inserted: " + len);
-    if(len>0) {
-        $('#in_new_name_student').val(results.rows.item(0).name);
-        $('#in_new_surname_student').val(results.rows.item(0).surname);
-        $('#in_new_birth_date_student').val(results.rows.item(0).n_date);
-        $('#in_new_tutor_student').val(results.rows.item(0).tutor);
-        $('#in_new_address_student').val(results.rows.item(0).address);
-        $('#in_new_phone_student').val(results.rows.item(0).phone);
-        $('#in_new_e_phone_student').val(results.rows.item(0).e_phone);
-
-//         $('#in_id_group_student').val('To be implemented');
-        sql = "SELECT id, data, other_data FROM GROUPS  ";
-        global_id = results.rows.item(0).id; //
-
-        global_db.transaction(\emph {(ttx) {
-            ttx.executeSql(sql,[],
-                dbSuccessFunc = \emph {(ttx,rs){
-                    var ul_select = $('#student_new_edit_group_list_ul');
-                    var html ="";
-                    for(var i=0;i<rs.rows.length; i++) {
-                        html += "<option value='"+rs.rows.item(i).id + "' name='"+rs.rows.item(i).data +"' " ;
-                        html += "  >"+ rs.rows.item(i).data+"</option>";
-                    }
-                    ul_select.empty().append(html);
-                    ul_select[0].selectedIndex = results.rows.item(0).id_group; // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
-                    ul_select.selectmenu('refresh', true);
-                },
-                dbErrorFunc = \emph {(ttx, e) {
-                    if (ttx.message) e = ttx;
-                    log("Error. SQL  "+sql);
-                    alert(" There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-        });
-
-    }
-
-
-// if change:  -> update
-// if new -> insert
-}
-
-
-
-
-
-
-
-//  Fill select option
-//
-\emph {  fillSelectStudent(db, select_student_id, id_session, id) { /// #id to be filled, id_session, id_student
-
-    var today = moment(global_actual_date);
-    var today_str = today.toDate().toDateString();
-
-    sql = "SELECT id, id_student, id_session, a_type, a_date  FROM ATTENDANCE WHERE id_student = ? AND ";
-    sql+= " id_session=? AND a_date=? ;"
-
-    db.transaction(\emph {(tx) {
-        tx.executeSql(sql,[id, id_session,today_str],
-                dbSuccessFunc = \emph {(tx,results){
-                    var text_select = $('#' + select_student_id);
-                    html = "<option value=''></option>";
-                    html += "<option value='Absence' >Absence</option>";
-                    html += "<option value='Unpunctuality' >Unpunctuality</option>";
-                    html += "<option value='Excused'  >Excused</option>";
-                    html += "<option value='Behavior' name='Behavior' >Behavior</option>";
-                    text_select.empty().append(html);
-                    if (results.rows.length>0) {
-                        var state = results.rows.item(0).a_type;
-                        log(" State => " + state);
-                        text_select[0].selectedIndex = state;
-                        return true;
-                    } else {
-                        log("No data");
-                        return false;
-                    }
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("fillSelectStudent. SQL  "+sql);
-                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-    });
-
-}
 
 /*
  */
@@ -394,109 +98,21 @@
 
 }
 
+
 // ----------------------------------------------------------------------------------------------------------
 //
 //      GROUPS      Management:
 //
 // ----------------------------------------------------------------------------------------------------------
-   // Insert new group
-\emph { insertNewGroup(db, name, other_data){
-      db.transaction(\emph { (tx) {
-           var sql = 'INSERT INTO GROUPS ( data, other_data) VALUES (';
-            sql  +=  '\"'  + name + '\" ,  \"'+ other_data + '\"  )' ;
-            tx.executeSql(sql);
-       });
-       $('#grupos_ul').listview('refresh');
-}
-\emph { updateGroup(db, name, other_data){
-    db.transaction(\emph { (tx) {
-        var sql = 'UPDATE GROUPS SET data="' +name + '",  other_data="' +other_data +'"  WHERE id='+global_id; // Supongo que el ID...
-        tx.executeSql(sql,[],
-            dbSuccessFunc = \emph {(ttx,rs){
-                return true;
-            },
-            dbErrorFunc = \emph {(tx, e) {
-                if (tx.message) e = tx;
-                    log(" There has been an error updateGroupDB: " + e.message);
-                    alert(" There has been an error updateGroupDB: " + e.message);
-                    return false;
-            });
-   });
-   $('#grupos_ul').listview('refresh');
-}
 
-\emph { deleteGroup(db) {
-    db.transaction( queryDeleteGroup = \emph {(tx) {
-        if (confirm('Do you really want to remove this group?')) {
-            var sql = "DELETE FROM  GROUPS WHERE";
-            sql += " id=" + global_id;
-            log("queryDeleteGRoup  (" + sql + ")");
-            tx.executeSql(sql, [], dbSuccessFunc = \emph {(tx, rs) {
-                log("Ok, removed");
-                return true;
-            }, dbErrorFunc = \emph {(tx, e) {
-                if (tx.message)
-                    e = tx;
-                log(" There has been an error deleteGroup: " + e.message);
-                alert(" There has been an error deleteGroup: " + e.message);
-                return false;
-            });
-        }
-    });
-}
-  // Load only one group!
-\emph { loadGroup(db, id_group){
-    db.transaction(\emph { (tx) {
-        log("Query Group \n");
-        var sql = 'SELECT * FROM GROUPS WHERE id ='+id_group;
-        tx.executeSql(sql, [],
-            dbSuccessFunc = \emph {(ttx,rs){
-                $('#in_nombre_grupo').val(rs.rows.item(0).data);
-                $('#in_nivel_grupo').val(rs.rows.item(0).other_data);
-            },
-            dbErrorFunc = \emph {(tx, e) {
-                if (tx.message) e = tx;
-                    log(" There has been an error queryGroupDB: " + e.message);
-                    alert(" There has been an error queryGroupDB: " + e.message);
-                    return false;
-            });
-    });
-}
+\emph { insertNewGroup(db, name, other_data)} {    \\
+\emph { updateGroup(db, name, other_data)}{  Update Group  \\
+\emph { deleteGroup(db) }{ Delete Group } \\
+  // 
+\emph { loadGroup(db, id_group){ Load only one group!
 
-\emph { queryAllGroupsDB(tx) {
-    log("Query All Groups \n");
-    var ul_list =$('#groups_ul');
-    tx.executeSql('SELECT * FROM GROUPS', [],
-        dbSuccessFunc = \emph {(tx, rs) {
-            ul_list.empty();
-            var html ="";
-            for (var i = 0; i < rs.rows.length; i++) {
-                id = rs.rows.item(i).id ;
-                html = "<li>";
-                html += "<a onClick='global_id=" + id + "; global_id_group="+id+"; table_global=\"groups\"; ";
-                html += " listStudentsByGroup(" + id + " );'  ";
-                html += " href='#' >";
-                html += rs.rows.item(i).data;
-                html += "</a>";
-                html += "<a data-role='button'  data-position-to='window' ";
-                html += " data-iconpos='notext' style='float:right;' href='#' ";
-                html += " data-rel='dialog' data-theme='a' data-transition='slideup' ";
-                html += " onClick=\"EditGroup(" + id + "); global_id_group="+id+"; global_id=" + id + "; \">Edit</a>";
-                html +="</li>";
-                ul_list.append(html);
-
-            }
-            ul_list.listview('refresh'); },
-        dbErrorFunc = \emph {(ttx, e) {
-            if (ttx.message)
-                e = ttx;
-            log(" There has been an error Select * from groups : " + e.message);
-        return false;
-    });
-}
-\emph { loadAllGroups(db) {
-    db.transaction(queryAllGroupsDB);
-}
+\emph { queryAllGroupsDB(tx) { List all groups }
+\emph { loadAllGroups(db) { { List all groups }
 
 
 // ---------------------------------------------------------------------------------------------------------
@@ -505,193 +121,26 @@
 //
 // ----------------------------------------------------------------------------------------------------------
     // Insert new Student
-\emph { insertNewStudent( db, name, surname, group_id, repeated, n_date, photo, tutor,address, phone, e_phone, nation) {
-    db.transaction(\emph {(tx) {
-        var sql = 'INSERT INTO STUDENTS ( id_group ';
-        if(name !=null) { sql +=', name '; }
-        if(surname !=null) sql +=', surname ';
-        if(repeated !=0) sql +=', repeated ';
-        if(n_date !=null) sql +=', n_date ';
-        if(photo !=null) sql +=', photo ';
-        if(tutor !=null) sql +=', tutor ';
-        if(address !=null) sql +=', address ';
-        if(phone !=null) sql +=', phone ';
-        if(e_phone !=null) sql +=', e_phone ';
-        if(nation !=null) sql +=', nation ';
-        sql +=' ) VALUES ( ';
-        sql += group_id  ;
-        if(name !=null) sql += ', "' + name + '" ';
-        if(surname !=null) sql += ', "' + surname + '" ';
-        if(repeated !=0) sql += ', ' + repeated + ' ';
-        if(n_date !=null) sql += ', "' + n_date + '" ';
-        if(photo !=null) sql += ', "' + photo + '" ';
-        if(tutor !=null) sql += ', "' + tutor + '" ';
-        if(address !=null) sql += ', "' + address + '\" ';
-        if(phone !=null) sql += ', "' + phone + '" ';
-        if(e_phone !=null) sql += ', "' + e_phone + '" ';
-        if(nation !=null) sql += ', "' + nation + '" ';
-        sql += ' )';
-        log("insertNewStudent "+sql);
-        tx.executeSql(sql,[],
-            dbSuccessFunc = \emph {(tx, rs) {
-                log("Ok, saved");
-            return false;
-        },
-        dbErrorFunc = \emph {(tx, e) {
-            if (tx.message) e = tx;
-                log(" There has been an error insertNewStudent: " + e.message);
-                alert(" There has been an error insertNewStudent: " + e.message);
-                return false;
-        });
-
-    });
-    $('#students_ul').listview('refresh');
+\emph { insertNewStudent() } { Insert new Student  }
 }
-// Update Student /
-\emph { querySaveStudentDB (tx){
-    id_group=$('#student_edit_group_list_ul')[0].selectedIndex ;
-    name = $('#in_name_student').val();
-    surname = $('#in_surname_student').val();
-    repeated = 0 ; // XXX To be implemented with a check box?
-    n_date=$('#in_birth_date_student').val();
-    photo="";// TODO: How to implement this?
-    tutor=$('#in_tutor_student').val();
-    address=$('#in_address_student').val();
-    phone=$('#in_phone_student').val();
-    e_phone=$('#in_e_phone_student').val();
-    nation=$('#in_nation_student').val();
 
-    var sql = "UPDATE STUDENTS ";
-    sql += " SET id_group="+ id_group;
-    if( name!=null) {sql += " , name='"+name +"'  "; }
-    if( surname!=null ) {sql += ", surname='"+surname +"' "; }
-    if( repeated!=0 ) {sql += ", repeated="+repeated ; }
-    if( n_date!=null ) {sql += ", n_date='"+n_date +"' "; }
-    if( photo!=null ) {sql += ", photo='"+photo +"' "; }
-    if( tutor!=null ) {sql += ", tutor='"+tutor +"' "; }
-    if( address!=null ) {sql += ", address='"+ address+"' ";  }
-    if( phone!=null ) {sql += ", phone='"+phone +"' ";  }
-    if( surname!=null ) {sql += ", e_phone='"+e_phone +"' ";    }
-    if( nation!=null ) { sql += ", nation='"+nation +"' "; }
-    sql += " WHERE id="+global_id;
-    log("querySaveStudentDB  (" + sql + ")");
-    tx.executeSql(sql, [],
-        dbSuccessFunc = \emph {(tx, rs) {
-            log("Ok, saved");
-        return false;
-    },
-       dbErrorFunc = \emph {(tx, e) {
-        if (tx.message) e = tx;
-            log(" There has been an error querySaveStudentDB: " + e.message);
-        alert(" There has been an error querySaveStudentDB: " + e.message);
-        return false;
-    });
- }
-
+\emph { querySaveStudentDB (tx){ // Update Student /
 
 \emph { deleteStudent(db) {
-    db.transaction( queryDeleteStudent = \emph {(tx) {
-        if (confirm('Do you really want to remove this student?')) {
-            var sql = "DELETE FROM  STUDENTS WHERE ";
-            sql += " id=" + global_id;
-            log("deleteStuden  (" + sql + ")");
-            tx.executeSql(sql, [], dbSuccessFunc = \emph {(tx, rs) {
-                log("Ok, removed");
-                return true;
-            }, dbErrorFunc = \emph {(tx, e) {
-                if (tx.message)
-                    e = tx;
-                log(" There has been an error deleteStudent: " + e.message);
-                alert(" There has been an error deleteStudent: " + e.message);
-                return false;
-            });
-        }
-    });
-
-}
 
 
 
 // Low level insert
-\emph { insertStudentStateL(db, id_student, id_group, id_session, state, actual_date ){
-    var today = moment(actual_date);
-    var today_str = today.toDate().toDateString();
-    var sql ="INSERT INTO attendance ( id_group , id_student, id_session, a_type, a_date) VALUES (";
-    sql += id_group + "," + id_student+ "," + id_session+ "," + state+ ",\"" + today_str+"\" );";
-
-    db.transaction(\emph {(tx) {
-        tx.executeSql(sql,[],
-            dbSuccessFunc = \emph {(tx,rs){  return true;     },
-            dbErrorFunc = \emph {(tx, e) {
-                if (tx.message) e = tx;
-                log("insertStudentState2 : " + sql + "\n");
-                alert(" There has been an error updateStudentState: " + e);
-                return false;
-            } );
-    });
-}
-
+\emph { insertStudentStateL(db, id_student, id_group, id_session, state, actual_date ){ Insert New Student 
 // Low level update
-\emph { updateStudentStateL(db, id_student, id_group, id_session, state, actual_date ) {
-        var today = moment(actual_date);
-        var today_str = today.toDate().toDateString();
-
-        var sql ="UPDATE attendance  SET a_type=?";
-        sql += " WHERE id_student=? AND id_session=? AND a_date=? ;";
-
-        db.transaction(\emph {(tx) {
-            tx.executeSql(sql, [state,id_student,id_session,today_str],
-                dbSuccessFunc = \emph {(tx,rs){  return true;  },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("updateStudentState : " + sql + "\n");
-                    alert(" There has been an error updateStudentState2: " + e);
-                    return false;
-                } );
-        });
-}
+\emph { updateStudentStateL(db, id_student, id_group, id_session, state, actual_date ) { Update Student 
 
 // Check whether student state changes
 // @id_student student id
 \emph { stateCheck(db, id_student, id_group, id_session, state, actual_date){
-    var today = moment(actual_date);
-    var today_str = today.toDate().toDateString();
-
-    var sql_check= "SELECT id_student, id_session, a_type, a_date FROM attendance ";
-    sql_check += " WHERE "; //a_type="+state+ " AND ";
-    sql_check += " id_session="+id_session+" AND a_date ='"+today_str +"' ";
-    sql_check +=  " AND id_student="+ id_student +" ;";
-    var exist = false;
-    db.transaction(\emph {(tx) {
-
-        tx.executeSql(sql_check,[],
-                dbSuccessFunc = \emph {(tx,results){
-                    if (results.rows.length>0) {
-                       exist=true;
-                        updateStudentStateL(db, id_student, id_group, id_session, state, actual_date );
-                        return true;
-                    } else {
-                        exist = false;
-                        insertStudentStateL(db, id_student, id_group, id_session, state, actual_date );
-                        return false;
-                    }
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("SQL check "+sql_check);
-                    alert(" There has been an error SELECT  stateCheck: " + e);
-                    return false;
-                } );
-    });
-
-    return exist;
-}
-
 // Write Student state
 \emph { updateStudentState(db, id_student, id_group, id_session, state, actual_date ){
-    var exist =false;
     exist = stateCheck(db, id_student, id_group, id_session, state, actual_date); // Is asynchronous
-
 }
 
 //
@@ -717,54 +166,7 @@
           db.transaction(queryAllStudentsDB);
    }
 
-   \emph { loadStudentsByGroup(db,id_group) {
-       db.transaction(
-         \emph { (tx) {
-            var sql = 'SELECT STUDENTS.id as id,  STUDENTS.id_group as id_group, STUDENTS.name as name, ';
-            sql += ' STUDENTS.surname as surname, STUDENTS.n_date as n_date, STUDENTS.photo as photo, ';
-            sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeated as repeated, STUDENTS.tutor as tutor ,';
-            sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
-            sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
-            sql += ' FROM STUDENTS, GROUPS WHERE ';
-            sql += ' STUDENTS.id_group = g_id AND id_group=' + id_group;
-            tx.executeSql(sql, [],
-                dbSuccessFunc = \emph {(tx, results) {
-                    var len = results.rows.length;
-                    log("loadStudentsByGroup. Number of students: " + len);
-                    var ul_list = $('#list_students_by_group_ul');
-                    $('#id_list_students_by_group').text( results.rows.item(0).data );
-                    var html;
-                    ul_list.empty();
-                    var id = 0;
-                    for (var i = 0; i < len; i++) {
-                        id = results.rows.item(i).id;
-                        html = "<li >";
-                        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-                        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname
-                        html += "' style='float:left;' class='ui-li-icon ui-corner-none'>";
-                        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
-                        html += "</a>";
-                        html += "<a data-role='button' data-position-to='window' ";
-                        html += " data-iconpos='notext' style='float:right;' href='#' ";
-                        html += " data-rel='dialog' data-transition='slideup'  ";
-                        html += " onClick=\"EditStudent(" + id + ");\">Edit</a>";
-                        html += "</li>";
-                        ul_list.append(html);
-                    }
-                    ul_list.listview('refresh');
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log(sql);
-                    log(" There has been an error loadStudentsByGroup: "+e.message);
-                    alert("There has been an error loadStudentsByGroup: " + e.message);
-                      return false;
-                });
-            }
-          );
-}
-//            queryStudentsByGroupDB);
-
+   \emph { loadStudentsByGroup(db,id_group) { List Students by Group }
 ///---------------------------------------------------------------------------------------------------------
 //
 //      Activities
@@ -1149,73 +551,11 @@
                 } );
     });
 }
-\emph { updateStudentAssessmentL(db,id_student,id_group, id_activity,mark){
-    var sql ="UPDATE ACTIVITIES_STUDENT SET mark="+mark;
-    sql += " WHERE id_activity="+ id_activity + "  AND id_student="+ id_student;
-    log("updateStudentAssessmentL SQL : " + sql);
-    db.transaction(\emph {(tx) {
-        tx.executeSql(sql,[],
-                dbSuccessFunc = \emph {(tx,results){
-                    return true;
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("fillSelectStudent. SQL  "+sql);
-                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-    });
+\emph { updateStudentAssessmentL(db,id_student,id_group, id_activity,mark){  Update Student Assessment
 
-}
-\emph { insertStudentAssessmentL(db,id_student,id_group, id_activity,mark) {
-    var sql ="INSERT INTO ACTIVITIES_STUDENT (id_student, id_activity,mark) VALUES ";
-    sql += "( "+id_student +","+ id_activity +","+mark +" )";
-    log("insertStudentAssessmentL SQL : " + sql);
-    db.transaction(\emph {(tx) {
-        tx.executeSql(sql,[],
-                dbSuccessFunc = \emph {(tx,results){
-                    return true;
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("fillSelectStudent. SQL  "+sql);
-                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-    });
-}
+\emph { insertStudentAssessmentL(db,id_student,id_group, id_activity,mark) { Insert Student Assessment  
 
-
-\emph { onChangeStudentAssessment(id_student,id_group, id_activity){
-    var db = global_db;
-
-    var sql= "SELECT id_student, id_activity, mark FROM ACTIVITIES_STUDENT  ";
-    sql += "WHERE id_activity="+id_activity+ " AND id_student="+ id_student ;
-
-    db.transaction(\emph {(tx) {
-        tx.executeSql(sql,[],
-                dbSuccessFunc = \emph {(tx,results){
-                    var mark=$('#assessment_select_student_' + id_student).val();
-                    if (results.rows.length>0) {
-                        var state = results.rows.item(0).mark;
-
-                        updateStudentAssessmentL(db,id_student,id_group, id_activity,mark);
-                        log(" Mark => " + mark);
-                        return true;
-                    } else {
-                        insertStudentAssessmentL(db,id_student,id_group, id_activity,mark);
-                        return false;
-                    }
-                },
-                dbErrorFunc = \emph {(tx, e) {
-                    if (tx.message) e = tx;
-                    log("fillSelectStudent. SQL  "+sql);
-                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-    });
-
-}
+\emph { onChangeStudentAssessment(id_student,id_group, id_activity){ Select Update or Insert 
 
 // Assessment. List Students
 \emph { listStudentsByGroupAssessment(db, id_group, students_ul) {
@@ -1258,7 +598,6 @@
         });
     });
 }
-
 \emph { refreshGroupAssessment(){
 
     listStudentsByGroupAssessment( global_db, global_id_group, $('#students_assessment_ul'));
@@ -1321,46 +660,9 @@
 
 }
 
+
+
 //
-// studentAssesment
-\emph { queryStudentsAssessmentSuccess(tx, results) {
-    var len = results.rows.length;
-    var html="";
-    var id=0;
-    var photo="";
-    var name="";
-    var surname="";
-    var id_group=0;
-    var id_session=0;
-
-    $('#students_assessment_ul').empty();
-    if(len>0) {
-        $('#current_group_assessment').text(results.rows.item(0).data);
-    }
-    for (var i=0;i<len;i++) {
-        id = results.rows.item(i).id_student;
-        photo = results.rows.item(i).photo;
-        name = results.rows.item(i).name;
-        surname = results.rows.item(i).surname;
-        id_group = results.rows.item(i).g_id;
-
-        id_session = global_session; //
-
-        html = "<li data-role='fieldcontain'> ";
-        html += "<label for='select_student_"+id+"' class='select'> ";
-        html += "<img height='20px' src='photos/"+photo +"' alt='" + id+surname + "' >";
-        html += surname + "," + name + "</label> " ;
-        html +="<select name='select_student_"+id+"' id='select_student_"+id+"' ";
-        html += " onChange='studentAssesment("+id + "," +id_group + ","+id_session+ ");'>"; //  TO be Implemented studentAssesment
-        html +="</select>";
-        html += "</li>";
-        $('#students_attendance_ul').append(html);
-// #id to be filled, id_session, id_student // Asynchronous
-        fillSelectStudent(global_db, "select_student_"+id, id_session, id);
-    }
-    $('#students_attendance_ul').listview('refresh');
-}
-
 
 \emph { queryStudentsAssessmentDB(tx) {
     var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo,";

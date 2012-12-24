@@ -176,12 +176,7 @@ function queryNewStudentDB(tx) {
             });
     }
 
-/*
- *   id integer primary key, id_group integer not null, name text, surname text,
-            repeteated integer, n_date text ,
-            tutor TEXT, address TEXT, phone text, e_phone text, nation text,
- */
-
+//
 
 function queryStudentsByGroupDB(tx) {
 
@@ -253,7 +248,6 @@ function queryReportAttendanceSuccess(tx, results) {
     html += ' <th>M</th> <th>T</th> <th>W</th>   <th>T</th>  <th>F</th>   </tr> </thead> <tbody>';
     table_list.append(html);
 
-//    log("report queryReportAttendanceSuccess nº datos (" + len + ")");
 
     for (var i = 0; i < len; i++) {
         id = results.rows.item(i).id;
@@ -357,7 +351,7 @@ function loadStudentsAssessment(db, id_group){
     sql +="  AND GROUPS.id=students.id_group AND GROUPS.id="+id_group;
     sql +="  ORDER BY students.id ; " ;
 
-    log("loadStudentsAssessment SQL: "+sql )
+    // log("loadStudentsAssessment SQL: "+sql );
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
                 dbSuccessFunc = function(tx,results){
@@ -376,7 +370,9 @@ function loadStudentsAssessment(db, id_group){
                     var len = results.rows.length; // max number of students
                     var max_activities = global_max_activities;
 
-                    if (len<1) {return false;}
+                    if (len<1) {
+                        table.empty();
+                        return false;}
 
                     //  Initialize to zero Students-Activities Matrix
                     var SActivity = new Array (len+1);
@@ -478,12 +474,8 @@ function queryReportAttendanceDB(tx) {// report->Attendance->Group
     sql += " AND s_g_id=a_g_id ) AND ( ATTENDANCE.id_group = " + global_id;
     sql += " AND students.id=ATTENDANCE.id_student )";
     sql += " ORDER BY s_id ; ";
-// global_reports_date
-///    var actual_date = global_actual_date;
 
     var actual_date = global_reports_date;
-
-    log("report queryReportAttendanceDB (" + sql + ")");
 
     tx.executeSql(sql, [],
         queryReportAttendanceSuccess,
@@ -502,7 +494,7 @@ function queryReportAttendanceDB(tx) {// report->Attendance->Group
 
 //
 //
-//
+// XXX: Deprecated. Not used
 function queryGroupsSuccess(tx, results) {
     var len = results.rows.length;
     var html = "";
@@ -563,50 +555,6 @@ function queryStudentSuccess(tx, results) {
 
     }
 }
-function queryNewStudentSuccess(tx, results) {
-    var len = results.rows.length;
-
-    // log("queryStudentSuccess. Number of students - rows inserted: " + len);
-    if(len>0) {
-        $('#in_new_name_student').val(results.rows.item(0).name);
-        $('#in_new_surname_student').val(results.rows.item(0).surname);
-        $('#in_new_birth_date_student').val(results.rows.item(0).n_date);
-        $('#in_new_tutor_student').val(results.rows.item(0).tutor);
-        $('#in_new_address_student').val(results.rows.item(0).address);
-        $('#in_new_phone_student').val(results.rows.item(0).phone);
-        $('#in_new_e_phone_student').val(results.rows.item(0).e_phone);
-
-//         $('#in_id_group_student').val('To be implemented');
-        sql = "SELECT id, data, other_data FROM GROUPS  ";
-        global_id = results.rows.item(0).id; //
-
-        global_db.transaction(function(ttx) {
-            ttx.executeSql(sql,[],
-                dbSuccessFunc = function(ttx,rs){
-                    var ul_select = $('#student_new_edit_group_list_ul');
-                    var html ="";
-                    for(var i=0;i<rs.rows.length; i++) {
-                        html += "<option value='"+rs.rows.item(i).id + "' name='"+rs.rows.item(i).data +"' " ;
-                        html += "  >"+ rs.rows.item(i).data+"</option>";
-                    }
-                    ul_select.empty().append(html);
-                    ul_select[0].selectedIndex = results.rows.item(0).id_group; // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
-                    ul_select.selectmenu('refresh', true);
-                },
-                dbErrorFunc = function(ttx, e) {
-                    if (ttx.message) e = ttx;
-                    log("Error. SQL  "+sql);
-                    alert(" There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-        });
-
-    }
-
-
-// if change:  -> update
-// if new -> insert
-}
 
 // Settings->Group->Students
 function queryStudentsByGroupSuccess(tx, results) {
@@ -636,8 +584,6 @@ function queryStudentsByGroupSuccess(tx, results) {
 function queryStudentsSuccess(tx, results) {
     var len = results.rows.length;
     var ul_list = $('#students_ul');
-//    log("Last inserted student - row ID = " + results.insertId);
-//    log("Number of student - rows inserted: " + len);
 
     ul_list.empty();
     var html;
@@ -646,16 +592,12 @@ function queryStudentsSuccess(tx, results) {
         id = results.rows.item(i).id;
 
         html = "<li>";
-
         html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>" + results.rows.item(i).surname + " " + results.rows.item(i).name + "</label>";
         html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
-//        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
-        //           html += "</div>";
         html += "</li>";
-        // html += results.rows.item(i).id+"</a> </li>";
         ul_list.append(html);
 
     }
@@ -675,8 +617,6 @@ function queryScheduleSuccess(tx, results) {
     var start = "";
     var t_id_session=-1;
     $('#groups_day_ul').empty();
-
-    log("queryScheduleSuccess number of sessions: "+len );
 
     for (var i=0;i<len;i++) {
            id = results.rows.item(i).id;
@@ -772,7 +712,7 @@ function queryStudentsAttendanceSuccess(tx, results) {
         html +="</select>";
         html += "</li>";
         $('#students_attendance_ul').append(html);
-// #id to be filled, id_session, id_student // Asynchronous
+
         fillSelectStudent(global_db, "select_student_"+id, id_session, id);
     }
     $('#students_attendance_ul').listview('refresh');
@@ -1348,17 +1288,17 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
     db.transaction(function(tx) {
         var sql = 'UPDATE activities SET ';
         sql += 'name="' + e_name + '" ';
-        if ( e_date_init!=null) { sql += ', date_init="' + e_date_init + '" '; }
-        if ( e_date_end!=null) {sql += ', date_end="' + e_date_end + '" ';  }
+        if ( e_date_init!=null) {   sql += ', date_init="' + e_date_init + '" '; }
+        if ( e_date_end!=null) {    sql += ', date_end="' + e_date_end + '" ';  }
         sql += ', weight=' + e_weight;
-        if(e_final!=0 ){     sql += ', e_final=' + e_e_final; }
+        if(e_final!=0 ){            sql += ', e_final=' + e_e_final;        }
         sql += ' WHERE  id=' +id_activity+ ';';
 
         log("updateActivity :"+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 var enabled=0;
-                // alert("Nº groups "+ global_no_groups);
+
                 for (var i=0;i<global_no_groups;i++) { // XXX: supone que los ids de grupo son correlativos
                         var checkbox=$('#in_group_activity_' + i );
                         var date_init=$('#in_date_init_activity_scroller').val();
@@ -1381,9 +1321,6 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
         });
 
     });
-//
-
-
 }
 
 //
@@ -1463,7 +1400,6 @@ function  insertNewActivity( db, name , date_init , date_end , weight , e_final 
 
         var sql = 'SELECT  last_insert_rowid() FROM activities;';
 
-        log("insertNewActivity02 :"+sql); // SOLO funcionará para el primero
         tx.executeSql(sql ,[],
             dbSuccessFunc = function(tx, results) {
                 var i_last_inserted_row=results.rows.length; // ahora ya sabe cual es la última actividad
@@ -1536,42 +1472,6 @@ function loadGroupsActivitiesEdit(db){
 // TODO: clean this code!
 //
 
-function fillSelectStudentAssessment(db, select_student_id, id_session, id_student) {
-    var html="";
-    var id_activity= $('#list_assessment_select').val() ;// Activity selected
-    global_id_activity= id_activity;
-
-    var text_select = $('#' + select_student_id);
-
-    html += "<option value=' ' selected='selected' > </option>";
-    for(var i=10;i>=0;i--) {
-        html += "<option value='"+i+"'>"+ i+"</option>";
-    }
-    text_select.empty().append(html);
-
-    var sql= "SELECT id_student, id_activity, mark FROM ACTIVITIES_STUDENT  ";
-    sql += "WHERE id_activity="+id_activity+ " AND id_student="+ id_student ;
-
-    db.transaction(function(tx) {
-        tx.executeSql(sql,[],
-                dbSuccessFunc = function(tx,results){
-                    if (results.rows.length>0) {
-                        var state = results.rows.item(0).mark;
-                        text_select.val(state);
-                        return true;
-                    } else {
-                        log("No data");
-                        return false;
-                    }
-                },
-                dbErrorFunc = function(tx, e) {
-                    if (tx.message) e = tx;
-                    log("fillSelectStudent. SQL  "+sql);
-                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
-                    return false;
-                } );
-    });
-}
 function updateStudentAssessmentL(db,id_student,id_group, id_activity,mark){
     var sql ="UPDATE ACTIVITIES_STUDENT SET mark="+mark;
     sql += " WHERE id_activity="+ id_activity + "  AND id_student="+ id_student;
@@ -1640,6 +1540,43 @@ function onChangeStudentAssessment(id_student,id_group, id_activity){
 
 }
 
+
+function fillSelectStudentAssessment(db, select_student_id, id_session, id_student) {
+    var html="";
+    var id_activity= $('#list_assessment_select').val() ;// Activity selected
+    global_id_activity= id_activity;
+
+    var text_select = $('#' + select_student_id);
+
+    html += "<option value=' ' selected='selected' > </option>";
+    for(var i=10;i>=0;i--) {
+        html += "<option value='"+i+"'>"+ i+"</option>";
+    }
+    text_select.empty().append(html);
+
+    var sql= "SELECT id_student, id_activity, mark FROM ACTIVITIES_STUDENT  ";
+    sql += "WHERE id_activity="+id_activity+ " AND id_student="+ id_student ;
+
+    db.transaction(function(tx) {
+        tx.executeSql(sql,[],
+                dbSuccessFunc = function(tx,results){
+                    if (results.rows.length>0) {
+                        var state = results.rows.item(0).mark;
+                        text_select.val(state);
+                        return true;
+                    } else {
+                        log("No data");
+                        return false;
+                    }
+                },
+                dbErrorFunc = function(tx, e) {
+                    if (tx.message) e = tx;
+                    log("fillSelectStudent. SQL  "+sql);
+                    alert("fillSelectStudent. There has been an error SELECT  stateCheck: " + e.message);
+                    return false;
+                } );
+    });
+}
 // Assessment. List Students
 function listStudentsByGroupAssessment(db, id_group, students_ul) {
     db.transaction(function(ttx) {
@@ -1661,7 +1598,7 @@ function listStudentsByGroupAssessment(db, id_group, students_ul) {
                 name = rs.rows.item(i).name;
                 surname = rs.rows.item(i).surname;
                 id_session = global_session;
-                //
+
                 html = "<li data-role='fieldcontain'> ";
                 html += "<label for='select_student_assessment_" + id + "' class='select'> ";
                 html += "<img height='20px' src='photos/" + photo + "' alt='" + id + surname + "' >";
@@ -1709,8 +1646,6 @@ function loadGroupAssessment(db,id_group) {
     sql += " AND  GROUPS.id =  ACTIVITIES_GROUP.id_group  ";
     sql += " ORDER BY  ACTIVITIES.date_init  ASC; ";
 
-    log("loadGroupAssessment SQL: "+sql);
-
     db.transaction(function(tx) {
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
@@ -1724,8 +1659,6 @@ function loadGroupAssessment(db,id_group) {
                 }
                 list_asset.empty().append(html);
                 list_asset[0].selectedIndex = 0; // Selects the very first
-        // Set id_group $('#student_edit_group_list_ul')[0].selectedIndex
-               // list_asset.selectmenu('refresh', true);
 
                 if(results.rows.length>0) {
                     $('#current_group_assessment').text(results.rows.item(0).g_data); // Group Name
@@ -1744,69 +1677,6 @@ function loadGroupAssessment(db,id_group) {
 
 }
 
-//
-// studentAssesment
-function queryStudentsAssessmentSuccess(tx, results) {
-    var len = results.rows.length;
-    var html="";
-    var id=0;
-    var photo="";
-    var name="";
-    var surname="";
-    var id_group=0;
-    var id_session=0;
-
-    $('#students_assessment_ul').empty();
-    if(len>0) {
-        $('#current_group_assessment').text(results.rows.item(0).data);
-    }
-    for (var i=0;i<len;i++) {
-        id = results.rows.item(i).id_student;
-        photo = results.rows.item(i).photo;
-        name = results.rows.item(i).name;
-        surname = results.rows.item(i).surname;
-        id_group = results.rows.item(i).g_id;
-
-        id_session = global_session; //
-
-        html = "<li data-role='fieldcontain'> ";
-        html += "<label for='select_student_"+id+"' class='select'> ";
-        html += "<img height='20px' src='photos/"+photo +"' alt='" + id+surname + "' >";
-        html += surname + "," + name + "</label> " ;
-        html +="<select name='select_student_"+id+"' id='select_student_"+id+"' ";
-        html += " onChange='studentAssesment("+id + "," +id_group + ","+id_session+ ");'>"; //  TO be Implemented studentAssesment
-        html +="</select>";
-        html += "</li>";
-        $('#students_attendance_ul').append(html);
-// #id to be filled, id_session, id_student // Asynchronous
-        fillSelectStudent(global_db, "select_student_"+id, id_session, id);
-    }
-    $('#students_attendance_ul').listview('refresh');
-}
-
-
-function queryStudentsAssessmentDB(tx) {
-    var sql = "SELECT STUDENTS.id as id_student, STUDENTS.id_group, STUDENTS.name as name , STUDENTS.surname as surname, STUDENTS.photo as photo,";
-    sql += " GROUPS.id as g_id, GROUPS.data as data ";
-    sql += " ACTIVITIES.id a_id, ACTIVITIES.name,  " ;
-    sql += " ACTIVITIES_STUDENT.id_student AS as_id_student, ACTIVITIES_STUDENT.id_activity AS as_id_activity, ACTIVITIES_STUDENT.mark as mark,  " ;
-    sql += " FROM STUDENTS, GROUPS, ACTIVITIES, ACTIVITIES_STUDENT WHERE  ( g_id=STUDENTS.id_group  ";
-    sql += " AND g_id=" + global_id ;
-    sql += " AND a_id=as_id_activity  " ;
-    sql += " AND id_student =as_id_activity  " ;
-
-    sql += " ) ORDER BY id_student";
-
-    tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
-        dbErrorFunc = function(tx, e) {
-            if (tx.message) e = tx;
-            log(" queryStudentsAttendanceDB " + sql);
-            alert(" There has been an error queryStudentsAttendanceDB: " + e.message);
-        return false;
-    });
-
-}
-////
 
 function queryListMaxActivities(tx) {
        tx.executeSql('SELECT id FROM ACTIVITIES',[],
@@ -1843,8 +1713,6 @@ function listMaxActivities(db) {
        });
    }
 
-   //groups_day_ul
-   // loadSchedule
 
    function loadSchedule(db, this_day) {
        global_db.transaction( querySchedulePerDayDB);
@@ -1858,9 +1726,9 @@ function listMaxActivities(db) {
    }
 //
 
-/*
- * For Students Attendance Table
- */
+
+// For Students Attendance Table
+
     function reportAttendanceDB(db) {
        db.transaction(queryReportAttendanceDB);
    }
@@ -1868,8 +1736,4 @@ function listMaxActivities(db) {
    function loadStudentAttendance(db) {
        db.transaction(queryStudentsAttendanceDB);
    }
-
-        //           html += "<div data-role='fieldcontain'>";
-        //            html = "<li><h3 >"+results.rows.item(i).surname +" "+ results.rows.item(i).name+"</h3>";
-        //            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#show_student_activity'  onClick=\"Attendance(" + results.rows.item(i).id + ");\"></a>";
 
