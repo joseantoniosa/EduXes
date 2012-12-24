@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  24 DEC 2012 06:59
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  24 DEC 2012 07:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -993,8 +993,8 @@ Overfull \hbox (99.70267pt too wide) in paragraph at lines 331--377
 [][] 
  []
 
-File: bc-aux-301.mps Graphic file (type mps)
-[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+File: bc-book.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-book.mps)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1016,8 +1016,8 @@ Overfull \hbox (164.2756pt too wide) in paragraph at lines 387--427
 [][] 
  []
 
-File: bc-aux-301.mps Graphic file (type mps)
-[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+File: bc-book.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-book.mps)
 File: bc-aux-301.mps Graphic file (type mps)
 
 [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
@@ -1075,7 +1075,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18] <grade_book01.jpg, id=424, 289.08pt x 513.92pt>
+[18] <grade_book01.jpg, id=425, 289.08pt x 513.92pt>
 File: grade_book01.jpg Graphic file (type jpg)
  <use grade_book01.jpg>
 Package pdftex.def Info: grade_book01.jpg used on input line 87.
@@ -1086,7 +1086,7 @@ Overfull \hbox (14.83124pt too wide) in paragraph at lines 99--100
 endance-instruction-
  []
 
-<attendance01.png, id=425, 308.15125pt x 513.92pt>
+<attendance01.png, id=426, 308.15125pt x 513.92pt>
 File: attendance01.png Graphic file (type png)
  <use attendance01.png>
 Package pdftex.def Info: attendance01.png used on input line 105.
@@ -1104,7 +1104,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [19 <./grade_book01.jpg>]
-<teacher_organizer01.jpg, id=432, 513.92pt x 308.15125pt>
+<teacher_organizer01.jpg, id=433, 513.92pt x 308.15125pt>
 File: teacher_organizer01.jpg Graphic file (type jpg)
 
 <use teacher_organizer01.jpg>
@@ -1128,7 +1128,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [21 <./teacher_organizer01.jpg>]
-<TeacherAideProLite01.jpg, id=441, 513.92pt x 289.08pt>
+<TeacherAideProLite01.jpg, id=442, 513.92pt x 289.08pt>
 File: TeacherAideProLite01.jpg Graphic file (type jpg)
 
 <use TeacherAideProLite01.jpg>
@@ -1320,12 +1320,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 236.
  ) 
 Here is how much of TeX's memory you used:
  17507 strings out of 494956
- 309036 string characters out of 3179077
- 437050 words of memory out of 3000000
+ 309023 string characters out of 3179077
+ 435503 words of memory out of 3000000
  20110 multiletter control sequences out of 15000+200000
  23044 words of font info for 64 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
- 63i,16n,71p,494b,1241s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,16n,71p,494b,1240s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1338,24 +1338,25 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
  </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/
 jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0700.600pk> </home/jantonio
 /.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0800.600pk> </home/jantonio/.texmf-
-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/jantonio/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jantonio/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/ecrm0700.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecti1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecbx1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800
-.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> 
-</home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/j
-antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/jantonio/
-.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jantonio/.texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/latxfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (44 pages, 476663 bytes).
+var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk> </home/jantonio/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecrm1000.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jkna
+ppen/ec/ecrm0700.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecti1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200
+.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> 
+</home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/j
+antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/jantonio/
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/jantonio/.texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jantonio/.texmf-var/fonts
+/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eur
+osym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/lat
+xfont/lcircle1.pfb>
+Output written on master_memoriae.pdf (44 pages, 480482 bytes).
 PDF statistics:
- 1114 PDF objects out of 1200 (max. 8388607)
- 517 compressed objects within 6 object streams
+ 1129 PDF objects out of 1200 (max. 8388607)
+ 521 compressed objects within 6 object streams
  111 named destinations out of 1000 (max. 500000)
  486 words of extra memory for PDF output out of 10000 (max. 10000000)
 
