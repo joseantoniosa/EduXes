@@ -220,61 +220,60 @@ There are several groups of functions:
 Whether these functions need access to data (every function but \emph{ onGeneral* } ) they call  their counterpart 
 function in {\bf database.js } file.
 
-{\huge  CAMBIAR vvv }
 \begin{bclogo}[couleur=orange!30,logo=\bcbook, arrondi=0.1,ombre=true ] 
 {List of Functions: {\bf interface.js}}	
 \begin{tabular}{lll}
 Name                    & Task            & Group \\
 \hline
-Firstly loaded, create and    & \emph{ onDeviceReady()  }& Initial\\
-populate database,              &   &                       \\
-load initial page               &   &                       \\
-Initial                         &   \emph{ init()  } & \\
-Load default date               &  \emph{ initialize\_data )      } & Initial \\
-Daily work page:                &   \emph{open\_daily\_page()     } & Schedule \\
-list of groups                  &                         &  \\
-Students Attendance page        &  \emph{ listStudentsAttendance() }&   \\
-New Group                       &  \emph{ requestNewGroup()     }   & Groups \\
-Edit Group                      &  \emph{ onAddNewGroup()       }   & Groups \\
-Update Group                    &  \emph{ onAddNewGroup()       }   & Groups \\
-Delete Group                    &  \emph{ onDeleteGroup()       }   & Groups \\    
-Save Group                      &  \emph{ onSaveNewGroup()      }   & Groups \\
-List All Groups                 &  \emph{ onListAllGroups()     }   & Groups \\
-Edit Student                    &  \emph{ EditStudent()         }   & Students \\
-Delete Student                  &  \emph{ onDeleteStudent()     }   & Students \\   
-Add new Student                 &  \emph{ onAddNewStudent()     }   & Students \\    
-Save Student                    &  \emph{ onSaveStudent()       }   & Students \\
-Save New Student                &  \emph{ onSaveNewStudent()    }   &  Students \\
-Full list of students           &  \emph{ listStudents()        }   & Students \\
-List Students by group          &  \emph{ listStudentsByGroup( )}   & Students \\
-Full list of students           &  \emph{ onListAllStudents()  }    & Students \\
-List All Activities             &  \emph{ onListAllActivities()}   &   Activities \\
-Activity update                 &  \emph{ onUpdateActivity()  }   &   Activities \\
-Add new Activity                &  \emph{ onAddNewActivity()  }   &   Activities \\
-Save New Activity               &  \emph{ onSaveNewActivity() }    &   Activities \\
-Open Students Assessment        &  \emph{ onOpenStudentsAssessment()} & Assessment \\
-Reload Group Assessment         &  \emph{ onRefreshGroupAssessment()} & Assessment \\
-Open Student Attendance         &  \emph{onOpenStudentsAttendance() }& Attendance \\
-List Attendance                 &  \emph{onReportListAttendance() }  & Attendance\ \\
+\emph{ onDeviceReady()  }&  Firstly loaded, create and    &  Initial\\
+&populate database,              &                          \\
+&load initial page               &                          \\
+\emph{ init()  } &Initial                         &   \\
+\emph{ initialize\_data ()      } &Load default date               &    Initial \\
+\emph{ open\_daily\_page()     } &Daily work page:                &   Schedule \\
+& list of groups                  &                           \\
+\emph{ listStudentsAttendance() }&Students Attendance page        &   \\
+\emph{ requestNewGroup()     }   & New Group                       &  Groups \\
+\emph{ onAddNewGroup()       }   &Edit Group                      &   Groups \\
+\emph{ onAddNewGroup()       }   &Update Group                    &  Groups \\
+\emph{ onDeleteGroup()       }   &Delete Group                    &   Groups \\    
+\emph{ onSaveNewGroup()      }   &Save Group                      &   Groups \\
+\emph{ onListAllGroups()     }   &List All Groups                 &  Groups \\
+\emph{ EditStudent()         }   &Edit Student                    &   Students \\
+\emph{ onDeleteStudent()     }   & Delete Student                  &  Students \\   
+\emph{ onAddNewStudent()     }   &Add new Student                 &   Students \\    
+\emph{ onSaveStudent()       }   &Save Student                    &  Students \\
+\emph{ onSaveNewStudent()    }   & Save New Student                &   Students \\
+\emph{ listStudents()        }   & Full list of students           &  Students \\
+\emph{ listStudentsByGroup( )}   & List Students by group          &  Students \\
+\emph{ onListAllStudents()  }    & Full list of students           &  Students \\
+\emph{ onListAllActivities()}   & List All Activities             &    Activities \\
+\emph{ onUpdateActivity()  }   & Activity update                 &   Activities \\
+\emph{ onAddNewActivity()  }   & Add new Activity                &   Activities \\
+\emph{ onSaveNewActivity() }    & Save New Activity               &   Activities \\
+\emph{ onOpenStudentsAssessment()} & Open Students Assessment        &   Assessment \\
+\emph{ onRefreshGroupAssessment()} & Reload Group Assessment         &  Assessment \\
+\emph{ onOpenStudentsAttendance() }& Open Student Attendance         & Attendance \\
+\emph{ onReportListAttendance() }  & List Attendance                 &  Attendance\ \\
                          &                                   & Reports \\
-List Students by             & \emph{listStudentsByGroupAttendance() } & Attendance \\
- Group Attendance           &   & Reports \\
-List Students by Group     & \emph{studentsAttendanceListPrevious()} & Attendance\\
-Previous week                   &                           & Reports \\
+\emph{ listStudentsByGroupAttendance() } & List Students by             & Attendance \\
+    & Group Attendance           &    Reports \\
+\emph{ studentsAttendanceListPrevious()} &List Students by Group     &  Attendance\\
+    &Previous week                                              & Reports \\
 
-List Students by Group    & \emph{ studentsAttendanceListNext()} & Attendance  \\
-Next week   &  & Reports\\
+\emph{ studentsAttendanceListNext()} & List Students by Group    & Attendance  \\
+    &Next week   &   Reports\\
 
-List Groups for Assessment      &  \emph{ onReportListAssessment() } & Assessment  \\
+\emph{ onReportListAssessment() } & List Groups for Assessment      &   Assessment  \\
                          &                                   & Reports \\
-List Students for Assessment    &  \emph{onListStudentsAssessment()} & Assessment  \\
+  \emph{ onListStudentsAssessment()} & List Students for Assessment    &Assessment  \\
                          &                                   & Reports \\
-Student State       &    \emph{ studentState() }    & Student \\
-Student Attendance &   \emph{ Attendance()}    & Student  \\
+ \emph{ studentState() }    & Student State       &   Student \\
+\emph{ Attendance()}    & Student Attendance &   Student  \\
                  &                  &  Attendance \\
-Exit            & \emph{ onGeneralFile()} & Exit  \\
-List Reports    & \emph{ onGeneralListReports()}    & Reports \\
-List Settings   &  \emph{ onGeneralListSettings()}  & Settings \\
+\emph{ onGeneralFile()} &Exit            &  Exit  \\
+\emph{ onGeneralListReports()}    & List Reports    &  Reports \\
+\emph{ onGeneralListSettings()}  & List Settings   &   Settings \\
 
 \end{tabular}	
 \end{bclogo}
@@ -329,49 +328,46 @@ only several complete functions which carry all (or almost all) the work. From t
 \begin{bclogo}[couleur=orange!30,logo=\bcbook, arrondi=0.1,ombre=true ] 
 {List of Functions: {\bf database.js}}	
 \begin{tabular}{lll}
-Task                    & Name            & Group \\
+Name                    & Task            & Group \\
 \hline
-Firstly loaded, create and    & \emph{ onDeviceReady()  }& Initial\\
 \emph{ errorCB() }                         & Error handler \\
-\emph{  successCB()            }           &  Error handler \\
-\emph { queryAllStudentsSuccess()}         & List filled with students information \\
-\emph { queryAllStudentsDB() }             & List filled with students information \\
-\emph { queryStudentSuccess() }            & Fill Editor Page with student information \\
-\emph { queryStudentDB() }                 & Fill Editor Page with student information \\
-\emph { queryNewStudentDB() }              & Fill Editor Page with student information. Group list \\
-\emph { queryStudentsSuccess() }           & Fill list of students with name, surname and photo  \\
-\emph { queryStudentsDB() }                & Fill list of students with name, surname and photo  \\
-\emph { loadStudents()  }                  & Fill list of students with name, surname and  .... \\
-\emph { queryStudentsByGroupSuccess() }     & Settings->Group-> List of Students \\
-\emph { queryStudentsByGroupDB() }          & Settings->Group-> List of Students \\
-\emph { queryScheduleSuccess() }          & Main Window - Daily Schedule \\
-\emph { querySchedulePerDayDB() }         & Main Window - Daily Schedule \\
-\emph { loadSchedule() }       & { Load Daily Schedule } \\
+\emph{ successCB()            }           &  Error handler \\
+\emph{ queryAllStudentsSuccess()}         & List filled with students information \\
+\emph{ queryAllStudentsDB() }             & List filled with students information \\
+\emph{ queryStudentSuccess() }            & Fill Editor Page with student information \\
+\emph{ queryStudentDB() }                 & Fill Editor Page with student information \\
+\emph{ queryNewStudentDB() }              & Fill Editor Page with student information. Group list \\
+\emph{ queryStudentsSuccess() }           & Fill list of students with name, surname and photo  \\
+\emph{ queryStudentsDB() }                & Fill list of students with name, surname and photo  \\
+\emph{ loadStudents()  }                  & Fill list of students with name, surname and  .... \\
+\emph{ queryStudentsByGroupSuccess() }     & Settings->Group-> List of Students \\
+\emph{ queryStudentsByGroupDB() }          & Settings->Group-> List of Students \\
+\emph{ queryScheduleSuccess() }          & Main Window - Daily Schedule \\
+\emph{ querySchedulePerDayDB() }         & Main Window - Daily Schedule \\
+\emph{ loadSchedule() }       & { Load Daily Schedule } \\
 
-\emph { queryReportAttendanceDB() }          & report->Attendance->Group \\
-\emph { queryReportAttendanceSuccess()}     & report->Attendance->Group \\
-\emph { reportAttendanceDB()  }              & {  Reports -> Attendance }\\
-\emph { loadGroupsAssessment() }            & Report->Assessment ->  Group\\
-\emph { Peers () }                          & Activities auxiliar object \\
-\emph { loadStudentsAssessment() }      & Report->Assessment ->  Students\\
-\emph {  fillSelectStudent() }          & {  Fill attendance student page with options } \\
-\emph { queryStudentsAttendanceSuccess()}&    {   Third Window: List of Students.  Attendance }\\
-\emph { queryStudentsAttendanceDB() }    & {  Third Window: List of Students.  Attendance }\\
-\emph { loadStudentAttendance()  }      &  List of Students.  Attendance   \\
-\emph { insertNewGroup()}               &{ Insert Group }   \\
-\emph { updateGroup()  }                & {  Update Group  }\\
-\emph { deleteGroup() }                 &{ Delete Group } \\
-\emph { loadGroup()             }        & { Load  one group } \\
-\emph { queryAllGroupsDB()      }        & { List all groups }  \\
-\emph { loadAllGroups()         }        & {  List all groups }  \\
-\emph { insertNewStudent() }            & { Settings -> Insert new Student  } \\
-\emph { querySaveStudentDB() }          &  Settings -> Update Student \\
-\emph { saveStudent() }                 & { } \\
-\emph { deleteStudent()}                & { Settings -> Delete Student } \\
-\emph { insertStudentStateL( ) }         & { Settings -> Insert New Student  }\\
-\emph { updateStudentStateL( )  }        & { Settings ->  Update Student }\\
-
-
+\emph{ queryReportAttendanceDB() }          & report->Attendance->Group \\
+\emph{ queryReportAttendanceSuccess()}     & report->Attendance->Group \\
+\emph{ reportAttendanceDB()  }              & {  Reports -> Attendance }\\
+\emph{ loadGroupsAssessment() }            & Report->Assessment ->  Group\\
+\emph{ Peers () }                          & Activities auxiliar object \\
+\emph{ loadStudentsAssessment() }      & Report->Assessment ->  Students\\
+\emph{ fillSelectStudent() }          & {  Fill attendance student page with options } \\
+\emph{ queryStudentsAttendanceSuccess()}&    {   Third Window: List of Students.  Attendance }\\
+\emph{ queryStudentsAttendanceDB() }    & {  Third Window: List of Students.  Attendance }\\
+\emph{ loadStudentAttendance()  }      &  List of Students.  Attendance   \\
+\emph{ insertNewGroup()}               &{ Insert Group }   \\
+\emph{ updateGroup()  }                & {  Update Group  }\\
+\emph{ deleteGroup() }                 &{ Delete Group } \\
+\emph{ loadGroup()             }        & { Load  one group } \\
+\emph{ queryAllGroupsDB()      }        & { List all groups }  \\
+\emph{ loadAllGroups()         }        & {  List all groups }  \\
+\emph{ insertNewStudent() }            & { Settings -> Insert new Student  } \\
+\emph{ querySaveStudentDB() }          &  Settings -> Update Student \\
+\emph{ saveStudent() }                 & { } \\
+\emph{ deleteStudent()}                & { Settings -> Delete Student } \\
+\emph{ insertStudentStateL( ) }         & { Settings -> Insert New Student  }\\
+\emph{ updateStudentStateL( )  }        & { Settings ->  Update Student }\\
 
 \end{tabular}
 
@@ -385,10 +381,8 @@ Firstly loaded, create and    & \emph{ onDeviceReady()  }& Initial\\
 \begin{bclogo}[couleur=orange!30,logo=\bcbook, arrondi=0.1,ombre=true ] 
 {List of Functions (2): {\bf database.js}}	
 \begin{tabular}{lll}
-Task                    & Name            & Group \\
+Name                    & Task            & Group \\
 \hline
-
-
 
 %% Check whether student state changes
 %% @id_student student id
@@ -407,7 +401,7 @@ Task                    & Name            & Group \\
 %% Update Activities for each group
 \emph { updateActivitiesGroup( )}       &{ Update Activities for each group }\\
 \emph { insertActivitiesGroup( )}       & { Update Activities for each group } \\
-\emph {  insertNewActivity(  ) }        & {Settings -> Activities -> New }\\
+\emph { insertNewActivity(  ) }        & {Settings -> Activities -> New }\\
 \emph { loadGroupsActivitiesEdit( )}    & {Settings -> Activities -> New (List groups) } \\
 \emph { fillSelectStudentAssessment( )}  & { Assessment -> Student -> List options  }\\
 \emph { loadGroupAssessment(  ) }       & { Assessment -> Load group information } \\
@@ -421,7 +415,6 @@ Task                    & Name            & Group \\
 \emph { deleteRawRecord( ) }            & { Delete any row from any table } \\
 \emph { queryGroupsAttendanceDB() }     & Reports -> Attendance ->List  groups \\
 \emph { loadGroupsAttendance()}         &{ Reports -> Attendance -> List  groups  } \\
-
 
 \end{tabular}
 \end{bclogo}  

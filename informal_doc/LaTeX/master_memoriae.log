@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  24 DEC 2012 07:04
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  24 DEC 2012 07:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -989,7 +989,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [10]
-Overfull \hbox (99.70267pt too wide) in paragraph at lines 331--377
+Overfull \hbox (99.70267pt too wide) in paragraph at lines 330--373
 [][] 
  []
 
@@ -1012,7 +1012,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [12]
-Overfull \hbox (164.2756pt too wide) in paragraph at lines 387--427
+Overfull \hbox (164.2756pt too wide) in paragraph at lines 383--420
 [][] 
  []
 
@@ -1336,9 +1336,9 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
  </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </home/
-jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0700.600pk> </home/jantonio
-/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0800.600pk> </home/jantonio/.texmf-
-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk> </home/jantonio/.texmf-var/font
+jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk> </home/jantonio
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0700.600pk> </home/jantonio/.texmf-
+var/fonts/pk/ljfour/jknappen/ec/ecti0800.600pk> </home/jantonio/.texmf-var/font
 s/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/jantonio/.texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecrm1000.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jkna
 ppen/ec/ecrm0700.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/
@@ -1353,9 +1353,9 @@ ar/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jantonio/.texmf-var/fonts
 ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eur
 osym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/lat
 xfont/lcircle1.pfb>
-Output written on master_memoriae.pdf (44 pages, 480482 bytes).
+Output written on master_memoriae.pdf (44 pages, 478965 bytes).
 PDF statistics:
- 1129 PDF objects out of 1200 (max. 8388607)
+ 1126 PDF objects out of 1200 (max. 8388607)
  521 compressed objects within 6 object streams
  111 named destinations out of 1000 (max. 500000)
  486 words of extra memory for PDF output out of 10000 (max. 10000000)
