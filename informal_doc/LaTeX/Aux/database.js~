@@ -1,42 +1,41 @@
 
-\emph{ errorCB() }     & Error handler \\
-\emph{  successCB() &  Error handler \\
+\emph{ errorCB() }                         & Error handler \\
+\emph{  successCB()                       &  Error handler \\
 
-\emph { queryAllStudentsSuccess() & List filled with students information \\
-\emph { queryAllStudentsDB() } & List filled with students information \\
-\emph { queryStudentSuccess() } & Fill Editor Page with student information \\
-\emph { queryStudentDB() } & Fill Editor Page with student information \\
-\emph { queryNewStudentDB() } & Fill Editor Page with student information. Group list \\
-\emph { queryStudentsSuccess() } & Fill list of students with name, surname and photo  \\
-\emph { queryStudentsDB() } & Fill list of students with name, surname and photo  \\
-\emph { loadStudents() { }
+\emph { queryAllStudentsSuccess()         & List filled with students information \\
+\emph { queryAllStudentsDB() }             & List filled with students information \\
+\emph { queryStudentSuccess() }            & Fill Editor Page with student information \\
+\emph { queryStudentDB() }                 & Fill Editor Page with student information \\
+\emph { queryNewStudentDB() }              & Fill Editor Page with student information. Group list \\
+\emph { queryStudentsSuccess() }           & Fill list of students with name, surname and photo  \\
+\emph { queryStudentsDB() }                & Fill list of students with name, surname and photo  \\
+\emph { loadStudents()  }                  & Fill list of students with name, surname and  .... \\
 
-\emph { queryStudentsByGroupSuccess() }& Settings->Group-> List of Students \\
+\emph { queryStudentsByGroupSuccess() }     & Settings->Group-> List of Students \\
 
-\emph { queryStudentsByGroupDB() } & Settings->Group-> List of Students \\
+\emph { queryStudentsByGroupDB() }          & Settings->Group-> List of Students \\
 
-\emph { queryScheduleSuccess() }& Main Window - Daily Schedule \\
-\emph { querySchedulePerDayDB() } & Main Window - Daily Schedule \\
-\emph { loadSchedule(db, this_day) { Load Daily Schedule }
+\emph { queryScheduleSuccess() }          & Main Window - Daily Schedule \\
+\emph { querySchedulePerDayDB() }         & Main Window - Daily Schedule \\
+\emph { loadSchedule(db, this_day)        & { Load Daily Schedule }
 
-\emph { queryReportAttendanceDB() } & report->Attendance->Group \\
-\emph { queryReportAttendanceSuccess() }& report->Attendance->Group \\
-\emph { reportAttendanceDB(db) {  Reports -> Attendance }\\
+\emph { queryReportAttendanceDB() }          & report->Attendance->Group \\
+\emph { queryReportAttendanceSuccess()}     & report->Attendance->Group \\
+\emph { reportAttendanceDB()                & {  Reports -> Attendance }\\
 
 
+\emph { loadGroupsAssessment() }            & Report->Assessment ->  Group\\
 
-\emph { loadGroupsAssessment() } Report->Assessment ->  Group\\
+\emph { Peers () }                          & Activities auxiliar object \\
 
-\emph { Peers () } Activities object
+\emph { loadStudentsAssessment() }      & Report->Assessment ->  Students\\
 
-\emph { loadStudentsAssessment() } Report->Assessment ->  Students\\
+\emph {  fillSelectStudent() }          & {  Fill attendance student page with options } \\
 
-\emph {  fillSelectStudent() } {  Fill attendance student page with options } \\
+\emph { queryStudentsAttendanceSuccess()&    {   Third Window: List of Students.  Attendance }\\
 
-\emph { queryStudentsAttendanceSuccess() {   Third Window: List of Students.  Attendance }\\
-
-\emph { queryStudentsAttendanceDB() {  Third Window: List of Students.  Attendance }\\
-\emph { loadStudentAttendance(db) { } \\
+\emph { queryStudentsAttendanceDB()     & {  Third Window: List of Students.  Attendance }\\
+\emph { loadStudentAttendance(db) { }   &  List of Students.  Attendance   \\
 
 
 
@@ -69,12 +68,12 @@
 //
 
    // Load only one student!
-   \emph { loadStudent(db){
-   \emph { loadNewStudent(){
+\emph { loadStudent(db){
+\emph { loadNewStudent(){
 
-   \emph { loadAllStudents() {
+\emph { loadAllStudents() {
 
-   \emph { loadStudentsByGroup() { List Students by Group }
+\emph { loadStudentsByGroup() { List Students by Group }
 
 \emph { queryLoadAllActivitiesDB() { Settings -> Show Activities (to be updated)
 \emph { loadAllActivities() { Settings -> Show Activities (to be updated)
@@ -93,11 +92,8 @@
 
 \emph { loadGroupsActivitiesEdit( ){ {Settings -> Activities -> New (List groups)
 
-//
 //------------- Assessment:
-
 \emph { fillSelectStudentAssessment( ) { Assessment -> Student -> List options and get saved data.
-
 
 \emph { loadGroupAssessment(  ) { Assessment -> Load group information }
 \emph { listStudentsByGroupAssessment( ) { // Assessment. List Students, load data  from DB
@@ -119,14 +115,6 @@
 
 \emph { queryGroupsAttendanceDB() } & Reports -> Attendance ->List  groups \\
 \emph { loadGroupsAttendance(db) { Reports -> Attendance -> List  groups  } \\
-
-
-/*
- * For Students Attendance Table
- */
-
-
-   }
 
 
 

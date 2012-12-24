@@ -45,33 +45,35 @@
   // 
 \emph { loadGroup() & { Load only one group! } \\
 
-\emph { queryAllGroupsDB() { List all groups }  \\
-\emph { loadAllGroups() { { List all groups }  \\
+\emph { queryAllGroupsDB() & { List all groups }  \\
+\emph { loadAllGroups() & {  List all groups }  \\
 
 
-    // Insert new Student
-\emph { insertNewStudent() } { Settings -> Insert new Student  } \\
+\emph { insertNewStudent() } & { Settings -> Insert new Student  } \\
 
-\emph { querySaveStudentDB (){ Settings -> Update Student \\
-\emph { saveStudent(){ }
-\emph { deleteStudent() { Settings -> Delete Student }
+\emph { querySaveStudentDB }()&  Settings -> Update Student \\
+\emph { saveStudent() }& { } \\
+\emph { deleteStudent()}& { Settings -> Delete Student } 
 
-\emph { insertStudentStateL( ){ Settings -> Insert New Student 
-\emph { updateStudentStateL( ) { Settings ->  Update Student 
+\emph { insertStudentStateL( )& { Settings -> Insert New Student  }
+\emph { updateStudentStateL( )& { Settings ->  Update Student }
+
+
+
 
 // Check whether student state changes
 // @id_student student id
-\emph { stateCheck( ){
+\emph { stateCheck( )}  &{ }\\
 // Write Student state
-\emph { updateStudentState( ){ } \\
+\emph { updateStudentState( )} &{ } \\
 
 //
 
    // Load only one student!
-\emph { loadStudent(db){
-\emph { loadNewStudent(){
+\emph { loadStudent() &{ }
+\emph { loadNewStudent() & { }
 
-\emph { loadAllStudents() {
+\emph { loadAllStudents() & { }
 
 \emph { loadStudentsByGroup() { List Students by Group }
 
@@ -92,7 +94,7 @@
 
 \emph { loadGroupsActivitiesEdit( )} & {Settings -> Activities -> New (List groups) } \\
 
-//------------- Assessment:
+
 \emph { fillSelectStudentAssessment( ) & { Assessment -> Student -> List options 
 
 \emph { loadGroupAssessment(  ) & { Assessment -> Load group information }
@@ -115,7 +117,5 @@
 
 \emph { queryGroupsAttendanceDB() } & Reports -> Attendance ->List  groups \\
 \emph { loadGroupsAttendance() &{ Reports -> Attendance -> List  groups  } \\
-
-
 
 
