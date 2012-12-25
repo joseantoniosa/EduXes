@@ -141,7 +141,7 @@ function queryStudentDB(tx) {
 function queryNewStudentDB(tx) {
 
     sql = "SELECT id, data, other_data FROM GROUPS  ";
-    log("queryNewStudentDB "+ sql);
+//    log("queryNewStudentDB "+ sql);
     tx.executeSql(sql, [], dbSuccessFunc = function(ttx, rs) {
         var ul_select = $('#student_new_edit_group_list_ul');
         var html = "";
@@ -176,26 +176,6 @@ function queryNewStudentDB(tx) {
             });
     }
 
-//
-
-function queryStudentsByGroupDB(tx) {
-
-    var sql = 'SELECT STUDENTS.id as id,  STUDENTS.id_group as id_group, STUDENTS.name as name, ';
-    sql += ' STUDENTS.surname as surname, STUDENTS.n_date as n_date, STUDENTS.photo as photo, ';
-    sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeated as repeated, STUDENTS.tutor as tutor ,';
-    sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
-    sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
-    sql += ' FROM STUDENTS, GROUPS WHERE ';
-    sql += ' STUDENTS.id_group = g_id AND id_group=' + global_id_group;
-    tx.executeSql(sql, [], queryStudentsByGroupSuccess, dbErrorFunc = function(tx, e) {
-        if (tx.message)
-            e = tx;
-        log(sql);
-        log(" There has been an error queryStudentsByGroupDB: " + e.message);
-        alert("There has been an error queryStudentsByGroupDB: " + e.message);
-        return false;
-    });
-}
 
 /*
 * Query groups per day - Main Window -
@@ -236,7 +216,7 @@ function queryReportAttendanceSuccess(tx, results) {
     var table_list = $('#students_attendance_by_groups_table');
     var from_to = moment(global_reports_date).day(1).format("MM/DD") + "-" + moment(global_reports_date).day(5).format("MM/DD");
 
-    log("report queryReportAttendanceDB from_to (" + from_to + ")");
+   // log("report queryReportAttendanceDB from_to (" + from_to + ")");
 
     $('#students_attendance_by_groups_li').text(from_to);
 
@@ -254,12 +234,12 @@ function queryReportAttendanceSuccess(tx, results) {
         name = results.rows.item(i).name;
         surname = results.rows.item(i).surname;
         id_group = results.rows.item(i).id_group;
-        log("report queryReportAttendanceDB name surname (" + name + " " + surname + ")");
+     //   log("report queryReportAttendanceDB name surname (" + name + " " + surname + ")");
         html = "<tr>";
         html += "<td>" + surname + " " + name + "</td>";
-        for (var j = 1; j < 6; j++) {// recorremos la semana, 0 es domingo
+        for (var j = 1; j < 6; j++) {// 0 = Sunday
             html += "<td>";
-            log(" queryReportAttendanceSuccess: [" + moment(global_reports_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
+           // log(" queryReportAttendanceSuccess: [" + moment(global_reports_date).day(j).toDate().toDateString() + "] = [" + results.rows.item(i).a_date + "]");
             if (moment(global_reports_date).day(j).toDate().toDateString() == results.rows.item(i).a_date) {
                 html += results.rows.item(i).a_type;
                 // Falta indicar la sessión
@@ -556,29 +536,6 @@ function queryStudentSuccess(tx, results) {
     }
 }
 
-// Settings->Group->Students
-function queryStudentsByGroupSuccess(tx, results) {
-    var len = results.rows.length;
-    log("queryStudentsByGroupSuccess. Number of students - rows inserted: " + len);
-    var ul_list = $('#list_students_by_group_ul');
-    $('#id_list_students_by_group').text( results.rows.item(0).data );
-    var html;
-    ul_list.empty();
-    var id = 0;
-    for (var i = 0; i < len; i++) {
-        id = results.rows.item(i).id;
-        html = "<li >";
-        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float:left;' class='ui-li-icon ui-corner-none'>";
-        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
-        html += "</a>";
-        html += "<a data-role='button'  data-position-to='window'  data-iconpos='notext' style='float:right;' href='#' data-rel='dialog' data-transition='slideup' onClick=\"EditStudent(" + id + ");\">Edit</a>";
-        html += "</li>";
-        ul_list.append(html);
-    }
-    ul_list.listview('refresh');
-}
-
 
 
 function queryStudentsSuccess(tx, results) {
@@ -628,7 +585,8 @@ function queryScheduleSuccess(tx, results) {
            html += "<div data-role='fieldcontain' onClick='listStudentsAttendance(" + group + ","+t_id_session + ");' >";
            html += results.rows.item(i).s_h_start;  // s_h_end
            html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#' ";
-           html += " onClick='listStudentsAttendance(" + group + ","+t_id_session + ");'>" + description + "</a>";
+           html += "  >" + description + "</a>";
+//           html += " onClick='listStudentsAttendance(" + group + ","+t_id_session + ");'>" + description + "</a>";
            html += "</div>";
            html += "</li>";
            $('#groups_day_ul').append(html);
@@ -1126,7 +1084,6 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
             }
           );
 }
-//            queryStudentsByGroupDB);
 
 ///---------------------------------------------------------------------------------------------------------
 //

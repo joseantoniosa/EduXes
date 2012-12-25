@@ -328,34 +328,63 @@ only several complete functions which carry all (or almost all) the work. From t
 \begin{bclogo}[couleur=orange!30,logo=\bcbook, arrondi=0.1,ombre=true ] 
 {List of Functions: {\bf database.js}}	
 \begin{tabular}{lll}
-Name                    & Task            & Group \\
+Name                    & Task            \\
 \hline
-\emph{ errorCB() }                         & Error handler \\
-\emph{ successCB()            }           &  Error handler \\
-\emph{ queryAllStudentsSuccess()}         & List filled with students information \\
-\emph{ queryAllStudentsDB() }             & List filled with students information \\
-\emph{ queryStudentSuccess() }            & Fill Editor Page with student information \\
-\emph{ queryStudentDB() }                 & Fill Editor Page with student information \\
-\emph{ queryNewStudentDB() }              & Fill Editor Page with student information. Group list \\
-\emph{ queryStudentsSuccess() }           & Fill list of students with name, surname and photo  \\
-\emph{ queryStudentsDB() }                & Fill list of students with name, surname and photo  \\
-\emph{ loadStudents()  }                  & Fill list of students with name, surname and  .... \\
-\emph{ queryStudentsByGroupSuccess() }     & Settings->Group-> List of Students \\
-\emph{ queryStudentsByGroupDB() }          & Settings->Group-> List of Students \\
-\emph{ queryScheduleSuccess() }          & Main Window - Daily Schedule \\
-\emph{ querySchedulePerDayDB() }         & Main Window - Daily Schedule \\
-\emph{ loadSchedule() }       & { Load Daily Schedule } \\
+\emph{ errorCB() }                         & Error handler  \\
+\emph{ successCB()            }           &  Success handler  \\
 
-\emph{ queryReportAttendanceDB() }          & report->Attendance->Group \\
-\emph{ queryReportAttendanceSuccess()}     & report->Attendance->Group \\
-\emph{ reportAttendanceDB()  }              & {  Reports -> Attendance }\\
-\emph{ loadGroupsAssessment() }            & Report->Assessment ->  Group\\
+\emph{ loadAllStudents()}         &         Setting $\rightarrow $List all students \\
+\emph{ queryAllStudentsDB() }             & \\
+\emph{ queryAllStudentsSuccess()}         &  \\
+
+\emph{ loadStudent()  }                  & Setting  $\rightarrow $List all students  $\rightarrow $ \\
+              & Fill Students page\\
+\emph{ queryStudentSuccess() }            &  \\
+\emph{ queryStudentDB() }                 &  \\
+%%
+\emph { loadNewStudent()   }     & {Setting $\rightarrow$ List all students $\rightarrow$ } \\
+    &   New Student \\
+\emph{ queryNewStudentDB() }              &  \\
+%%
+\emph{ loadStudents()  }                  & Delete Student $\rightarrow $List all students \\
+\emph{ queryStudentsDB() }                &  \\
+\emph{ queryStudentsSuccess() }           &   \\
+%%
+\emph { loadStudentsByGroup()}          & { Setting  $\rightarrow$ Groups $\rightarrow$  List Students  } \\
+%%
+\emph{ loadSchedule() }       & { Main Window $\rightarrow$ Load Daily Schedule } \\
+\emph{ querySchedulePerDayDB() }         &  \\
+\emph{ queryScheduleSuccess() }          &  \\
+%%
+\emph{ reportAttendanceDB()  }              & {  Reports $\rightarrow$  Attendance $\rightarrow$  Group }\\
+\emph{ queryReportAttendanceDB() }          &  \\
+\emph{ queryReportAttendanceSuccess()}     &  \\
+%%
+\emph{ loadGroupsAssessment() }            & Report $\rightarrow$ Assessment $\rightarrow$  Group\\
+%%
+\emph{ loadStudentsAssessment() }      & Report $\rightarrow$ Assessment $\rightarrow$   Students \footnote{Assessment List}\\
+%%
+\emph{ loadStudentAttendance()  }      &  Main Window $\rightarrow$ Load Daily Schedule  \\
+                            &   $\rightarrow$ Groups (Default: Attendance)   \\
+
+\emph{ queryStudentsAttendanceDB() }    & {  }\\
+\emph{ queryStudentsAttendanceSuccess()}&    {   }\\
+\emph{ fillSelectStudent() }          & {  } \\
+%%
+
+
+%%
 \emph{ Peers () }                          & Activities auxiliar object \\
-\emph{ loadStudentsAssessment() }      & Report->Assessment ->  Students\\
-\emph{ fillSelectStudent() }          & {  Fill attendance student page with options } \\
-\emph{ queryStudentsAttendanceSuccess()}&    {   Third Window: List of Students.  Attendance }\\
-\emph{ queryStudentsAttendanceDB() }    & {  Third Window: List of Students.  Attendance }\\
-\emph{ loadStudentAttendance()  }      &  List of Students.  Attendance   \\
+
+
+%%
+\emph { queryLoadAllActivitiesDB()}     & { Settings -> Show Activities (to be updated) } \\
+\emph { loadAllActivities() }           &{ Settings -> Show Activities (to be updated) } \\
+\emph { loadActivity( )}                & {Settings -> List Activities -> Load activity information } \\
+\emph { updateActivity(  )}             &{Settings -> Activities -> List-> Load activity -> Update Activity. }\\
+
+
+
 \emph{ insertNewGroup()}               &{ Insert Group }   \\
 \emph{ updateGroup()  }                & {  Update Group  }\\
 \emph{ deleteGroup() }                 &{ Delete Group } \\
@@ -389,15 +418,9 @@ Name                    & Task            & Group \\
 \emph { stateCheck( )}                  &{ }\\
 %% Write Student state
 \emph { updateStudentState( )}          &{ } \\
-%%  Load only one student! 
-\emph { loadStudent()      }             &{ } \\
-\emph { loadNewStudent()   }             & { } \\
-\emph { loadAllStudents()  }             & { }\\
-\emph { loadStudentsByGroup()}          & { List Students by Group } \\
-\emph { queryLoadAllActivitiesDB()}     & { Settings -> Show Activities (to be updated) } \\
-\emph { loadAllActivities() }           &{ Settings -> Show Activities (to be updated) } \\
-\emph { loadActivity( )}                & {Settings -> List Activities -> Load activity information } \\
-\emph { updateActivity(  )}             &{Settings -> Activities -> List-> Load activity -> Update Activity. }\\
+
+
+
 %% Update Activities for each group
 \emph { updateActivitiesGroup( )}       &{ Update Activities for each group }\\
 \emph { insertActivitiesGroup( )}       & { Update Activities for each group } \\

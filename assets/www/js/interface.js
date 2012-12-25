@@ -121,6 +121,7 @@ function listStudentsAttendance(id_group, id_session)
     global_id_group = id_group;
     table_global='STUDENTS';
     global_session = id_session;
+
     loadStudentAttendance(global_db);
     $.mobile.changePage("#list_students_attendance" );
 }
@@ -295,7 +296,7 @@ function onUpdateActivity(id_activity) {
 }
 
 // Show edition activity page
-function onAddNewActivity() { 
+function onAddNewActivity() {
     $.mobile.showPageLoadingMsg();
     global_is_new=1;
     global_id_activity = -1;      //local variable goes global NEW activity
@@ -363,7 +364,7 @@ function onReportListAssessment() {
     $.mobile.changePage("#list_groups_assessment");
 
 }
-// TODO : List Students:
+// List Students:
 function onListStudentsAssessment(id_group){
     $.mobile.showPageLoadingMsg();
 
@@ -440,6 +441,9 @@ function Attendance(id_student){
     $.mobile.showPageLoadingMsg();
     global_id = id_student;      //local variable goes global
     table_global = 'STUDENTS';
+
+    alert("Attendance Window"    );
+
     loadStudentAttendance(global_db);
     $.mobile.changePage("#edit_students_attendance", { transition: "slideup"});
 }
