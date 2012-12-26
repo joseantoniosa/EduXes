@@ -459,10 +459,23 @@ $\llcorner$\emph{ queryReportAttendanceSuccess()}     &  \\
 
 		\subsection{Interface Diagram}
 		
+		This figure \ref{fig:diagram} ilustrates application workflow. Dotted lines are instructions and continuous lines 
+		data flow. Readings from database are not displayed. 
+		
+		\begin{figure}
+		    \begin{center}
+		        \includegraphics[scale=0.3]{eduxes_diagram.eps}
+		        \caption{Diagram}
+		        \label{fig:diagram}
+		    \end{center}
+		\end{figure}
+		
+\newpage		
   
 		\subsection{Tools}
 	
-	Tools involved are Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality
+	Tools involved in \emph{EduXes} development are Eclipse IDE (with plug-ins)
+	 and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality
 	 is developed, application is tested on AVM,  if it worked, source code was polished, application is tested again, if it was
 	  satisfactory a new change is committed into git repository. 
 	  From time to time application is downloaded from git repository into a real hardware and tested. 
