@@ -130,8 +130,67 @@ Total &384 \\
 	On the other hand, development of this application improves my computer science skills in  mobile-phone applications development: JQuery,  jQueryMobile, PhoneGap/Cordova, SQLite, Android,  git repository management.
 
 \section {Methodology}
-	This work was carried on building little blocks, also called pages, and make it up into final application. Database structure was separated from interface, and interface was also separated into dynamic and static contents. Each new functionality was written, tested, and
-	polished. Each new function was written from previous one, and so on.
+	This work was carried on building small blocks, also called pages, and make it up into final application.
+	A page is a visible window, only first page is visible, and other pages are called from this one.
+	 Database structure was separated from interface, and interface was also separated into dynamic and static contents. Each new
+	 functionality was written, tested, and
+	polished. 
+	
+	
+	Foremost a new window/page  is designed from previous HTML code, \emph{id} are set with ad-hoc names \emph{id="edit\_student"}, 
+	   \emph{id="in\_name\_student"},   these \emph{id's} are used inside javascript code. 
+	   
+    Secondly { \bf interface.js} code are written: show progress icon, a function$^{(1)}$  which loads data into new HTML code, 
+    and show new page/window.
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Sample interface.js code}        
+        \begin{verbatim}
+$.mobile.showPageLoadingMsg();
+id_group=global_id_group; 
+loadGroupAssessment(global_db,id_group);
+$.mobile.changePage("#list_students_assessment");
+    \end{verbatim}  
+\end{bclogo}
+
+    Thirdly {\bf database.js} code are written: Declaration of previous function [1], which  usually implements a SQL-query to SQLite database. These functions also fill html code, so HTML \emph{id}'s are significant.
+    
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Sample database.js code}    
+\begin{verbatim}
+var list_asset=$('#list_assessment_select'); 
+sql="SELECT ";
+sql += " ACTIVITIES_GROUP.a_date ...  ";
+
+db.transaction(function(tx) {
+    tx.executeSql(sql,[],
+        dbSuccessFunc = function(tx, results) {
+           var html ="";
+           for (var i=0;i<results.rows.length;i++) {
+              a_id = results.rows.item(i).a_id;
+              a_name = results.rows.item(i).a_name;
+                    ...
+              html +=' <option value="'+a_id+'">'+a_name+'</option> ';
+           }
+           list_asset.empty().append(html);
+           list_asset[0].selectedIndex = 0; 
+
+           if(results.rows.length>0) {
+             $('#current_group_assessment').text(
+                results.rows.item(0).g_data); 
+           }
+           global_id_group = id_group;
+           listStudentsByGroupAssessment( db, id_group, 
+            $('#students_assessment_ul'));
+       },
+       dbErrorFunc ...
+        ); 
+});
+\end{verbatim}    
+\end{bclogo}    
+    
+    After several successful tests {\bf TODO} file could be updated, and  code will be upload to git repository.
+  
+    
 	\subsection{HTML}
   There are only two html files: \textbf{index.html} and \textbf{remove.html}. The most important: \textbf{index.html} file is build by
    blocks called pages, gathered together \cite{JQueryMobilePage}. Each page is its own {\bf div } 
@@ -166,7 +225,8 @@ Total &384 \\
                 <li><a href="#" onClick="" >File</a></li>
                 </ul>
             </div>
-            <div data-role="footer" class="footer-docs" data-rel="back"
+            <div data-role="footer" class="footer-docs" 
+                data-rel="back"
              data-theme="a">
              </div>
  </div>

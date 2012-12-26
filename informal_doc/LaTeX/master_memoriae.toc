@@ -8,12 +8,12 @@
 \contentsline {section}{\numberline {2.1}Description and objectives}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}Motivation}{6}{section.2.2}
 \contentsline {section}{\numberline {2.3}Methodology}{7}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}HTML}{7}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Interface code }{9}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Database code}{11}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Interface Diagram}{13}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Tools}{15}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}Work plan}{17}{section.2.4}
+\contentsline {subsection}{\numberline {2.3.1}HTML}{8}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Interface code }{10}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Database code}{12}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Interface Diagram}{14}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Tools}{16}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}Work plan}{18}{section.2.4}
 \contentsline {chapter}{\numberline {3}State-of-art solutions}{19}{chapter.3}
 \contentsline {section}{\numberline {3.1}Siestta}{19}{section.3.1}
 \contentsline {section}{\numberline {3.2}Sixa}{20}{section.3.2}

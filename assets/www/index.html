@@ -411,7 +411,7 @@
                         <div class="ui-block-a">
                             <label for="name_student">Name</label></div>
                         <div class="ui-block-b">
-                            <input id="in_name_student" enabled="true" />
+                            <input name="in_name_student"  id="in_name_student" enabled="true" />
                         </div>
                      </fieldset>
                  </li>
@@ -617,7 +617,7 @@
 
 
 
-<!-- TODO: Update  Activity
+<!-- Update  Activity
 
     //-->
 <div data-role="page" id="update_activity"    data-add-back-btn="false"  data-theme="a" data-direction="reverse" >
@@ -685,72 +685,6 @@
 
 
 
-<!-- New Activity //-->
-<!--
-<div data-role="page" id="edit_activity"    data-add-back-btn="false"  data-theme="a" data-direction="reverse" >
-            <div data-role="header"  data-add-back-btn="false"   data-theme="a" >
-            <a href="#list_all_activities"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
-
-                <h1> New Activity</h1>
-                <div data-role="content">
-
-                     <fieldset class="ui-grid-a">
-                        <div class="ui-block-a">
-                     <label for="in_name_activity">Name</label>
-                     </div>
-                        <div class="ui-block-b">  <input id="in_name_activity" enabled="true" />  </div>
-                     </fieldset>
-
-                 <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"> <label for="in_date_init_activity">Initial Date</label> </div>
-                        <div class="ui-block-b">
-                            <input id="in_date_init_activity_scroller" name="in_date_init_activity_scroller" />
-
-                            </div>
-                     </fieldset>
-
-
-                 <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"><label for="in_date_end_activity">Final Date</label>   </div>
-
-                        <div class="ui-block-b">
-                                                        <input id="in_date_end_activity_scroller" name="in_date_end_activity_scroller" />
-
-                            </div>
-                     </fieldset>
-
-
-                 <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"><label for="in_weight_activity">Weight (1-100)</label>
-                     </div>
-                        <div class="ui-block-b"><input type="number" id="in_weight_activity" enabled="true" value="0"/>
-                            </div>
-                     </fieldset>
-
-
-                 <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"><label for="in_final_activity">Disabled</label>
-                     </div>
-                        <div class="ui-block-b"><input type="checkbox" id="in_final_activity" enabled="true" value="0" />
-                            </div>
-                     </fieldset>
-
-
-<p style="text-align: center ">List of Groups:</p>
-
-                    <ul data-role="listview" id="list_groups_activity_ul" data-split-icon="gear" data-split-theme="a" data-filter="false" data-inset="true" data-theme="a" >
-
-                 </div>
-                 <div data-role="content">
-                 <a onClick="onSaveNewActivity();" data-role="button" data-icon="check">Save</a>
-                </div>
-<hr />
-
-            <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
-            <p style="text-align: center"> New Activity</p>
-            </div>
-</div>
-//-->
 
 
 </body>
