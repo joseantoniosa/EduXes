@@ -23,7 +23,7 @@
  */
 
 // Modo de depuración
-var DEBUG = true;
+var DEBUG = false; // true
 
 // Referencia á base de datos
 //
@@ -683,6 +683,8 @@ function queryStudentsAttendanceDB(tx) {
     sql += " FROM STUDENTS, GROUPS WHERE  ( g_id=STUDENTS.id_group  ";
     sql += " AND g_id=" + global_id + " ) ORDER BY id_student";
 
+    alert("queryStudentsAttendanceDB_window" );
+
     tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
         dbErrorFunc = function(tx, e) {
             if (tx.message) e = tx;
@@ -747,7 +749,7 @@ function deleteGroup(db) {
 function loadGroup(db, id_group){
     db.transaction(function (tx) {
         log("Query Group \n");
-        var sql = 'SELECT * FROM GROUPS WHERE id ='+id_group;
+        var sql = 'SELECT id, data, other_data FROM GROUPS WHERE id ='+id_group;
         tx.executeSql(sql, [],
             dbSuccessFunc = function(ttx,rs){
                 $('#in_nombre_grupo').val(rs.rows.item(0).data);
@@ -1238,7 +1240,7 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
         if(e_final!=0 ){            sql += ', e_final=' + e_e_final;        }
         sql += ' WHERE  id=' +id_activity+ ';';
 
-        log("updateActivity :"+sql);
+        //log("updateActivity :"+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 var enabled=0;
@@ -1277,7 +1279,7 @@ function updateActivitiesGroup(db, id_group, id_activity, enabled , a_date, note
         if(notes!=null) { sql += ', notes="' + notes + '" '; }
         sql += ' WHERE id_activity='+id_activity+' AND id_group='+id_group+' ;';
 
-        log("UPDATE. updateActivitiesGroup  : "+sql);
+        //log("UPDATE. updateActivitiesGroup  : "+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 return true;
@@ -1303,7 +1305,7 @@ function insertActivitiesGroup(db, id_group, last_inserted_row, enabled , a_date
         sql += ', "' + a_date+'"';
         sql += ', "' + notes+'"';
         sql += ');';
-        log(" insertActivitiesGroup  : "+sql);
+      //  log(" insertActivitiesGroup  : "+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 global_max_activities ++; // A new activity
@@ -1377,7 +1379,6 @@ function loadGroupsActivitiesEdit(db){
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 global_no_groups = results.rows.length;
-                //alert("Nº Groups: "+ global_no_groups);
                 if(global_no_groups>0) {
                     var ul_list = $('#list_groups_activity_ul');
                     var html;
@@ -1392,7 +1393,6 @@ function loadGroupsActivitiesEdit(db){
                         html += results.rows.item(i).data +"</label>";
                         html += " </li></br>";
 
-                       // alert("HTML: "+ html);
                         ul_list.append(html);
                     }
                     //ul_list.listview('refresh');
@@ -1678,6 +1678,7 @@ function listMaxActivities(db) {
    }
 
    function loadStudentAttendance(db) {
+       alert("loadStudentAttendance Window");
        db.transaction(queryStudentsAttendanceDB);
    }
 

@@ -325,83 +325,78 @@ growing in complexity, became very difficult to read, maintain and pass variable
 only several complete functions which carry all (or almost all) the work. From this point of view functions become longer, 
 (up to a hundred of lines of code) but easier to test and follow.
 
+Next tables list every function used in {\bf database.js}, gathered together by task, or menu options.
+
 \begin{bclogo}[couleur=orange!30,logo=\bcbook, arrondi=0.1,ombre=true ] 
 {List of Functions: {\bf database.js}}	
-\begin{tabular}{lll}
+\begin{tabular}{ll}
 Name                    & Task            \\
 \hline
 \emph{ errorCB() }                         & Error handler  \\
 \emph{ successCB()            }           &  Success handler  \\
 
-\emph{ loadAllStudents()}         &         Setting $\rightarrow $List all students \\
-\emph{ queryAllStudentsDB() }             & \\
-\emph{ queryAllStudentsSuccess()}         &  \\
+$\ulcorner$ \emph{ loadSchedule() }       & { Main Window $\rightarrow$ Load Daily Schedule } \\
+\emph{ querySchedulePerDayDB() }         &  \\
+$\llcorner $ \emph{ queryScheduleSuccess() }          &  \\
+%%
 
-\emph{ loadStudent()  }                  & Setting  $\rightarrow $List all students  $\rightarrow $ \\
+
+$\ulcorner$ \emph{ loadAllStudents()}         &         Settings $\rightarrow $List all students \\
+\emph{ queryAllStudentsDB() }             & \\
+$\llcorner$\emph{ queryAllStudentsSuccess()}         &  \\
+
+$\ulcorner$ \emph{ loadStudent()  }                  & Settings  $\rightarrow $List all students  $\rightarrow $ \\
               & Fill Students page\\
 \emph{ queryStudentSuccess() }            &  \\
 \emph{ queryStudentDB() }                 &  \\
 %%
-\emph { loadNewStudent()   }     & {Setting $\rightarrow$ List all students $\rightarrow$ } \\
+$\ulcorner$ \emph { loadNewStudent()   }     & {Settings $\rightarrow$ List all students $\rightarrow$ } \\
     &   New Student \\
-\emph{ queryNewStudentDB() }              &  \\
+$\llcorner$ \emph{ queryNewStudentDB() }              &  \\
 %%
-\emph{ loadStudents()  }                  & Delete Student $\rightarrow $List all students \\
-\emph{ queryStudentsDB() }                &  \\
-\emph{ queryStudentsSuccess() }           &   \\
+$\ulcorner$\emph{ loadStudents()  }                  & Delete Student $\rightarrow $List all students \\
+ \emph{ queryStudentsDB() }                &  \\
+$\llcorner$ \emph{ queryStudentsSuccess() }           &   \\
+
+
+
+
+
 %%
-\emph { loadStudentsByGroup()}          & { Setting  $\rightarrow$ Groups $\rightarrow$  List Students  } \\
+\emph { loadStudentsByGroup()}          & { Settings  $\rightarrow$ Groups $\rightarrow$  List Students  } \\
 %%
-\emph{ loadSchedule() }       & { Main Window $\rightarrow$ Load Daily Schedule } \\
-\emph{ querySchedulePerDayDB() }         &  \\
-\emph{ queryScheduleSuccess() }          &  \\
 %%
-\emph{ reportAttendanceDB()  }              & {  Reports $\rightarrow$  Attendance $\rightarrow$  Group }\\
-\emph{ queryReportAttendanceDB() }          &  \\
-\emph{ queryReportAttendanceSuccess()}     &  \\
 %%
-\emph{ loadGroupsAssessment() }            & Report $\rightarrow$ Assessment $\rightarrow$  Group\\
-%%
-\emph{ loadStudentsAssessment() }      & Report $\rightarrow$ Assessment $\rightarrow$   Students \footnote{Assessment List}\\
-%%
-\emph{ loadStudentAttendance()  }      &  Main Window $\rightarrow$ Load Daily Schedule  \\
+$\ulcorner$ \emph{ loadStudentAttendance()  }      &  Main Window $\rightarrow$ Load Daily Schedule  \\
                             &   $\rightarrow$ Groups (Default: Attendance)   \\
 
 \emph{ queryStudentsAttendanceDB() }    & {  }\\
 \emph{ queryStudentsAttendanceSuccess()}&    {   }\\
-\emph{ fillSelectStudent() }          & {  } \\
+$\llcorner$\emph{ fillSelectStudent() }          & {  } \\
 %%
-
-
+$\lceil$ \emph { loadAllActivities() }           &{  Settings $\rightarrow$ Activities  } \\
+$\llcorner$\emph { queryLoadAllActivitiesDB()}     &{   } \\
+%%
+\emph { loadActivity()}                & { Settings $\rightarrow$  Activities } \\
+                                        & { List  $\rightarrow$ Load activity information } \\
+\emph { updateActivity()}              &  { Settings $\rightarrow$ Activities }\\ 
+                                       &  { List $\rightarrow$ Load activity } \\
+                                       &  { $\rightarrow$ Update Activity. } \\
+%
+\emph { updateActivitiesGroup() }       & {idem. for each group } \\
+%
+\emph { insertNewActivity() }        & {Settings -> Activities -> New }\\
+\emph { insertActivitiesGroup()}       & {idem. for each group } \\
+%
+\emph { loadGroupsActivitiesEdit( )}    & {Settings $\rightarrow$  Activities $\rightarrow$  New (List groups) } \\
+%%
+$\ulcorner$ \emph { listMaxActivities( ) }          &{ List Number of activities } \\
+$\llcorner$ \emph { queryListMaxActivities() }      &{  } \\
 %%
 \emph{ Peers () }                          & Activities auxiliar object \\
 
-
-%%
-\emph { queryLoadAllActivitiesDB()}     & { Settings -> Show Activities (to be updated) } \\
-\emph { loadAllActivities() }           &{ Settings -> Show Activities (to be updated) } \\
-\emph { loadActivity( )}                & {Settings -> List Activities -> Load activity information } \\
-\emph { updateActivity(  )}             &{Settings -> Activities -> List-> Load activity -> Update Activity. }\\
-
-
-
-\emph{ insertNewGroup()}               &{ Insert Group }   \\
-\emph{ updateGroup()  }                & {  Update Group  }\\
-\emph{ deleteGroup() }                 &{ Delete Group } \\
-\emph{ loadGroup()             }        & { Load  one group } \\
-\emph{ queryAllGroupsDB()      }        & { List all groups }  \\
-\emph{ loadAllGroups()         }        & {  List all groups }  \\
-\emph{ insertNewStudent() }            & { Settings -> Insert new Student  } \\
-\emph{ querySaveStudentDB() }          &  Settings -> Update Student \\
-\emph{ saveStudent() }                 & { } \\
-\emph{ deleteStudent()}                & { Settings -> Delete Student } \\
-\emph{ insertStudentStateL( ) }         & { Settings -> Insert New Student  }\\
-\emph{ updateStudentStateL( )  }        & { Settings ->  Update Student }\\
-
 \end{tabular}
-
 \end{bclogo}  
-{\huge  VERIFICAR ^^ }
 
 
 \newpage
@@ -409,44 +404,68 @@ Name                    & Task            \\
 
 \begin{bclogo}[couleur=orange!30,logo=\bcbook, arrondi=0.1,ombre=true ] 
 {List of Functions (2): {\bf database.js}}	
-\begin{tabular}{lll}
-Name                    & Task            & Group \\
+\begin{tabular}{ll}
+Name                    & Task            \\
 \hline
 
+\emph{ insertNewGroup()}               &{ Settings $\rightarrow$ Groups  $\rightarrow$ Insert Group }   \\
+\emph{ updateGroup()  }                &{ Settings $\rightarrow$ Groups  $\rightarrow$ Update Group  }\\
+\emph{ deleteGroup() }                 &{  Settings $\rightarrow$ Groups  $\rightarrow$ Delete Group } \\
+\emph{ loadGroup()             }        & { Settings $\rightarrow$ Groups  $\rightarrow$ Select  } \\
+%%
+
+$\ulcorner$ \emph{ loadAllGroups()         }        & {  Settings $\rightarrow$ Groups  }  \\
+$\llcorner$\emph{ queryAllGroupsDB()      }        & {}  \\
+%%
+%%
+\emph{ insertNewStudent() }            & { Settings  $\rightarrow$  Insert new Student  } \\
+$\ulcorner$ \emph{ querySaveStudentDB() }          &  Settings  $\rightarrow$  Update Student \\
+$\llcorner$ \emph{ saveStudent() }                 & { } \\
+\emph{ deleteStudent()}                & { Settings  $\rightarrow$  Delete Student } \\
+\emph{ insertStudentStateL( ) }         & { Settings  $\rightarrow$  Insert New Student  }\\
+\emph{ updateStudentStateL( )  }        & { Settings  $\rightarrow$   Update Student }\\
+
+$\ulcorner$ \emph { loadGroupAssessment(  ) }       & { Assessment  \footnote{Main Window $\rightarrow$ Attendance $\rightarrow$ go to Assessment} $\rightarrow$ Group $\rightarrow$  List options  } \\
+\emph { listStudentsByGroupAssessment()} & {  } \\
+\emph { refreshGroupAssessment()}       & { } \\
+$\llcorner$ \emph { fillSelectStudentAssessment( )}  & {  }\\
+%%
+
+\emph { onChangeStudentAssessment() }   & { Assessment  $\rightarrow$  Change Student Mark  } \\
+\emph { updateStudentAssessmentL() }    & { Id.  Update Student Assessment} \\
+\emph { insertStudentAssessmentL() }    &{  Id.  Insert Student Assessment }\\
+
+\emph{ loadGroupsAssessment() }            & Report $\rightarrow$ Assessment $\rightarrow$  Group\\
+%%
+\emph{ loadStudentsAssessment() }      & Report $\rightarrow$ Assessment $\rightarrow$   Students \footnote{Assessment List}\\
+
+$\ulcorner$ \emph { loadGroupsAttendance()}         &{ Reports  $\rightarrow$ Attendance  $\rightarrow$ List  groups  } \\
+$\llcorner$ \emph { queryGroupsAttendanceDB() }     &  \\
+
+$\ulcorner$ \emph{ reportAttendanceDB()  }              & {  Reports $\rightarrow$  Attendance $\rightarrow$  Group }\\
+\emph{ queryReportAttendanceDB() }          &  \\
+$\llcorner$\emph{ queryReportAttendanceSuccess()}     &  \\
+%%
+
+\emph { deleteRawRecord( ) }            & { Delete any row from any table } \\
 %% Check whether student state changes
 %% @id_student student id
-\emph { stateCheck( )}                  &{ }\\
+\emph { stateCheck( )}                  &{ Check whether student state changes  }\\
 %% Write Student state
-\emph { updateStudentState( )}          &{ } \\
-
-
-
-%% Update Activities for each group
-\emph { updateActivitiesGroup( )}       &{ Update Activities for each group }\\
-\emph { insertActivitiesGroup( )}       & { Update Activities for each group } \\
-\emph { insertNewActivity(  ) }        & {Settings -> Activities -> New }\\
-\emph { loadGroupsActivitiesEdit( )}    & {Settings -> Activities -> New (List groups) } \\
-\emph { fillSelectStudentAssessment( )}  & { Assessment -> Student -> List options  }\\
-\emph { loadGroupAssessment(  ) }       & { Assessment -> Load group information } \\
-\emph { listStudentsByGroupAssessment()} & {  Assessment. List Students, load data  from DB } \\
-\emph { refreshGroupAssessment()}       & { ^^ ID.} \\
-\emph { updateStudentAssessmentL() }    & {  Update Student Assessment} \\
-\emph { insertStudentAssessmentL() }    &{ Insert Student Assessment   }\\
-\emph { onChangeStudentAssessment() }   & { Select Update or Insert  } \\
-\emph { queryListMaxActivities() }      &{ List Number of activities } \\
-\emph { listMaxActivities( ) }          &{ List number of activities } \\
-\emph { deleteRawRecord( ) }            & { Delete any row from any table } \\
-\emph { queryGroupsAttendanceDB() }     & Reports -> Attendance ->List  groups \\
-\emph { loadGroupsAttendance()}         &{ Reports -> Attendance -> List  groups  } \\
+\emph { updateStudentState( )}          &{ Update student state } \\
 
 \end{tabular}
 \end{bclogo}  
-{\huge  VERIFICAR ^^ }
 
+		\subsection{Interface Diagram}
+		
   
 		\subsection{Tools}
 	
-	Tools involved were Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality was developed, application was tested on AVM,  if it worked, source code was polished, applicable was tested again, if it was satisfactory a new change was committed into git repository. From time to time application was downloaded from git repository into a real hardware and tested. 
+	Tools involved are Eclipse IDE (with plug-ins) and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality
+	 is developed, application is tested on AVM,  if it worked, source code was polished, application is tested again, if it was
+	  satisfactory a new change is committed into git repository. 
+	  From time to time application is downloaded from git repository into a real hardware and tested. 
 	
 	%% logo=\bcrayon,
 \begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
