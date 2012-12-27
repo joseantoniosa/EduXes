@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  27 DEC 2012 06:24
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  27 DEC 2012 06:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1384,38 +1384,33 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
  (./descripcion_informatica.tex
 Chapter 4.
-
-Overfull \hbox (112.13246pt too wide) in paragraph at lines 4--9
-\T1/cmr/m/n/12 (JDK) ver-sion 1.6 is down-loaded from: http://www.oracle.com/te
-chnetwork/java/javase/downloads/index.html
- []
-
-
-Overfull \hbox (20.44087pt too wide) in paragraph at lines 12--33
+File: bc-aux-301.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+Overfull \hbox (20.44087pt too wide) in paragraph at lines 24--45
 \T1/cmr/m/n/12 Ap-tana Plu-gin line to add into Eclipse is: http://download.apt
 ana.com/studio3/plugin/install
  []
 
 
-Overfull \hbox (17.29959pt too wide) in paragraph at lines 12--33
+Overfull \hbox (17.29959pt too wide) in paragraph at lines 24--45
 \T1/cmr/m/n/12 copied into as-sets/www/js folder. JQuery-Mo-bile ver-sion 1.1.1
  from http://jquerymobile.com/
  []
 
 
-Overfull \hbox (146.79019pt too wide) in paragraph at lines 12--33
+Overfull \hbox (146.79019pt too wide) in paragraph at lines 24--45
 \T1/cmr/m/n/12 folder. Phone-Gap - Cor-dova 1.8.1 is down-loaded from this URL:
  https://github.com/phonegap/phonegap/zipball/1.8.1
  []
 
-File: bc-aux-301.mps Graphic file (type mps)
-[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
 [29
 
 
 
 ]
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 284--284
+File: bc-aux-301.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 296--296
 []\T1/cmtt/m/n/12 CREATE TABLE IF NOT EXISTS TEACHER_SCHEDULE (id  integer prim
 ary key,[] 
  []
@@ -1563,31 +1558,31 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ] (./master_memoriae.bbl [39
 
 ]
-Underfull \hbox (badness 7613) in paragraph at lines 74--79
+Underfull \hbox (badness 7613) in paragraph at lines 80--85
 []\T1/cmr/m/n/12 PhoneGap.  Phone-gap. an-droid get-ting started guide.  []$\T1
 /cmtt/m/n/12 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--79
+Underfull \hbox (badness 10000) in paragraph at lines 80--85
 \T1/cmtt/m/n/12 / / docs . phonegap . com / en / 1 . 8 . 1 / guide _ getting-[]
 started _ android _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--86
+Underfull \hbox (badness 10000) in paragraph at lines 87--92
 []\T1/cmr/m/n/12 PhoneGap.  Phone-gap get-ting started with an-droid.  []$\T1/c
 mtt/m/n/12 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--86
+Underfull \hbox (badness 10000) in paragraph at lines 87--92
 \T1/cmtt/m/n/12 / / docs . phonegap . com / en / 1 . 8 . 1 / guide _ getting-[]
 started _ android _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--112
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
 \T1/cmtt/m/n/12 unisoftcolombia . com / unisoftcolombia / index . php ? link = 
 academico$[]\T1/cmr/m/n/12 ,
  []
@@ -1618,10 +1613,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
  ) 
 Here is how much of TeX's memory you used:
- 18143 strings out of 494956
- 317243 string characters out of 3179077
- 428096 words of memory out of 3000000
- 20694 multiletter control sequences out of 15000+200000
+ 18149 strings out of 494956
+ 317429 string characters out of 3179077
+ 428128 words of memory out of 3000000
+ 20696 multiletter control sequences out of 15000+200000
  23111 words of font info for 64 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
  63i,16n,71p,444b,801s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1653,10 +1648,10 @@ antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jantonio/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msam10.pfb>
-Output written on master_memoriae.pdf (52 pages, 1423495 bytes).
+Output written on master_memoriae.pdf (52 pages, 1425863 bytes).
 PDF statistics:
- 1222 PDF objects out of 1440 (max. 8388607)
- 622 compressed objects within 7 object streams
- 141 named destinations out of 1000 (max. 500000)
+ 1229 PDF objects out of 1440 (max. 8388607)
+ 627 compressed objects within 7 object streams
+ 143 named destinations out of 1000 (max. 500000)
  489 words of extra memory for PDF output out of 10000 (max. 10000000)
 

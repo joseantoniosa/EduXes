@@ -65,6 +65,12 @@ JQuery Mobile.
 \newblock \url{
   http://jquerymobile.com/demos/1.1.1/docs/pages/page-anatomy.html}, 2012.
 
+\bibitem[Ora95]{JavaSE}
+Oracle.
+\newblock Java standard edition.
+\newblock \url{
+  http://www.oracle.com/technetwork/java/javase/downloads/index.html }, 1995.
+
 \bibitem[P\'06]{Siestta}
 Ram\'on~Castro P\'erez.
 \newblock Classroom management web application.

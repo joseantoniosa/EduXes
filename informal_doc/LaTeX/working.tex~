@@ -277,7 +277,6 @@ Following previous methodology \ref{Methodology}, a detailed plan is shown below
     \item {database.js}. Database related code.
     \item {DATABASE.sql}. Database declarations as a standalone file.
 \end{itemize}
-
     
 	\subsection{HTML}
   There are only two html files: \textbf{index.html} and \textbf{remove.html}. The most important: \textbf{index.html} file is build by
