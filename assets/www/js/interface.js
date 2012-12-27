@@ -22,7 +22,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 //
-    function onDeviceReady() {
+function onDeviceReady() {
 
         var db = window.openDatabase("eduxesdb", "1.0", "Gestion de Aula", 5*1024*1024);
         global_db=db;
@@ -197,7 +197,6 @@ function onDeleteStudent(){
     table_global = 'STUDENTS';
     deleteStudent(global_db);
     history.back(); // XXX: Cambiarlo por algo más sólido
-    //alert("Ir a la anterior"); // TODO: Go to previous page
   //  $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
 // Add new Student
@@ -214,7 +213,6 @@ function onSaveStudent(){
     table_global = 'STUDENTS';
     saveStudent(global_db);
     history.back(); // XXX: Cambiarlo por algo más sólido
-    //alert("Ir a la anterior"); // TODO: Go to previous page
 
   //  $.mobile.changePage("#edit_student", { transition: "slideup"});
 }
@@ -273,11 +271,7 @@ function onListAllActivities()
 
     $.mobile.changePage("#list_all_activities");
 
-
-//    $.mobile.changePage("#list_all_activities");
-//    alert("Page changed");
 }
-// TODO: Activity update
 // Show edition activity page
 function onUpdateActivity(id_activity) {
     $.mobile.showPageLoadingMsg();
@@ -291,7 +285,6 @@ function onUpdateActivity(id_activity) {
     $('#activity_page_name_footer').text("Update Activity");
 
     $.mobile.changePage("#update_activity", { transition: "slideup"});
-//    alert("Update Page Loaded");
 
 }
 
@@ -441,8 +434,6 @@ function Attendance(id_student){
     $.mobile.showPageLoadingMsg();
     global_id = id_student;      //local variable goes global
     table_global = 'STUDENTS';
-
-    alert("Attendance Window"    );
 
     loadStudentAttendance(global_db);
     $.mobile.changePage("#edit_students_attendance", { transition: "slideup"});

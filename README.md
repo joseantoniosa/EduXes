@@ -1,35 +1,37 @@
 
 Classroom Management
 
- This application is intended to be used by high school teachers.
+ This application is intended to be used by highschool teachers on a daily basis.
 
 
- Management of groups of students, students, activities and marks.
+ Management of groups of students, students, attendance, activities and marks.
 
- - Groups -
- - Students -
- - Activities -
+ - Groups
+ - Students
+ - Activities
+ - Attendance
 
  User can control attendance and assessment for several groups of students.
 
-== Acknowledgments
-
-Coded for  Master Software Libre Practicum 5th Edition Vigo
-
- http://www.mastersoftwarelibre.com
 
 
 = Howto =
  Type date in "Month/Day/Year" format
  In your smart-phone or tablet:
   - Look up "EduXes" in google:
-  - Go to "bin" folder 
+  - Go to "bin" folder
   - open "EduXes.apk"
   - Click on "Raw"
   - Save and Install
-  - Send bugs, complaints:
+  - Send bugs, complains:
   https://github.com/joseantoniosa/EduXes/issues?state=open
-  
+
+
+== Acknowledgments
+
+Coded for  Master Software Libre Practicum 5th Edition Vigo
+
+ http://www.mastersoftwarelibre.com
 
  == Now is working:
 - Insert and View Attendance, Excused for student.

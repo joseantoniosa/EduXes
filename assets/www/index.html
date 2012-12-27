@@ -61,7 +61,7 @@
             </div>
             <div class="ui-block-c">
                 <a href="#" data-role='button' data-icon='info' data-iconpos='notext' style='float: right;' onClick="help('date');">Help</a>
-                <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"  onclick="open_daily_page() " >Go</a>
+                <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"  onClick="open_daily_page() " >Go</a>
             </div>
         </div>
     </div>
@@ -156,13 +156,13 @@
 <!-- Third Window: List of Students.  Attendance //-->
 <div data-role="page" id="list_students_attendance" data-add-back-btn="false">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
-        <a href="#" onclick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+        <a href="#" onClick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
         <h1 id="current_group_attendance" >Student List for Group</h1>
     </div>
     <div data-role="content"> <!---Data goes here //-->
         <ul data-role="listview" id="students_attendance_ul" data-autodividers=!"true" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
     </div>
-    <div data-role="content">   <a href="#" onclick="onOpenStudentsAssessment();" data-icon="gear" data-theme="a" data-role="button">Go to Marks</a>
+    <div data-role="content">   <a href="#" onClick="onOpenStudentsAssessment();" data-icon="gear" data-theme="a" data-role="button">Go to Marks</a>
     </div>
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">
         <p style="text-align:center;"  >Students' Attendance (b)</p>
@@ -172,7 +172,7 @@
 <!--Fourth Window A: List of Students.  Assessment //-->
 <div data-role="page" id="list_students_assessment" data-add-back-btn="true"  data-theme="a">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false" >
-        <a href="#" onclick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+        <a href="#" onClick="open_daily_page();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
         <h1 id="current_group_assessment" >Student List for Group</h1>
     </div>
     <div data-role="content">
@@ -189,7 +189,7 @@
     <div data-role="content"> <!---Data goes here //-->
                 <ul data-role="listview" id="students_assessment_ul" data-split-icon="gear" data-split-theme="a" data-filter="true" data-inset="true" data-theme="a" ></ul>
     </div>
-    <div data-role="content">   <a href="#" onclick="onOpenStudentsAttendance();" data-icon="gear" data-theme="a" data-role="button">Go to Attendance</a>
+    <div data-role="content">   <a href="#" onClick="onOpenStudentsAttendance();" data-icon="gear" data-theme="a" data-role="button">Go to Attendance</a>
     </div>
     <div data-role="footer" class="footer-docs" data-rel="back" data-theme="a">  <p style="text-align:center;"   >  Student Assesment by Group (c) </p>
      </div>
@@ -283,7 +283,7 @@
 <!--  List of Students Assessment. By group    //-->
 <div data-role="page" id="list_students_assessment_reports" data-add-back-btn="false">
     <div data-role="header"  data-back-btn-text="previous" data-add-back-btn="false"  data-theme="a" >
-        <a href="#" onclick="onReportListAssessment();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+        <a href="#" onClick="onReportListAssessment();" data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
         <h1 id="current_group_assessment_reports" >Student List Assesment</h1>
     </div>
 
@@ -488,16 +488,14 @@
                             <!-- <input id="in_id_group_student" enabled="false" /> //-->
                         </div>
                      </fieldset></li>
-<!--                 <a onClick="addNewStudent();" data-role="button" data-icon="check">Add</a> //-->
                 </ul>
                  </div>
 
 
                  <div data-role="footer" class="footer-docs" data-theme="a">
-                   <!-- TODO: Rellenar   <span class="ui-icon ui-icon-arrow-1-sw"></span> //-->
-                    <a href="#"  onclick="onSaveStudent();" data-icon="check" data-theme="a">Save</a>
+                    <a href="#"  onClick="onSaveStudent();" data-icon="check" data-theme="a">Save</a>
                     <span  style="text-align:center;" >Student info</span>
-                    <a href="#"  onclick="onDeleteStudent();" data-icon="delete" data-theme="a">Delete</a>
+                    <a href="#"  onClick="onDeleteStudent();" data-icon="delete" data-theme="a">Delete</a>
     </div>
 </div>
 
@@ -587,8 +585,7 @@
                 </ul>
                  </div>
                  <div data-role="footer" class="footer-docs" data-theme="a">
-                   <!-- TODO: Rellenar   <span class="ui-icon ui-icon-arrow-1-sw"></span> //-->
-                    <a href="#"  onclick="onSaveNewStudent();" data-icon="check" data-theme="a">Save</a>
+                    <a href="#"  onClick="onSaveNewStudent();" data-icon="check" data-theme="a">Save</a>
 
     </div>
 </div>

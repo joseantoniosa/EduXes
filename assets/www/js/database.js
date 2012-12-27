@@ -549,11 +549,11 @@ function queryStudentsSuccess(tx, results) {
         id = results.rows.item(i).id;
 
         html = "<li>";
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
         html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float: left;' class='ui-li-icon ui-corner-none'>  ";
         html += "</a>";
         html += "<label>" + results.rows.item(i).surname + " " + results.rows.item(i).name + "</label>";
-        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#'  onClick=\"Attendance(" + results.rows.item(i).id + ");\">Attendance</a>";
+        html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='#'  onClick=\"Attendance(" + id + ");\">Attendance</a>";
         html += "</li>";
         ul_list.append(html);
 
@@ -682,8 +682,6 @@ function queryStudentsAttendanceDB(tx) {
     sql += " GROUPS.id as g_id, GROUPS.data as data ";
     sql += " FROM STUDENTS, GROUPS WHERE  ( g_id=STUDENTS.id_group  ";
     sql += " AND g_id=" + global_id + " ) ORDER BY id_student";
-
-    alert("queryStudentsAttendanceDB_window" );
 
     tx.executeSql(sql, [], queryStudentsAttendanceSuccess,
         dbErrorFunc = function(tx, e) {
@@ -923,7 +921,7 @@ function queryAllStudentsSuccess(tx, results) {
     for (var i = 0; i < len; i++) {
         id = results.rows.item(i).id;
         html = "<li>";
-        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' >";
         html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname + "' style='float:left;' class='ui-li-icon ui-corner-none'>";
         html += results.rows.item(i).surname + "," + results.rows.item(i).name;
         html += "</a>";
@@ -1176,12 +1174,12 @@ function loadActivity(db, id_activity ) {
                             sql += " activities_group.enabled AS enabled, groups.id , groups.data as data ";
                             sql += " FROM activities_group, groups WHERE activities_group.id_activity="+id_activity ;
                             sql += "  AND   activities_group.id_group=groups.id";
-                            //log("SQL : "+ sql); // VIP query
+                            log(" SELEC Activities group  : "+ sql); 
                             tx.executeSql(sql,[],
                             dbSuccessFunc = function(txx, rrs) {
                                 var len=  rrs.rows.length;
                                 log("Len : "+ len);
-                                for (var i = 0; i < len; i++) { // ¿por que 16?
+                                for (var i = 0; i < len; i++) { // 
                                     var id_group = rrs.rows.item(i).id_group;
                                     var in_act = $("#in_group_activity_" + id_group );
                                     if(rrs.rows.item(i).enabled !=0) {
@@ -1240,7 +1238,7 @@ function updateActivity(db, name , date_init , date_end , weight , e_final  ){
         if(e_final!=0 ){            sql += ', e_final=' + e_e_final;        }
         sql += ' WHERE  id=' +id_activity+ ';';
 
-        //log("updateActivity :"+sql);
+        log("updateActivity :"+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 var enabled=0;
@@ -1279,7 +1277,7 @@ function updateActivitiesGroup(db, id_group, id_activity, enabled , a_date, note
         if(notes!=null) { sql += ', notes="' + notes + '" '; }
         sql += ' WHERE id_activity='+id_activity+' AND id_group='+id_group+' ;';
 
-        //log("UPDATE. updateActivitiesGroup  : "+sql);
+        log("UPDATE. updateActivitiesGroup  : "+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 return true;
@@ -1305,7 +1303,7 @@ function insertActivitiesGroup(db, id_group, last_inserted_row, enabled , a_date
         sql += ', "' + a_date+'"';
         sql += ', "' + notes+'"';
         sql += ');';
-      //  log(" insertActivitiesGroup  : "+sql);
+        log(" insertActivitiesGroup  : "+sql);
         tx.executeSql(sql,[],
             dbSuccessFunc = function(tx, results) {
                 global_max_activities ++; // A new activity
@@ -1412,8 +1410,6 @@ function loadGroupsActivitiesEdit(db){
 
 //
 //------------- Assessment:
-
-// TODO: clean this code!
 //
 
 function updateStudentAssessmentL(db,id_student,id_group, id_activity,mark){
@@ -1678,7 +1674,6 @@ function listMaxActivities(db) {
    }
 
    function loadStudentAttendance(db) {
-       alert("loadStudentAttendance Window");
        db.transaction(queryStudentsAttendanceDB);
    }
 
