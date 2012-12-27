@@ -1,9 +1,20 @@
 \begin{thebibliography}{dEXdG12}
 
+\bibitem[App05]{Aptana}
+Inc. Appcelerator.
+\newblock Aptana is a complete environment to build ror, php, python
+  applications, along with complete html, css and javascript editing.
+\newblock \url{ http://www.aptana.org/ }, 2005.
+
 \bibitem[Aqu12]{EduXes}
 Jos\'e Antonio~Salgueiro Aquino.
 \newblock Classroom management for high school teachers.
 \newblock \url{https://github.com/joseantoniosa/EduXes}, 2012.
+
+\bibitem[Cas12]{SergasApp}
+Manuel~Rego Casasnovas.
+\newblock Application to access sergas appointment system.
+\newblock \url{ http://mrego.github.com/sergasapp/}, 2012.
 
 \bibitem[dEXdG12]{Xade}
 Conseller\'{\i}a de~Educaci\'on. Xunta~de Galicia.
@@ -31,18 +42,37 @@ JQuery Mobile.
 \newblock \url{
   http://jquerymobile.com/demos/1.1.1/docs/pages/page-anatomy.html}, 2012.
 
-\bibitem[Pho12a]{PhoneGapGS}
+\bibitem[P\'06]{Siestta}
+Ram\'on~Castro P\'erez.
+\newblock Classroom management web application.
+\newblock \url{ http://siestta.sourceforge.net/doc/index.html}, 2006.
+
+\bibitem[Pho12a]{AndroidGettingStarted}
+PhoneGap.
+\newblock Phonegap. android getting started guide.
+\newblock
+  \url{http://docs.phonegap.com/en/1.8.1/guide_getting-started_android_index.md.html},
+  2012.
+
+\bibitem[Pho12b]{PhoneGapGS}
 PhoneGap.
 \newblock Phonegap getting started with android.
 \newblock \url{
   http://docs.phonegap.com/en/1.8.1/guide_getting-started_android_index.md.html#Getting%20Started%20with%20Android},
   2012.
 
-\bibitem[Pho12b]{PhoneGap}
+\bibitem[Pho12c]{PhoneGap}
 PhoneGap.
 \newblock Phonegap is a free and open source framework that allows you to
   create mobile apps using standardized web apis for the platforms you care
   about.
 \newblock \url{http://www.phonegap.com}, 2012.
+
+\bibitem[Pho12d]{PhoneGapLS}
+PhoneGap.
+\newblock Phonegap local storage.
+\newblock
+  \url{http://docs.phonegap.com/en/1.8.1/cordova_storage_storage.md.html#Storage},
+  2012.
 
 \end{thebibliography}

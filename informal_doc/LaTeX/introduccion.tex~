@@ -3,7 +3,7 @@ In a high school, there are classes which attendance, assessment and group dynam
 This is especially relevant for the technology workshop, this could be a noisy, annoying, even dangerous place, which requires teacher's supervision. This workshop requires a lightweight,
 reliable and complete  software tool. A simple web solution is not enough, and even use a tablet can be heavy, it requires a new approach.
   
-The development of a multiplatform tool, open source, for smart-phones, including tablets, for attendance monitoring and evaluation of students is suggested.
+The development of a multiplatform tool, open source, for smartphones, including tablets, for attendance monitoring and evaluation of students is suggested.
  To achieve this goal a client-side application will be developed using a multiplataform framework: Phonegap (Cordova) \cite{PhoneGap}.
 Phonegap allows you to develop utilizing well-known languages as Javascript and HTML. It permit us to deploy an application for both Android,
 WebOS, iOS and others.    

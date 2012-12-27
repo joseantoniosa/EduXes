@@ -1,6 +1,57 @@
 \chapter{Descripción Informática (20-35\%)}
 
-Para ello describirás:
+
+Preparation of development:
+ a) Build development environment: 
+Java Development Kit (JDK) version 1.6 is downloaded from: 
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+As root user that file is unpacked into /usr/lib/jvm and configured to be the Java default:
+\begin{verbatim}
+ # update-java-alternatives -s JDK_1.6_NAME
+\end{verbatim}  
+	Eclipse Juno (4.6) is downloaded from its web-page:
+http://www.eclipse.org Download->Linux 64 bits
+Android Development Toolkit (ADT) is downloaded following instructions on this page:
+http://developer.android.com/sdk/installing/installing-adt.html 
+	A new line is included into repository software (Help ->  Install New Software -> Add):
+http://dl-ssl.google.com/android/eclipse/
+	Next step is to select all the related software listed.
+	For Aptana Plugin line to add into Eclipse is: 
+http://download.aptana.com/studio3/plugin/install
+	Furthermore JQuery, JQueryMobile and Phonegap are needed, and were downloaded from their web sites:
+JQuery 1.8.1 (no newer versions):
+http://jquery.com/ 
+JQuery will be  copied into assets/www/js folder.
+JQueryMobile version 1.1.1 from
+http://jquerymobile.com/ 
+JQueryMobile is a zip file which will be uncompressed and copied into 
+assets/www/js folder.
+	PhoneGap - Cordova 1.8.1 is downloaded from this URL:
+https://github.com/phonegap/phonegap/zipball/1.8.1 
+	To create a PhoneGap application this very important instructions (Getting Started with Android)  should be followed step by step:
+\cite{AndroidGettingStarted}
+
+ b) Choose application name and folder's policy:
+EduXes stands for "Educación" and "Xestión", is a educational management software.
+A folder is created (assets/www/js) which contains javascript (*.js) files except JQuery and JqueryMobile which is included into another folder (assets/www/js/jquery), do not forget style sheet files (*.css)
+ c) Make a simple application: only a blank page.
+Getting started with Android is followed step by step.
+ d) Upload simple application into a git repository. 
+A Github account is created and a new application is initialized.  This are the source code project page:\cite{EduXes}
+Source code are upload to GitHub: 
+  \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
+{Git init shell}   
+\begin{verbatim}
+$ git init
+$ git add -A *
+$ git remote add  EduXes git@github.com:joseantoniosa/EduXes.git 
+$ git push origin master
+\end{verbatim}
+\end{bclogo}
+
+
+
+
 
 \section{La base de datos coleccionada (si tiene sentido).}
 \dots

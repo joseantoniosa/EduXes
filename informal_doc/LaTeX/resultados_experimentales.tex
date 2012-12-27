@@ -41,6 +41,18 @@ realizados. Para ello se mostrarán:
 
 \section {Análisis crítico de los resultados con el objetivo de decidir si el sistema implementado es válido}
 \dots
+
+Several problems were faced:
+Eclipse environment: A stable, reliable and up-to-date IDE, with several plug-ins is needed. Download vanilla Eclipse Juno from its web-site is chosen because it is more stable, reliable, compatible with newer versions.  Aptana Javascript plugin was chosen because Aptana allows source code auto-completion in JQuery.
+PhoneGap and Android incompatibilities. Android 2.3.3 requires JQuery-1.8.1 and does not work on higher versions. 
+Error handlers. I have had several problems with tx.executeSql(...) function, it confused me with db.transaction(...): 
+tx.executeSql(sql, [parameters],  successHandler, errorHandler)
+and
+db.transaction(queryFunction, errorHandler, successHandler)  
+have up to four and three parameters respectively, only first one is mandatory. I rather use success and error handlers for tx.executeSql function, atomic error control could be better choice.
+Passing variables to functions: Only if another solution is not known or feasible, global variables are used: named after global\_\*, and in block capitals.
+Deadline. Development was delayed because I have no enough spare time and above problems were time costly.
+
 \begin{verbatim}
  ohcount -i  assets/www/js/database.js assets/www/js/interface.js \
  assets/www/js/create_populate_db.js  assets/www/index.html \

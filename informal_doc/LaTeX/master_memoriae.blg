@@ -16,45 +16,45 @@ A level-1 auxiliary file: bibliography_general.aux
 Database file #1: librero.bib
 Warning--I didn't find a database entry for "NewCam97"
 Warning--I didn't find a database entry for "Pesce"
-You've used 8 entries,
+You've used 13 entries,
             2543 wiz_defined-function locations,
-            612 strings with 5802 characters,
-and the built_in function-call counts, 2166 in all, are:
-= -- 208
-> -- 64
-< -- 8
-+ -- 19
-- -- 16
-* -- 90
-:= -- 352
-add.period$ -- 24
-call.type$ -- 8
-change.case$ -- 40
-chr.to.int$ -- 6
-cite$ -- 8
-duplicate$ -- 88
-empty$ -- 201
-format.name$ -- 31
-if$ -- 458
-int.to.chr$ -- 3
+            637 strings with 6533 characters,
+and the built_in function-call counts, 3501 in all, are:
+= -- 338
+> -- 104
+< -- 13
++ -- 31
+- -- 26
+* -- 145
+:= -- 560
+add.period$ -- 39
+call.type$ -- 13
+change.case$ -- 65
+chr.to.int$ -- 9
+cite$ -- 13
+duplicate$ -- 143
+empty$ -- 326
+format.name$ -- 51
+if$ -- 743
+int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 43
-num.names$ -- 24
-pop$ -- 71
+newline$ -- 68
+num.names$ -- 39
+pop$ -- 116
 preamble$ -- 1
-purify$ -- 48
+purify$ -- 78
 quote$ -- 0
-skip$ -- 86
+skip$ -- 141
 stack$ -- 0
-substring$ -- 57
-swap$ -- 8
-text.length$ -- 8
-text.prefix$ -- 7
+substring$ -- 92
+swap$ -- 13
+text.length$ -- 13
+text.prefix$ -- 12
 top$ -- 0
-type$ -- 64
+type$ -- 104
 warning$ -- 0
-while$ -- 16
-width$ -- 11
-write$ -- 98
+while$ -- 26
+width$ -- 16
+write$ -- 158
 (There were 2 warnings)

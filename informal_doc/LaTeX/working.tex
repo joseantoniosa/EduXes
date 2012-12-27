@@ -10,7 +10,7 @@
 	  \item Activities assessment. Each student will have an activity mark.
 	\end{itemize}
 
-	Application should also include these features:
+	Application would also include these features:
 	\begin{itemize}
 	  \item Data visualization. As table-like format. Attendance and misbehaviour
 	  \item Server synchronization with a custom application or Xade \cite{Xade}.
@@ -19,7 +19,7 @@
 	The final goal is to develop an application to make teacher's work easier and comfortable. This application is focused on user  (teacher) experience.
 	Also an objective is to write extensible, easy to read code, which allows external developers to take part into application development.
 	
-	Task to be done:
+	Below, a list of tasks to be done to fullfil application development:
 	\begin{itemize}
 	  \item Study state-of-art solutions: 
   \subitem  Find out other solutions: PDAs and smart-phone or tablet related and web-based applications.
@@ -76,7 +76,7 @@
   
 	   Next steps will include :  
   \begin{itemize}
-  \item   Load data from an external file. This is well-documented \cite{}.  
+  \item   Load data from an external file. This is well-documented \cite{PhoneGapLS}.  
   \item   Load images from disk (SD-Card).
   \item  Save or download data from database to disk.
   \item  Xade web interface.
@@ -89,7 +89,8 @@
   \item   Developer's documentation.
   \item   Find out a website to host a forum, a bug report system,  documentation and application download.
 	\end{itemize}
-	
+
+Task above could be achieved in a 300 hour basis.	
 In the following table a broad estimation of time spent in each task are shown.  
 
 
@@ -101,18 +102,17 @@ Develop database & 8 \\
 Preparation for development & 40 \\
 Development.  & \\
 \cr
-
-	Populate database with sample data & 20 \\
+	Populate database with sample data. & 20 \\
 	Groups. List and management & 50 \\
-	Students. List and management & 30 \\
-	Timetable for actual date & 80 \\
-	Add attendance, behaviour & 50 \\
-	Add error handling &2 \\
-	Retrieve and insert data from and to database &30 \\
+	Students. List and management. & 30 \\
+	Timetable for current date. & 80 \\
+	Add attendance, behaviour. & 50 \\
+	Add error handling. &2 \\
+	Retrieve and insert data from and to database. &30 \\
 	List of attendance, misbehaviour incidents. &12 \\
 	Add activities grades for each student. &12 \\
 	List students marks and final mark. &14 \\
-	Activities management window  &14 \\
+	Activities management window.  &14 \\
 	Management of student notes. &20 \\
 	List of student notes.  &2 \\
 Test into real hardware &20 \\
@@ -129,19 +129,64 @@ Total &384 \\
 	
 	On the other hand, development of this application improves my computer science skills in  mobile-phone applications development: JQuery,  jQueryMobile, PhoneGap/Cordova, SQLite, Android,  git repository management.
 
-\section {Methodology}
+\section {Methodology \label{Methodology}}
 	This work was carried on building small blocks, also called pages, and make it up into final application.
 	A page is a visible window, only first page is visible, and other pages are called from this one.
+	
 	 Database structure was separated from interface, and interface was also separated into dynamic and static contents. Each new
 	 functionality was written, tested, and
 	polished. 
 	
-	
-	Foremost a new window/page  is designed from previous HTML code, \emph{id} are set with ad-hoc names \emph{id="edit\_student"}, 
-	   \emph{id="in\_name\_student"},   these \emph{id's} are used inside javascript code. 
+	Foremost a new window/page is designed from previous HTML code or from sample code \cite{SergasApp} and written
+	in {\bf index.html} , \emph{id} are set with ad-hoc names  (e.g. \emph{id="edit\_student"}, 
+	   \emph{id="in\_name\_student"}),   these \emph{id's} are used in javascript code. 
 	   
-    Secondly { \bf interface.js} code are written: show progress icon, a function$^{(1)}$  which loads data into new HTML code, 
-    and show new page/window.
+	   
+	%% logo=\bcrayon,
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+%% \begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
+{Sample Page. index.html}
+\begin{verbatim}
+<div data-role="page" id="daily\_work">
+    <div data-role="header" data-add-back-btn="true" data-theme="a">
+                <h1>Day</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <div class="ui-grid-b">
+            <div class="ui-block-a">
+                <div data-role="fieldcontain">
+                    <label for="date"  >Date:</label>
+                </div>
+            </div>
+            (...)
+        </div>
+    </div>
+    <div data-role="navbar">
+        <ul>
+            <li>
+                <a href="#" onClick="onGeneralFile()"  
+                data-role="button" data-icon="star"  
+                data-theme="a" > File</a>
+            </li>
+            <li>
+            (...)
+            </li>
+        </ul>
+    </div><!-- /navbar -->
+    <div data-role="footer" class="footer-docs" data-theme="a">
+        <p   style="text-align:center;"  id="teachers\_name"></p>
+    </div>
+</div> 
+\end{verbatim}
+
+\end{bclogo}
+	   
+	   
+	   
+	   
+	   
+    Secondly { \bf interface.js} code are written: show progress icon (a \emph{PhoneGap} function), a customized function which loads data into new HTML code (e.g. \emph{loadGroupAssessment}) , 
+    and, finally a \emph{PhoneGap} function to  show new page/window.
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {Sample interface.js code}        
         \begin{verbatim}
@@ -152,14 +197,14 @@ $.mobile.changePage("#list_students_assessment");
     \end{verbatim}  
 \end{bclogo}
 
-    Thirdly {\bf database.js} code are written: Declaration of previous function [1], which  usually implements a SQL-query to SQLite database. These functions also fill html code, so HTML \emph{id}'s are significant.
+    Thirdly {\bf database.js} code are written: Declaration of previous function \ref{function1}, which  usually implements a SQL-query to SQLite database. These functions also fill html code, so HTML \emph{id}'s names are so significant.
     
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {Sample database.js code}    
 \begin{verbatim}
 var list_asset=$('#list_assessment_select'); 
 sql="SELECT ";
-sql += " ACTIVITIES_GROUP.a_date ...  ";
+sql += " ACTIVITIES_GROUP.a_date (...)  ";
 
 db.transaction(function(tx) {
     tx.executeSql(sql,[],
@@ -168,7 +213,7 @@ db.transaction(function(tx) {
            for (var i=0;i<results.rows.length;i++) {
               a_id = results.rows.item(i).a_id;
               a_name = results.rows.item(i).a_name;
-                    ...
+                    (...)
               html +=' <option value="'+a_id+'">'+a_name+'</option> ';
            }
            list_asset.empty().append(html);
@@ -182,14 +227,51 @@ db.transaction(function(tx) {
            listStudentsByGroupAssessment( db, id_group, 
             $('#students_assessment_ul'));
        },
-       dbErrorFunc ...
+       dbErrorFunc (...)
         ); 
 });
 \end{verbatim}    
 \end{bclogo}    
     
-    After several successful tests {\bf TODO} file could be updated, and  code will be upload to git repository.
+    After successful tests using Android Emulator provided by Android SDK \cite{AndroidDevelopmentKit}, {\bf TODO} file could be updated, and code will be upload to remote git \cite{EduXes} repository.
   
+  \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
+{Git init shell}   
+\begin{verbatim}
+$ git add -A *
+$ git commit -m BRIEF_DESCRIPTION_OF_CHANGES 
+$ git push origin master
+\end{verbatim}
+\end{bclogo}
+
+	  From time to time application is downloaded from git repository into real hardware and tested. It is usually faster on 
+	  a mobile-phone than on emulator. 
+	    
+		\section{Tools}
+	
+	Tools involved in \emph{EduXes} development are :
+	\begin{itemize}
+	    \item IDE. Eclipse \cite{Eclipse}. The most popular Integrated Development Environment for Java and other languages. 
+	    It integrates  browser, contextual help, even Android Virtual Machine is integrated.
+	    \item Aptana \cite{Aptana}. Aptana Plugin is used  HTML, CSS and JavaScript editing. 
+	    \item Android Development Kit \cite{AndroidDevelopmentKit}.  Android SDK provides  the API libraries and developer tools necessary to build, test, and debug apps for Android.  
+	    \item Git. Also included as an Eclipse plugin.
+	\end{itemize}
+
+	
+
+
+	
+\section {Work plan}
+
+Following previous methodology \ref{Methodology}, a detailed plan is shown below:
+\begin{itemize}
+    \item {HTML}. User interface. 
+    \item {interface.js}. Functional code and database agnostic.
+    \item {database.js}. Database related code.
+    \item {DATABASE.sql}. Database declarations as a standalone file.
+\end{itemize}
+
     
 	\subsection{HTML}
   There are only two html files: \textbf{index.html} and \textbf{remove.html}. The most important: \textbf{index.html} file is build by
@@ -204,17 +286,16 @@ db.transaction(function(tx) {
 {Reports Page}
 \begin{verbatim}
   
- <div data-role="page" id="list\_reports" data-add-back-btn="false">
+ <div data-role="page" id="list_reports" data-add-back-btn="false">
             <div data-role="header"  data-back-btn-text="previous" 
               data-add-back-btn="false" >
-            <a href="#daily\_work"  data-icon="arrow-l" data-theme="a" 
+            <a href="#daily_work"  data-icon="arrow-l" data-theme="a" 
               data-role="button">Back</a>
-
                 <h1>Reports</h1>
             </div>
             <div data-role="content">
 
-                <ul data-role="listview" id="list\_reports\_ul" 
+                <ul data-role="listview" id="list_reports_ul" 
                   data-split-icon="gear" data-split-theme="a" 
                   data-filter="false" 
                   data-inset="true" data-theme="a" >
@@ -516,7 +597,36 @@ $\llcorner$\emph{ queryReportAttendanceSuccess()}     &  \\
 
 \end{tabular}
 \end{bclogo}  
+        
+\subsection{Database}
+Database is the application most important data struct, it requires a special study. Actual database
+is inherit of Siestta application \cite{Siestta}. 
+ This database was developed from \emph{groups} table,  to \emph{activities\_student} following less related 
+ path ( $ groups \rightarrow students \rightarrow session \rightarrow teacher\_schedule \rightarrow attendance \dots $ ).
 
+        
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Snippet database}
+\begin{verbatim}
+(...)
+-- Students Attendance
+     DROP TABLE IF EXISTS ATTENDANCE;
+     CREATE TABLE IF NOT EXISTS ATTENDANCE (id integer primary key ,
+      id_group integer, id_student integer, id_session integer,
+       a_type integer, a_date text,
+     FOREIGN KEY (id_student) REFERENCES STUDENTS (id),
+     FOREIGN KEY (id_group) REFERENCES GROUPS(id),
+     FOREIGN KEY (id_session) REFERENCES SESSIONS(id) );
+
+-- Activities
+     DROP TABLE IF EXISTS ACTIVITIES ;
+     CREATE TABLE IF NOT EXISTS ACTIVITIES
+             (id integer primary key, name text, date_init text, 
+             date_end text, weight integer, final integer );
+     DROP TABLE IF EXISTS activities_student;
+     (...)
+\end{verbatim}
+\end{bclogo}        
 		\subsection{Interface Diagram}
 		
 		This figure \ref{fig:diagram} ilustrates application workflow. Dotted lines are instructions and continuous lines 
@@ -530,86 +640,3 @@ $\llcorner$\emph{ queryReportAttendanceSuccess()}     &  \\
 		    \end{center}
 		\end{figure}
 		
-\newpage		
-  
-		\subsection{Tools}
-	
-	Tools involved in \emph{EduXes} development are Eclipse IDE (with plug-ins)
-	 and Android Virtual Manager (AVM) on Debian GNU/Linux Wheezy. When a new functionality
-	 is developed, application is tested on AVM,  if it worked, source code was polished, application is tested again, if it was
-	  satisfactory a new change is committed into git repository. 
-	  From time to time application is downloaded from git repository into a real hardware and tested. 
-	
-	%% logo=\bcrayon,
-\begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
-{Main Page}
-\begin{verbatim}
-<div data-role="page" id="daily\_work">
-    <div data-role="header" data-add-back-btn="true" data-theme="a">
-                <h1>Day</h1>
-    </div>
-    <div data-role="content" data-theme="a">
-        <div class="ui-grid-b">
-            <div class="ui-block-a">
-                <div data-role="fieldcontain">
-                    <label for="date"  >Date:</label>
-                </div>
-            </div>
-            <div class="ui-block-b">
-                <input id="daily\_date\_scroller"
-                   name="daily\_date\_scroller" />
-            </div>
-            <div class="ui-block-c">
-                <a href="#" data-role='button' 
-                  data-icon='info' data-iconpos='notext' 
-                  style='float: right;' 
-                  onClick="help('date');">Help</a>
-                <a href="#" data-role="button" 
-                  data-icon="arrow-r" data-iconpos="notext"  
-                  onclick="open\_daily\_page() " >Go</a>
-            </div>
-        </div>
-    </div>
-    <div data-role="navbar">
-        <ul>
-            <li>
-                <a href="#" onClick="onGeneralFile()"  
-                data-role="button" data-icon="star"  
-                data-theme="a" > File</a>
-            </li>
-            <li>
-                <a href="#" onClick="onGeneralListReports();"  
-                data-role="button" data-icon="grid"  
-                data-theme="a" >Reports</a>
-            </li>
-            <li>
-                <a href="#" onClick="onGeneralListSettings();" 
-                data-role="button" data-icon="gear"   
-                data-theme="a" >Settings</a>
-            </li>
-        </ul>
-    </div><!-- /navbar -->
-    <div data-role="footer" class="footer-docs" data-theme="a">
-        <p   style="text-align:center;"  id="teachers\_name"></p>
-    </div>
-</div> 
-\end{verbatim}
-
-\end{bclogo}
-
-\newpage
-
-	
-\section {Work plan}
-
-Several problems were faced:
-Eclipse environment: A stable, reliable and up-to-date IDE, with several plug-ins is needed. Download vanilla Eclipse Juno from its web-site is chosen because it is more stable, reliable, compatible with newer versions.  Aptana Javascript plugin was chosen because Aptana allows source code auto-completion in JQuery.
-PhoneGap and Android incompatibilities. Android 2.3.3 requires JQuery-1.8.1 and does not work on higher versions. 
-Error handlers. I have had several problems with tx.executeSql(...) function, it confused me with db.transaction(...): 
-tx.executeSql(sql, [parameters],  successHandler, errorHandler)
-and
-db.transaction(queryFunction, errorHandler, successHandler)  
-have up to four and three parameters respectively, only first one is mandatory. I rather use success and error handlers for tx.executeSql function, atomic error control could be better choice.
-Passing variables to functions: Only if another solution is not known or feasible, global variables are used: named after global\_\*, and in block capitals.
-Deadline. Development was delayed because I have no enough spare time and above problems were time costly.
-
