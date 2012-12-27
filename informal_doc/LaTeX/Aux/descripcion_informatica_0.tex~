@@ -1,0 +1,225 @@
+\chapter{Description}
+
+
+Preparation of development:
+ a) Build development environment: 
+Java Development Kit (JDK) version 1.6 is downloaded from: 
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+As root user that file is unpacked into /usr/lib/jvm and configured to be the Java default:
+\begin{verbatim}
+ # update-java-alternatives -s JDK_1.6_NAME
+\end{verbatim}  
+	Eclipse Juno (4.6) is downloaded from its web-page:
+http://www.eclipse.org Download->Linux 64 bits
+Android Development Toolkit (ADT) is downloaded following instructions on this page:
+http://developer.android.com/sdk/installing/installing-adt.html 
+	A new line is included into repository software (Help ->  Install New Software -> Add):
+http://dl-ssl.google.com/android/eclipse/
+	Next step is to select all the related software listed.
+	For Aptana Plugin line to add into Eclipse is: 
+http://download.aptana.com/studio3/plugin/install
+	Furthermore JQuery, JQueryMobile and Phonegap are needed, and were downloaded from their web sites:
+JQuery 1.8.1 (no newer versions):
+http://jquery.com/ 
+JQuery will be  copied into assets/www/js folder.
+JQueryMobile version 1.1.1 from
+http://jquerymobile.com/ 
+JQueryMobile is a zip file which will be uncompressed and copied into 
+assets/www/js folder.
+	PhoneGap - Cordova 1.8.1 is downloaded from this URL:
+https://github.com/phonegap/phonegap/zipball/1.8.1 
+	To create a PhoneGap application this very important instructions (Getting Started with Android)  should be followed step by step:
+\cite{AndroidGettingStarted}
+
+ b) Choose application name and folder's policy:
+EduXes stands for "Educaci\'n" and "Xesti\'on", is a educational management software.
+A folder is created (assets/www/js) which contains javascript (*.js) files except JQuery and JqueryMobile which is included into another
+ folder (assets/www/js/jquery), do not forget style sheet files (*.css)
+ c) Make a simple application: only a blank page.
+Getting started with Android is followed step by step.
+ d) Upload simple application into a git repository. 
+A Github account is created and a new application is initialized.  This are the source code project page:\cite{EduXes}
+Source code are upload to GitHub: 
+  \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
+{Git init shell}   
+\begin{verbatim}
+$ git init
+$ git add -A *
+$ git remote add  EduXes git@github.com:joseantoniosa/EduXes.git 
+$ git push origin master
+\end{verbatim}
+\end{bclogo}
+
+
+
+
+Every time an update is going to be uploaded:
+$ git add -A *
+$ git commit -m 'CHANGES_DESCRIPTION'
+$ git push origin master
+
+ e)  JQueryMobile1 applications are structured in pages (<div data-role=”page”>), which are very similar to desktop applications windows, therefore, from Javascript code, to change to a new page    $.mobile.changePage("#daily_work")  opens daily_work p page.  
+Application Work-flow 
+Next illustration try to be self-explicative.  Beginning at onDeviceReady()  from interface.fs file.  Inside each page several actions are performed: e.g., open and populate database, load list of groups (loadSchedule()),  and user choose next step according options shown. 
+
+
+
+\section{Database structure}
+\begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
+{Git init shell}   
+\begin{verbatim}
+    -- Groups
+        DROP TABLE IF EXISTS GROUPS ;
+        CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key , data text , other_data text);
+--- Students
+        DROP TABLE IF EXISTS STUDENTS;
+        CREATE TABLE IF NOT EXISTS STUDENTS (
+            id integer primary key, id_group integer not null, name text, surname text,
+            repeated integer, n_date text , photo text,
+            tutor TEXT, address TEXT, phone text, e_phone text, nation text,
+            FOREIGN KEY(id_group) REFERENCES GROUPS(id));
+
+-- Sessions ( franja horaria)
+            DROP TABLE IF EXISTS SESSIONS;
+            CREATE TABLE IF NOT EXISTS SESSIONS (id  integer primary key,
+                description text, h_start text, h_end text);
+
+-- Teacher's schedule
+        DROP TABLE IF EXISTS TEACHER_SCHEDULE;
+         CREATE TABLE IF NOT EXISTS TEACHER_SCHEDULE (id  integer primary key,
+            id_session integer, day integer, id_group integer,
+            FOREIGN KEY(id_group) REFERENCES GROUPS(id),
+            FOREIGN KEY(id_session) REFERENCES SESSIONS(id));
+
+-- Students Attendance
+        DROP TABLE IF EXISTS ATTENDANCE;
+        CREATE TABLE IF NOT EXISTS ATTENDANCE (id integer primary key ,
+         id_group integer, id_student integer, id_session integer, a_type integer, a_date text,
+        FOREIGN KEY (id_student) REFERENCES STUDENTS (id),
+        FOREIGN KEY (id_group) REFERENCES GROUPS(id),
+        FOREIGN KEY (id_session) REFERENCES SESSIONS(id) );
+
+-- Activities
+        DROP TABLE IF EXISTS ACTIVITIES ;
+        CREATE TABLE IF NOT EXISTS ACTIVITIES
+                (id integer primary key, name text, date_init text, date_end text, weight integer, final integer );
+
+        DROP TABLE IF EXISTS activities_student;
+        CREATE TABLE IF NOT EXISTS activities_student
+                (id integer primary key ,  id_student integer, id_activity integer,
+                mark integer, a_date text, notes text,
+                FOREIGN KEY (id_student) REFERENCES students (id),
+                FOREIGN KEY (id_activity) REFERENCES activities(id) );
+
+        DROP TABLE IF EXISTS activities_group;
+        CREATE TABLE IF NOT EXISTS activities_group
+                (id integer primary key ,  id_group integer, id_activity integer,
+                enabled integer, a_date text, notes text,
+                FOREIGN KEY (id_group) REFERENCES groups (id),
+                FOREIGN KEY (id_activity) REFERENCES activities(id) );
+
+\end{verbatim}
+\end{bclogo}
+
+\section{Los algoritmos para el desarrollo de la solución}
+\dots
+
+\section {qué quieres resolver}
+\dots
+\section {cómo lo vas a hacer}
+\dots
+\section {herramientas conceptuales necesarias}
+ \dots
+\section {Tools}
+%% NOISE
+NOISE vvvv
+
+
+\begin{framed}
+  ASD
+\end{framed}
+
+\begin{shaded}
+  FFG
+\end{shaded}
+
+\begin{ovalbox} 
+{
+OVAL BOX
+}
+\end{ovalbox}
+
+%%     la fleur : commande \bcfleur
+%%     en chantier  : commande \bcpanchant (Jean-Michel SARLAT)
+%%     la note : commande \bcnote (Thomas LABARRUSIAS)
+%%     l etoile : commande \bcetoile
+%%     l ourson : commande \bcours
+%%     attention  : commande \bcattention
+%%     le cour : commande \bccoeur
+%%     ornement : commande \bcorne
+%%     danger : commande \bcdanger (François BOERKMANN)
+%%     smiley heureux : commande \bcsmbh (François BOERKMANN)
+%%     smiley malheureux : commande \bcsmmh (François BOERKMANN)
+%%     Take care : commande \bctakecare (Patrick FRADIN)
+%%     Lampe : commande \bclampe (Patrick FRADIN)
+%%     Le livre : commande \bcbook (Patrick FRADIN)
+%%     Le trefle : commande \bctrefle
+
+
+\begin{shadowblock}{16cm}
+OVAL BOX shadowblock
+\end{shadowblock}
+
+%% logo=\bcrayon,
+\begin{bclogo} [couleur=blue!30,arrondi=0.1,  ombre=true ] 
+{Contenido}
+, contenido ...
+\end{bclogo}
+
+\fcolorbox{black}{gray!20}{
+\parbox{\tw}{All parts of this prealgebra textbook are copyrighted © 2009 in the name Department of Mathematics, College of the Redwoods. They are not in the public domain. However, they are being made available free for use in educational institutions. This offer does not extend to any application that is made for profit. Users who have such applications in mind should contact David Arnold or Bruce Wagner at [hidden email] or [hidden email].
+}} 
+
+
+\begin{minipage}[c]{200pt}
+ text text
+ \end{minipage}
+
+
+
+
+\begin {shaded}
+\begin{verbatim}
+<?php 
+session_start(); 
+require('config.php'); 
+require('idioma/'.$idioma.''); 
+include('funciones_calendario.php'); 
+$docente = $_SESSION['usuario_sesion']; 
+//recogemos variables 
+$mes_actual = $_POST['mes']; 
+$anyo_actual = $_POST['anyo']; 
+if($mes_actual || $anyo_actual) { 
+	include('funciones.php'); 
+	conecta(); 
+	} 
+//si es la primera vez que entramos, cargamos la fecha actual 
+if(!isset($mes_actual)) $mes_actual = date('m'); 
+if(!isset($anyo_actual)) $anyo_actual = date('Y'); 
+//presentamos ahora el calendario del mes actual o cargado 
+//tabla con nombre mes y año y las flechas para navegar 
+echo ' 
+<br /> 
+<table class="tablacentrada_i"> 
+<tr> 
+<td> 
+<a href="#" onclick="navegaMes(\''.$mes_actual.'\',\''.$anyo_actual.
+'\',\'menos\')" title="'.$id_anterior.'"><img src="imgs/anterior_peq.png" 
+class="alin_bajo" alt="'.$id_anterior.'" /></a> 
+'; 
+$nombre_mes = numero_mes_a_nombre($mes_actual);
+\end{verbatim}
+
+\end{shaded}
+
+

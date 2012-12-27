@@ -16,31 +16,25 @@
 \BOOKMARK [0][-]{chapter.3}{State-of-art solutions}{}% 16
 \BOOKMARK [1][-]{section.3.1}{Siestta}{chapter.3}% 17
 \BOOKMARK [1][-]{section.3.2}{Sixa}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.3}{Other Android applications}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.3}{Android applications}{chapter.3}% 19
 \BOOKMARK [2][-]{subsection.3.3.1}{Grade Book}{section.3.3}% 20
 \BOOKMARK [2][-]{subsection.3.3.2}{Attendance}{section.3.3}% 21
-\BOOKMARK [2][-]{subsection.3.3.3}{ Teacher Organizer }{section.3.3}% 22
+\BOOKMARK [2][-]{subsection.3.3.3}{Teacher Organizer }{section.3.3}% 22
 \BOOKMARK [2][-]{subsection.3.3.4}{Teacher Aide }{section.3.3}% 23
-\BOOKMARK [1][-]{section.3.4}{Descripci\363n del problema}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.5}{Descripci\363n de los trabajos anteriores que se han dedicado a resolverlo}{chapter.3}% 25
-\BOOKMARK [0][-]{chapter.4}{Objetivo \(5\045\)}{}% 26
-\BOOKMARK [1][-]{section.4.1}{Descripci\363n, en un objetivo general, de la finalidad del proyecto.}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.2}{Descripci\363n de objetivos parciales que se necesitan cubrir para llegar al objetivo final}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.3}{Descripci\363n de alto nivel de las etapas que sigues en el desarrollo}{chapter.4}% 29
-\BOOKMARK [0][-]{chapter.5}{Descripci\363n Inform\341tica \(20-35\045\)}{}% 30
-\BOOKMARK [1][-]{section.5.1}{La base de datos coleccionada \(si tiene sentido\).}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.2}{Los algoritmos para el desarrollo de la soluci\363n}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.3}{qu\351 quieres resolver}{chapter.5}% 33
-\BOOKMARK [1][-]{section.5.4}{c\363mo lo vas a hacer}{chapter.5}% 34
-\BOOKMARK [1][-]{section.5.5}{herramientas conceptuales necesarias}{chapter.5}% 35
-\BOOKMARK [1][-]{section.5.6}{Tools}{chapter.5}% 36
-\BOOKMARK [0][-]{chapter.6}{Results}{}% 37
-\BOOKMARK [1][-]{section.6.1}{Objectives completed}{chapter.6}% 38
-\BOOKMARK [1][-]{section.6.2}{Technical details}{chapter.6}% 39
-\BOOKMARK [1][-]{section.6.3}{Further objectives}{chapter.6}% 40
-\BOOKMARK [1][-]{section.6.4}{Resultados en forma de tablas, gr\341ficas e im\341genes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\363n}{chapter.6}% 41
-\BOOKMARK [1][-]{section.6.5}{An\341lisis cr\355tico de los resultados con el objetivo de decidir si el sistema implementado es v\341lido}{chapter.6}% 42
-\BOOKMARK [0][-]{chapter.7}{Conclusiones y trabajos futuros \(5\045\)}{}% 43
-\BOOKMARK [1][-]{section.7.1}{Implementaci\363n}{chapter.7}% 44
-\BOOKMARK [1][-]{section.7.2}{Resultados}{chapter.7}% 45
-\BOOKMARK [0][-]{chapter*.6}{Bibliography}{}% 46
+\BOOKMARK [0][-]{chapter.4}{Description}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Database structure}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.2}{Los algoritmos para el desarrollo de la soluci\363n}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.3}{qu\351 quieres resolver}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.4}{c\363mo lo vas a hacer}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.5}{herramientas conceptuales necesarias}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.6}{Tools}{chapter.4}% 30
+\BOOKMARK [0][-]{chapter.5}{Results}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Objectives completed}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.2}{Technical details}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.3}{Further objectives}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.4}{Resultados en forma de tablas, gr\341ficas e im\341genes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\363n}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.5}{An\341lisis cr\355tico de los resultados con el objetivo de decidir si el sistema implementado es v\341lido}{chapter.5}% 36
+\BOOKMARK [0][-]{chapter.6}{Conclusiones y trabajos futuros \(5\045\)}{}% 37
+\BOOKMARK [1][-]{section.6.1}{Implementaci\363n}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.2}{Resultados}{chapter.6}% 39
+\BOOKMARK [0][-]{chapter*.6}{Bibliography}{}% 40

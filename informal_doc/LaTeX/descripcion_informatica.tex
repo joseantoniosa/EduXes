@@ -1,4 +1,4 @@
-\chapter{Descripción Informática (20-35\%)}
+\chapter{Description}
 
 
 Preparation of development:
@@ -32,13 +32,16 @@ https://github.com/phonegap/phonegap/zipball/1.8.1
 \cite{AndroidGettingStarted}
 
  b) Choose application name and folder's policy:
-EduXes stands for "Educación" and "Xestión", is a educational management software.
-A folder is created (assets/www/js) which contains javascript (*.js) files except JQuery and JqueryMobile which is included into another folder (assets/www/js/jquery), do not forget style sheet files (*.css)
+EduXes stands for "Educaci\'n" and "Xesti\'on", is a educational management software.
+A folder is created (assets/www/js) which contains javascript (*.js) files except JQuery and JqueryMobile which is included into another
+ folder (assets/www/js/jquery), do not forget style sheet files (*.css)
  c) Make a simple application: only a blank page.
 Getting started with Android is followed step by step.
  d) Upload simple application into a git repository. 
 A Github account is created and a new application is initialized.  This are the source code project page:\cite{EduXes}
 Source code are upload to GitHub: 
+
+
   \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
 {Git init shell}   
 \begin{verbatim}
@@ -52,11 +55,238 @@ $ git push origin master
 
 
 
+Every time an update is going to be uploaded:
+% \begin{verbatim}
+% $ git add -A *
+% $ git commit -m 'CHANGES_DESCRIPTION'
+% $ git push origin master
+% 
+%  e)  JQueryMobile1 applications are structured in pages (<div data-role=\u201dpage\u201d>), which are very similar to desktop applications windows, therefore, from Javascript code, to change to a new page    $.mobile.changePage("#daily_work")  opens daily_work p page.  
+% Application Work-flow 
+% Next illustration try to be self-explicative.  Beginning at onDeviceReady()  from interface.fs file.  Inside each page several actions are performed: e.g., open and populate database, load list of groups (loadSchedule()),  and user choose next step according options shown. 
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% 
+% Development:
+% There are two JavaScript files:
+% - interface.js: It contains information and decisions related to interface and application workflow, completely independent from database.
+% - database.js: It contains database related code: SELECT, INSERT, etc. 
+% There is only one HTML file:
+% index.html only contains HTML framework, page properties, and static content.  
+% There are three important files which contain documentation:
+% - TODO.txt. List of goals to be achieved and milestone reached.
+% - DATABASE.sql  Data-base structure in SQL format.
+% - REAME.txt. Only contains general information about this application.
+% Next step in development is populate database.
+%  f) Populate database with sample data. To test application, sample data are needed. 
+%  g) Groups: These pages are not active.
+% Make a list of groups window (aka page).
+% Make a group management window.
+%  h) Students: These pages are not active.
+% Make list of students window.
+% Students management window (insert-update-delete students)
+%  i) Timetable for actual date: list of groups for selected day.
+% Below queryScheduleSuccess() and querySchedulePerDayDB() functions are written, these functions fills daily_schedule page as shown in Illustration 6: Application Skeleton.
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% 
+% 
+% 
+% 
+% 
+% /*
+%  *  Main Window
+%  */
+% function queryScheduleSuccess(tx, results) {
+%  var len = results.rows.length;
+%    $('#groups_day_ul').empty();
+%    var html;
+%    var id=0;
+%    var description="";
+%    var start = "";
+%    var t_id_session=-1;
+%    for (var i=0;i<len;i++) {
+%      id = results.rows.item(i).id;
+%      t_id_session = results.rows.item(i).t_id_session;
+%      start = results.rows.item(i).s_h_start;  
+%      description = results.rows.item(i).description; 
+%      html = "<li>";
+%      html += "<div data-role='fieldcontain'>";
+%      html += start;
+%   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
+%    html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ","+t_id_session + ");\">" + description + "</a>";
+%     html += "";
+%     html += "</div>";
+%     html += "</li>";
+%    $('#groups_day_ul').append(html);
+%    }
+%    $('#groups_day_ul').listview('refresh');
+%    }
+% 
+% /* Query groups per day - Main Window -
+% */
+% function querySchedulePerDayDB(tx){
+%  var query = "SELECT teacher_schedule.id_session, teacher_schedule.day, teacher_schedule.id_group as t_id_group, teacher_schedule.id_session as t_id_session, ";
+%   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
+%   query += " WHERE day=" +week_day_global + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
+%   console.log("querySchedulePerDayDB:" + query);
+%   tx.executeSql(query,[], dbSuccessFunc = function(tx,rs){
+%     queryScheduleSuccess(tx, rs);},
+%       dbErrorFunc = function(tx, e) {
+%     if (tx.message) e = tx;
+%     alert(" There has been an error QuerySchedulePerDayDB: " + e.message);
+%     return false;
+%       });   
+% }
+% 
+%  j) Add attendance, misbehaviour for each student. Student attendance, misbehaviour, punctuality are set here.
+% Tasks to be done
+%  k) Add error handling. Error handling is managed throw dbErrorFunc.
+%  l) Retrieve and insert data from and to database. 
+%  m) List of attendance, misbehaviour incidents. A list of attendance will be carried on, reusing Siestta interfaces.
+%  n) Add activities grades for each student. 
+%  o) List students marks and final mark. On a window, group, student name and surname will be shown, and a table with his/her marks.
+%  p) Activities management window. Add, remove and update activities. It includes name of activity and percent weight.
+%  q) Management of student notes. Student's notes could be included as an option.
+%  r) List of student notes. In a table-like window, notes will be displayed.
+% ).
+% Make a group management window.
+%  h) Students: These pages are not active.
+% Make list of students window.
+% Students management window (insert-update-delete students)
+%  i) Timetable for actual date: list of groups for selected day.
+% Below queryScheduleSuccess() and querySchedulePerDayDB() functions are written, these functions fills daily_schedule page as shown in Illustration 6: Application Skeleton.
+% 
+% /*
+%  *  Main Window
+%  */
+% function queryScheduleSuccess(tx, results) {
+%  var len = results.rows.length;
+%    $('#groups_day_ul').empty();
+%    var html;
+%    var id=0;
+%    var description="";
+%    var start = "";
+%    var t_id_session=-1;
+%    for (var i=0;i<len;i++) {
+%      id = results.rows.item(i).id;
+%      t_id_session = results.rows.item(i).t_id_session;
+%      start = results.rows.item(i).s_h_start;  
+%      description = results.rows.item(i).description; 
+%      html = "<li>";
+%      html += "<div data-role='fieldcontain'>";
+%      html += start;
+%   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
+%    html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ","+t_id_session + ");\">" + description + "</a>";
+%     html += "";
+%     html += "</div>";
+%     html += "</li>";
+%    $('#groups_day_ul').append(html);
+%    }
+%    $('#groups_day_ul').listview('refresh');
+%    }
+% 
+% /* Query groups per day - Main Window -
+% */
+% function querySchedulePerDayDB(tx){
+%  var query = "SELECT teacher_schedule.id_session, teacher_schedule.day, teacher_schedule.id_group as t_id_group, teacher_schedule.id_session as t_id_session, ";
+%   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
+%   query += " WHERE day=" +week_day_global + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
+%   console.log("querySchedulePerDayDB:" + query);
+%   tx.executeSql(query,[], dbSuccessFunc = function(tx,rs){
+%     queryScheduleSuccess(tx, rs);},
+%       dbErrorFunc = function(tx, e) {
+%     if (tx.message) e = tx;
+%     alert(" There has been an error QuerySchedulePerDayDB: " + e.message);
+%     return false;
+%       });   
+% }
+% 
+%  j) Add attendance, misbehaviour for each student. Student attendance, misbehaviour, punctuality are set here.
+% Tasks to be done
+%  k) Add error handling. Error handling is managed throw dbErrorFunc.
+%  l) Retrieve and insert data from and to database. 
+%  m) List of attendance, misbehaviour incidents. A list of attendance will be carried on, reusing Siestta interfaces.
+%  n) Add activities grades for each student. 
+%  o) List students marks and final mark. On a window, group, student name and surname will be shown, and a table with his/her marks.
+%  p) Activities management window. Add, remove and update activities. It includes name of activity and percent weight.
+%  q) Management of student notes. Student's notes could be included as an option.
+%  r) List of student notes. In a table-like window, notes will be displayed
+% 
+% 
+% 
+% \end{verbatim}
+% 
 
-\section{La base de datos coleccionada (si tiene sentido).}
-\dots
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{Database structure}
+\begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
+{EduXes Database structure}   
+\begin{verbatim}
+-- Groups
+CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key ,
+    data text , other_data text);
+--- Students
+CREATE TABLE IF NOT EXISTS STUDENTS (
+      id integer primary key, id_group integer not null,
+       name text, surname text,
+      repeated integer, n_date text , photo text,
+      tutor TEXT, address TEXT, phone text, e_phone text,
+       nation text,
+      FOREIGN KEY(id_group) REFERENCES GROUPS(id));
+-- Sessions ( franja horaria)
+CREATE TABLE IF NOT EXISTS SESSIONS (id  integer primary key,
+        description text, h_start text, h_end text);
+-- Teacher's schedule
+CREATE TABLE IF NOT EXISTS TEACHER_SCHEDULE (id  integer primary key,
+      id_session integer, day integer, id_group integer,
+      FOREIGN KEY(id_group) REFERENCES GROUPS(id),
+      FOREIGN KEY(id_session) REFERENCES SESSIONS(id));
+-- Students Attendance
+CREATE TABLE IF NOT EXISTS ATTENDANCE (id integer primary key ,
+      id_group integer, id_student integer, id_session integer,
+      a_type integer, a_date text,
+      FOREIGN KEY (id_student) REFERENCES STUDENTS (id),
+      FOREIGN KEY (id_group) REFERENCES GROUPS(id),
+      FOREIGN KEY (id_session) REFERENCES SESSIONS(id) );
+-- Activities
+CREATE TABLE IF NOT EXISTS ACTIVITIES
+    (id integer primary key, name text, date_init text, 
+    date_end text, weight integer, final integer );
+CREATE TABLE IF NOT EXISTS activities_student
+    (id integer primary key ,  id_student integer,
+     id_activity integer,
+    mark integer, a_date text, notes text,
+    FOREIGN KEY (id_student) REFERENCES students (id),
+    FOREIGN KEY (id_activity) REFERENCES activities(id) );
+CREATE TABLE IF NOT EXISTS activities_group
+    (id integer primary key ,  id_group integer,
+     id_activity integer,
+    enabled integer, a_date text, notes text,
+    FOREIGN KEY (id_group) REFERENCES groups (id),
+    FOREIGN KEY (id_activity) REFERENCES activities(id) );
+
+\end{verbatim}
+\end{bclogo}
+
 \section{Los algoritmos para el desarrollo de la solución}
-\dots
+\dots
+
 \section {qué quieres resolver}
 \dots
 \section {cómo lo vas a hacer}
@@ -64,52 +294,10 @@ $ git push origin master
 \section {herramientas conceptuales necesarias}
  \dots
 \section {Tools}
-%\chapter{Anexo 2}These are several tools used to build these documentation:
-\begin {itemize}
-\item Sqlfairy. Tranforms SQL language into a  image in \emph{png} format.
-\item LaTeXila 2.7.0 to write this document. 1 
-\item Gimp 2.8.2 to get screen-shots.
-\item GNU/Debian Wheezy tools  October 2012 .
-\end{itemize}
+%% NOISE
+NOISE vvvv
 
 
-\begin{framed}
+\begin{framed}
   ASD
 \end{framed}
-
-\begin{shaded}
-  FFG
-\end{shaded}
-
-\begin{ovalbox} 
-{
-OVAL BOX
-}
-\end{ovalbox}
-
-%%     la fleur : commande \bcfleur
-%%     en chantier  : commande \bcpanchant (Jean-Michel SARLAT)
-%%     la note : commande \bcnote (Thomas LABARRUSIAS)
-%%     l etoile : commande \bcetoile
-%%     l ourson : commande \bcours
-%%     attention  : commande \bcattention
-%%     le cour : commande \bccoeur
-%%     ornement : commande \bcorne
-%%     danger : commande \bcdanger (François BOERKMANN)
-%%     smiley heureux : commande \bcsmbh (François BOERKMANN)
-%%     smiley malheureux : commande \bcsmmh (François BOERKMANN)
-%%     Take care : commande \bctakecare (Patrick FRADIN)
-%%     Lampe : commande \bclampe (Patrick FRADIN)
-%%     Le livre : commande \bcbook (Patrick FRADIN)
-%%     Le trefle : commande \bctrefle
-
-
-\begin{shadowblock}{16cm}
-OVAL BOX shadowblock
-\end{shadowblock}
-
-%% logo=\bcrayon,
-\begin{bclogo} [couleur=blue!30,arrondi=0.1,  ombre=true ] 
-{Contenido}
-, contenido ...
-\end{bclogo}

@@ -1,5 +1,12 @@
 \begin{thebibliography}{dEXdG12}
 
+\bibitem[Aca11]{Android:Gradebook}
+Academics.
+\newblock Classroom management system.
+\newblock \url{
+  https://play.google.com/store/apps/details?id=com.gradebook.academics },
+  2011.
+
 \bibitem[App05]{Aptana}
 Inc. Appcelerator.
 \newblock Aptana is a complete environment to build ror, php, python
@@ -21,15 +28,31 @@ Conseller\'{\i}a de~Educaci\'on. Xunta~de Galicia.
 \newblock Xade web is a web interface for educational data management.
 \newblock \url{http://edu.xunta.es/xade/}, 2012.
 
+\bibitem[fA10]{Android:Attendance}
+Android for Academics.
+\newblock Attendance.
+\newblock \url{
+  http://androidforacademics.com/2010/09/attendance-instruction-manual/}, 2010.
+
 \bibitem[Fou01]{Eclipse}
 Eclipse Foundation.
 \newblock Eclipse interface development environment.
 \newblock \url{ http://www.eclipse.org/ }, 2001.
 
+\bibitem[iagdc12]{Android:TeacherAide}
+inpocketsolution at gmail~dot com.
+\newblock Teacher aide.
+\newblock \url{https://sites.google.com/site/teacheraidepro/}, 2012.
+
 \bibitem[Inc01]{AndroidDevelopmentKit}
 Android Inc.
 \newblock Android simple development kit.
 \newblock \url{ http://developer.android.com/sdk/index.html }, 2001.
+
+\bibitem[Lle12]{Android:teacherorganizer}
+Llerik.
+\newblock Teacher organizer.
+\newblock \url{ http://4pda.ru/forum/index.php?showtopic=345457\&st=80}, 2012.
 
 \bibitem[Mob12a]{JQueryMobile}
 JQuery Mobile.
@@ -74,5 +97,17 @@ PhoneGap.
 \newblock
   \url{http://docs.phonegap.com/en/1.8.1/cordova_storage_storage.md.html#Storage},
   2012.
+
+\bibitem[S.L09]{Sixa}
+Enxenio S.L.
+\newblock Complete classroom management system.
+\newblock \url{ http://www.sixa.es }, 2009.
+
+\bibitem[Uni05]{Unisoft}
+Unisoft.
+\newblock Acad\'emico \texttrademark is a software to school management.
+\newblock \url{
+  http://www.unisoftcolombia.com/unisoftcolombia/index.php?link=academico},
+  2005.
 
 \end{thebibliography}

@@ -17,32 +17,26 @@
 \contentsline {subsection}{\numberline {2.5.5}Interface Diagram}{17}{subsection.2.5.5}
 \contentsline {chapter}{\numberline {3}State-of-art solutions}{19}{chapter.3}
 \contentsline {section}{\numberline {3.1}Siestta}{19}{section.3.1}
-\contentsline {section}{\numberline {3.2}Sixa}{20}{section.3.2}
-\contentsline {section}{\numberline {3.3}Other Android applications}{20}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Grade Book}{20}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Attendance}{21}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3} Teacher Organizer }{21}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Teacher Aide }{23}{subsection.3.3.4}
-\contentsline {section}{\numberline {3.4}Descripci\'on del problema}{24}{section.3.4}
-\contentsline {section}{\numberline {3.5}Descripci\'on de los trabajos anteriores que se han dedicado a resolverlo}{24}{section.3.5}
-\contentsline {chapter}{\numberline {4}Objetivo (5\%)}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Descripci\'on, en un objetivo general, de la finalidad del proyecto.}{25}{section.4.1}
-\contentsline {section}{\numberline {4.2}Descripci\'on de objetivos parciales que se necesitan cubrir para llegar al objetivo final}{25}{section.4.2}
-\contentsline {section}{\numberline {4.3}Descripci\'on de alto nivel de las etapas que sigues en el desarrollo}{25}{section.4.3}
-\contentsline {chapter}{\numberline {5}Descripci\'on Inform\'atica (20-35\%)}{27}{chapter.5}
-\contentsline {section}{\numberline {5.1}La base de datos coleccionada (si tiene sentido).}{28}{section.5.1}
-\contentsline {section}{\numberline {5.2}Los algoritmos para el desarrollo de la soluci\'on}{28}{section.5.2}
-\contentsline {section}{\numberline {5.3}qu\'e quieres resolver}{28}{section.5.3}
-\contentsline {section}{\numberline {5.4}c\'omo lo vas a hacer}{28}{section.5.4}
-\contentsline {section}{\numberline {5.5}herramientas conceptuales necesarias}{28}{section.5.5}
-\contentsline {section}{\numberline {5.6}Tools}{28}{section.5.6}
-\contentsline {chapter}{\numberline {6}Results}{31}{chapter.6}
-\contentsline {section}{\numberline {6.1}Objectives completed}{31}{section.6.1}
-\contentsline {section}{\numberline {6.2}Technical details}{31}{section.6.2}
-\contentsline {section}{\numberline {6.3}Further objectives}{31}{section.6.3}
-\contentsline {section}{\numberline {6.4}Resultados en forma de tablas, gr\'aficas e im\'agenes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\'on}{32}{section.6.4}
-\contentsline {section}{\numberline {6.5}An\'alisis cr\IeC {\'\i }tico de los resultados con el objetivo de decidir si el sistema implementado es v\'alido}{32}{section.6.5}
-\contentsline {chapter}{\numberline {7}Conclusiones y trabajos futuros (5\%)}{35}{chapter.7}
-\contentsline {section}{\numberline {7.1}Implementaci\'on}{35}{section.7.1}
-\contentsline {section}{\numberline {7.2}Resultados}{35}{section.7.2}
-\contentsline {chapter}{Bibliography}{38}{chapter*.6}
+\contentsline {section}{\numberline {3.2}Sixa}{22}{section.3.2}
+\contentsline {section}{\numberline {3.3}Android applications}{22}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Grade Book}{22}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Attendance}{24}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Teacher Organizer }{25}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Teacher Aide }{27}{subsection.3.3.4}
+\contentsline {chapter}{\numberline {4}Description}{29}{chapter.4}
+\contentsline {section}{\numberline {4.1}Database structure}{31}{section.4.1}
+\contentsline {section}{\numberline {4.2}Los algoritmos para el desarrollo de la soluci\'on}{32}{section.4.2}
+\contentsline {section}{\numberline {4.3}qu\'e quieres resolver}{32}{section.4.3}
+\contentsline {section}{\numberline {4.4}c\'omo lo vas a hacer}{32}{section.4.4}
+\contentsline {section}{\numberline {4.5}herramientas conceptuales necesarias}{32}{section.4.5}
+\contentsline {section}{\numberline {4.6}Tools}{32}{section.4.6}
+\contentsline {chapter}{\numberline {5}Results}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Objectives completed}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Technical details}{33}{section.5.2}
+\contentsline {section}{\numberline {5.3}Further objectives}{33}{section.5.3}
+\contentsline {section}{\numberline {5.4}Resultados en forma de tablas, gr\'aficas e im\'agenes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\'on}{34}{section.5.4}
+\contentsline {section}{\numberline {5.5}An\'alisis cr\IeC {\'\i }tico de los resultados con el objetivo de decidir si el sistema implementado es v\'alido}{34}{section.5.5}
+\contentsline {chapter}{\numberline {6}Conclusiones y trabajos futuros (5\%)}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}Implementaci\'on}{37}{section.6.1}
+\contentsline {section}{\numberline {6.2}Resultados}{37}{section.6.2}
+\contentsline {chapter}{Bibliography}{40}{chapter*.6}

@@ -7,54 +7,49 @@ A level-1 auxiliary file: resumen.aux
 A level-1 auxiliary file: introduccion.aux
 A level-1 auxiliary file: working.aux
 A level-1 auxiliary file: estado_del_arte.aux
-A level-1 auxiliary file: objetivo.aux
 A level-1 auxiliary file: descripcion_informatica.aux
 A level-1 auxiliary file: resultados_experimentales.aux
 A level-1 auxiliary file: conclusiones.aux
 The style file: alpha.bst
-A level-1 auxiliary file: bibliography_general.aux
 Database file #1: librero.bib
-Warning--I didn't find a database entry for "NewCam97"
-Warning--I didn't find a database entry for "Pesce"
-You've used 13 entries,
+You've used 19 entries,
             2543 wiz_defined-function locations,
-            637 strings with 6533 characters,
-and the built_in function-call counts, 3501 in all, are:
-= -- 338
-> -- 104
-< -- 13
-+ -- 31
-- -- 26
-* -- 145
-:= -- 560
-add.period$ -- 39
-call.type$ -- 13
-change.case$ -- 65
-chr.to.int$ -- 9
-cite$ -- 13
-duplicate$ -- 143
-empty$ -- 326
-format.name$ -- 51
-if$ -- 743
+            663 strings with 7277 characters,
+and the built_in function-call counts, 5101 in all, are:
+= -- 494
+> -- 152
+< -- 19
++ -- 43
+- -- 38
+* -- 211
+:= -- 814
+add.period$ -- 57
+call.type$ -- 19
+change.case$ -- 95
+chr.to.int$ -- 15
+cite$ -- 19
+duplicate$ -- 209
+empty$ -- 476
+format.name$ -- 73
+if$ -- 1085
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 68
-num.names$ -- 39
-pop$ -- 116
+newline$ -- 98
+num.names$ -- 57
+pop$ -- 168
 preamble$ -- 1
-purify$ -- 78
+purify$ -- 114
 quote$ -- 0
-skip$ -- 141
+skip$ -- 208
 stack$ -- 0
-substring$ -- 92
-swap$ -- 13
-text.length$ -- 13
-text.prefix$ -- 12
+substring$ -- 134
+swap$ -- 19
+text.length$ -- 19
+text.prefix$ -- 16
 top$ -- 0
-type$ -- 104
+type$ -- 152
 warning$ -- 0
-while$ -- 26
-width$ -- 16
-write$ -- 158
-(There were 2 warnings)
+while$ -- 38
+width$ -- 23
+write$ -- 230
