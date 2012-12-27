@@ -308,20 +308,6 @@
     ----------------------------------------------------------------------------------------------------------
 //-->
 
-<div data-role="page" id="list_groups_to_edit" data-add-back-btn="true">
-            <div data-role="header"  data-add-back-btn="true"  >
-                <h1>Lista de Grupos</h1>
-            </div>
-               <div data-role="content">
-
-                <ul id="groups_to_edit_ul" data-role="listview" data-inset="true" data-split-theme="a" data-split-icon="gear">
-                </ul>
-            </div>
-            <a onClick="requestNewGroup();" data-role="button" data-icon="add">Nuevo</a>
-            <div data-role="footer"  data-rel="back" data-theme="a">
-            </div>
-</div>
-
 <div data-role="page" id="edit_new_group" data-add-back-btn="true">
             <div data-role="header"  data-add-back-btn="true" >
                 <h1>Group Addition</h1>
@@ -345,10 +331,11 @@
 </div>
 
 <div data-role="page" id="list_groups" data-add-back-btn="true">
-            <div data-role="header"  data-add-back-btn="true"  >
+            <div data-role="header"  data-add-back-btn="false"  >
+            <a href="#list_settings"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
                 <h1>Groups List</h1>
             </div>
-           <div data-role="content">
+           <div data-role="content" data-theme="a">
 
                 <ul id="groups_ul" data-role="listview" data-inset="true"  data-split-icon="gear" data-split-theme="a" >
             </ul>

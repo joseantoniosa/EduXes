@@ -12,44 +12,44 @@ A level-1 auxiliary file: resultados_experimentales.aux
 A level-1 auxiliary file: conclusiones.aux
 The style file: alpha.bst
 Database file #1: librero.bib
-You've used 20 entries,
+You've used 21 entries,
             2543 wiz_defined-function locations,
-            669 strings with 7394 characters,
-and the built_in function-call counts, 5368 in all, are:
-= -- 520
-> -- 160
-< -- 20
-+ -- 45
-- -- 40
-* -- 222
-:= -- 856
-add.period$ -- 60
-call.type$ -- 20
-change.case$ -- 100
-chr.to.int$ -- 16
-cite$ -- 20
-duplicate$ -- 220
-empty$ -- 501
-format.name$ -- 77
-if$ -- 1142
+            674 strings with 7536 characters,
+and the built_in function-call counts, 5635 in all, are:
+= -- 546
+> -- 168
+< -- 21
++ -- 47
+- -- 42
+* -- 233
+:= -- 898
+add.period$ -- 63
+call.type$ -- 21
+change.case$ -- 105
+chr.to.int$ -- 17
+cite$ -- 21
+duplicate$ -- 231
+empty$ -- 526
+format.name$ -- 81
+if$ -- 1199
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 103
-num.names$ -- 60
-pop$ -- 177
+newline$ -- 108
+num.names$ -- 63
+pop$ -- 186
 preamble$ -- 1
-purify$ -- 120
+purify$ -- 126
 quote$ -- 0
-skip$ -- 219
+skip$ -- 230
 stack$ -- 0
-substring$ -- 141
-swap$ -- 20
-text.length$ -- 20
-text.prefix$ -- 17
+substring$ -- 148
+swap$ -- 21
+text.length$ -- 21
+text.prefix$ -- 18
 top$ -- 0
-type$ -- 160
+type$ -- 168
 warning$ -- 0
-while$ -- 40
-width$ -- 24
-write$ -- 242
+while$ -- 42
+width$ -- 25
+write$ -- 254

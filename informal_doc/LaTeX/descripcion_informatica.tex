@@ -1,15 +1,15 @@
 \chapter{Description}
 
-Below a detailed list of procedure will be described.
 
-Preparation of development:
- a) Build development environment: 
-Java Development Kit (JDK) version 1.6 is downloaded from: 
+Below a detailed list of procedures to build \emph{EduXes} application, will be described.
+\section{Preparation of development}
+Firstly Java Development Kit (JDK) version 1.6 is needed, to build application itself and the Eclipse IDE, is downloaded from \emph{Oracle}: 
 \cite{JavaSE}
-\begin{verbatim}
-http://www.oracle.com/technetwork/java/javase/downloads/index.html
-\end{verbatim}  
-As root user that file is unpacked into /usr/lib/jvm and configured to be the Java default:
+\begin{quote}
+\url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}
+\end{quote}
+
+As root user that file is unpacked into {\bf /usr/lib/jvm } and configured to be the Java default:
 %%  \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
 \begin{bclogo}[couleur=red!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
 {Update Java}   
@@ -18,41 +18,55 @@ As root user that file is unpacked into /usr/lib/jvm and configured to be the Ja
 \end{verbatim}
 \end{bclogo}
 
-\begin{verbatim}
+	\emph{Eclipse Juno (4.6)} is downloaded from its site \cite{Eclipse}: $Download \rightarrow Linux \, 64\, bits$
+\begin{quote}
+\url{http://www.eclipse.org}
+\end{quote}
+Android Development Toolkit (ADT)\cite{AndroidDevelopmentKit} is downloaded following instructions on this page:
+\begin{quote}
+\url{http://developer.android.com/sdk/installing/installing-adt.html}
+\end{quote}
 
-\end{verbatim}  
-	Eclipse Juno (4.6) is downloaded from its web-page:
-http://www.eclipse.org Download->Linux 64 bits
-Android Development Toolkit (ADT) is downloaded following instructions on this page:
-http://developer.android.com/sdk/installing/installing-adt.html 
-	A new line is included into repository software (Help ->  Install New Software -> Add):
-http://dl-ssl.google.com/android/eclipse/
+	In Eclipse a new line is included into repository software ($Help \rightarrow  Install\, New\, Software \rightarrow Add$):
+\begin{quote}
+\url{http://dl-ssl.google.com/android/eclipse/}
+\end{quote}
 	Next step is to select all the related software listed.
-	For Aptana Plugin line to add into Eclipse is: 
-http://download.aptana.com/studio3/plugin/install
+	
+	For Aptana Plugin the line to be added into Eclipse is: 
+\begin{quote}
+\url{http://download.aptana.com/studio3/plugin/install}    
+\end{quote}
+
+
 	Furthermore JQuery, JQueryMobile and Phonegap are needed, and were downloaded from their web sites:
-JQuery 1.8.1 (no newer versions):
-http://jquery.com/ 
-JQuery will be  copied into assets/www/js folder.
-JQueryMobile version 1.1.1 from
-http://jquerymobile.com/ 
-JQueryMobile is a zip file which will be uncompressed and copied into 
-assets/www/js folder.
-	PhoneGap - Cordova 1.8.1 is downloaded from this URL:
-https://github.com/phonegap/phonegap/zipball/1.8.1 
-	To create a PhoneGap application this very important instructions (Getting Started with Android)  should be followed step by step:
+	\begin{itemize}
+	    \item {JQuery 1.8.1} (no newer versions), from \url{http://jquery.com/} :
+	    \subitem JQuery will be  copied into {\bf assets/www/js} folder.
+	    \item {JQueryMobile 1.1.1} from \url{ http://jquerymobile.com/}: 
+        \subitem JQueryMobile is a zip file which will be uncompressed and copied into  {\bf assets/www/js} folder.
+        \item{PhoneGap - Cordova 1.8.1} is downloaded from \url{https://github.com/phonegap/phonegap/zipball/1.8.1}
+        and installed following reference \cite{PhoneGapGS} 
+
+	\end{itemize}
+
+	To create a PhoneGap application there are very important instructions (Getting Started with Android)  should be followed step by step:
 \cite{AndroidGettingStarted}
+\section{Application Skeleton}
+  Next step is to choose application name and folders policy. Name \emph{EduXes} stands for "Educaci\'n" and "Xesti\'on", is a educational management software.
+About folders policy, a folder is created ({\bf assets/www/js}) which contains javascript ({\bf *.js}) files except \emph{JQuery} and \emph{JQueryMobile} which is included into another
+ folder ({ \bf assets/www/js/jquery} ), do not forget style sheets files ({\bf *.css } )
+ 
+To finish building application skeleton a simple application is created which contains only a blank page.
+ 
+Getting started with Android \cite{AndroidGettingStarted} is followed step by step.
 
- b) Choose application name and folder's policy:
-EduXes stands for "Educaci\'n" and "Xesti\'on", is a educational management software.
-A folder is created (assets/www/js) which contains javascript (*.js) files except JQuery and JqueryMobile which is included into another
- folder (assets/www/js/jquery), do not forget style sheet files (*.css)
- c) Make a simple application: only a blank page.
-Getting started with Android is followed step by step.
- d) Upload simple application into a git repository. 
-A Github account is created and a new application is initialized.  This are the source code project page:\cite{EduXes}
-Source code are upload to GitHub: 
+\section{Upload into Git repository}
 
+ Following stage is to upload that simple application into a git repository. 
+An account is created in Github\cite{GitHub}, which is the largest code host in the world,  and a new application is initialized.  This are the source code project page \url{https://github.com/joseantoniosa/EduXes}.
+
+Then source code are upload to Github: 
 
   \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
 {Git init shell}   
@@ -64,16 +78,29 @@ $ git push origin master
 \end{verbatim}
 \end{bclogo}
 
+Each time an update in code is done,  code is uploaded :
+
+  \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
+{Git update}   
+\begin{verbatim}
+$ git add -A *
+$ git commit -m 'CHANGES_DESCRIPTION'
+$ git push origin master
+\end{verbatim}
+\end{bclogo}
 
 
+\section{Development}
+ Before begining with development itself is compulsory to explain some concepts already shown above in Methodology (\ref{Methodology}), but with more detail:
+JQueryMobile \cite{JQueryMobile} and by extension,  PhoneGap \cite{PhoneGap}  applications, are structured in pages:
+ \begin{quote}
+  <div data-role="page">
+ \end{quote}
 
-Every time an update is going to be uploaded:
-% \begin{verbatim}
-% $ git add -A *
-% $ git commit -m 'CHANGES_DESCRIPTION'
-% $ git push origin master
-% 
-%  e)  JQueryMobile1 applications are structured in pages (<div data-role=\u201dpage\u201d>), which are very similar to desktop applications windows, therefore, from Javascript code, to change to a new page    $.mobile.changePage("#daily_work")  opens daily_work p page.  
+   which are very similar to desktop applications windows. Therefore, from Javascript code, to change to a new page 
+  
+     \$.mobile.changePage("\#daily\_work")  opens daily\_work page.  
+     
 % Application Work-flow 
 % Next illustration try to be self-explicative.  Beginning at onDeviceReady()  from interface.fs file.  Inside each page several actions are performed: e.g., open and populate database, load list of groups (loadSchedule()),  and user choose next step according options shown. 
 % 
@@ -82,23 +109,70 @@ Every time an update is going to be uploaded:
 % 
 % 
 % Development:
-% There are two JavaScript files:
-% - interface.js: It contains information and decisions related to interface and application workflow, completely independent from database.
-% - database.js: It contains database related code: SELECT, INSERT, etc. 
-% There is only one HTML file:
-% index.html only contains HTML framework, page properties, and static content.  
-% There are three important files which contain documentation:
-% - TODO.txt. List of goals to be achieved and milestone reached.
-% - DATABASE.sql  Data-base structure in SQL format.
-% - REAME.txt. Only contains general information about this application.
-% Next step in development is populate database.
-%  f) Populate database with sample data. To test application, sample data are needed. 
-%  g) Groups: These pages are not active.
-% Make a list of groups window (aka page).
-% Make a group management window.
-%  h) Students: These pages are not active.
-% Make list of students window.
-% Students management window (insert-update-delete students)
+As shown before (\ref{Methodology}) \emph{EduXes} contains several files:
+\begin{itemize}
+\item Four files contain application code itself:
+\subitem  {\bf interface.js} : It contains information and decisions related to interface and application workflow, completely independent from database. It is located in {\bf assets/www/js} folder.
+\subitem { \bf database.js} : It contains database related code: SELECT, INSERT, etc. It is located in {\bf assets/www/js} folder.
+\subitem {\bf index.html}, {\bf remove.html} only contain HTML framework, page properties, and static content.  They are located in {\bf assets/www/} folder.
+\item There are three important files which contain documentation:
+\subitem {\bf TODO.txt}. List of goals to be achieved and milestone reached. It is located in root application folder.
+\subitem {\bf DATABASE.sql}.  Data-base structure in SQL format. This file are shown below. It is located in root application folder.
+\subitem {\bf REAME.txt}. Only contains general information about this application.It is located in root application folder.
+\end{itemize}
+
+Also, \emph{Eclipse} generates several files, the most important is the application file, which is an {\bf apk } package: {\bf bin/EduXes.apk}.
+
+Next step is to build database, this will be described below \ref{DataBase}. 
+Following database, sample data is needed to begin application development . 
+\subsection{Groups}
+
+The first window to be developed is \emph{List of Groups}: as shown above \ref{Methodology}, firstly a \emph{page} is created inside {\bf index.html}. This page has a three important elements:
+\begin{itemize}
+    \item  \emph{header}. It could contain a backward button, which return application flow to previous visited page. This is disabled,
+because it could cause problems when previous page is an edit page, and another solution is preferred.    
+    \item \emph{content}. Data itself, it has an important \emph{id} to be filled with content by javascript code.
+    \item \emph{footer}. Usually page name.
+\end{itemize}
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+%% \begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
+{List Groups page. index.html}
+\begin{verbatim}
+<div data-role="page" id="list_groups" data-add-back-btn="true">
+    <div data-role="header"  data-add-back-btn="false"  >
+        <a href="#list_settings"  data-icon="arrow-l"
+             data-theme="a" data-role="button">Back</a>
+        <h1>Groups List</h1>
+    </div>                
+    
+    <div data-role="content">
+    <ul id="groups_ul" data-role="listview" data-inset="true"  
+        data-split-icon="gear" data-split-theme="a" >
+    </ul>
+     <hr />
+     <a  style="text-align: center" onClick="onAddNewGroup();" 
+        data-role="button" data-icon="add">Add New Group</a>
+    </div>
+    <div data-role="footer"  data-rel="back" data-theme="a">
+     <p style="text-align: center">List of Groups</p>
+    </div>
+</div>
+\end{verbatim}
+\end{bclogo}
+
+Second window to be developed is edit group information.
+
+
+
+\subsection{Students}    
+
+\subsection{Attendance}  
+Main page.
+Repor Attendance.
+\subsection{Activities}    
+\subsection{Assessment}    
+  
+
 %  i) Timetable for actual date: list of groups for selected day.
 % Below queryScheduleSuccess() and querySchedulePerDayDB() functions are written, these functions fills daily_schedule page as shown in Illustration 6: Application Skeleton.
 % 
@@ -239,14 +313,7 @@ Every time an update is going to be uploaded:
 
 
 
-
-
-
-
-
-
-
-\section{Database structure}
+\section{Database structure \label{DataBase}}
 \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
 {EduXes Database structure}   
 \begin{verbatim}
@@ -305,7 +372,7 @@ CREATE TABLE IF NOT EXISTS activities_group
 \dots
 \section {herramientas conceptuales necesarias}
  \dots
-\section {Tools}
+
 %% NOISE
 NOISE vvvv
 

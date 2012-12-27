@@ -28,7 +28,6 @@ PENDIENTE: (debe ocupar poco)
 
   PRESENTACIÓN:
         - Rehacer presentación, rehacer memoria
-            - Crear presentación con Latex Beamer, usando la plantilla del Máster
         - Ver lo pendiente al final del presente fichero.
 
 
@@ -37,7 +36,9 @@ TASKS DONE:
 
 <!-- TODO: Update and New Activity
     SERIOUS: PTE:* No graba bien las "marks" notas de una nueva actividad: Error al poner la primer nota.
-
+27/12/2012:
+        * Corregido error en el listado de grupos: en la navegación ahora va a la página de los menús, no a la anterior.
+        * Eliminado código duplicado: requestNewGroup()
 26/12/2012:
         * Eliminados comentarios de código.
 

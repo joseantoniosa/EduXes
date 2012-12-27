@@ -131,11 +131,6 @@ function listStudentsAttendance(id_group, id_session)
 //-----------------------------------------------------------------------------
 //      Groups:
 //-----------------------------------------------------------------------------
-function requestNewGroup() {
-    $.mobile.showPageLoadingMsg();
-    $('#in_nombre_grupo').disabled="false";
-    $.mobile.changePage("#edit_groups");
-}
 // inside edit
 function onAddNewGroup(){
     $.mobile.showPageLoadingMsg();
@@ -169,7 +164,7 @@ function onSaveNewGroup() {
     name = $("#in_new_nombre_grupo").val();
     other_data = $("#in_new_nivel_grupo").val();
     insertNewGroup(global_db, name, other_data);
-    onlistAllGroups();
+    onListAllGroups();
 }
 // List All Groups
 function onListAllGroups(){

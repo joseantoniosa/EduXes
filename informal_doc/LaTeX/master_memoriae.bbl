@@ -39,6 +39,12 @@ Eclipse Foundation.
 \newblock Eclipse interface development environment.
 \newblock \url{ http://www.eclipse.org/ }, 2001.
 
+\bibitem[Git08]{GitHub}
+GitHub.
+\newblock Powerful collaboration, review, and code management for open source
+  and private development projects.
+\newblock \url{https://github.com/}, 2008.
+
 \bibitem[iagdc12]{Android:TeacherAide}
 inpocketsolution at gmail~dot com.
 \newblock Teacher aide.

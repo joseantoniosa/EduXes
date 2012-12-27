@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  27 DEC 2012 06:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  27 DEC 2012 22:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -848,7 +848,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<creative-commons.png, id=195, 88.33pt x 31.11626pt>
+<creative-commons.png, id=228, 88.33pt x 31.11626pt>
 File: creative-commons.png Graphic file (type png)
 
 <use creative-commons.png>
@@ -1014,10 +1014,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
 
-LaTeX Warning: Reference `function1' on page 8 undefined on input line 200.
+LaTeX Warning: Reference `function1' on page 8 undefined on input line 197.
 
 
-Overfull \hbox (7.05695pt too wide) in paragraph at lines 233--233
+Overfull \hbox (7.05695pt too wide) in paragraph at lines 230--230
 []              \T1/cmtt/m/n/12 html +=' <option value="'+a_id+'">'+a_name+'</o
 ption> ';[] 
  []
@@ -1043,7 +1043,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [9]
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 319--319
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 316--316
 []            \T1/cmtt/m/n/12 <a href="#daily_work"  data-icon="arrow-l" data-t
 heme="a"[] 
  []
@@ -1079,7 +1079,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [12]
-Overfull \vbox (29.58502pt too high) has occurred while \output is active []
+Overfull \vbox (15.08505pt too high) has occurred while \output is active []
 
 
 
@@ -1089,7 +1089,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [13]
-Overfull \hbox (5.61757pt too wide) in paragraph at lines 478--545
+Overfull \hbox (5.61757pt too wide) in paragraph at lines 474--541
 [][] 
  []
 
@@ -1135,14 +1135,14 @@ Package epstopdf Info: Source file: <eduxes_diagram.eps>
 (epstopdf)                    size: 84034 bytes
 (epstopdf)             Command: <repstopdf --outfile=eduxes_diagram-eps-convert
 ed-to.pdf eduxes_diagram.eps>
-(epstopdf)             \includegraphics on input line 642.
+(epstopdf)             \includegraphics on input line 638.
 Package epstopdf Info: Output file is already uptodate.
- <eduxes_diagram-eps-converted-to.pdf, id=433, 1255.69125pt x 1116.17pt>
+ <eduxes_diagram-eps-converted-to.pdf, id=473, 1255.69125pt x 1116.17pt>
 File: eduxes_diagram-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eduxes_diagram-eps-converted-to.pdf>
 Package pdftex.def Info: eduxes_diagram-eps-converted-to.pdf used on input line
- 642.
+ 638.
 (pdftex.def)             Requested size: 376.71028pt x 334.85358pt.
 )
 
@@ -1173,7 +1173,7 @@ Package epstopdf Info: Source file: <siestta1.eps>
 pdf siestta1.eps>
 (epstopdf)             \includegraphics on input line 13.
 Package epstopdf Info: Output file is already uptodate.
-<siestta1-eps-converted-to.pdf, id=449, 1048.91875pt x 266.9975pt>
+<siestta1-eps-converted-to.pdf, id=490, 1048.91875pt x 266.9975pt>
 File: siestta1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use siestta1-eps-converted-to.pdf>
@@ -1190,7 +1190,7 @@ pdf siestta2.eps>
 (epstopdf)             \includegraphics on input line 25.
 Package epstopdf Info: Output file is already uptodate.
 
-<siestta2-eps-converted-to.pdf, id=451, 1581.91pt x 963.6pt>
+<siestta2-eps-converted-to.pdf, id=492, 1581.91pt x 963.6pt>
 File: siestta2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use siestta2-eps-converted-to.pdf>
@@ -1207,7 +1207,7 @@ to.pdf siestta_sql.eps>
 (epstopdf)             \includegraphics on input line 37.
 Package epstopdf Info: Output file is already uptodate.
 
-<siestta_sql-eps-converted-to.pdf, id=453, 646.415pt x 904.37875pt>
+<siestta_sql-eps-converted-to.pdf, id=494, 646.415pt x 904.37875pt>
 File: siestta_sql-eps-converted-to.pdf Graphic file (type pdf)
 
 <use siestta_sql-eps-converted-to.pdf>
@@ -1249,7 +1249,7 @@ f sixa_1.eps>
 (epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
 
-<sixa_1-eps-converted-to.pdf, id=483, 579.16376pt x 479.7925pt>
+<sixa_1-eps-converted-to.pdf, id=523, 579.16376pt x 479.7925pt>
 File: sixa_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sixa_1-eps-converted-to.pdf>
@@ -1266,7 +1266,7 @@ f sixa_2.eps>
 (epstopdf)             \includegraphics on input line 95.
 Package epstopdf Info: Output file is already uptodate.
 
-<sixa_2-eps-converted-to.pdf, id=484, 583.17876pt x 357.335pt>
+<sixa_2-eps-converted-to.pdf, id=524, 583.17876pt x 357.335pt>
 File: sixa_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sixa_2-eps-converted-to.pdf>
@@ -1283,7 +1283,7 @@ f sixa_3.eps>
 (epstopdf)             \includegraphics on input line 103.
 Package epstopdf Info: Output file is already uptodate.
 
-<sixa_3-eps-converted-to.pdf, id=485, 583.17876pt x 301.125pt>
+<sixa_3-eps-converted-to.pdf, id=525, 583.17876pt x 301.125pt>
 File: sixa_3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sixa_3-eps-converted-to.pdf>
@@ -1304,7 +1304,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [23 <./sixa_2-eps-converted-to.pdf> <./sixa_3-eps-converted-to.pdf>]
-<grade_book01.jpg, id=507, 289.08pt x 513.92pt>
+<grade_book01.jpg, id=547, 289.08pt x 513.92pt>
 File: grade_book01.jpg Graphic file (type jpg)
  <use grade_book01.jpg>
 Package pdftex.def Info: grade_book01.jpg used on input line 130.
@@ -1321,7 +1321,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 LaTeX Warning: Reference `fig: Android Attendance' on page 25 undefined on inpu
 t line 144.
 
-<attendance01.png, id=515, 308.15125pt x 513.92pt>
+<attendance01.png, id=555, 308.15125pt x 513.92pt>
 File: attendance01.png Graphic file (type png)
  <use attendance01.png>
 Package pdftex.def Info: attendance01.png used on input line 150.
@@ -1345,7 +1345,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [25 <./attendance01.png>]
-<teacher_organizer01.jpg, id=524, 513.92pt x 308.15125pt>
+<teacher_organizer01.jpg, id=564, 513.92pt x 308.15125pt>
 File: teacher_organizer01.jpg Graphic file (type jpg)
 
 <use teacher_organizer01.jpg>
@@ -1359,7 +1359,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [26 <./teacher_organizer01.jpg>]
-<TeacherAideProLite01.jpg, id=531, 513.92pt x 289.08pt>
+<TeacherAideProLite01.jpg, id=571, 513.92pt x 289.08pt>
 File: TeacherAideProLite01.jpg Graphic file (type jpg)
 
 <use TeacherAideProLite01.jpg>
@@ -1384,23 +1384,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
  (./descripcion_informatica.tex
 Chapter 4.
+
+Overfull \hbox (10.95578pt too wide) in paragraph at lines 9--10
+[][]$\T1/cmtt/m/n/12 http : / / www . oracle . com / technetwork / java / javas
+e / downloads / index . html$[] 
+ []
+
 File: bc-aux-301.mps Graphic file (type mps)
 [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
-Overfull \hbox (20.44087pt too wide) in paragraph at lines 24--45
-\T1/cmr/m/n/12 Ap-tana Plu-gin line to add into Eclipse is: http://download.apt
-ana.com/studio3/plugin/install
- []
-
-
-Overfull \hbox (17.29959pt too wide) in paragraph at lines 24--45
-\T1/cmr/m/n/12 copied into as-sets/www/js folder. JQuery-Mo-bile ver-sion 1.1.1
- from http://jquerymobile.com/
- []
-
-
-Overfull \hbox (146.79019pt too wide) in paragraph at lines 24--45
-\T1/cmr/m/n/12 folder. Phone-Gap - Cor-dova 1.8.1 is down-loaded from this URL:
- https://github.com/phonegap/phonegap/zipball/1.8.1
+Overfull \hbox (25.03085pt too wide) in paragraph at lines 30--31
+[]\T1/cmr/m/n/12 In Eclipse a new line is in-cluded into repos-i-tory soft-ware
+ ($\OML/cmm/m/it/12 Help \OMS/cmsy/m/n/12 ! \OML/cmm/m/it/12 Install New Softwa
+re \OMS/cmsy/m/n/12 !
  []
 
 [29
@@ -1410,7 +1405,35 @@ Overfull \hbox (146.79019pt too wide) in paragraph at lines 24--45
 ]
 File: bc-aux-301.mps Graphic file (type mps)
  [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 296--296
+File: bc-aux-301.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[30]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[31]
+File: bc-fleur.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[32]
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 363--363
 []\T1/cmtt/m/n/12 CREATE TABLE IF NOT EXISTS TEACHER_SCHEDULE (id  integer prim
 ary key,[] 
  []
@@ -1426,7 +1449,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[30]
+[33]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1436,19 +1459,29 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[31])
+[34]
+Overfull \vbox (31.78294pt too high) has occurred while \output is active []
+
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[32]
+[35])
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[36]
 \openout2 = `resultados_experimentales.aux'.
 
  (./resultados_experimentales.tex
 Chapter 5.
-[33
+[37
 
 
 
@@ -1474,7 +1507,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[34]
+[38]
 Overfull \hbox (20.1148pt too wide) in paragraph at lines 84--84
 []\T1/cmtt/m/n/12 Language               Code    Comment  Comment %      Blank 
      Total  File[] 
@@ -1529,7 +1562,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[35]
+[39]
 \openout2 = `conclusiones.aux'.
 
  (./conclusiones.tex
@@ -1539,50 +1572,50 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[36
+[40
 
 
 
 ]
 Chapter 6.
-) [37]
+) [41]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[38
+[42
 
 
-] (./master_memoriae.bbl [39
+] (./master_memoriae.bbl [43
 
 ]
-Underfull \hbox (badness 7613) in paragraph at lines 80--85
+Underfull \hbox (badness 7613) in paragraph at lines 86--91
 []\T1/cmr/m/n/12 PhoneGap.  Phone-gap. an-droid get-ting started guide.  []$\T1
 /cmtt/m/n/12 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--85
+Underfull \hbox (badness 10000) in paragraph at lines 86--91
 \T1/cmtt/m/n/12 / / docs . phonegap . com / en / 1 . 8 . 1 / guide _ getting-[]
 started _ android _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--92
+Underfull \hbox (badness 10000) in paragraph at lines 93--98
 []\T1/cmr/m/n/12 PhoneGap.  Phone-gap get-ting started with an-droid.  []$\T1/c
 mtt/m/n/12 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--92
+Underfull \hbox (badness 10000) in paragraph at lines 93--98
 \T1/cmtt/m/n/12 / / docs . phonegap . com / en / 1 . 8 . 1 / guide _ getting-[]
 started _ android _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--118
+Underfull \hbox (badness 10000) in paragraph at lines 119--124
 \T1/cmtt/m/n/12 unisoftcolombia . com / unisoftcolombia / index . php ? link = 
 academico$[]\T1/cmr/m/n/12 ,
  []
@@ -1596,7 +1629,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[40]
+[44]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
  (./master_memoriae.aux (./copyright.aux) (./agradecimientos.aux)
 (./resumen.aux) (./introduccion.aux) (./working.aux) (./estado_del_arte.aux)
@@ -1605,7 +1638,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
 Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
-(rerunfilecheck)             Checksum: 4AB49675778BC4CB8F97B8BE1F870C4D;2686.
+(rerunfilecheck)             Checksum: 5B1123D771E1A155105143FADBFBD148;3220.
 
 
 LaTeX Warning: There were undefined references.
@@ -1613,13 +1646,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
  ) 
 Here is how much of TeX's memory you used:
- 18149 strings out of 494956
- 317429 string characters out of 3179077
- 428128 words of memory out of 3000000
- 20696 multiletter control sequences out of 15000+200000
+ 18180 strings out of 494956
+ 318058 string characters out of 3179077
+ 428211 words of memory out of 3000000
+ 20708 multiletter control sequences out of 15000+200000
  23111 words of font info for 64 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
- 63i,16n,71p,444b,801s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,16n,71p,444b,803s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1645,13 +1678,14 @@ ecrm0800.600pk> </home/jantonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095
 antonio/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jantonio/
 .texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msam10.pfb>
-Output written on master_memoriae.pdf (52 pages, 1425863 bytes).
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/symbols/msam10.pfb>
+Output written on master_memoriae.pdf (56 pages, 1451088 bytes).
 PDF statistics:
- 1229 PDF objects out of 1440 (max. 8388607)
- 627 compressed objects within 7 object streams
- 143 named destinations out of 1000 (max. 500000)
- 489 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1337 PDF objects out of 1440 (max. 8388607)
+ 712 compressed objects within 8 object streams
+ 158 named destinations out of 1000 (max. 500000)
+ 553 words of extra memory for PDF output out of 10000 (max. 10000000)
 
