@@ -600,7 +600,7 @@ $\llcorner$\emph{ queryReportAttendanceSuccess()}     &  \\
 \end{bclogo}  
         
 \subsection{Database}
-Database is the application most important data struct, it requires a special study. Actual database
+Database is the application most important data structure, it requires a special study. Actual database
 is inherit of Siestta application \cite{Siestta}. 
  This database was developed from \emph{groups} table,  to \emph{activities\_student} following less related 
  path ( $ groups \rightarrow students \rightarrow session \rightarrow teacher\_schedule \rightarrow attendance \dots $ ).
@@ -628,6 +628,7 @@ is inherit of Siestta application \cite{Siestta}.
      (...)
 \end{verbatim}
 \end{bclogo}        
+
 		\subsection{Interface Diagram}
 		
 		This figure \ref{fig:diagram} ilustrates application workflow. Dotted lines are instructions and continuous lines 
@@ -640,4 +641,33 @@ is inherit of Siestta application \cite{Siestta}.
 		        \label{fig:diagram}
 		    \end{center}
 		\end{figure}
+		
+\subsection{Problems and drawbacks}
+ From initial plan, there was several changes:
+  Edit <-> Edit New unification, only in students, not in groups and activities.
+    Load student Image are not clear enough
+    
+  Most difficult page: List of assessment by student:
+      loadStudentsAssessment
+      Several ideas were tried.
+    
+    
+  
+  Report attendance was difficult to implement, a new global variable 
+  was set report_date  which allow week change.
+  Initially an ad-hoc function was developed to face date format problems,
+  but an external javascript library moment.js was found, and it is 
+  used to calculate week days.
+
+ Current date was set by hand (or with a native widget), this was a problem
+ because user has to deal with month/ day / year  format, from LibrePlan widget
+  Mobiscroll external library is used.
+  
+      
+      
+      
+      
+  
+
+
 		

@@ -1,7 +1,7 @@
 \chapter{Description}
 
 
-Below a detailed list of procedures to build \emph{EduXes} application, will be described.
+Below a detailed list of procedures to build and development itself \emph{EduXes} application, will be described.
 \section{Preparation of development}
 Firstly Java Development Kit (JDK) version 1.6 is needed, to build application itself and the Eclipse IDE, is downloaded from \emph{Oracle}: 
 \cite{JavaSE}
@@ -127,7 +127,7 @@ Next step is to build database, this will be described below \ref{DataBase}.
 Following database, sample data is needed to begin application development . 
 \subsection{Groups}
 
-The first window to be developed is \emph{List of Groups}: as shown above \ref{Methodology}, firstly a \emph{page} is created inside {\bf index.html}. This page has a three important elements:
+The first window to be developed is \emph{List of Groups}: as shown above \ref{Methodology}, firstly a \emph{page} is created inside {\bf index.html}. This page, as every page,  has three important elements:
 \begin{itemize}
     \item  \emph{header}. It could contain a backward button, which return application flow to previous visited page. This is disabled,
 because it could cause problems when previous page is an edit page, and another solution is preferred.    
@@ -159,8 +159,83 @@ because it could cause problems when previous page is an edit page, and another 
 </div>
 \end{verbatim}
 \end{bclogo}
+To fill this list of elements \emph{<ul id=groups\_ul (...)>} a function \emph{onListAllGroups()} is called. Firstly a
+\texttt{loading ...} logo appears, then a function from {\bf database.js} is called (\emph{loadAllGroups() }).
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{List Group page. interface.js}
+\begin{verbatim}
+function onListAllGroups(){
+    $.mobile.showPageLoadingMsg();
+    table_global='GROUPS';
+    loadAllGroups(global_db); // #groups_ul
+    $.mobile.changePage("#list_groups", { transition: "slideup"} );
+}
+\end{verbatim}
+\end{bclogo}
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{List Group page. database.js}
+\begin{verbatim}
+function queryAllGroupsDB(tx) {
+    log("Query All Groups \n");
+    var ul_list =$('#groups_ul');
+    tx.executeSql('SELECT * FROM GROUPS', [],
+        dbSuccessFunc = function(tx, rs) {
+        ul_list.empty();
+        var html ="";
+        for (var i = 0; i < rs.rows.length; i++) {
+          id = rs.rows.item(i).id ;
+          html = "<li>";
+          html += "<a onClick='global_id=" + id + 
+              "; global_id_group="+id
+              +"; table_global=\"groups\"; ";
+          html += " listStudentsByGroup(" + id + " );'  ";
+          html += " href='#' >";
+          html += rs.rows.item(i).data;
+          html += "</a>";
+          html += " <a data-role='button' data-position-to='window'";
+          html += " data-iconpos='notext' ";
+          html += " style='float:right;' href='#' ";
+          html += " data-rel='dialog' data-theme='a' ";
+          html += " data-transition='slideup' ";
+          html += " onClick=\"EditGroup(" + id + "); ";
+          html += " global_id_group="+id
+              +"; global_id=" + id + "; \">Edit</a>";
+          html +="</li>";
+          ul_list.append(html);
+        }
+        ul_list.listview('refresh'); },
+        dbErrorFunc = function(ttx, e) {
+            if (ttx.message)
+                e = ttx;
+            log(" There has been an error Select * from groups : " 
+            + e.message);
+        return false;
+    });
+}
+\end{verbatim}
+\end{bclogo}
+
 
 Second window to be developed is edit group information.
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Edit Group page. index.html}
+\begin{verbatim}
+<div data-role="page" id="edit_groups" data-add-back-btn="true">
+    <div data-role="header"  data-add-back-btn="true" >
+        <h1>Group Edition</h1>
+    </div>
+    <div data-role="content">
+        <label for="nombre_grupo">Name</label>
+        <input id="in_nombre_grupo" enabled="true" />
+        <label for="nivel_grupo">Level</label>
+        <input id="in_nivel_grupo" enabled="true" />
+        <a onClick="onUpdateGroup();" data-role="button" 
+            data-icon="check">Save</a>
+	</div>
+</div>
+\end{verbatim}
+\end{bclogo}
 
 
 

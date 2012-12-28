@@ -29,22 +29,22 @@
 \contentsline {section}{\numberline {4.3}Upload into Git repository}{30}{section.4.3}
 \contentsline {section}{\numberline {4.4}Development}{31}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Groups}{32}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Students}{33}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Attendance}{33}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Activities}{35}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Assessment}{35}{subsection.4.4.5}
-\contentsline {section}{\numberline {4.5}Database structure }{35}{section.4.5}
-\contentsline {section}{\numberline {4.6}Los algoritmos para el desarrollo de la soluci\'on}{36}{section.4.6}
-\contentsline {section}{\numberline {4.7}qu\'e quieres resolver}{36}{section.4.7}
-\contentsline {section}{\numberline {4.8}c\'omo lo vas a hacer}{36}{section.4.8}
-\contentsline {section}{\numberline {4.9}herramientas conceptuales necesarias}{36}{section.4.9}
-\contentsline {chapter}{\numberline {5}Results}{37}{chapter.5}
-\contentsline {section}{\numberline {5.1}Objectives completed}{37}{section.5.1}
-\contentsline {section}{\numberline {5.2}Technical details}{37}{section.5.2}
-\contentsline {section}{\numberline {5.3}Further objectives}{37}{section.5.3}
-\contentsline {section}{\numberline {5.4}Resultados en forma de tablas, gr\'aficas e im\'agenes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\'on}{38}{section.5.4}
-\contentsline {section}{\numberline {5.5}An\'alisis cr\IeC {\'\i }tico de los resultados con el objetivo de decidir si el sistema implementado es v\'alido}{38}{section.5.5}
-\contentsline {chapter}{\numberline {6}Conclusiones y trabajos futuros (5\%)}{41}{chapter.6}
-\contentsline {section}{\numberline {6.1}Implementaci\'on}{41}{section.6.1}
-\contentsline {section}{\numberline {6.2}Resultados}{41}{section.6.2}
-\contentsline {chapter}{Bibliography}{44}{chapter*.6}
+\contentsline {subsection}{\numberline {4.4.2}Students}{35}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Attendance}{35}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Activities}{37}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Assessment}{37}{subsection.4.4.5}
+\contentsline {section}{\numberline {4.5}Database structure }{37}{section.4.5}
+\contentsline {section}{\numberline {4.6}Los algoritmos para el desarrollo de la soluci\'on}{38}{section.4.6}
+\contentsline {section}{\numberline {4.7}qu\'e quieres resolver}{38}{section.4.7}
+\contentsline {section}{\numberline {4.8}c\'omo lo vas a hacer}{38}{section.4.8}
+\contentsline {section}{\numberline {4.9}herramientas conceptuales necesarias}{38}{section.4.9}
+\contentsline {chapter}{\numberline {5}Results}{39}{chapter.5}
+\contentsline {section}{\numberline {5.1}Objectives completed}{39}{section.5.1}
+\contentsline {section}{\numberline {5.2}Technical details}{39}{section.5.2}
+\contentsline {section}{\numberline {5.3}Further objectives}{39}{section.5.3}
+\contentsline {section}{\numberline {5.4}Resultados en forma de tablas, gr\'aficas e im\'agenes donde se describa cuantitativa y cualitativamente el funcionamiento de la aplicaci\'on}{40}{section.5.4}
+\contentsline {section}{\numberline {5.5}An\'alisis cr\IeC {\'\i }tico de los resultados con el objetivo de decidir si el sistema implementado es v\'alido}{40}{section.5.5}
+\contentsline {chapter}{\numberline {6}Conclusiones y trabajos futuros (5\%)}{43}{chapter.6}
+\contentsline {section}{\numberline {6.1}Implementaci\'on}{43}{section.6.1}
+\contentsline {section}{\numberline {6.2}Resultados}{43}{section.6.2}
+\contentsline {chapter}{Bibliography}{46}{chapter*.6}
