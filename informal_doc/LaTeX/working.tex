@@ -649,19 +649,48 @@ is inherit of Siestta application \cite{Siestta}.
     
   Most difficult page: List of assessment by student:
       loadStudentsAssessment
-      Several ideas were tried.
-    
-    
+      Up to four different ideas were tried. At last an ad-hoc object
+      was created, Peers, 
+
+ 
+ Pointedly a comment in code is set with a XXX tag. The most difficult problem
+ was to deal with several students three different activities, then I realized a need
+ a matrix. But there are not matrices in javascript.
+ I asked for a hint in IRC (freenode.net) in \#javascript channel, they pointed out
+ an object: Peers. Peers object is an object which contains activity id, mark and its weight.
+ 
+ 
+\begin{shadowblock}{13cm}
+\begin{verbatim}
+// XXX: Warning with 1 begining indexes  Adjust
+// Assessment - List Students
+// http://www.w3schools.com/js/js_objects.asp
+//      activity-1  activity-3  activity-5
+// A                    8           7
+// B         7          5
+// C         3
+// Max actividades => 3
+// Max students => 3 !
+// act_id_1. act_id_3, act_id_5   
+\end{verbatim} 
+\end{shadowblock}
   
-  Report attendance was difficult to implement, a new global variable 
-  was set report_date  which allow week change.
+Report attendance was difficult to implement, a new global variable 
+  was set report\_date  which allow week change.
   Initially an ad-hoc function was developed to face date format problems,
   but an external javascript library moment.js was found, and it is 
   used to calculate week days.
 
- Current date was set by hand (or with a native widget), this was a problem
- because user has to deal with month/ day / year  format, from LibrePlan widget
-  Mobiscroll external library is used.
+Another problem was a design decision: Assessment page
+it is tightly related with Attendance. Assessment contains two main elements:
+list of activities (by default it was set to 0), and list of students with
+a bar
+
+
+ Initially current date was set by hand (or with a native widget which depends on Android version),
+  this was a problem  because user has to deal with month/day/year format. 
+My mentor, Manuel Rego, told me about a widget LibrePlan app \cite{LireplanApp} was using: 
+  Mobiscroll\cite{Mobiscroll}.
   
       
       
