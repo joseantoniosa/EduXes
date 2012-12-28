@@ -1,7 +1,9 @@
 \chapter{Description}
+ 
+ A detailed list of procedures to build and prepare environment to develop \emph{EduXes} application, will be described.
+ Also a description of how development was carried out, step by step are show.
+ 
 
-
-Below a detailed list of procedures to build and development itself \emph{EduXes} application, will be described.
 \section{Preparation of development}
 Firstly Java Development Kit (JDK) version 1.6 is needed, to build application itself and the Eclipse IDE, is downloaded from \emph{Oracle}: 
 \cite{JavaSE}
@@ -9,7 +11,7 @@ Firstly Java Development Kit (JDK) version 1.6 is needed, to build application i
 \url{http://www.oracle.com/technetwork/java/javase/downloads/index.html}
 \end{quote}
 
-As root user that file is unpacked into {\bf /usr/lib/jvm } and configured to be the Java default:
+As root user downloaded file is unpacked into {\bf /usr/lib/jvm } and configured to be the Java default:
 %%  \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
 \begin{bclogo}[couleur=red!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
 {Update Java}   
@@ -37,7 +39,6 @@ Android Development Toolkit (ADT)\cite{AndroidDevelopmentKit} is downloaded foll
 \begin{quote}
 \url{http://download.aptana.com/studio3/plugin/install}    
 \end{quote}
-
 
 	Furthermore JQuery, JQueryMobile and Phonegap are needed, and were downloaded from their web sites:
 	\begin{itemize}
@@ -98,8 +99,10 @@ JQueryMobile \cite{JQueryMobile} and by extension,  PhoneGap \cite{PhoneGap}  ap
  \end{quote}
 
    which are very similar to desktop applications windows. Therefore, from Javascript code, to change to a new page 
-  
-     \$.mobile.changePage("\#daily\_work")  opens daily\_work page.  
+\begin{quote}
+ \$.mobile.changePage("\#daily\_work");
+\end{quote}
+       opens \textit{"daily\_work"} page.  
      
 % Application Work-flow 
 % Next illustration try to be self-explicative.  Beginning at onDeviceReady()  from interface.fs file.  Inside each page several actions are performed: e.g., open and populate database, load list of groups (loadSchedule()),  and user choose next step according options shown. 
@@ -111,7 +114,7 @@ JQueryMobile \cite{JQueryMobile} and by extension,  PhoneGap \cite{PhoneGap}  ap
 % Development:
 As shown before (\ref{Methodology}) \emph{EduXes} contains several files:
 \begin{itemize}
-\item Four files contain application code itself:
+\item Four files contain application code:
 \subitem  {\bf interface.js} : It contains information and decisions related to interface and application workflow, completely independent from database. It is located in {\bf assets/www/js} folder.
 \subitem { \bf database.js} : It contains database related code: SELECT, INSERT, etc. It is located in {\bf assets/www/js} folder.
 \subitem {\bf index.html}, {\bf remove.html} only contain HTML framework, page properties, and static content.  They are located in {\bf assets/www/} folder.
@@ -124,7 +127,7 @@ As shown before (\ref{Methodology}) \emph{EduXes} contains several files:
 Also, \emph{Eclipse} generates several files, the most important is the application file, which is an {\bf apk } package: {\bf bin/EduXes.apk}.
 
 Next step is to build database, this will be described below \ref{DataBase}. 
-Following database, sample data is needed to begin application development . 
+Following database, sample data is needed to begin application development. 
 \subsection{Groups}
 
 The first window to be developed is \emph{List of Groups}: as shown above \ref{Methodology}, firstly a \emph{page} is created inside {\bf index.html}. This page, as every page,  has three important elements:
@@ -134,6 +137,17 @@ because it could cause problems when previous page is an edit page, and another 
     \item \emph{content}. Data itself, it has an important \emph{id} to be filled with content by javascript code.
     \item \emph{footer}. Usually page name.
 \end{itemize}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{eduxes_groups_list.eps}
+        \caption{Groups}
+        \label{fig:EduXesGroups}
+    \end{center}
+\end{figure}
+
+
+
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 %% \begin{bclogo}[couleur=blue!30,arrondi=0.1, logo=\bcpanchant, barre=zigzag,  ombre=true ] 
 {List Groups page. index.html}
@@ -172,6 +186,12 @@ function onListAllGroups(){
 }
 \end{verbatim}
 \end{bclogo}
+
+Function (\emph{loadAllGroups() }) calls (\emph{queryAllGroupsDB()}) from \texttt{database.js}. 
+This function fills \textit{\$('\#groups\_ul')}  combo box with group data: \textit{name}. Moreover user
+can access  a list of students of that group (\textit{listStudentsByGroup()}) or change
+group information (\textit{EditGroup()}).
+
 
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {List Group page. database.js}
@@ -217,9 +237,11 @@ function queryAllGroupsDB(tx) {
 \end{bclogo}
 
 
-Second window to be developed is edit group information.
+Second window to be developed is edit group information. The contents of \textit{Edit Group} page from \textbf{index.html} is
+filled by loadGroup() function \textbf{database.js} as shown below \ref{edit_group_database}.
+
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
-{Edit Group page. index.html}
+{Edit Group page. index.html }
 \begin{verbatim}
 <div data-role="page" id="edit_groups" data-add-back-btn="true">
     <div data-role="header"  data-add-back-btn="true" >
@@ -239,70 +261,490 @@ Second window to be developed is edit group information.
 
 
 
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Edit Group page. interface.js}
+\begin{verbatim}
+function EditGroup(id_group){
+    $.mobile.showPageLoadingMsg();
+    global_id = id_group;      //local variable goes global
+    table_global = 'GROUPS';
+    loadGroup(global_db,id_group);
+    $.mobile.changePage("#edit_groups", { transition: "slideup"});
+}
+\end{verbatim}
+\end{bclogo}
+
+Inside \textit{loadGroup} function a sql query is built \texttt{(SELECT ... FROM ...)}, then
+it is executed and returned values are loaded in result set variable (\textit{rs}). 
+With this data html form  is populated (\textit{\$('\#in\_nombre\_grupo')}). 
+Whether an error is triggered then \textit{dbErrorFunc} is called an a message appears on user interface.
+
+These procedure will be very similar to all \textit{"load"} functions (students, activities).
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Load Group page. database.js  \label{edit_group_database}}
+\begin{verbatim}
+function loadGroup(db, id_group){
+    db.transaction(function (tx) {
+        log("Query Group \n");
+        var sql = 'SELECT id, data, other_data ':
+        sql += ' FROM GROUPS WHERE id ='+id_group;
+        tx.executeSql(sql, [],
+            dbSuccessFunc = function(ttx,rs){
+                $('#in_nombre_grupo').val(rs.rows.item(0).data);
+                $('#in_nivel_grupo').val(rs.rows.item(0).other_data);
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                    log(" There has been an error queryGroupDB: " 
+                        + e.message);
+                    alert(" There has been an error queryGroupDB: " 
+                        + e.message);
+                    return false;
+            });
+    });
+}
+\end{verbatim}
+\end{bclogo}
+
+
 \subsection{Students}    
 
-\subsection{Attendance}  
-Main page.
-Repor Attendance.
-\subsection{Activities}    
-\subsection{Assessment}    
-  
+Students pages are very similar to groups but, of course, they contain different fields (a complete list of fields is shown in database
+definition \ref{DataBase}). Only list of students by group page and \textit{LoadStudentsByGroup} code are shown. 
+They are very similar to their \textit{groups} counterpart. The main concern is about escape characters and colons,
+code is straightforward to read. Several lines were removed towards readability (...). 
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{eduxes_list_students.eps}
+        \caption{Students}
+        \label{fig:EduXesStudents}
+    \end{center}
+\end{figure}
+
+
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{List Students page. index.html \label{list_students_page}}
+\begin{verbatim}
+<div data-role="page" id="list_students_by_group" 
+    data-add-back-btn="true">
+    <div data-role="header"  data-back-btn-text="previous" 
+        data-add-back-btn="true" >
+        <h1 id="id_list_students_by_group"> Students List</h1>
+    </div>
+    <div data-role="content">
+        <ul id="list_students_by_group_ul" data-role="listview" 
+        data-theme="a" data-split-theme="a" data-split-icon="gear" 
+        data-filter="true" data-inset="true"  >
+        </ul>
+    </div>
+    <hr />
+    <a onClick="onAddNewStudent();" data-role="button" 
+    data-icon="add"  data-theme="a" >Add Student</a>
+    <div data-role="footer" class="footer-docs" data-rel="back" 
+    data-theme="a">
+        <p style="text-align: center">
+            List of Students
+        </p>
+    </div>
+</div>
+\end{verbatim}
+\end{bclogo}
+
+
+\newpage
+
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Load Student snippet. database.js  \label{load_student_database}}
+\begin{verbatim}
+function loadStudentsByGroup(db,id_group) {
+ db.transaction(
+  function (tx) {
+   var sql = 'SELECT STUDENTS.id as id, ';
+   sql += ' STUDENTS.id_group as id_group,';
+   sql += ' STUDENTS.name as name, ';
+   (...)
+   sql += ' FROM STUDENTS, GROUPS WHERE ';
+   sql += ' STUDENTS.id_group = g_id AND id_group=';
+   sql += ' + id_group;
+   tx.executeSql(sql, [],
+    dbSuccessFunc = function(tx, results) {
+     var len = results.rows.length;
+     var ul_list = $('#list_students_by_group_ul');
+     $('#id_list_students_by_group').text(
+        results.rows.item(0).data );
+     var html;
+     ul_list.empty();
+     var id = 0;
+     for (var i = 0; i < len; i++) {
+        id = results.rows.item(i).id;
+        html="<li >";
+        html+="<a onClick='global_id="+id;
+        html+=";table_global=\"students\";'"; 
+        html+=" href='#' data-rel='dialog' ";
+        html+=" data-transition='slideup'>";
+(...)
+        html+=results.rows.item(i).surname + "," ;
+        html+=results.rows.item(i).name+"</a>";
+        html+="<a data-role='button' "; 
+        html+=" data-position-to='window' ";
+        html+=" data-iconpos='notext' "; 
+        html+=" style='float:right;' href='#' ";
+        html+=" data-rel='dialog' ";
+        html+=" data-transition='slideup'  ";
+        html+=" onClick=\"EditStudent(" ;
+        html+=id + ");\">Edit</a> </li>";
+        ul_list.append(html);
+    }
+    ul_list.listview('refresh'); },
+    dbErrorFunc = function(tx, e) {
+     if (tx.message) e = tx;
+     log(sql);
+     log(" Error loadStudentsByGroup: "+e.message);
+     alert("Error loadStudentsByGroup: " + e.message);
+     return false;
+    });
+    }
+   );
+}
+\end{verbatim}
+\end{bclogo}
+
+\subsection{Main Page}
+
+Main page was not the very first page to be built, because it is related with attendance, sessions, groups and students, and also reports.
+Its design it has to follow several basic principles: simple but with no more than four clicks (even less)away to 
+ access to every application window-page. The most important item is current data, and the \textit{">" } symbol on the right to access \textit{Attendance} page.
+ 
+ There are a table with three columns (\textit{class="ui-grid-b"}), which contains a label, the current date, and an info button.
+ An a list of navigation buttons to list data (\texttt{report}) or manage students, groups and activities (\texttt{settings})
+ 
+Of course there are a lot of elements that could be changed to improve user experience in this page.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{eduxes_main_page1.eps}
+        \caption{Main Page}
+        \label{fig:EduXesMainPage}
+    \end{center}
+\end{figure}
+
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Main Page. index.html \label{main_page}}
+\begin{verbatim}
+<!-- Main Window    //-->
+<div data-role="page" id="daily_work">
+    <div data-role="header" data-add-back-btn="true" data-theme="a">
+        <h1>Day</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <div class="ui-grid-b">
+        <div class="ui-block-a">
+            <div data-role="fieldcontain">
+                <label for="date"  >Date:</label>
+            </div>
+        </div>
+        <div class="ui-block-b">
+            <input id="daily_date_scroller" 
+            name="daily_date_scroller" />
+        </div>
+        <div class="ui-block-c">
+            <a href="#" data-role='button' 
+            data-icon='info' data-iconpos='notext' 
+            style='float:right;' onClick="help('date');">Help</a>
+            <a href="#" data-role="button" 
+            data-icon="arrow-r" data-iconpos="notext"  
+            onClick="open_daily_page() " >Go</a>
+        </div>
+    </div>
+    </div>
+    <div data-role="navbar">
+        <ul>
+            <li>
+                <a href="#" onClick="onGeneralFile()  "  
+                data-role="button" data-icon="star"  
+                data-theme="a" > File</a>
+            </li>
+            <li>
+                <a href="#" onClick="onGeneralListReports();"  
+                data-role="button" data-icon="grid"  
+                data-theme="a" >Reports</a>
+            </li>
+            <li>
+                <a href="#" onClick="onGeneralListSettings();" 
+                data-role="button" data-icon="gear"   
+                data-theme="a" >Settings</a>
+            </li>
+        </ul>
+    </div><!-- /navbar -->
+    <div data-role="footer" class="footer-docs" data-theme="a">
+        <p   style="text-align:center;"  id="teachers_name"></p>
+    </div>
+</div>
+\end{verbatim}
+\end{bclogo}
+
+
+\subsection{Attendance}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{eduxes_schedule1.eps}
+        \caption{Schedule}
+        \label{fig:EduXesSchedule}
+    \end{center}
+\end{figure}
+
+
+
+
+\texttt{Attendance} per group is one of most important pages, and it list attendance, behaviour of 
+students of a group. There is a previous page: list of groups for current day (\textit{Schedule page})
+(Figure: \ref{fig:EduXesSchedule}) \ref{schedule_page}.
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Schedule Page. index.html \label{schedule_page}}
+\begin{verbatim}
+<div data-role="page" id="daily_schedule"  
+ data-add-back-btn="false"  data-theme="a" >
+    <div data-role="header"  
+        data-back-btn-text="previous" 
+        data-add-back-btn="false" data-theme="a">
+        <a href="#daily_work"  
+        data-icon="arrow-l" data-theme="a" 
+        data-role="button">Back</a>
+        <h1 id="current_day"> Current Day</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <ul id="groups_day_ul" data-role="listview" 
+        data-inset="true" data-split-icon="gear"  
+        data-split-theme="a" >
+        </ul>
+    </div>
+    <div data-role="footer" class="footer-docs" 
+        data-add-back-btn="true" data-theme="a">
+        <p  style="text-align:center;" > List of Classes</p>
+    </div>
+</div>
+\end{verbatim}
+\end{bclogo}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{eduxes_schedule1.eps}
+        \caption{Attendance}
+        \label{fig:EduXesAttendance}
+    \end{center}
+\end{figure}
+
+The \textit{queryStudentsAttendanceSuccess} \ref{attendance_student} function fills \textit{Attendance} page \ref{attendance_page} with photos, names and surnames
+of student of the adequate group. User can choose among different student "states", these "states" are filled in
+\textit{fillSelectStudent} function. When user changes combo values function \textit{studentState} is called which
+update or insert student state into \textit{attendance} table in database.
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Attendance Page. index.html \label{attendance_page}}
+\begin{verbatim}
+<div data-role="page" id="list_students_attendance" 
+    data-add-back-btn="false">
+    <div data-role="header"  data-back-btn-text="previous" 
+        data-add-back-btn="false"  data-theme="a" >
+        <a href="#" onClick="open_daily_page();" data-icon="arrow-l" 
+            data-theme="a" data-role="button">Back</a>
+        <h1 id="current_group_attendance">Student List for Group</h1>
+    </div>
+    <div data-role="content"> <!---Data goes here //-->
+        <ul data-role="listview" id="students_attendance_ul" 
+        data-autodividers=!"true" data-split-icon="gear" 
+        data-split-theme="a" data-filter="true" data-inset="true" 
+        data-theme="a" ></ul>
+    </div>
+    <div data-role="content">   
+    <a href="#" onClick="onOpenStudentsAssessment();" 
+    data-icon="gear" data-theme="a" 
+    data-role="button">Go to Marks</a>
+    </div>
+    <div data-role="footer" class="footer-docs" 
+    data-rel="back" data-theme="a">
+        <p style="text-align:center;"  >Students' Attendance (b)</p>
+    </div>
+</div>
+\end{verbatim}
+\end{bclogo}
+
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Fill Attendance database.js \label{attendance_student}}
+\begin{verbatim}
+function queryStudentsAttendanceSuccess(tx, results) {
+  (...)
+  for (var i=0;i<results.rows.lengthi++) {
+    id = results.rows.item(i).id_student;
+    photo = results.rows.item(i).photo;
+    name = results.rows.item(i).name;
+    surname = results.rows.item(i).surname;
+    id_group = results.rows.item(i).g_id;
+    id_session = global_session; //
+    html = "<li data-role='fieldcontain'> ";
+    html+= "<label for='select_student_"+id+"' class='select'>";
+(...)
+    html+= surname + "," + name + "</label> " ;
+    html+="<select name='select_student_"+id
+        +"' id='select_student_"+id+"' ";
+    html+= " onChange='studentState("+id + "," 
+        +id_group + ","+id_session+ ");'>";
+    html+="</select>";
+    html+= "</li>";
+    $('#students_attendance_ul').append(html);
+    fillSelectStudent(global_db,"select_student_"+id,id_session,id);
+  } 
+  $('#students_attendance_ul').listview('refresh');
+}
+\end{verbatim}
+\end{bclogo}
+
+
+
+\subsection{Activities}   
+
+Activities list is very similar to groups and students.
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{List Activities: index.html \label{activities_list}}
+\begin{verbatim}
+<div data-role="page" id="list_all_activities" name="activities"
+   data-add-back-btn="false"  data-direction="reverse"  
+   data-theme="a" >
+    <div data-role="header"  data-add-back-btn="false" >
+    <a href="#list_settings"  data-icon="arrow-l" data-theme="a" 
+    data-role="button">Back</a>
+            <h1>List of Activities</h1>
+    </div>
+    <div data-role="content">
+                <h2 data-role="listview" 
+                    id="header_activities"  ></h2>
+                <ul data-role="listview" 
+                    id="activities_ul"  ></ul>
+    </div>
+    <div data-role="footer" class="footer-docs" data-rel="back" 
+        data-theme="a">
+            <a onClick="onAddNewActivity();" data-role="button" 
+                data-icon="add">Add New Activity</a>
+            <p style="text-align: center"> List of Activities</p>
+    </div>
+</div>
+\end{verbatim}
+\end{bclogo}
+\newpage
+
+An list  of activities \ref{load_all_activities} is similar to their students and groups counterparts.
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Load all activities: database.js \label{load_all_activities}}
+\begin{verbatim}
+function queryLoadAllActivitiesDB(tx) {
+ tx.executeSql('SELECT * FROM ACTIVITIES',[],
+  dbSuccessFunc = function(tx, results) {
+    var len = results.rows.length;
+    if(len>0) {
+        var ul_list = $('#activities_ul');
+        var html;
+        ul_list.empty();
+        var id = 0;
+        for (var i = 0; i < len; i++) {
+            id = results.rows.item(i).id;
+            html = "<li >";
+            html += "<a onClick='global_id=" + id + "; 
+            table_global=\"activities\";
+              onUpdateActivity("+id+") ' ";
+            html +=  " href='#' data-rel='dialog'
+             data-transition='slideup'>";
+            html += results.rows.item(i).name ;
+            html += "</a>";
+            html += "<a data-role='button' 
+                data-position-to='window' ";
+            html += " data-iconpos='notext' 
+                style='float:right;' href='#' ";
+            html += " data-rel='dialog' 
+                data-transition='slideup'  ";
+            html += " onClick=\"onUpdateActivity(" +
+                 id + ");\">Edit</a>";
+            html += "</li>";
+            ul_list.append(html);
+        }
+        ul_list.listview('refresh');
+        global_max_activities = results.rows.length;
+        }
+        },
+        (...)
+  );
+}
+\end{verbatim}
+\end{bclogo}
+Function \textit{loadActivity} is more complex that student or groups because
+when an  activity is updated, information about groups (name) is compulsory to determine 
+whether a group will carry out that activity.
+
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Load Activity: database.js \label{load_activity}}
+\begin{verbatim}
+function loadActivity(db, id_activity ) {
+var sql = " SELECT  id, name , date_init , date_end , 
+ weight , final FROM ACTIVITIES WHERE id="+id_activity;
+ db.transaction(function(tx) {
+  tx.executeSql(sql,[],
+   dbSuccessFunc = function(tx, results) {
+    if(results.rows.length>0 ){
+     $('#in_name_activity').val(results.rows.item(0).name);
+(...)
+     var sql= "SELECT id, data, other_data FROM groups;";
+     tx.executeSql(sql,[],
+      dbSuccessFunc = function(ttx, rs) {
+       if(rs.rows.length>0) {
+(...)
+        for (var i = 0; i < rs.rows.length; i++) {
+                   id = rs.rows.item(i).id;
+                    html = "<li >";
+(...)
+                    html += rs.rows.item(i).data +"</label>";
+                    html += " </li></br>";
+                    ul_list.append(html);
+        }
+        var sql = "SELECT  activities_group.id_group,
+             activities_group.id_activity, ";
+(...)
+        tx.executeSql(sql,[],
+            dbSuccessFunc = function(txx, rrs) {
+                for (var i = 0; i < rrs.rows.length; i++) { 
+                    var id_group = rrs.rows.item(i).id_group;
+                    var in_act = $("#in_group_activity_" + id_group );
+                    if(rrs.rows.item(i).enabled !=0) {
+                         in_act.attr("checked",true); 
+  (...)
+}
+\end{verbatim}
+\end{bclogo}
+
+
+
+\subsection{Assessment}
+ \textit{Assessment} page is very similar to \textit{Attendance}, and only Assessment reports is  markedly
+	different from \textit{Attendance}.
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Load Assessment: database.js \label{load_assessment}}
+\begin{verbatim}
+    
+\end{verbatim}
+\end{bclogo}
+
 
 %  i) Timetable for actual date: list of groups for selected day.
-% Below queryScheduleSuccess() and querySchedulePerDayDB() functions are written, these functions fills daily_schedule page as shown in Illustration 6: Application Skeleton.
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% 
-% 
-% 
-% 
-% 
-% /*
-%  *  Main Window
-%  */
-% function queryScheduleSuccess(tx, results) {
-%  var len = results.rows.length;
-%    $('#groups_day_ul').empty();
-%    var html;
-%    var id=0;
-%    var description="";
-%    var start = "";
-%    var t_id_session=-1;
-%    for (var i=0;i<len;i++) {
-%      id = results.rows.item(i).id;
-%      t_id_session = results.rows.item(i).t_id_session;
-%      start = results.rows.item(i).s_h_start;  
-%      description = results.rows.item(i).description; 
-%      html = "<li>";
-%      html += "<div data-role='fieldcontain'>";
-%      html += start;
-%   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
-%    html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ","+t_id_session + ");\">" + description + "</a>";
-%     html += "";
-%     html += "</div>";
-%     html += "</li>";
-%    $('#groups_day_ul').append(html);
-%    }
-%    $('#groups_day_ul').listview('refresh');
-%    }
-% 
-% /* Query groups per day - Main Window -
-% */
-% function querySchedulePerDayDB(tx){
-%  var query = "SELECT teacher_schedule.id_session, teacher_schedule.day, teacher_schedule.id_group as t_id_group, teacher_schedule.id_session as t_id_session, ";
-%   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
-%   query += " WHERE day=" +week_day_global + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
-%   console.log("querySchedulePerDayDB:" + query);
-%   tx.executeSql(query,[], dbSuccessFunc = function(tx,rs){
-%     queryScheduleSuccess(tx, rs);},
-%       dbErrorFunc = function(tx, e) {
-%     if (tx.message) e = tx;
-%     alert(" There has been an error QuerySchedulePerDayDB: " + e.message);
-%     return false;
-%       });   
-% }
-% 
+
 %  j) Add attendance, misbehaviour for each student. Student attendance, misbehaviour, punctuality are set here.
 % Tasks to be done
 %  k) Add error handling. Error handling is managed throw dbErrorFunc.

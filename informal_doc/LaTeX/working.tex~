@@ -180,10 +180,7 @@ Total &384 \\
 \end{verbatim}
 
 \end{bclogo}
-	   
-	   
-	   
-	   
+	   	   
 	   
     Secondly { \bf interface.js} code are written: show progress icon (a \emph{PhoneGap} function), a customized function which loads data into new HTML code (e.g. \emph{loadGroupAssessment}) , 
     and, finally a \emph{PhoneGap} function to  show new page/window.
@@ -197,7 +194,7 @@ $.mobile.changePage("#list_students_assessment");
     \end{verbatim}  
 \end{bclogo}
 
-    Thirdly {\bf database.js} code are written: Declaration of previous function \ref{function1}, which  usually implements a SQL-query to SQLite database. These functions also fill html code, so HTML \emph{id}'s names are so significant.
+    Thirdly {\bf database.js} code are written: Declaration of previous function, which  usually implements a SQL-query to SQLite database. These functions also fill html code, so HTML \emph{id}'s names are so significant.
     
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {Sample database.js code}    
@@ -379,7 +376,6 @@ Name                    & Task            & Group \\
 \emph{ open\_daily\_page()     } &Daily work page:                &   Schedule \\
 & list of groups                  &                           \\
 \emph{ listStudentsAttendance() }&Students Attendance page        &   \\
-\emph{ requestNewGroup()     }   & New Group                       &  Groups \\
 \emph{ onAddNewGroup()       }   &Edit Group                      &   Groups \\
 \emph{ onAddNewGroup()       }   &Update Group                    &  Groups \\
 \emph{ onDeleteGroup()       }   &Delete Group                    &   Groups \\    
@@ -604,7 +600,7 @@ $\llcorner$\emph{ queryReportAttendanceSuccess()}     &  \\
 \end{bclogo}  
         
 \subsection{Database}
-Database is the application most important data struct, it requires a special study. Actual database
+Database is the application most important data structure, it requires a special study. Actual database
 is inherit of Siestta application \cite{Siestta}. 
  This database was developed from \emph{groups} table,  to \emph{activities\_student} following less related 
  path ( $ groups \rightarrow students \rightarrow session \rightarrow teacher\_schedule \rightarrow attendance \dots $ ).
@@ -632,6 +628,7 @@ is inherit of Siestta application \cite{Siestta}.
      (...)
 \end{verbatim}
 \end{bclogo}        
+
 		\subsection{Interface Diagram}
 		
 		This figure \ref{fig:diagram} ilustrates application workflow. Dotted lines are instructions and continuous lines 
@@ -645,3 +642,124 @@ is inherit of Siestta application \cite{Siestta}.
 		    \end{center}
 		\end{figure}
 		
+\subsection{Problems and drawbacks}
+ From initial plan, there was several changes, application is evolving along time. 
+ 
+One relevant change was \emph{Edit Update} $\leftrightarrow $ \emph{Edit New} unification, only in students, 
+not in groups and activities yet.
+    
+The most difficult page: \emph{List of assessment} by student: \emph{loadStudentsAssessment} function.
+ Pointedly a comment in code is set with a {\bf XXX} tag in \texttt{database.js} file. The main problem
+ was to deal with several students with different activities each other, therefore I realized a need
+ a matrix, but there are not matrices in javascript.
+ I asked for a hint in IRC (freenode.net) in \#javascript channel, they pointed out
+ an object: \emph{Peers}. Eventually \emph{Peers} object is an object which contains activity id, mark and its weight.
+ 
+ 
+\begin{shadowblock}{13cm}
+\begin{verbatim}
+// XXX: Warning with 1 begining indexes  Adjust
+// Assessment - List Students
+// http://www.w3schools.com/js/js_objects.asp
+//      activity-1  activity-3  activity-5
+// A                    8           7
+// B         7          5
+// C         3
+// Max actividades => 3
+// Max students => 3 !
+// act_id_1. act_id_3, act_id_5   
+\end{verbatim} 
+\end{shadowblock}
+  
+\emph{Report attendance} was difficult to implement. Main difficulty was week change, this  implied a new global variable 
+  was set \emph{report\_date}  which allow week change.
+  Initially an ad-hoc function was developed to face date format problems,
+  but an external javascript library moment.js was found, and it is 
+  used to calculate week days.
+
+Another problem was a design decision: Assessment page.
+it is tightly related with Attendance. After a long standby, it became evident that
+ \emph{Assessment} had to contain two main elements:
+list of activities (by default it was set to 0), and list of students with
+a combo box each one. On bottom there is a button to change between \textit{Assessment} and
+\textit{Atendance}.
+%%
+
+ On the first page, initially current date was set by hand (or with a native widget which depends on Android version),
+  this was a problem  because user has to dealt with dates in \texttt{month/day/year} format. 
+My mentor, Manuel Rego, told me about a widget LibrePlan app \cite{LibreplanApp} was using: 
+  Mobiscroll\cite{Mobiscroll}.
+  
+Other main change was a \texttt{philosophical} concept. Firstly main idea was to develop shortest functions,
+each one doing a simple task, but I have problems passing parameters to that functions without using global variables.
+Eventually, I gathered code and function is longer but clearer (e.g. \emph{loadGroupsAssessment}).
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Snippet loadGroupsAssessment}
+\begin{verbatim}
+function loadGroupsAssessment(db){
+var sql="SELECT id, data, other_data FROM groups;";
+db.transaction(function(tx) {
+  tx.executeSql(sql,[],
+  dbSuccessFunc = function(tx,results){
+    var len = results.rows.length;
+    var ul_list=$('#groups_assessment_ul');
+    ul_list.empty();
+    for (var i = 0; i < len; i++) {
+        var id = results.rows.item(i).id;
+        html = "<li>";
+        html += " <a onClick='onListStudentsAssessment(" + id + ");' ";
+        html += " href='#' data-transition='slideup'>";
+        html += results.rows.item(i).data + "</a>";
+        html += "<a onClick='global_id=" + results.rows.item(i).id ;
+        html += "; table_global=\"groups\";' href='#' data-rel='dialog' "; 
+        html += " data-transition='slideup'>";
+        html += "</a></li>";
+        ul_list.append(html);
+        }
+        ul_list.listview('refresh');
+        return true;
+    },
+    dbErrorFunc = function(tx, e) {
+        if (tx.message) e = tx;
+        log("fillSelectStudent. SQL  "+sql);
+        alert("fillSelectStudent. There has been an error SELECT  stateCheck: "
+         + e.message);
+        return false;
+    } );
+}  );
+}
+\end{verbatim}
+\end{bclogo}
+
+Another change was to how manage success and errors events in a SQL call.
+First solution was to control it in \emph{transaction} call  \ref{transaction}. But
+it was difficult to manage when success event happened.
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Transaction \label{transaction} }
+\begin{verbatim}
+ db.transaction(queryCallbackDB, 
+    errorCallBack, 
+    successCallBack);
+\end{verbatim}
+\end{bclogo}
+
+Next idea was to manage success and error events in \emph{cursor}.
+This is fine grained and easier to control application flux \ref{cursor}.
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Cursor\label{cursor}}
+\begin{verbatim}
+tx.executeSql(sql,[],
+  dbSuccessFunc = function(tx,results){ (...) },        
+  dbErrorFunc = function(tx, e) { (...)  } );
+ }
+\end{verbatim}
+\end{bclogo}
+
+
+Finally, another change was to not implement show and load student image in student \emph{Edit} page.
+Main reason for this is that there are a previous decission about how to import external data, via
+a webpage, a SD card loaded file, webcam or other ideas. Of course it is in next milestone.
+      
+  		

@@ -18,7 +18,12 @@ Jos\'e Antonio~Salgueiro Aquino.
 \newblock Classroom management for high school teachers.
 \newblock \url{https://github.com/joseantoniosa/EduXes}, 2012.
 
-\bibitem[Cas12]{SergasApp}
+\bibitem[Cas12a]{LibreplanApp}
+Manuel~Rego Casasnovas.
+\newblock Application to access libreplan.
+\newblock \url{https://github.com/Igalia/libreplanapp/}, 2012.
+
+\bibitem[Cas12b]{SergasApp}
 Manuel~Rego Casasnovas.
 \newblock Application to access sergas appointment system.
 \newblock \url{ http://mrego.github.com/sergasapp/}, 2012.
@@ -59,6 +64,11 @@ Android Inc.
 Llerik.
 \newblock Teacher organizer.
 \newblock \url{ http://4pda.ru/forum/index.php?showtopic=345457\&st=80}, 2012.
+
+\bibitem[Med12]{Mobiscroll}
+Acid Media.
+\newblock Image only scrollers.
+\newblock \url{http://mobiscroll.com/}, 2012.
 
 \bibitem[Mob12a]{JQueryMobile}
 JQuery Mobile.
