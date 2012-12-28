@@ -266,7 +266,6 @@ function loadGroupsAssessment(db){
                     for (var i = 0; i < len; i++) {
                         var id = results.rows.item(i).id;
                         html = "<li>";
-                        // html += "<a onClick='global_id_group="+id +"  global_id=" + id + "; table_global=\"groups\"; ";
                         html += " <a onClick='onListStudentsAssessment(" + id + ");' ";
                         html += " href='#' data-transition='slideup'>";
                         html += results.rows.item(i).data + "</a>";
@@ -473,29 +472,6 @@ function queryReportAttendanceDB(tx) {// report->Attendance->Group
 
 
 //
-//
-// XXX: Deprecated. Not used
-function queryGroupsSuccess(tx, results) {
-    var len = results.rows.length;
-    var html = "";
-    var ul_list = $('#groups_to_edit_ul');
-
-    ul_list.empty();
-    for (var i = 0; i < len; i++) {
-        html = "<li> ";
-        // listStudentsAttendance (id_group, -1), -1=> any session
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\"; ";
-        html += " listStudentsAttendance(" + results.rows.item(i).id + ",-1 );'  ";
-        html += " href='#' data-transition='slideup'>";
-//        html += " href='index.html#list_students_attendance' data-transition='slideup'>";
-        html += results.rows.item(i).data + "</a>";
-        html += "<a onClick='global_id=" + results.rows.item(i).id + "; table_global=\"groups\";' href='remove.html' data-rel='dialog' data-transition='slideup'>";
-        html += "</a></li>";
-        ul_list.append(html);
-    }
-    ul_list.listview('refresh');
-}
-
 
 function queryStudentSuccess(tx, results) {
     var len = results.rows.length;
@@ -1038,51 +1014,51 @@ function updateStudentState(db, id_student, id_group, id_session, state, actual_
           db.transaction(queryAllStudentsDB);
    }
 
-   function loadStudentsByGroup(db,id_group) {
-       db.transaction(
-         function (tx) {
-            var sql = 'SELECT STUDENTS.id as id,  STUDENTS.id_group as id_group, STUDENTS.name as name, ';
-            sql += ' STUDENTS.surname as surname, STUDENTS.n_date as n_date, STUDENTS.photo as photo, ';
-            sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeated as repeated, STUDENTS.tutor as tutor ,';
-            sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
-            sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
-            sql += ' FROM STUDENTS, GROUPS WHERE ';
-            sql += ' STUDENTS.id_group = g_id AND id_group=' + id_group;
-            tx.executeSql(sql, [],
-                dbSuccessFunc = function(tx, results) {
-                    var len = results.rows.length;
-                    log("loadStudentsByGroup. Number of students: " + len);
-                    var ul_list = $('#list_students_by_group_ul');
-                    $('#id_list_students_by_group').text( results.rows.item(0).data );
-                    var html;
-                    ul_list.empty();
-                    var id = 0;
-                    for (var i = 0; i < len; i++) {
-                        id = results.rows.item(i).id;
-                        html = "<li >";
-                        html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
-                        html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname
-                        html += "' style='float:left;' class='ui-li-icon ui-corner-none'>";
-                        html += results.rows.item(i).surname + "," + results.rows.item(i).name;
-                        html += "</a>";
-                        html += "<a data-role='button' data-position-to='window' ";
-                        html += " data-iconpos='notext' style='float:right;' href='#' ";
-                        html += " data-rel='dialog' data-transition='slideup'  ";
-                        html += " onClick=\"EditStudent(" + id + ");\">Edit</a>";
-                        html += "</li>";
-                        ul_list.append(html);
-                    }
-                    ul_list.listview('refresh');
-                },
-                dbErrorFunc = function(tx, e) {
-                    if (tx.message) e = tx;
-                    log(sql);
-                    log(" There has been an error loadStudentsByGroup: "+e.message);
-                    alert("There has been an error loadStudentsByGroup: " + e.message);
-                      return false;
-                });
-            }
-          );
+function loadStudentsByGroup(db,id_group) {
+   db.transaction(
+     function (tx) {
+        var sql = 'SELECT STUDENTS.id as id,  STUDENTS.id_group as id_group, STUDENTS.name as name, ';
+        sql += ' STUDENTS.surname as surname, STUDENTS.n_date as n_date, STUDENTS.photo as photo, ';
+        sql += ' STUDENTS.e_phone as e_phone, STUDENTS.repeated as repeated, STUDENTS.tutor as tutor ,';
+        sql += ' STUDENTS.address as address , STUDENTS.nation as nation, STUDENTS.phone as phone,  ';
+        sql += ' GROUPS.id as g_id, GROUPS.data as data  ';
+        sql += ' FROM STUDENTS, GROUPS WHERE ';
+        sql += ' STUDENTS.id_group = g_id AND id_group=' + id_group;
+        tx.executeSql(sql, [],
+            dbSuccessFunc = function(tx, results) {
+                var len = results.rows.length;
+                log("loadStudentsByGroup. Number of students: " + len);
+                var ul_list = $('#list_students_by_group_ul');
+                $('#id_list_students_by_group').text( results.rows.item(0).data );
+                var html;
+                ul_list.empty();
+                var id = 0;
+                for (var i = 0; i < len; i++) {
+                    id = results.rows.item(i).id;
+                    html = "<li >";
+                    html += "<a onClick='global_id=" + id + "; table_global=\"students\"; ' href='#' data-rel='dialog' data-transition='slideup'>";
+                    html += "<img height='20px' src='photos/" + results.rows.item(i).photo + "' alt='" + results.rows.item(i).surname
+                    html += "' style='float:left;' class='ui-li-icon ui-corner-none'>";
+                    html += results.rows.item(i).surname + "," + results.rows.item(i).name;
+                    html += "</a>";
+                    html += "<a data-role='button' data-position-to='window' ";
+                    html += " data-iconpos='notext' style='float:right;' href='#' ";
+                    html += " data-rel='dialog' data-transition='slideup'  ";
+                    html += " onClick=\"EditStudent(" + id + ");\">Edit</a>";
+                    html += "</li>";
+                    ul_list.append(html);
+                }
+                ul_list.listview('refresh');
+            },
+            dbErrorFunc = function(tx, e) {
+                if (tx.message) e = tx;
+                log(sql);
+                log(" There has been an error loadStudentsByGroup: "+e.message);
+                alert("There has been an error loadStudentsByGroup: " + e.message);
+                  return false;
+            });
+        }
+      );
 }
 
 ///---------------------------------------------------------------------------------------------------------
@@ -1174,12 +1150,12 @@ function loadActivity(db, id_activity ) {
                             sql += " activities_group.enabled AS enabled, groups.id , groups.data as data ";
                             sql += " FROM activities_group, groups WHERE activities_group.id_activity="+id_activity ;
                             sql += "  AND   activities_group.id_group=groups.id";
-                            log(" SELEC Activities group  : "+ sql); 
+                            log(" SELEC Activities group  : "+ sql);
                             tx.executeSql(sql,[],
                             dbSuccessFunc = function(txx, rrs) {
                                 var len=  rrs.rows.length;
                                 log("Len : "+ len);
-                                for (var i = 0; i < len; i++) { // 
+                                for (var i = 0; i < len; i++) { //
                                     var id_group = rrs.rows.item(i).id_group;
                                     var in_act = $("#in_group_activity_" + id_group );
                                     if(rrs.rows.item(i).enabled !=0) {

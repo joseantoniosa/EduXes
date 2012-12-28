@@ -141,7 +141,7 @@ function onUpdateGroup() {
     name = $("#in_nombre_grupo").val();
     other_data = $("#in_nivel_grupo").val();
     updateGroup(global_db, name, other_data);
-    listAllGroups();
+    onListAllGroups();
 }
 function EditGroup(id_group){
     $.mobile.showPageLoadingMsg();
