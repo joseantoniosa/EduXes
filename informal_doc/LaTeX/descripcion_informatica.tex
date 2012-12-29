@@ -90,7 +90,7 @@ $ git push origin master
 \end{verbatim}
 \end{bclogo}
 
-
+\newpage
 \section{Development}
  Before begining with development itself is compulsory to explain some concepts already shown above in Methodology (\ref{Methodology}), but with more detail:
 JQueryMobile \cite{JQueryMobile} and by extension,  PhoneGap \cite{PhoneGap}  applications, are structured in pages:
@@ -128,6 +128,9 @@ Also, \emph{Eclipse} generates several files, the most important is the applicat
 
 Next step is to build database, this will be described below \ref{DataBase}. 
 Following database, sample data is needed to begin application development. 
+
+\newpage
+
 \subsection{Groups}
 
 The first window to be developed is \emph{List of Groups}: as shown above \ref{Methodology}, firstly a \emph{page} is created inside {\bf index.html}. This page, as every page,  has three important elements:
@@ -140,8 +143,9 @@ because it could cause problems when previous page is an edit page, and another 
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=\textwidth]{eduxes_groups_list.eps}
-        \caption{Groups}
+%%            \includegraphics[width=\textwidth]{eduxes_groups_list.eps}
+        \includegraphics{eduxes_groups_list.eps}
+        \caption{List of Groups}
         \label{fig:EduXesGroups}
     \end{center}
 \end{figure}
@@ -173,8 +177,9 @@ because it could cause problems when previous page is an edit page, and another 
 </div>
 \end{verbatim}
 \end{bclogo}
-To fill this list of elements \emph{<ul id=groups\_ul (...)>} a function \emph{onListAllGroups()} is called. Firstly a
-\texttt{loading ...} logo appears, then a function from {\bf database.js} is called (\emph{loadAllGroups() }).
+To fill this list of elements \emph{<ul id=groups\_ul (...)>} a function \emph{onListAllGroups()} is called. 
+
+Firstly a \texttt{loading ...} logo appears, then a function from {\bf database.js} is called (\emph{loadAllGroups() }).
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {List Group page. interface.js}
 \begin{verbatim}
@@ -259,8 +264,6 @@ filled by loadGroup() function \textbf{database.js} as shown below \ref{edit_gro
 \end{verbatim}
 \end{bclogo}
 
-
-
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {Edit Group page. interface.js}
 \begin{verbatim}
@@ -279,7 +282,7 @@ it is executed and returned values are loaded in result set variable (\textit{rs
 With this data html form  is populated (\textit{\$('\#in\_nombre\_grupo')}). 
 Whether an error is triggered then \textit{dbErrorFunc} is called an a message appears on user interface.
 
-These procedure will be very similar to all \textit{"load"} functions (students, activities).
+These procedures will be very similar to all \textit{"load"} functions (students, activities).
 
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {Load Group page. database.js  \label{edit_group_database}}
@@ -308,21 +311,21 @@ function loadGroup(db, id_group){
 \end{bclogo}
 
 
+\newpage
 \subsection{Students}    
 
-Students pages are very similar to groups but, of course, they contain different fields (a complete list of fields is shown in database
+Students pages are very similar to groups but, obvously, contain different fields (a complete list of fields is shown in database
 definition \ref{DataBase}). Only list of students by group page and \textit{LoadStudentsByGroup} code are shown. 
 They are very similar to their \textit{groups} counterpart. The main concern is about escape characters and colons,
-code is straightforward to read. Several lines were removed towards readability (...). 
+code is straightforward to read. Several lines were removed towards readability \textit{(...)}. 
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=\textwidth]{eduxes_list_students.eps}
+        \includegraphics{eduxes_list_students.eps}
         \caption{Students}
         \label{fig:EduXesStudents}
     \end{center}
 \end{figure}
-
 
 
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
@@ -413,6 +416,8 @@ function loadStudentsByGroup(db,id_group) {
 \end{verbatim}
 \end{bclogo}
 
+\newpage
+
 \subsection{Main Page}
 
 Main page was not the very first page to be built, because it is related with attendance, sessions, groups and students, and also reports.
@@ -420,13 +425,13 @@ Its design it has to follow several basic principles: simple but with no more th
  access to every application window-page. The most important item is current data, and the \textit{">" } symbol on the right to access \textit{Attendance} page.
  
  There are a table with three columns (\textit{class="ui-grid-b"}), which contains a label, the current date, and an info button.
- An a list of navigation buttons to list data (\texttt{report}) or manage students, groups and activities (\texttt{settings})
+ And a list of navigation buttons to list data (\texttt{report}) or manage students, groups and activities (\texttt{settings})
  
 Of course there are a lot of elements that could be changed to improve user experience in this page.
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=\textwidth]{eduxes_main_page1.eps}
+        \includegraphics{eduxes_main_page1.eps}
         \caption{Main Page}
         \label{fig:EduXesMainPage}
     \end{center}
@@ -488,12 +493,12 @@ Of course there are a lot of elements that could be changed to improve user expe
 \end{verbatim}
 \end{bclogo}
 
-
+\newpage
 \subsection{Attendance}
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=\textwidth]{eduxes_schedule1.eps}
+        \includegraphics{eduxes_schedule1.eps}
         \caption{Schedule}
         \label{fig:EduXesSchedule}
     \end{center}
@@ -535,7 +540,7 @@ students of a group. There is a previous page: list of groups for current day (\
 
 \begin{figure}
     \begin{center}
-        \includegraphics[width=\textwidth]{eduxes_schedule1.eps}
+        \includegraphics{eduxes_students_attendance2.eps}
         \caption{Attendance}
         \label{fig:EduXesAttendance}
     \end{center}
@@ -607,8 +612,15 @@ function queryStudentsAttendanceSuccess(tx, results) {
 \end{verbatim}
 \end{bclogo}
 
+\begin{figure}
+    \begin{center}
+        \includegraphics{eduxes_reports_attendance1.eps}
+        \caption{Attendance Report}
+        \label{fig:EduXesAttendanceReports}
+    \end{center}
+\end{figure}
 
-
+\newpage
 \subsection{Activities}   
 
 Activities list is very similar to groups and students.
@@ -640,7 +652,7 @@ Activities list is very similar to groups and students.
 \end{bclogo}
 \newpage
 
-An list  of activities \ref{load_all_activities} is similar to their students and groups counterparts.
+Javascript code for list of activities \ref{load_all_activities} is similar to their students and groups counterparts.
 
 \begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
 {Load all activities: database.js \label{load_all_activities}}
@@ -730,17 +742,137 @@ var sql = " SELECT  id, name , date_init , date_end ,
 \end{bclogo}
 
 
-
+\newpage
 \subsection{Assessment}
- \textit{Assessment} page is very similar to \textit{Attendance}, and only Assessment reports is  markedly
-	different from \textit{Attendance}.
 
-\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
-{Load Assessment: database.js \label{load_assessment}}
-\begin{verbatim}
+ \textit{Assessment} page is very similar to \textit{Attendance}, and only Assessment reports is  markedly
+	different from \textit{Attendance}. \textit{loadStudentsAssessment} function fills table:
+	\begin{quote}
+\textit{\$('\#students\_assessment\_reports\_table');} 	    
+	\end{quote}
+
+with data from assessment: each column is a different activity and each row a student. This procedure does these actions:
+
+\begin{itemize}
+    \item Seek database for activities and students of a particular group.
+    \item Fill a matrix (\textit{SActivity}) with marks and weight of that mark.
+    \subitem Each row contains data of a student (first index).
+    \subitem Each column contains data of an activity (second index).
+    \item Fill the \textit{students\_assessment\_reports\_table} with data from that matrix.
+    \item Calculate average mark.
+\end{itemize}
+\newpage
     
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Load Assessment Report (1/2): database.js \label{load_assessment_1}}
+\begin{verbatim}
+function loadStudentsAssessment(db, id_group){
+$('#current_group_assessment_reports').text("Name of the group");
+ var sql=" SELECT DISTINCT students.id as s_id, students.name as 
+(...)
+sql +="  AND GROUPS.id=students.id_group AND GROUPS.id="+id_group;
+sql +="  ORDER BY students.id ; " ;
+db.transaction(function(tx) {
+    tx.executeSql(sql,[],
+            dbSuccessFunc = function(tx,results){
+             var ul_list=$('#students_assessment_reports_ul');
+             var table = $('#students_assessment_reports_table');
+(...)
+             var len = results.rows.length; // max number of students
+(...) //  Initialize to zero Students-Activities Matrix: SActivity
+               var SActivity = new Array (len+1);
+(...)                                        
+             for (var i = 0; i < len; i++) {
+                    s_id = results.rows.item(i).s_id;
+(...)                    
+                    activity_id = results.rows.item(i).a_id;
+                    if(s_id!=old_s_id) {
+                        if (is_new==1){
+                            is_new=0;
+                        } else {
+                            no_activities=
+                              Math.max(no_activities,a_no_activities);
+                        }
+                        no_students ++; 
+                        student_a.push(s_surname+", "+s_name);
+                        a_no_activities=1;
+                        k=0;
+                    } else { 
+                        a_no_activities++;
+                        k++;
+                    }
+            SActivity[no_students][activity_id].mark =  mark;
+            SActivity[no_students][activity_id].weight =  weight;
+            SActivity[no_students][activity_id].activity = activity_id;
+                    activity_name_a[activity_id] = activity_name ;
+                    old_s_id=s_id;
+                    }
 \end{verbatim}
 \end{bclogo}
+\newpage
+
+\begin{bclogo}[couleur=blue!30,arrondi=0.1,ombre=true ] 
+{Load Assessment Report (2/2): database.js \label{load_assessment_2}}
+\begin{verbatim}
+                    
+                    
+                    max_students = no_students;
+                    html ="";
+                    for(var i=0;i<=max_students; i++) {
+                        html +="<tr><td>"+student_a[i]+"</td>";
+                        measure=0.0;
+// XXX: Check DB ID's, if it begins in 0 or 1 (assumed 1)
+                        for(j=1;j<global_max_activities+1;j++) {
+                            html += "<td>" 
+                                + SActivity[i][j].mark  +"</td>";
+// XXX: Weight sum should return 100
+                            measure += SActivity[i][j].mark*
+                                SActivity[i][j].weight/100.0;
+                        }
+                        html += "<td>("+measure +")</td>";
+                        html +="</tr>";
+                    }
+                    html_pre ="<tr>";
+                    html_pre +="<th> Name </th>";
+// XXX: Check DB ID's, if it begins in 0 or 1 (assumed 1)
+                    for(var j=1;j<global_max_activities+1 ; j++) {
+                        html_pre +="<th>"+activity_name_a[j]+"</th>";
+                    }
+                    html_pre +="<th>Mean</th></tr>";
+                    table.empty().append("<thead>"+html_pre
+                        +"</thead><tbody>"+html+"<tbody>");
+                    return true;
+                },
+                (...)
+} );
+    }  );
+
+}
+
+\end{verbatim}
+\end{bclogo}
+%%
+%% function onChangeStudentAssessment(id_student,id_group, id_activity){ <<< This function is high level
+%% it choose to update or to new
+%%
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{eduxes_students_assessment01.eps}
+        \caption{Assessment}
+        \label{fig:EduXesAssessment}
+    \end{center}
+\end{figure}
+
+
+
+\begin{figure}
+    \begin{center}
+        \includegraphics{eduxes_assessment1.eps}
+        \caption{ Assessment Report}
+        \label{fig:EduXesAssessmentReport}
+    \end{center}
+\end{figure}
 
 
 %  i) Timetable for actual date: list of groups for selected day.
@@ -763,50 +895,7 @@ var sql = " SELECT  id, name , date_init , date_end ,
 %  i) Timetable for actual date: list of groups for selected day.
 % Below queryScheduleSuccess() and querySchedulePerDayDB() functions are written, these functions fills daily_schedule page as shown in Illustration 6: Application Skeleton.
 % 
-% /*
-%  *  Main Window
-%  */
-% function queryScheduleSuccess(tx, results) {
-%  var len = results.rows.length;
-%    $('#groups_day_ul').empty();
-%    var html;
-%    var id=0;
-%    var description="";
-%    var start = "";
-%    var t_id_session=-1;
-%    for (var i=0;i<len;i++) {
-%      id = results.rows.item(i).id;
-%      t_id_session = results.rows.item(i).t_id_session;
-%      start = results.rows.item(i).s_h_start;  
-%      description = results.rows.item(i).description; 
-%      html = "<li>";
-%      html += "<div data-role='fieldcontain'>";
-%      html += start;
-%   html += "<a data-role='button' data-iconpos='notext' style='float: right;' href='index.html#list_students_attendance' ";
-%    html += " onClick=\"listStudentsAttendance(" + results.rows.item(i).t_id_group + ","+t_id_session + ");\">" + description + "</a>";
-%     html += "";
-%     html += "</div>";
-%     html += "</li>";
-%    $('#groups_day_ul').append(html);
-%    }
-%    $('#groups_day_ul').listview('refresh');
-%    }
-% 
-% /* Query groups per day - Main Window -
-% */
-% function querySchedulePerDayDB(tx){
-%  var query = "SELECT teacher_schedule.id_session, teacher_schedule.day, teacher_schedule.id_group as t_id_group, teacher_schedule.id_session as t_id_session, ";
-%   query += " groups.id as g_id, groups.data as description, sessions.id as s_id, sessions.h_start as s_h_start, sessions.h_end as s_h_text FROM teacher_schedule, groups, sessions ";
-%   query += " WHERE day=" +week_day_global + " AND g_id=t_id_group AND t_id_session=s_id  ORDER BY t_id_session;";
-%   console.log("querySchedulePerDayDB:" + query);
-%   tx.executeSql(query,[], dbSuccessFunc = function(tx,rs){
-%     queryScheduleSuccess(tx, rs);},
-%       dbErrorFunc = function(tx, e) {
-%     if (tx.message) e = tx;
-%     alert(" There has been an error QuerySchedulePerDayDB: " + e.message);
-%     return false;
-%       });   
-% }
+
 % 
 %  j) Add attendance, misbehaviour for each student. Student attendance, misbehaviour, punctuality are set here.
 % Tasks to be done
@@ -821,18 +910,26 @@ var sql = " SELECT  id, name , date_init , date_end ,
 % 
 % 
 % 
-% \end{verbatim}
 % 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% sqlt-diagram -d MySQL  --color  -t "EduXes Database" -o data_base.png  DATABASE.sql
+%%
 
+\newpage
+\section{Database \label{DataBase}}
+Next figure \ref{fig:Database} is a graphical representation of EduXes database \ref{DatabaseSchema} obtained using \textit{sqlfairy} program \cite{SQLFairy}.
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=\textwidth]{data_base.png}
+        \caption{Database}
+        \label{fig:Database}
+    \end{center}
+\end{figure}
 
-
-\section{Database structure \label{DataBase}}
 \begin{bclogo}[couleur=green!30,arrondi=0.1, logo=\bcpanchant,  ombre=true ] 
-{EduXes Database structure}   
+{EduXes Database structure \label{DatabaseSchema}}   
 \begin{verbatim}
 -- Groups
 CREATE TABLE IF NOT EXISTS GROUPS (id  integer primary key ,
@@ -876,24 +973,5 @@ CREATE TABLE IF NOT EXISTS activities_group
     enabled integer, a_date text, notes text,
     FOREIGN KEY (id_group) REFERENCES groups (id),
     FOREIGN KEY (id_activity) REFERENCES activities(id) );
-
 \end{verbatim}
 \end{bclogo}
-
-\section{Los algoritmos para el desarrollo de la solución}
-\dots
-
-\section {qué quieres resolver}
-\dots
-\section {cómo lo vas a hacer}
-\dots
-\section {herramientas conceptuales necesarias}
- \dots
-
-%% NOISE
-NOISE vvvv
-
-
-\begin{framed}
-  ASD
-\end{framed}

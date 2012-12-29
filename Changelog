@@ -1,0 +1,305 @@
+28/12/2012:
+        * Polished TODO. Create this file. version 0.1 released
+
+27/12/2012:
+        * Corregido error en el listado de grupos: en la navegación ahora va a la página de los menús, no a la anterior.
+        * Eliminado código duplicado: requestNewGroup()
+26/12/2012:
+        * Eliminados comentarios de código.
+
+19/12/2012:
+    - Reports->Assessment:
+        * No lista todos los alumnos
+        * Lista con nombre incorrecto las actividades 00001
+        * Si no hay nota, esta debe ser "0"!!
+        - Bug: al insertar nota, al primer alumno no le corresponde el número de actividad '1' toma el '0'
+18/12/2012:
+         - Limpiar los formularios de datos antiguos.
+        - Weight sum should return 100
+        - Listado de notas de estudiantes.
+        - Lista notas
+            * Listados de notas y resumen
+13/12/2012b:
+        Resuelto  problema con el SELECT al cargar grupos en las actividades.
+        - Error en Asignación grupos<-> actividad
+
+13/12/2012:
+
+        - function loadActivity(db, id_activity ) {
+            En el último query realiza una consulta que da como resultado 4x4= 16 filas.
+            Debería dar sólo 4. ¿Cómo? -> GROUP BY
+        - con el UPDATE no funciona
+
+
+12/12/2012:
+         introducir notas, trabajar sobre la página de index.html:
+            <div data-role="page" id="list_students_assessment" data-add-back-btn="false">
+            1. Leer datos de actividades_group. las tareas que tiene el grupo: (hecho)
+            2. Mostrarlas en un combo. (hecho)
+            3. El usuario selecciona una actividad <Actividad>
+            4. Se muestra el listado de los alumnos y sus notas (si existiesen)
+                Alumno + Combo <Nota>
+            5. El botón "Save" lee la nota <Nota> de la actividad <Actividad> y escribe los datos en
+                actividades_estudiante
+            6. Realiza esta tarea para cada estudiante.
+                        Nueva Actividad:
+                    Nombre
+                    Fecha inicio (ahora)
+                    Fecha final
+                    Activa (no finalizada)
+                    Asignar Grupos
+    >>- Poner notas:  #groups_day_ul
+     * TODO: To be filled with marks 466 de database.js:
+        - Incorporar combo con las actividades (en database.js)
+        - Incorporar botón abajo con "marks" (en index.html)
+                    * Seleccionar actividad
+            * Relacionar actividad con alumno
+            * Asignar nota de actividad a los alumnos
+
+
+       - Listar Notas
+        Botón extra en la página de "schedule"??
+        [Nada(*)  ] [ Combo desplegable con las actividades evaluables (**)]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Lista de alumnos]
+        [Attendance(*)][Marks (**)]
+                Tres tablas: actividad, actividad_alumno, actividad_grupo.
+
+11/12/2012:
+    - Añadida lista de notas de 0 a 10
+10/12/2012 :
+    - Añadido widget para las fechas (desde Igalia/libreplanapp) mobiscroll (también podría gestionar las horas)
+    1221 database.js list of students by group:
+    - Dentro de Assessment empiezo a reorganizar código (nada visible aún)
+
+8/12/12 b:
+    Dentro de Notas, añadida lista de actividades a evaluar, pendiente corregir posible error al no aparecer todas
+        database.js  loadGroupAssessment  1175
+        index.html list_students_attendance 163
+        Corregido, faltaba con "+" html+=
+
+8/12/12:
+    - Añadida nueva actividad, enlazada con los grupos correspondientes.
+
+    'in_group_activity_" + id + "' << añadido como actividad-grupo (??)
+    TODO ¿De dónde saco id_activity?, obtener el último valor de un auto-increment http://www.sqlite.org/lang_corefunc.html#last_insert_rowid
+    select  last_insert_rowid() from algo;
+
+
+6/12/12:
+    - - Desdoblar database.js (>1k loc)
+    - Va a la página "#daily_work":  <a href="#daily_work"  data-icon="arrow-l" data-theme="a" data-role="button">Back</a>
+    - El botón de "back" no es el adecuado para navegar entre formularios.  (queda pendiente para más formularios)
+    - Realizado: Añadir actividad
+    - Database:
+                    x estudiante_actividad
+                    id_estudiante
+                    id_actividad
+                    nota (número entero entre 0 y 10)
+                    observaciones (texto)
+
+
+5/12/12b:
+    - Lista de actividades (por ahora vacía) y edición (por ahora no guarda en base de datos.)
+
+5/12/12:
+    - Principio de actividades, esqueleto inicial: base de datos (una tabla de dos o tres?)
+                    x actividad: se supone de 0 a 10
+                    Nombre
+                    Peso (de 0 a 100, todas las actividades deben sumar 100)
+                    Fecha inicio
+                    Fecha final
+                    Finalizada 0/1
+
+5/12/12:
+    -Gestión de estudiantes. Sólo se puede añadir estudiantes desde un grupo.
+    - Añadir nuevo estudiante. Botón guardar.
+    - Listar grupos dentro de la edición de estudiantes
+    - Insertar nuevos alumnos en la base de datos
+
+
+4/12/12:
+    Realizado:
+    - Gestión de grupos.
+    - Reorganizado parte del código (estudiantes, grupos, ).
+
+3/12/12
+    Realizado:
+        -Guardar foto, dirección, fecha de nacimiento...
+        -Eliminar estudiante
+        -Vuelve a la página anterior .
+        - Cambiar tema a "a"
+
+1/12/12 b:
+    Realizado:
+        Guarda algunos datos de los estudiantes. en la base de datos
+
+1/12/12:
+    Realizado:
+        Actualizado edición de estudiante, lista de grupos.
+                            ul_select.selectmenu('refresh', true);
+
+
+jsdoc  -d=docs/  assets/www/
+http://en.wikipedia.org/wiki/JSDoc
+
+
+
+30/11/12:
+    Realizado:
+        Añadida lista de grupos
+
+
+29/11/2012:
+
+21/11/2012:
+    Corregido:
+        * Dentro de AttendanceSuccess:
+        Coloca la foto, nombre, apellidos, y el "select" en la misma línea, siempre que haya sitio.
+        * Limpiado DATABASE.sql
+
+Steps:
+
+1. Create main tables (T) and GUI (G):
+    + groups (T, G)
+       list (done)
+       edit (done)
+    + students (T)
+       list (done)
+       edit (todo)
+    + activities (T)
+       list
+       edit
+    + timetable ?
+2. Create main interfaces (?)
+    + login window
+       (todo)
+    + daily window (define)
+       (in process)
+    + marks by student and group window
+       (todo)
+    + ...
+    +
+    ------------------------------
+    7/8/2012:-> list_students by group. Fix 83 database.js and so on ..., 85 interface.js
+
+    22/8/2012-> queryGroupsSuccess . database.js line 123:implement:
+                 <a data-role="button" data-icon="info" data-iconpos="notext" style="float: right;" onClick="help('alias');">Axuda</a>
+    23/8/2012->  <div data-role="page" id="daily_work">, index.html line 130.
+                Implement daily work window
+                [Options] [Classes]
+                            -> (Classes)- List Students by group:
+                                        -> Edit/Add Attendance
+    15/9/2012 -> On css errors can't compile and run application.
+        Solution: Install Juno from webpage, install ADT + Aptana as plugin, disable CSS validation
+        Window-> Preferences ->Go to Window -> Preferences -> Aptana Studio -> Validation
+            Now on this tab, if CSS is not selected, select it.
+    22/09/2012 ->
+            Design main window (teacher_schedule)
+    22/09/2012 -> Para el Drop_menu:
+
+        http://jquerymobile.com/demos/1.1.1/docs/forms/selects/
+
+            http://jquerymobile.com/demos/1.1.1/docs/forms/textinputs/
+
+        Control Asistencia - Attendance
+
+
+    11/10/2012 -> Por hacer....
+    14/10 : Limpiada pantalla principal:
+        - Falta info que indique el formato de la fecha M/D/Y
+        - Falta colocar las opciones de menú principal
+
+    15/10/2012 : Tengo que reorganizar los ficheros para hacerlo mucho más legible.
+            Falta info que indique el formato de la fecha M/D/Y. Hecho
+    16/10/2012: database.js:línea 336 (lista de alumnos)
+    16/10/2012:
+    Para una primera versión utilizable falta colocar un combobox  en la
+        pantalla de lista de alumnos (LA), a la derecha de cada uno de ellos,
+        donde se pueda seleccionar Puntualidad/Retraso/otras, >> Hecho
+         ....( VER TODO - Pendiente)
+    17/10/2012: Pendiente de definir el SQL para introducir el estado en la base de datos:
+        database.js: function updateStudentState(id_student, state, actual_date){ ...  }
+    18/10/2012: Añadida conexión con la base de datos. Da gran cantidad de errores:
+        tabla: attendance no existe
+            Pero parece funcionar ¿?, parece existir un workaround para mostrar los errores ¿?
+    18/10/2012 b:  Eliminado código redundante, limpiado parte del código. grabados los datos en la base
+        de datos (?).
+>>>>>>>>>>>>>>
+    25/10/2012: Attendance pre, preparando lista de asistencia. línea 170 de interface.fs
+
+    <div data-role="page" id="general_list_attendance" data-add-back-btn="true">
+    27/10/2012:
+       Queda: Línea 263-264 de  database.js, adaptar para que haga el listado de grupos, y que llame al listado
+        de asistencia por grupo
+    29/10/2012: Línea 565 y siguientes de database.js,
+        Construir el listado de asistencia por estudiante.
+    30/10/2012: Línea 365  queryStudentsAttendanceByGroupDB queda buscar el SELECT adecuado
+            y queryStudentsAttendanceByGroupSuccess falta por escribir los datos
+        http://momentjs.com/docs/
+    31/10/2012:
+        Obtuve el lunes y el viernes de la semana en curso, hubo que copiar objetos.
+        Pendiente leer y  escribir los datos en la base de datos
+        database.js 132
+    2/11/2012:
+        Pendiente:
+             verificar la lectura y escritura de los datos en la base de datos de varias semanas. (hecho)
+        database.js 132
+        #students_attendance_by_groups_li no cambia (corregido, no se debe clonar)
+        Se escriben los datos en la fecha indicada en la ventana principal o la fecha global.
+        * Ventana Reports para visualizar los informes de faltas,(hecho)
+    2/11/2012 b:
+        Reorganizadas algunas funciones.
+    8/11/2012 : Work in progress
+        stateCheck
+        * Abstraer la "inserción-actualización".
+            - 1º Leer los datos de asistencia y etc..  rellenar con los que haya en la BD.
+            - 2º Cuando se cambie algún dato, guardar los cambios, llamar a una función que es la
+                que determinará si existen esos datos o no.
+    11/11/2012: Hecho Leer y escribir, insert y update. Pendiente escribir los datos iniciales en el select.
+
+    11/11/2012b: Principio de relleno con datos iniciales. ¿Qué query realizar?
+    12/11/2012: Sigo intentando rellenar datos:
+            función: fillSelectStudent
+        cannot call methods on selectmenu prior to initialization; attempted to call method 'refresh' at undefined:0
+            Parece que llama demasiado rápido a la base de datos y no le da tiempo a representar los "select"
+            El problema es como sincronizarlo todo.
+             ¿Sería posible hacer una llamada a todos y después, cuando termine, escribir el final?< no, es asíncrono (¿?)
+  13/11/2012:
+            No código. Siguiente plan de actuación:
+                - Asegurar el código hecho
+                    - Duplicidad de datos (resuelto, usaba la función init() para cargarla con el onLoad)
+                    - fecha_actual y fecha_report_actual deben ser diferentes (resuelto)
+
+
+    14/11/2012:
+        Realizado: duplicidad y datos, y fecha de informes independiente.
+                * Fecha para informes, así es posible diferenciar la fecha a la que se
+            guardan los datos de la fecha de los informes (que se va desplazando) (hecho)
+        Pendiente:
+                - Instalarlo (?? Domingo lo consigue instalar)
+
+    15/11/2012:
+        Realizado:
+            Xosé Manuel lo instaló con éxito, la parte operativa (control asistencia) parece funcionar.
+            Añadidos listado de grupos y estudiantes
+
+
+    16/11/2012:
+            Realizado:
+            - Añadir botón de "back" en la pantalla de edición de estudiante (el número de campos es limitado, al añadir más quita el botón de "back")
+    18/11/2012:
+        Realizado:
+            Reorganizada la edición de estudiantes, REGRESSION: el "gears" desapareció
+    19/11/2012:
+        Realizado:
+            - Crear pantalla de presentación inicial.
+            - Instalado en SonyEricsson  Xperia V
+            - Limitados los permisos
+    20/11/2012:
+        Integrados parches de M Rego. (    - REGRESSION: el "gears" desapareció)
+
+
+

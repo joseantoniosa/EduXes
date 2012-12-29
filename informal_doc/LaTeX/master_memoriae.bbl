@@ -125,11 +125,28 @@ Enxenio S.L.
 \newblock Complete classroom management system.
 \newblock \url{ http://www.sixa.es }, 2009.
 
+\bibitem[SQL12]{SQLFairy}
+SQLFairy.
+\newblock Sqlfairy - the sql translator.
+\newblock \url{http://sqlfairy.sourceforge.net}, 2012.
+
 \bibitem[Uni05]{Unisoft}
 Unisoft.
 \newblock Acad\'emico \texttrademark is a software to school management.
 \newblock \url{
   http://www.unisoftcolombia.com/unisoftcolombia/index.php?link=academico},
   2005.
+
+\bibitem[Whe05]{SLocCount}
+David~A. Wheeler.
+\newblock David a. wheeler's 'sloccount'.
+\newblock \url{http://sourceforge.net/projects/sloccount/}, 2005.
+
+\bibitem[Whe07]{SLocCountJS}
+David~A. Wheeler.
+\newblock David a. wheeler's 'sloccount' patch for javascript.
+\newblock
+  \url{https://sourceforge.net/tracker/index.php?func=detail&aid=1730985&group_id=171819&atid=859390},
+  2007.
 
 \end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  28 DEC 2012 23:14
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.5)  29 DEC 2012 04:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -844,7 +844,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<creative-commons.png, id=236, 88.33pt x 31.11626pt>
+<creative-commons.png, id=207, 88.33pt x 31.11626pt>
 File: creative-commons.png Graphic file (type png)
 
 <use creative-commons.png>
@@ -1122,7 +1122,7 @@ Package epstopdf Info: Source file: <eduxes_diagram.eps>
 ed-to.pdf eduxes_diagram.eps>
 (epstopdf)             \includegraphics on input line 639.
 Package epstopdf Info: Output file is already uptodate.
- <eduxes_diagram-eps-converted-to.pdf, id=491, 1255.69125pt x 1116.17pt>
+ <eduxes_diagram-eps-converted-to.pdf, id=462, 1255.69125pt x 1116.17pt>
 File: eduxes_diagram-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eduxes_diagram-eps-converted-to.pdf>
@@ -1223,7 +1223,7 @@ Package epstopdf Info: Source file: <siestta1.eps>
 pdf siestta1.eps>
 (epstopdf)             \includegraphics on input line 14.
 Package epstopdf Info: Output file is already uptodate.
-<siestta1-eps-converted-to.pdf, id=533, 1048.91875pt x 266.9975pt>
+<siestta1-eps-converted-to.pdf, id=504, 1048.91875pt x 266.9975pt>
 File: siestta1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use siestta1-eps-converted-to.pdf>
@@ -1240,7 +1240,7 @@ pdf siestta2.eps>
 (epstopdf)             \includegraphics on input line 26.
 Package epstopdf Info: Output file is already uptodate.
 
-<siestta2-eps-converted-to.pdf, id=536, 1581.91pt x 963.6pt>
+<siestta2-eps-converted-to.pdf, id=507, 1581.91pt x 963.6pt>
 File: siestta2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use siestta2-eps-converted-to.pdf>
@@ -1257,7 +1257,7 @@ to.pdf siestta_sql.eps>
 (epstopdf)             \includegraphics on input line 38.
 Package epstopdf Info: Output file is already uptodate.
 
-<siestta_sql-eps-converted-to.pdf, id=538, 646.415pt x 904.37875pt>
+<siestta_sql-eps-converted-to.pdf, id=509, 646.415pt x 904.37875pt>
 File: siestta_sql-eps-converted-to.pdf Graphic file (type pdf)
 
 <use siestta_sql-eps-converted-to.pdf>
@@ -1296,7 +1296,7 @@ f sixa_1.eps>
 (epstopdf)             \includegraphics on input line 88.
 Package epstopdf Info: Output file is already uptodate.
 
-<sixa_1-eps-converted-to.pdf, id=567, 579.16376pt x 479.7925pt>
+<sixa_1-eps-converted-to.pdf, id=538, 579.16376pt x 479.7925pt>
 File: sixa_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sixa_1-eps-converted-to.pdf>
@@ -1313,7 +1313,7 @@ f sixa_2.eps>
 (epstopdf)             \includegraphics on input line 96.
 Package epstopdf Info: Output file is already uptodate.
 
-<sixa_2-eps-converted-to.pdf, id=568, 583.17876pt x 357.335pt>
+<sixa_2-eps-converted-to.pdf, id=539, 583.17876pt x 357.335pt>
 File: sixa_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sixa_2-eps-converted-to.pdf>
@@ -1330,7 +1330,7 @@ f sixa_3.eps>
 (epstopdf)             \includegraphics on input line 104.
 Package epstopdf Info: Output file is already uptodate.
 
-<sixa_3-eps-converted-to.pdf, id=569, 583.17876pt x 301.125pt>
+<sixa_3-eps-converted-to.pdf, id=540, 583.17876pt x 301.125pt>
 File: sixa_3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sixa_3-eps-converted-to.pdf>
@@ -1351,7 +1351,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [27 <./sixa_2-eps-converted-to.pdf> <./sixa_3-eps-converted-to.pdf>]
-<grade_book01.jpg, id=591, 289.08pt x 513.92pt>
+<grade_book01.jpg, id=562, 289.08pt x 513.92pt>
 File: grade_book01.jpg Graphic file (type jpg)
  <use grade_book01.jpg>
 Package pdftex.def Info: grade_book01.jpg used on input line 129.
@@ -1361,7 +1361,7 @@ Package pdftex.def Info: grade_book01.jpg used on input line 129.
 LaTeX Warning: Reference `fig: Android Attendance' on page 28 undefined on inpu
 t line 143.
 
-<attendance01.png, id=593, 308.15125pt x 513.92pt>
+<attendance01.png, id=564, 308.15125pt x 513.92pt>
 File: attendance01.png Graphic file (type png)
  <use attendance01.png>
 Package pdftex.def Info: attendance01.png used on input line 149.
@@ -1385,7 +1385,7 @@ Overfull \hbox (10.42819pt too wide) in paragraph at lines 162--164
 l-oped within diploma projects. 
  []
 
-<teacher_organizer01.jpg, id=602, 513.92pt x 308.15125pt>
+<teacher_organizer01.jpg, id=573, 513.92pt x 308.15125pt>
 File: teacher_organizer01.jpg Graphic file (type jpg)
 
 <use teacher_organizer01.jpg>
@@ -1399,7 +1399,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [29 <./attendance01.png>]
-<TeacherAideProLite01.jpg, id=611, 513.92pt x 289.08pt>
+<TeacherAideProLite01.jpg, id=582, 513.92pt x 289.08pt>
 File: TeacherAideProLite01.jpg Graphic file (type jpg)
 
 <use TeacherAideProLite01.jpg>
@@ -1455,6 +1455,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [33]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[34]
 Package epstopdf Info: Source file: <eduxes_groups_list.eps>
 (epstopdf)                    date: 2012-12-28 21:54:34
 (epstopdf)                    size: 426956 bytes
@@ -1463,16 +1470,16 @@ Package epstopdf Info: Source file: <eduxes_groups_list.eps>
 (epstopdf)                    size: 51210 bytes
 (epstopdf)             Command: <repstopdf --outfile=eduxes_groups_list-eps-con
 verted-to.pdf eduxes_groups_list.eps>
-(epstopdf)             \includegraphics on input line 143.
+(epstopdf)             \includegraphics on input line 147.
 Package epstopdf Info: Output file is already uptodate.
 
-<eduxes_groups_list-eps-converted-to.pdf, id=661, 358.33875pt x 311.1625pt>
+<eduxes_groups_list-eps-converted-to.pdf, id=636, 358.33875pt x 311.1625pt>
 File: eduxes_groups_list-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eduxes_groups_list-eps-converted-to.pdf>
 Package pdftex.def Info: eduxes_groups_list-eps-converted-to.pdf used on input 
-line 143.
-(pdftex.def)             Requested size: 455.24411pt x 395.33342pt.
+line 147.
+(pdftex.def)             Requested size: 358.33788pt x 311.16174pt.
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF]
 (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
@@ -1485,18 +1492,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[34]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
 [35 <./eduxes_groups_list-eps-converted-to.pdf>]
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF]
 (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 236--236
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 241--241
 []          \T1/cmtt/m/n/12 html += " <a data-role='button' data-position-to='w
 indow'";[] 
  []
@@ -1528,7 +1528,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [37]
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 307--307
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 310--310
 []                \T1/cmtt/m/n/12 $('#in_nivel_grupo').val(rs.rows.item(0).othe
 r_data);[] 
  []
@@ -1545,6 +1545,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [38]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[39]
 Package epstopdf Info: Source file: <eduxes_list_students.eps>
 (epstopdf)                    date: 2012-12-28 21:55:32
 (epstopdf)                    size: 474973 bytes
@@ -1554,29 +1561,22 @@ Package epstopdf Info: Source file: <eduxes_list_students.eps>
 (epstopdf)                    size: 63091 bytes
 (epstopdf)             Command: <repstopdf --outfile=eduxes_list_students-eps-c
 onverted-to.pdf eduxes_list_students.eps>
-(epstopdf)             \includegraphics on input line 320.
+(epstopdf)             \includegraphics on input line 324.
 Package epstopdf Info: Output file is already uptodate.
 
-<eduxes_list_students-eps-converted-to.pdf, id=694, 362.35374pt x 329.23pt>
+<eduxes_list_students-eps-converted-to.pdf, id=669, 362.35374pt x 329.23pt>
 File: eduxes_list_students-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eduxes_list_students-eps-converted-to.pdf>
 Package pdftex.def Info: eduxes_list_students-eps-converted-to.pdf used on inpu
-t line 320.
-(pdftex.def)             Requested size: 455.24411pt x 413.63635pt.
+t line 324.
+(pdftex.def)             Requested size: 362.35286pt x 329.22919pt.
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF]
 (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[39]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1611,16 +1611,16 @@ Package epstopdf Info: Source file: <eduxes_main_page1.eps>
 (epstopdf)                    size: 20320 bytes
 (epstopdf)             Command: <repstopdf --outfile=eduxes_main_page1-eps-conv
 erted-to.pdf eduxes_main_page1.eps>
-(epstopdf)             \includegraphics on input line 429.
+(epstopdf)             \includegraphics on input line 434.
 Package epstopdf Info: Output file is already uptodate.
 
-<eduxes_main_page1-eps-converted-to.pdf, id=716, 363.3575pt x 199.74625pt>
+<eduxes_main_page1-eps-converted-to.pdf, id=687, 363.3575pt x 199.74625pt>
 File: eduxes_main_page1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eduxes_main_page1-eps-converted-to.pdf>
 Package pdftex.def Info: eduxes_main_page1-eps-converted-to.pdf used on input l
-ine 429.
-(pdftex.def)             Requested size: 455.24411pt x 250.26433pt.
+ine 434.
+(pdftex.def)             Requested size: 363.3566pt x 199.74576pt.
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF]
 (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
@@ -1652,21 +1652,38 @@ Package epstopdf Info: Source file: <eduxes_schedule1.eps>
 (epstopdf)                    size: 19821 bytes
 (epstopdf)             Command: <repstopdf --outfile=eduxes_schedule1-eps-conve
 rted-to.pdf eduxes_schedule1.eps>
-(epstopdf)             \includegraphics on input line 496.
+(epstopdf)             \includegraphics on input line 501.
 Package epstopdf Info: Output file is already uptodate.
 
-<eduxes_schedule1-eps-converted-to.pdf, id=730, 366.36874pt x 185.69376pt>
+<eduxes_schedule1-eps-converted-to.pdf, id=701, 366.36874pt x 185.69376pt>
 File: eduxes_schedule1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eduxes_schedule1-eps-converted-to.pdf>
 Package pdftex.def Info: eduxes_schedule1-eps-converted-to.pdf used on input li
-ne 496.
-(pdftex.def)             Requested size: 455.24411pt x 230.75372pt.
+ne 501.
+(pdftex.def)             Requested size: 366.36784pt x 185.6933pt.
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF]
 (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package epstopdf Info: Source file: <eduxes_students_attendance2.eps>
+(epstopdf)                    date: 2012-12-28 23:26:51
+(epstopdf)                    size: 535100 bytes
+(epstopdf)             Output file: <eduxes_students_attendance2-eps-converted-
+to.pdf>
+(epstopdf)                    date: 2012-12-28 23:27:10
+(epstopdf)                    size: 40360 bytes
+(epstopdf)             Command: <repstopdf --outfile=eduxes_students_attendance
+2-eps-converted-to.pdf eduxes_students_attendance2.eps>
+(epstopdf)             \includegraphics on input line 543.
+Package epstopdf Info: Output file is already uptodate.
 
+<eduxes_students_attendance2-eps-converted-to.pdf, id=704, 366.36874pt x 364.36
+125pt>
+File: eduxes_students_attendance2-eps-converted-to.pdf Graphic file (type pdf)
+ <use eduxes_students_attendance2-eps-converted-to.pdf>
+Package pdftex.def Info: eduxes_students_attendance2-eps-converted-to.pdf used 
+on input line 543.
+(pdftex.def)             Requested size: 366.36784pt x 364.36035pt.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1675,7 +1692,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [45 <./eduxes_schedule1-eps-converted-to.pdf>]
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 568--568
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[46 <./eduxes_students_attendance2-eps-converted-to.pdf>]
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 581--581
 []        \T1/cmtt/m/n/12 <h1 id="current_group_attendance">Student List for Gr
 oup</h1>[] 
  []
@@ -1685,6 +1709,26 @@ File: bc-fleur.mps Graphic file (type mps)
 File: bc-fleur.mps Graphic file (type mps)
 
 [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
+Package epstopdf Info: Source file: <eduxes_reports_attendance1.eps>
+(epstopdf)                    date: 2012-12-28 21:59:34
+(epstopdf)                    size: 230670 bytes
+(epstopdf)             Output file: <eduxes_reports_attendance1-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2012-12-28 23:25:24
+(epstopdf)                    size: 24566 bytes
+(epstopdf)             Command: <repstopdf --outfile=eduxes_reports_attendance1
+-eps-converted-to.pdf eduxes_reports_attendance1.eps>
+(epstopdf)             \includegraphics on input line 617.
+Package epstopdf Info: Output file is already uptodate.
+
+<eduxes_reports_attendance1-eps-converted-to.pdf, id=724, 364.36125pt x 219.821
+24pt>
+File: eduxes_reports_attendance1-eps-converted-to.pdf Graphic file (type pdf)
+ <use eduxes_reports_attendance1-eps-converted-to.pdf>
+Package pdftex.def Info: eduxes_reports_attendance1-eps-converted-to.pdf used o
+n input line 617.
+(pdftex.def)             Requested size: 364.36035pt x 219.8207pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1694,7 +1738,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[46]
+[47]
 Overfull \vbox (47.26105pt too high) has occurred while \output is active []
 
 
@@ -1704,7 +1748,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[47]
+[48]
 File: bc-fleur.mps Graphic file (type mps)
  [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
 
@@ -1713,10 +1757,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[48]
+[49 <./eduxes_reports_attendance1-eps-converted-to.pdf>]
 File: bc-fleur.mps Graphic file (type mps)
- [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
-Overfull \hbox (7.05695pt too wide) in paragraph at lines 721--721
+ [MP to PDF]
+(/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
+Overfull \hbox (7.05695pt too wide) in paragraph at lines 741--741
 []                    \T1/cmtt/m/n/12 var in_act = $("#in_group_activity_" + id
 _group );[] 
  []
@@ -1732,36 +1777,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[49]
-File: bc-fleur.mps Graphic file (type mps)
- [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
-Overfull \hbox (0.88345pt too wide) in paragraph at lines 872--872
-[]\T1/cmtt/m/n/12 CREATE TABLE IF NOT EXISTS TEACHER_SCHEDULE (id  integer prim
-ary key,[] 
- []
-
-File: bc-aux-301.mps Graphic file (type mps)
-[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
 [50]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[51])
+[51]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1769,29 +1792,78 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [52]
-\openout2 = `resultados_experimentales.aux'.
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 810--810
+[]             \T1/cmtt/m/n/12 var len = results.rows.length; // max number of 
+students[] 
+ []
 
- (./resultados_experimentales.tex
-Chapter 5.
-Package epstopdf Info: Source file: <siestta2.eps>
-(epstopdf)                    date: 2012-12-27 03:53:39
-(epstopdf)                    size: 293601 bytes
-(epstopdf)             Output file: <siestta2-eps-converted-to.pdf>
-(epstopdf)                    date: 2012-12-27 03:57:36
-(epstopdf)                    size: 138974 bytes
-(epstopdf)             Command: <repstopdf --outfile=siestta2-eps-converted-to.
-pdf siestta2.eps>
-(epstopdf)             \includegraphics on input line 44.
+
+Overfull \hbox (7.05695pt too wide) in paragraph at lines 810--810
+[]                              \T1/cmtt/m/n/12 Math.max(no_activities,a_no_act
+ivities);[] 
+ []
+
+
+Overfull \hbox (13.23044pt too wide) in paragraph at lines 810--810
+[]            \T1/cmtt/m/n/12 SActivity[no_students][activity_id].activity = ac
+tivity_id;[] 
+ []
+
+File: bc-fleur.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[53]
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 852--852
+[]                        \T1/cmtt/m/n/12 html_pre +="<th>"+activity_name_a[j]+
+"</th>";[] 
+ []
+
+File: bc-fleur.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-fleur.mps)
+Package epstopdf Info: Source file: <eduxes_students_assessment01.eps>
+(epstopdf)                    date: 2012-12-28 23:28:59
+(epstopdf)                    size: 591041 bytes
+(epstopdf)             Output file: <eduxes_students_assessment01-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2012-12-28 23:33:36
+(epstopdf)                    size: 42729 bytes
+(epstopdf)             Command: <repstopdf --outfile=eduxes_students_assessment
+01-eps-converted-to.pdf eduxes_students_assessment01.eps>
+(epstopdf)             \includegraphics on input line 861.
 Package epstopdf Info: Output file is already uptodate.
-File: siestta2-eps-converted-to.pdf Graphic file (type pdf)
-<use siestta2-eps-converted-to.pdf>
-Package pdftex.def Info: siestta2-eps-converted-to.pdf used on input line 44.
-(pdftex.def)             Requested size: 455.24411pt x 277.30486pt.
- [53
 
+<eduxes_students_assessment01-eps-converted-to.pdf, id=763, 368.37625pt x 425.5
+9pt>
+File: eduxes_students_assessment01-eps-converted-to.pdf Graphic file (type pdf)
 
+ <use eduxes_students_assessment01-eps-converted-to.pdf>
+Package pdftex.def Info: eduxes_students_assessment01-eps-converted-to.pdf used
+ on input line 861.
+(pdftex.def)             Requested size: 368.37534pt x 425.58894pt.
+Package epstopdf Info: Source file: <eduxes_assessment1.eps>
+(epstopdf)                    date: 2012-12-28 23:36:50
+(epstopdf)                    size: 231867 bytes
+(epstopdf)             Output file: <eduxes_assessment1-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-12-28 23:36:57
+(epstopdf)                    size: 26855 bytes
+(epstopdf)             Command: <repstopdf --outfile=eduxes_assessment1-eps-con
+verted-to.pdf eduxes_assessment1.eps>
+(epstopdf)             \includegraphics on input line 871.
+Package epstopdf Info: Output file is already uptodate.
 
-]
+<eduxes_assessment1-eps-converted-to.pdf, id=764, 366.36874pt x 215.80624pt>
+File: eduxes_assessment1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use eduxes_assessment1-eps-converted-to.pdf>
+Package pdftex.def Info: eduxes_assessment1-eps-converted-to.pdf used on input 
+line 871.
+(pdftex.def)             Requested size: 366.36784pt x 215.80571pt.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1799,87 +1871,127 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [54]
-Overfull \hbox (20.1148pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 Language               Code    Comment  Comment %      Blank 
-     Total  File[] 
- []
-
-
-Overfull \hbox (285.57498pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 ----------------  ---------  ---------  ---------  --------- 
- ---------  -----------------------------------------------[] 
- []
-
-
-Overfull \hbox (63.32925pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 javascript             1374        155      10.1%        210 
-      1739  database.js[] 
- []
-
-
-Overfull \hbox (69.50275pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 javascript              393         91      18.8%         56 
-       540  interface.js[] 
- []
-
-
-Overfull \hbox (125.06418pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 javascript              402         57      12.4%         46 
-       505  create_populate_db.js[] 
- []
-
-
-Overfull \hbox (57.15576pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 html                    546         99      15.3%        117 
-       762  index.html[] 
- []
-
-
-Overfull \hbox (57.15576pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 javascript                1          0       0.0%          0 
-         1  index.html[] 
- []
-
-
-Overfull \hbox (63.32925pt too wide) in paragraph at lines 86--86
-[]\T1/cmtt/m/n/12 html                     28          1       3.4%          8 
-        37  remove.html[] 
- []
-
-)
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 29.11858pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[55]
-\openout2 = `conclusiones.aux'.
-
- (./conclusiones.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[56
+[55 <./eduxes_students_assessment01-eps-converted-to.pdf>]
+<data_base.png, id=781, 545.03625pt x 508.90125pt>
+File: data_base.png Graphic file (type png)
+ <use data_base.png>
+Package pdftex.def Info: data_base.png used on input line 925.
+(pdftex.def)             Requested size: 455.24411pt x 425.05916pt.
+
+Overfull \hbox (0.88345pt too wide) in paragraph at lines 976--976
+[]\T1/cmtt/m/n/12 CREATE TABLE IF NOT EXISTS TEACHER_SCHEDULE (id  integer prim
+ary key,[] 
+ []
+
+File: bc-aux-301.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps))
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[56 <./eduxes_assessment1-eps-converted-to.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[57 <./data_base.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[58]
+\openout2 = `resultados_experimentales.aux'.
+
+ (./resultados_experimentales.tex
+Chapter 5.
+[59
 
 
 
 ]
-Chapter 6.
-) [57]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[58
+[60]
+File: bc-aux-301.mps Graphic file (type mps)
+ [MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+Overfull \hbox (0.37204pt too wide) in paragraph at lines 97--98
+[][] 
+ []
+
+File: bc-aux-301.mps Graphic file (type mps)
+[MP to PDF] (/usr/share/texlive/texmf-dist/tex/latex/bclogo/bc-aux-301.mps)
+Overfull \hbox (5.35313pt too wide) in paragraph at lines 126--126
+[]\T1/cmtt/m/n/12 Development Effort Estimate, Person-Years (Person-Months)= 0.
+35 (4.17)[] 
+ []
 
 
-] (./master_memoriae.bbl [59
+Overfull \hbox (5.35313pt too wide) in paragraph at lines 126--126
+[]\T1/cmtt/m/n/12 Schedule Estimate, Years (Months)                        = 0.
+36 (4.30)[] 
+ []
+
+)
+Overfull \hbox (0.37204pt too wide) in paragraph at lines 127--216
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[61]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[62]
+\openout2 = `conclusiones.aux'.
+
+ (./conclusiones.tex
+Chapter 6.
+) [63
+
+
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[64
+
+
+] (./master_memoriae.bbl [65
 
 ]
 Underfull \hbox (badness 7613) in paragraph at lines 96--101
@@ -1906,9 +2018,21 @@ started _ android _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--134
+Underfull \hbox (badness 10000) in paragraph at lines 134--139
 \T1/cmtt/m/n/12 unisoftcolombia . com / unisoftcolombia / index . php ? link = 
 academico$[]\T1/cmr/m/n/12 ,
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[66]
+Underfull \hbox (badness 10000) in paragraph at lines 146--151
+[]$\T1/cmtt/m/n/12 https : / / sourceforge . net / tracker / index . php ? func
+ = detail&aid =
  []
 
 )
@@ -1920,7 +2044,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[60]
+[67]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
  (./master_memoriae.aux (./copyright.aux) (./agradecimientos.aux)
 (./resumen.aux) (./introduccion.aux) (./working.aux) (./estado_del_arte.aux)
@@ -1929,7 +2053,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
 Package rerunfilecheck Info: File `master_memoriae.out' has not changed.
-(rerunfilecheck)             Checksum: 2588B9A338BB649997AC8AAC957C75BF;3359.
+(rerunfilecheck)             Checksum: 14560C0E678D532E68CA890165C1F827;2613.
 
 
 LaTeX Warning: There were undefined references.
@@ -1937,10 +2061,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
  ) 
 Here is how much of TeX's memory you used:
- 18316 strings out of 494956
- 322338 string characters out of 3179077
- 430459 words of memory out of 3000000
- 20762 multiletter control sequences out of 15000+200000
+ 18361 strings out of 494956
+ 323962 string characters out of 3179077
+ 436259 words of memory out of 3000000
+ 20786 multiletter control sequences out of 15000+200000
  23111 words of font info for 64 fonts, out of 3000000 for 9000
  62 hyphenation exceptions out of 8191
  64i,16n,71p,465b,801s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1973,10 +2097,10 @@ fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/eurosym/feymr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/symbols/msam10.pfb>
-Output written on master_memoriae.pdf (72 pages, 1640674 bytes).
+Output written on master_memoriae.pdf (79 pages, 1782255 bytes).
 PDF statistics:
- 1491 PDF objects out of 1728 (max. 8388607)
- 831 compressed objects within 9 object streams
- 200 named destinations out of 1000 (max. 500000)
- 589 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1508 PDF objects out of 1728 (max. 8388607)
+ 850 compressed objects within 9 object streams
+ 210 named destinations out of 1000 (max. 500000)
+ 558 words of extra memory for PDF output out of 10000 (max. 10000000)
 
