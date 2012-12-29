@@ -1,0 +1,158 @@
+% Documento creado por Óscar Varela Suárez y José Antonio Almena Muñoz
+% Haz con él lo que quieras...
+
+% si queremos que un capítulo nuevo empiece en cualquier página (dcha. o izda.) ponemos dentro de las
+% opciones de documentclass --> openany
+\documentclass[twoside,a4paper,12pt]{book}
+
+\usepackage[dvips]{graphicx}
+\usepackage[spanish]{babel}
+%\selectlanguage{spanish}
+%\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{babel}
+\usepackage{fancyhdr}
+\usepackage{caption2}
+\usepackage{geometry}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{hthtml}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{setspace}\singlespacing
+% Para otros interlineados: \renewcommand{\baselinestretch}{1.05}
+\usepackage{dsfont} %Para las formulitas
+
+%\pagestyle{headings}
+
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+%para crear un índice alfabético (de usarlo lo hacemos al final del documento)
+\makeindex
+
+\begin{document}
+
+\renewcommand{\captionlabelfont}{\textbf}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+%
+\renewcommand{\headrulewidth}{0.5pt}
+
+\fancyhead[LO]{\rightmark} % En las páginas impares, parte izquierda del encabezado, aparecerá el nombre de capítulo
+
+\fancyhead[RE]{\leftmark} % En las páginas pares, parte derecha del encabezado, aparecerá el nombre de sección
+
+\fancyhead[RO,LE]{\thepage} % Números de página en las esquinas de los encabezados
+%
+
+% para no numerar la página
+\thispagestyle{empty}
+
+% si se comenta la siguiente línea en el encabezado de una pagina aparece el capítulo al que pertenece en lugar
+% de la sección a la que pertenece
+\baselineskip 1.35\baselineskip
+
+\vspace{2cm}
+%
+\begin{figure}[htb]
+%%Escudo de la reyjuan
+%Para que inserte la imagen en el pdf ejecutar DVI2DPF
+\centerline{\resizebox{.05\textwidth}{!}{\includegraphics{logo_urjc.eps}}}
+\end{figure}
+%
+\begin{center}
+{\Large {\bf Universidad Rey Juan Carlos}} \vspace{5mm}
+
+%
+{\large Escuela Superior de Ciencias Experimentales y Tecnología}
+\vspace{5mm}
+
+%
+{\large Departamento de Informática, Estadística y Telemática}
+
+%
+\vspace{4.5cm}
+%
+%
+%
+
+{\Large {\bf ------ título ------}}
+
+\vspace{3cm}
+
+%
+{\large {\bf Trabajo Fin de Carrera}}
+%
+%
+\vspace{4cm}
+
+
+--- Autor ---\\
+\vspace{1cm}
+---Tutor---\\
+\vspace{1cm} \today
+
+%
+\end{center}
+%Para que nos deje una página en blanco después de la portada
+\newpage{\pagestyle{empty}\cleardoublepage}
+
+
+\setcounter{page}{1} %para que no cuente la primera página (la portada)
+%\setcounter{secnumdepth}{2} \setcounter{tocdepth}{2}
+
+
+% el documento está desglosado en diferentes ficheros
+% para incluir cada uno de ellos en el total se utiliza la sentencia: \include{nombre_fichero}
+
+% para que no ponga "Capítulo 0" en las secciones agradecimientos y resumen
+\renewcommand{\chaptermark}[1]{\markboth{\small{\  #1}}{}}
+
+\frontmatter
+
+% ----------------- AGRADECIMIENTOS --------------------
+\include{agradecimientos}
+% ----------------- RESUMEN ----------------------------
+\include{resumen}
+
+% para que vuelva a poner "Capítulo n" donde corresponda a partir de esta línea
+\renewcommand{\chaptermark}[1]{\markboth{\small{\chaptername \ \thechapter. #1}}{}}
+% ----------------- ÍNDICE GENERAL ---------------------
+\tableofcontents
+% ----------------- ÍNDICE DE FIGURAS ------------------
+\listoffigures
+
+\mainmatter
+
+% ----------------- INTRODUCCIÓN -----------------------
+\include{introduccion}
+% ----------------- ESTADO DEL ARTE --------------------
+\include{estado_del_arte}
+% ----------------- OBJETIVO ---------------------------
+\include{objetivo}
+% ----------------- DESCRIPCIÓN INFORMÁTICA ------------
+\include{descripcion_informatica}
+% ----------------- RESULTADOS EXPERIMENTALES ----------
+\include{resultados_experimentales}
+% ----------------- CONCLUSIONES Y TRABAJOS FUTUROS ----
+\include{conclusiones}
+
+\backmatter
+
+% para que no ponga "Capítulo n" en las secciones anexo y bibliografía
+\renewcommand{\chaptermark}[1]{\markboth{\small{\  #1}}{}}
+% ----------------- ANEXOS -----------------------------
+\include{anexos}
+% ----------------- BIBLIOGRAFÍA -----------------------
+    % para que funcione bien esto se debe compilar allá donde halla una cita usando "bibtext"
+    % el "alpha" es para que ordene la bibliografía por orden alfabético
+\bibliographystyle{alpha} \bibliography{librero}
+% incluye la bibliografía en el índice
+\addcontentsline{toc}{chapter}{Bibliografía}
+
+%\printindex  %%%% crea un índice alfabético con las palabras indexadas en el documento: \index{palabra}
+
+\end{document}

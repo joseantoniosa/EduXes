@@ -1,0 +1,45 @@
+\select@language {english}
+\select@language {english}
+\contentsline {chapter}{Copyright}{i}{chapter*.1}
+\contentsline {chapter}{Acknowledgments}{iii}{chapter*.2}
+\contentsline {chapter}{Description of the practicum}{v}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Working plan}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Description and objectives}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Motivation}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Methodology }{7}{section.2.3}
+\contentsline {section}{\numberline {2.4}Tools}{9}{section.2.4}
+\contentsline {section}{\numberline {2.5}Work plan}{10}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}HTML}{10}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Interface code }{12}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Database code}{14}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Database}{16}{subsection.2.5.4}
+\contentsline {subsection}{\numberline {2.5.5}Interface Diagram}{17}{subsection.2.5.5}
+\contentsline {subsection}{\numberline {2.5.6}Problems and drawbacks}{17}{subsection.2.5.6}
+\contentsline {chapter}{\numberline {3}State-of-art solutions}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Siestta}{23}{section.3.1}
+\contentsline {section}{\numberline {3.2}Sixa}{26}{section.3.2}
+\contentsline {section}{\numberline {3.3}Android applications}{26}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Grade Book}{26}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Attendance}{28}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Teacher Organizer }{29}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Teacher Aide }{29}{subsection.3.3.4}
+\contentsline {chapter}{\numberline {4}Description}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}Preparation of development}{31}{section.4.1}
+\contentsline {section}{\numberline {4.2}Application Skeleton}{32}{section.4.2}
+\contentsline {section}{\numberline {4.3}Upload into Git repository}{32}{section.4.3}
+\contentsline {section}{\numberline {4.4}Development}{34}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Groups}{35}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Students}{40}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Main Page}{43}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Attendance}{45}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Activities}{49}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Assessment}{52}{subsection.4.4.6}
+\contentsline {section}{\numberline {4.5}Database }{56}{section.4.5}
+\contentsline {chapter}{\numberline {5}Results}{59}{chapter.5}
+\contentsline {section}{\numberline {5.1}Objectives completed}{59}{section.5.1}
+\contentsline {section}{\numberline {5.2}Further objectives}{59}{section.5.2}
+\contentsline {section}{\numberline {5.3}Problems faced}{60}{section.5.3}
+\contentsline {section}{\numberline {5.4}Statistics}{61}{section.5.4}
+\contentsline {chapter}{\numberline {6}Personal evaluation of the practicum }{63}{chapter.6}
+\contentsline {chapter}{Bibliography}{67}{chapter*.6}

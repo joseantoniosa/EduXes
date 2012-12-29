@@ -1,0 +1,152 @@
+\begin{thebibliography}{dEXdG12}
+
+\bibitem[Aca11]{Android:Gradebook}
+Academics.
+\newblock Classroom management system.
+\newblock \url{
+  https://play.google.com/store/apps/details?id=com.gradebook.academics },
+  2011.
+
+\bibitem[App05]{Aptana}
+Inc. Appcelerator.
+\newblock Aptana is a complete environment to build ror, php, python
+  applications, along with complete html, css and javascript editing.
+\newblock \url{ http://www.aptana.org/ }, 2005.
+
+\bibitem[Aqu12]{EduXes}
+Jos\'e Antonio~Salgueiro Aquino.
+\newblock Classroom management for high school teachers.
+\newblock \url{https://github.com/joseantoniosa/EduXes}, 2012.
+
+\bibitem[Cas12a]{LibreplanApp}
+Manuel~Rego Casasnovas.
+\newblock Application to access libreplan.
+\newblock \url{https://github.com/Igalia/libreplanapp/}, 2012.
+
+\bibitem[Cas12b]{SergasApp}
+Manuel~Rego Casasnovas.
+\newblock Application to access sergas appointment system.
+\newblock \url{ http://mrego.github.com/sergasapp/}, 2012.
+
+\bibitem[dEXdG12]{Xade}
+Conseller\'{\i}a de~Educaci\'on. Xunta~de Galicia.
+\newblock Xade web is a web interface for educational data management.
+\newblock \url{http://edu.xunta.es/xade/}, 2012.
+
+\bibitem[fA10]{Android:Attendance}
+Android for Academics.
+\newblock Attendance.
+\newblock \url{
+  http://androidforacademics.com/2010/09/attendance-instruction-manual/}, 2010.
+
+\bibitem[Fou01]{Eclipse}
+Eclipse Foundation.
+\newblock Eclipse interface development environment.
+\newblock \url{ http://www.eclipse.org/ }, 2001.
+
+\bibitem[Git08]{GitHub}
+GitHub.
+\newblock Powerful collaboration, review, and code management for open source
+  and private development projects.
+\newblock \url{https://github.com/}, 2008.
+
+\bibitem[iagdc12]{Android:TeacherAide}
+inpocketsolution at gmail~dot com.
+\newblock Teacher aide.
+\newblock \url{https://sites.google.com/site/teacheraidepro/}, 2012.
+
+\bibitem[Inc01]{AndroidDevelopmentKit}
+Android Inc.
+\newblock Android simple development kit.
+\newblock \url{ http://developer.android.com/sdk/index.html }, 2001.
+
+\bibitem[Lle12]{Android:teacherorganizer}
+Llerik.
+\newblock Teacher organizer.
+\newblock \url{ http://4pda.ru/forum/index.php?showtopic=345457\&st=80}, 2012.
+
+\bibitem[Med12]{Mobiscroll}
+Acid Media.
+\newblock Image only scrollers.
+\newblock \url{http://mobiscroll.com/}, 2012.
+
+\bibitem[Mob12a]{JQueryMobile}
+JQuery Mobile.
+\newblock Jquery mobile.
+\newblock \url{ http://jquerymobile.com/demos/1.1.1/ }, 2012.
+
+\bibitem[Mob12b]{JQueryMobilePage}
+JQuery Mobile.
+\newblock The jquery mobile "page" structure.
+\newblock \url{
+  http://jquerymobile.com/demos/1.1.1/docs/pages/page-anatomy.html}, 2012.
+
+\bibitem[Ora95]{JavaSE}
+Oracle.
+\newblock Java standard edition.
+\newblock \url{
+  http://www.oracle.com/technetwork/java/javase/downloads/index.html }, 1995.
+
+\bibitem[P\'06]{Siestta}
+Ram\'on~Castro P\'erez.
+\newblock Classroom management web application.
+\newblock \url{ http://siestta.sourceforge.net/doc/index.html}, 2006.
+
+\bibitem[Pho12a]{AndroidGettingStarted}
+PhoneGap.
+\newblock Phonegap. android getting started guide.
+\newblock
+  \url{http://docs.phonegap.com/en/1.8.1/guide_getting-started_android_index.md.html},
+  2012.
+
+\bibitem[Pho12b]{PhoneGapGS}
+PhoneGap.
+\newblock Phonegap getting started with android.
+\newblock \url{
+  http://docs.phonegap.com/en/1.8.1/guide_getting-started_android_index.md.html#Getting%20Started%20with%20Android},
+  2012.
+
+\bibitem[Pho12c]{PhoneGap}
+PhoneGap.
+\newblock Phonegap is a free and open source framework that allows you to
+  create mobile apps using standardized web apis for the platforms you care
+  about.
+\newblock \url{http://www.phonegap.com}, 2012.
+
+\bibitem[Pho12d]{PhoneGapLS}
+PhoneGap.
+\newblock Phonegap local storage.
+\newblock
+  \url{http://docs.phonegap.com/en/1.8.1/cordova_storage_storage.md.html#Storage},
+  2012.
+
+\bibitem[S.L09]{Sixa}
+Enxenio S.L.
+\newblock Complete classroom management system.
+\newblock \url{ http://www.sixa.es }, 2009.
+
+\bibitem[SQL12]{SQLFairy}
+SQLFairy.
+\newblock Sqlfairy - the sql translator.
+\newblock \url{http://sqlfairy.sourceforge.net}, 2012.
+
+\bibitem[Uni05]{Unisoft}
+Unisoft.
+\newblock Acad\'emico \texttrademark is a software to school management.
+\newblock \url{
+  http://www.unisoftcolombia.com/unisoftcolombia/index.php?link=academico},
+  2005.
+
+\bibitem[Whe05]{SLocCount}
+David~A. Wheeler.
+\newblock David a. wheeler's 'sloccount'.
+\newblock \url{http://sourceforge.net/projects/sloccount/}, 2005.
+
+\bibitem[Whe07]{SLocCountJS}
+David~A. Wheeler.
+\newblock David a. wheeler's 'sloccount' patch for javascript.
+\newblock
+  \url{https://sourceforge.net/tracker/index.php?func=detail&aid=1730985&group_id=171819&atid=859390},
+  2007.
+
+\end{thebibliography}
