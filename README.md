@@ -43,8 +43,6 @@ Coded for  Master Software Libre Practicum 5th Edition Vigo
 - Manage marks for students
 - List of marks for groups, includes mean values for each activity.
 
- contact info : info@joseantonio.org
-
 = References =
     Siestta [http://siestta.sourceforge.net/index.html]
 
